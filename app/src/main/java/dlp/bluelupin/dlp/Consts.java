@@ -16,8 +16,8 @@ public class Consts {
             2. Staging pointing to: https://cms2.samvaad.me
             3. QA pointing to: http://qa.samvaad.me/
             4. Dev pointing to: https://dlpdev.bluelup.in*/
-
-    public static String BASE_URL = "https://cms.samvaad.me/api/v1/";//"https://cms.samvaad.me/api/v1/";//https://dlpdev.bluelup.in/api/v1/"; // http://dlp-qa.bluelup.in/api/v1/;//https://cms2.samvaad.me/api/v1/;//"http://180.151.10.60:8080/classkonnect/api/";
+    public static String BASE_URL ="https://cms-2020-dev.samvaad.me/api/v1/";//development
+//    public static String BASE_URL = "https://cms.samvaad.me/api/v1/";//"https://cms.samvaad.me/api/v1/";//https://dlpdev.bluelup.in/api/v1/"; // http://dlp-qa.bluelup.in/api/v1/;//https://cms2.samvaad.me/api/v1/;//"http://180.151.10.60:8080/classkonnect/api/";
 
 
     public static String getBaseUrl() {
