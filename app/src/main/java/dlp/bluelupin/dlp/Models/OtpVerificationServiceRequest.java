@@ -6,6 +6,15 @@ package dlp.bluelupin.dlp.Models;
 public class OtpVerificationServiceRequest {
     private String otp;
     private String api_token;
+    private String phone;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public String getApi_token() {
         return api_token;
@@ -25,6 +34,6 @@ public class OtpVerificationServiceRequest {
 
     @Override
     public String toString() {
-        return "ClassPojo [otp = " + otp + ", api_token = " + api_token + "]";
+        return "ClassPojo [otp = " + otp + ", phone = " + phone + "]";
     }
 }

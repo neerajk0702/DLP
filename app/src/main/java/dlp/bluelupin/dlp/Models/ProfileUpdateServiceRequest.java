@@ -7,6 +7,15 @@ public class ProfileUpdateServiceRequest {
     private String name;
     private int language_id;
     private String api_token;
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getName() {
         return name;

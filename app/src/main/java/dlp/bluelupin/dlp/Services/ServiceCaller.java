@@ -465,4 +465,23 @@ public class ServiceCaller {
             }
         });
     }
+
+    //call resen otp service
+    public void resendOTP(final AccountServiceRequest request, final IAsyncWorkCompletedCallback workCompletedCallback) {
+        final ServiceHelper sh = new ServiceHelper(context);
+        sh.callResenOtpService(request, new IServiceSuccessCallback<AccountData>() {
+            @Override
+            public void onDone(final String callerUrl, final AccountData result, String error) {
+                Boolean success = false;
+                if (result != null) {
+                    success = true;
+                    workCompletedCallback.onDone("AccountCreated", success);
+
+                } else {
+                    success = false;
+                    workCompletedCallback.onDone("Account not created", success);
+                }
+            }
+        });
+    }
 }

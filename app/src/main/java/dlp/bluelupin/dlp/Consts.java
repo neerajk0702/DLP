@@ -9,8 +9,10 @@ import android.os.Environment;
 public class Consts {
     public static final String LOG_TAG = "HIH";
     public static final Boolean IS_DEBUG_LOG = true;
-    public final static boolean PROD = true; //false;
-    public final static String API_KEY = "XsMwq2updd3L5MZAtgwx7PAA0wKaylFnCejD0ei9WjSuwQVmXMQxGg3ZiH5X";
+    public final static boolean PROD = true; //false;8J3nj1c5IKEdTltpLDXP1QocdVyXV9LkesED0sr2wozK80Iqqjj8NDkxZuPk
+//    public static String API_KEY = "XsMwq2updd3L5MZAtgwx7PAA0wKaylFnCejD0ei9WjSuwQVmXMQxGg3ZiH5X";
+    public static String API_KEY ="XsMwq2updd3L5MZAtgwx7PAA0wKaylFnCejD0ei9WjSuwQVmXMQxGg3ZiH5X";
+    public static String USER_API_KEY ="";
 /*
             1. Production point to : https://cms.samvaad.me
             2. Staging pointing to: https://cms2.samvaad.me
@@ -35,6 +37,7 @@ public class Consts {
     public static final String URL_MEDIA_LATEST = "media/latest";
     public static final String CREATE_NEW_USER = "user/create";
     public static final String VERIFY_OTP = "user/verifyotp";
+    public static final String send_Otp = "user/sendotp";
 
     public static final String DownloadBroadcast = "DownloadBroadcast";
 

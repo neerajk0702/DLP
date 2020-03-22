@@ -455,7 +455,7 @@ public class ServiceHelper {
 
     //create account service
     public void callCreateAccountService(AccountServiceRequest request, final IServiceSuccessCallback<AccountData> callback) {
-        request.setApi_token(Consts.API_KEY);
+       request.setApi_token(Consts.API_KEY);
 
         final DbHelper dbhelper = new DbHelper(context);
         String device_token = Utility.getDeviceIDFromSharedPreferences(context);
@@ -558,7 +558,7 @@ public class ServiceHelper {
             }
         }
 
-        Call<AccountData> ac = service.profileUpdated(request.getApi_token(), request);
+        Call<AccountData> ac = service.profileUpdated(request);
         Log.d(Consts.LOG_TAG, "payload***" + request);
         ac.enqueue(new Callback<AccountData>() {
             @Override
@@ -593,22 +593,26 @@ public class ServiceHelper {
         final DbHelper dbhelper = new DbHelper(context);
 
         final int serverId = Utility.getUserServerIdFromSharedPreferences(context);
-        AccountData accountDataApToken = dbhelper.getAccountData();
-        if (accountDataApToken != null) {
-            if (accountDataApToken.getApi_token() != null) {
-                request.setApi_token(accountDataApToken.getApi_token());
+        AccountData accountData = dbhelper.getAccountData();
+        if (accountData != null) {
+            if (accountData.getPhone() != null) {
+                request.setPhone(accountData.getPhone());
             }
         }
         Log.d(Consts.LOG_TAG, "payload***" + request);
-        Call<OtpData> ac = service.otpVerify(request.getApi_token(), request);
+        Call<OtpData> ac = service.otpVerify(request);
         ac.enqueue(new Callback<OtpData>() {
             @Override
             public void onResponse(Call<OtpData> call, Response<OtpData> response) {
                 OtpData data = response.body();
                 AccountData accountData = new AccountData();
                 if (data != null) {
+                    Consts.USER_API_KEY=data.getApi_token();
+
+                    Log.d(Consts.LOG_TAG, "Api_token : " + data.getApi_token());
                     accountData.setId(serverId);
                     accountData.setIsVerified(1);
+                    accountData.setApi_token(data.getApi_token());
                     //update account verified for check account verified or not
                     dbhelper.updateAccountDataVerified(accountData);
                     if (Consts.IS_DEBUG_LOG) {
@@ -621,6 +625,7 @@ public class ServiceHelper {
                 } else {
                     accountData.setId(serverId);
                     accountData.setIsVerified(0);
+                    accountData.setApi_token("");
                     //update account verified for check account verified or not
                     dbhelper.updateAccountDataVerified(accountData);
                     Toast.makeText(context, context.getString(R.string.enter_valid_otp), Toast.LENGTH_LONG).show();
@@ -919,6 +924,39 @@ public class ServiceHelper {
             }
 
         });
+    }
+    //resend opt service
+    public void callResenOtpService(AccountServiceRequest request, final IServiceSuccessCallback<AccountData> callback) {
+       // request.setApi_token(Consts.API_KEY);
+
+        Call<AccountData> ac = service.resendOtp(request);
+        Log.d(Consts.LOG_TAG, "payload***" + request);
+        ac.enqueue(new Callback<AccountData>() {
+            @Override
+            public void onResponse(Call<AccountData> call, Response<AccountData> response) {
+                AccountData data = response.body();
+                if (data != null) {
+                    if (data.getMessage()!=null && !data.getMessage().equals("")){
+                        Log.d(Consts.LOG_TAG, "Otp Resend:" + data.toString());
+                        callback.onDone(Consts.CREATE_NEW_USER, data, null);
+                    }else {
+                        callback.onDone(Consts.CREATE_NEW_USER, null, null);
+                    }
+                } else {
+                    callback.onDone(Consts.CREATE_NEW_USER, null, null);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<AccountData> call, Throwable t) {
+                Log.d(Consts.LOG_TAG, "Failure in service account create" + t.toString());
+                callback.onDone(Consts.CREATE_NEW_USER, null, t.toString());
+            }
+
+        });
+
+
     }
 
 }

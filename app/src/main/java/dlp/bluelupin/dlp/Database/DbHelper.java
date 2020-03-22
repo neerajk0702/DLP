@@ -1094,12 +1094,21 @@ public class DbHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         //values.put("server_id", accountData.getId());
         values.put("isVerified", accountData.getIsVerified());
+        values.put("api_token", accountData.getApi_token());
         SQLiteDatabase db = this.getWritableDatabase();
         long i = db.update("AccountEntity", values, "server_id = '" + accountData.getId() + "'", null);
         db.close();
         return i > 0;
     }
-
+    //update Apitoken after verified
+    public boolean updateApitoken(String apitoken,int accountId) {
+        ContentValues values = new ContentValues();
+        values.put("api_token", apitoken);
+        SQLiteDatabase db = this.getWritableDatabase();
+        long i = db.update("AccountEntity", values, "server_id = '" + accountId + "'", null);
+        db.close();
+        return i > 0;
+    }
     public AccountData getAccountData() {
         //clientId, server_id , name , email , phone ,preferred_language_id , role, api_token,otp
         String query = "Select clientId, server_id, name, email, phone, preferred_language_id, role,api_token,otp,isVerified,is_new_user FROM AccountEntity";

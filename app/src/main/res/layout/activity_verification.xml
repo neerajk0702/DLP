@@ -147,18 +147,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:layout_marginRight="@dimen/dimValue_10"
-                        android:layout_marginLeft="@dimen/dimValue_10"
+                        android:layout_marginRight="@dimen/dimValue_16"
+                        android:layout_marginLeft="@dimen/dimValue_16"
                         android:orientation="horizontal">
 
                         <EditText
                             android:id="@+id/oneNo"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.1"
+                            android:layout_width="@dimen/size_60px"
+                            android:layout_height="@dimen/size_60px"
                             android:background="@drawable/otp_edittext_round"
                             android:gravity="center"
                             android:hint="-"
+                            android:layout_weight="1"
                             android:inputType="number"
                             android:maxLength="1"
                             android:padding="@dimen/dimValue_10"
@@ -166,15 +166,15 @@
 
                         <EditText
                             android:id="@+id/twoNo"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_width="@dimen/size_60px"
+                            android:layout_height="@dimen/size_60px"
                             android:layout_marginLeft="@dimen/dimValue_5"
-                            android:layout_weight="0.1"
                             android:background="@drawable/otp_edittext_round"
                             android:gravity="center"
                             android:hint="-"
                             android:inputType="number"
                             android:maxLength="1"
+                            android:layout_weight="1"
                             android:padding="@dimen/dimValue_10"
                             android:singleLine="true"
                             android:textCursorDrawable="@drawable/edit_cursor" />
@@ -182,13 +182,13 @@
 
                         <EditText
                             android:id="@+id/threeNo"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_width="@dimen/size_60px"
+                            android:layout_height="@dimen/size_60px"
                             android:layout_marginLeft="@dimen/dimValue_5"
-                            android:layout_weight="0.1"
                             android:background="@drawable/otp_edittext_round"
                             android:gravity="center"
                             android:hint="-"
+                            android:layout_weight="1"
                             android:inputType="number"
                             android:maxLength="1"
                             android:padding="@dimen/dimValue_10"
@@ -197,13 +197,13 @@
 
                         <EditText
                             android:id="@+id/fourNo"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_width="@dimen/size_60px"
+                            android:layout_height="@dimen/size_60px"
                             android:layout_marginLeft="@dimen/dimValue_5"
-                            android:layout_weight="0.1"
                             android:background="@drawable/otp_edittext_round"
                             android:gravity="center"
                             android:hint="-"
+                            android:layout_weight="1"
                             android:inputType="number"
                             android:maxLength="1"
                             android:padding="@dimen/dimValue_10"
@@ -261,7 +261,7 @@
                     android:gravity="center">
 
                     <LinearLayout
-                        android:layout_width="@dimen/size_190px"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/done_corner_round"
                         android:gravity="center">

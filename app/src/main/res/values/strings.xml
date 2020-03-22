@@ -22,8 +22,8 @@
     <string name="enter_email">Enter email</string>
     <string name="enter_phone">Enter phone</string>
     <string name="otp_sent">OTP has been sent to the provided Phone Number.</string>
-    <string name="account_not_create">This email ID and phone number is already registered. Please try different combination.</string>
-    <string name="account_not_valid">This email ID and phone number is not valid.</string>
+    <string name="account_not_create">This phone number is already registered. Please try different combination.</string>
+    <string name="account_not_valid">This phone number is not valid.</string>
     <string name="enter_e_mail">Enter E-mail address</string>
     <string name="enter_valid_mail">Enter valid E-mail address</string>
     <string name="enter_phone_no">Enter phone number</string>
@@ -162,6 +162,7 @@
     <string name="otp_textnew">Please Enter 6 digit OTP code sent on your mobile number</string>
     <string name="Verifyotp">Verify OTP</string>
     <string name="alearn">A learning experience delivery  plateform</string>
+    <string name="optional">Optional</string>
 
     <string name="distring">Disclaimer\n
 IndiaAI (IndiaAI  we  or us) knows that you care how information about you is used and shared. This Privacy Policy explains what information of yours will be collected by IndiaAI when you use www.India-ai.in (the site) and related services (the Service)  how the information will be used, and how you can control the collection, correction and/or deletion of information. We will not use or share your information with anyone except as described in this Privacy Policy.

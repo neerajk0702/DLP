@@ -30,6 +30,15 @@ public class AccountData {
 
     private boolean is_new_user;
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    private String message;
 
     public String getCreated_by() {
         return created_by;

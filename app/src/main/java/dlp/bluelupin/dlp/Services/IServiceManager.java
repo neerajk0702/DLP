@@ -43,7 +43,7 @@ public interface IServiceManager {
     Call<AccountData> accountCreate(@Body AccountServiceRequest request);
 
     @POST(Consts.VERIFY_OTP)
-    Call<OtpData> otpVerify(@Query("api_token") String api_token, @Body OtpVerificationServiceRequest request);
+    Call<OtpData> otpVerify(@Body OtpVerificationServiceRequest request);
 
     // @Streaming
     @GET
@@ -63,7 +63,7 @@ public interface IServiceManager {
     Call<ResponseBody> downloadFile(@Url String fileUrl);
 
     @POST(Consts.Profile_Update)
-    Call<AccountData> profileUpdated(@Query("api_token") String api_token, @Body ProfileUpdateServiceRequest request);
+    Call<AccountData> profileUpdated(@Body ProfileUpdateServiceRequest request);
 
     @POST(Consts.Quizzes)
     Call<ContentData> QuizzesContent(@Body ContentServiceRequest request);
@@ -83,4 +83,6 @@ public interface IServiceManager {
     @POST(Consts.logsRequest)
     Call<LogsDataRequest> saveLogs(@Body LogsDataRequest request);
 
+    @POST(Consts.send_Otp)
+    Call<AccountData> resendOtp(@Body AccountServiceRequest request);
 }

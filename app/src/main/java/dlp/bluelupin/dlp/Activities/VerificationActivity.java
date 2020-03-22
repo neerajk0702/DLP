@@ -144,19 +144,20 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
         } else if (!four_string.matches(numberRegex)) {
             Utility.alertForErrorMessage(getString(R.string.enter_valid_otp), VerificationActivity.this);
             return false;
-        } else if (five_string.length() == 0) {
-            Utility.alertForErrorMessage(getString(R.string.enter_otp), VerificationActivity.this);
-            return false;
-        } else if (!five_string.matches(numberRegex)) {
-            Utility.alertForErrorMessage(getString(R.string.enter_valid_otp), VerificationActivity.this);
-            return false;
-        } else if (six_string.length() == 0) {
-            Utility.alertForErrorMessage(getString(R.string.enter_otp), VerificationActivity.this);
-            return false;
-        } else if (!six_string.matches(numberRegex)) {
-            Utility.alertForErrorMessage(getString(R.string.enter_valid_otp), VerificationActivity.this);
-            return false;
         }
+//        else if (five_string.length() == 0) {
+//            Utility.alertForErrorMessage(getString(R.string.enter_otp), VerificationActivity.this);
+//            return false;
+//        } else if (!five_string.matches(numberRegex)) {
+//            Utility.alertForErrorMessage(getString(R.string.enter_valid_otp), VerificationActivity.this);
+//            return false;
+//        } else if (six_string.length() == 0) {
+//            Utility.alertForErrorMessage(getString(R.string.enter_otp), VerificationActivity.this);
+//            return false;
+//        } else if (!six_string.matches(numberRegex)) {
+//            Utility.alertForErrorMessage(getString(R.string.enter_valid_otp), VerificationActivity.this);
+//            return false;
+//        }
 
         return true;
 
@@ -189,7 +190,7 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
                 break;
             case R.id.verify:
                 if (isValidate()) {
-                    String otp = one_string + two_string + three_string + four_string + five_string + six_string;
+                    String otp = one_string + two_string + three_string + four_string;// + five_string + six_string;
                     callOTPVerificationService(otp);
                 }
                 v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.click_animation));//onclick animation
@@ -250,25 +251,19 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
         final CustomProgressDialog customProgressDialog = new CustomProgressDialog(this, R.mipmap.syc);
         DbHelper dbHelper = new DbHelper(VerificationActivity.this);
         AccountData acData = dbHelper.getAccountData();
-        int languageId = Utility.getLanguageIdFromSharedPreferences(this);
         if (acData != null) {
             AccountServiceRequest accountServiceRequest = new AccountServiceRequest();
-            accountServiceRequest.setName(acData.getName());
-            accountServiceRequest.setEmail(acData.getEmail());
             accountServiceRequest.setPhone(acData.getPhone());
-            accountServiceRequest.setPreferred_language_id(languageId);
             if (Utility.isOnline(this)) {
                 customProgressDialog.show();
                 ServiceCaller sc = new ServiceCaller(VerificationActivity.this);
-                sc.CreateAccount(accountServiceRequest, new IAsyncWorkCompletedCallback() {
+                sc.resendOTP(accountServiceRequest, new IAsyncWorkCompletedCallback() {
                     @Override
                     public void onDone(String workName, boolean isComplete) {
                         if (isComplete) {
                             if (Consts.IS_DEBUG_LOG) {
-                                Log.d(Consts.LOG_TAG, " callCreateAccountService success result: " + isComplete);
+                                Log.d(Consts.LOG_TAG, " callResendOtpService success result: " + isComplete);
                             }
-                            Intent intentOtp = new Intent(VerificationActivity.this, VerificationActivity.class);
-                            startActivity(intentOtp);
                             customProgressDialog.dismiss();
                             Toast.makeText(VerificationActivity.this, getString(R.string.otp_sent), Toast.LENGTH_LONG).show();
                         } else {

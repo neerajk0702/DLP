@@ -40,6 +40,7 @@ import dlp.bluelupin.dlp.MainActivity;
 import dlp.bluelupin.dlp.Models.AccountData;
 import dlp.bluelupin.dlp.Models.AccountServiceRequest;
 import dlp.bluelupin.dlp.Models.LanguageData;
+import dlp.bluelupin.dlp.Models.ProfileUpdateServiceRequest;
 import dlp.bluelupin.dlp.R;
 import dlp.bluelupin.dlp.Services.IAsyncWorkCompletedCallback;
 import dlp.bluelupin.dlp.Services.ServiceCaller;
@@ -54,35 +55,25 @@ import dlp.bluelupin.dlp.shwocaseview.view.MaterialIntroView;
 
 
 public class NewUserActivity extends AppCompatActivity implements View.OnClickListener, MaterialIntroListener {
-    private TextView chooseLanguage;
-    private Spinner spinner;
     private TextView title, leftArrow;
-    private TextView emailLable, nameLable, phoneLable, lanLable, genderLable, cancel, save, autoPlayCheck;
+    private TextView save;
 
 
     //  private EditText enterName, enterEmail;
-    private EditText enterPhone;
+    private EditText enterName, enterEmail;
     String name_string, email_string;
-    String pnone_no_string;
-    List<LanguageData> data;
-    private Boolean checkFlag = false;
-    private ImageView autoPlay;
-    private LinearLayout disclaimer;
-    ImageView disclaimerimgcheck;
-    boolean isRaddesmri = false;
-
     private static final String INTRO_FOCUS_1 = "intro_focus_1";
     private static final String INTRO_FOCUS_2 = "intro_focus_2";
     private static final String INTRO_FOCUS_3 = "intro_focus_3";
     private static final String INTRO_FOCUS_4 = "intro_focus_3";
-
+    CustomProgressDialog customProgressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
-        setContentView(R.layout.activity_account_settings);
+        setContentView(R.layout.activity_new_user);
         if (Utility.isTablet(this)) {
             this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         } else {
@@ -105,131 +96,68 @@ public class NewUserActivity extends AppCompatActivity implements View.OnClickLi
         Typeface VodafoneRg = FontManager.getFontTypeface(this, "fonts/VodafoneRg.ttf");
         leftArrow.setTypeface(materialdesignicons_font);
         leftArrow.setOnClickListener(this);
-        RadioGroup radioGrp = (RadioGroup) findViewById(R.id.radioGrp);
-        RadioButton male = (RadioButton) findViewById(R.id.radioM);
-        RadioButton female = (RadioButton) findViewById(R.id.radioF);
         int textColor = Color.parseColor("#e60000");
-        emailLable = (TextView) findViewById(R.id.emailLable);
-        nameLable = (TextView) findViewById(R.id.nameLable);
-        phoneLable = (TextView) findViewById(R.id.phoneLable);
-        lanLable = (TextView) findViewById(R.id.lanLable);
-        genderLable = (TextView) findViewById(R.id.genderLable);
-        // cancel = (TextView) findViewById(R.id.cancel);
         save = (TextView) findViewById(R.id.save);
         save.setOnClickListener(this);
-        autoPlayCheck = (TextView) findViewById(R.id.autoPlayCheck);
-        autoPlay = (ImageView) findViewById(R.id.autoPlay);
-        autoPlay.setOnClickListener(this);
-        autoPlay.setImageResource(R.drawable.checkbox);
-        disclaimer = findViewById(R.id.disclaimer);
-        disclaimerimgcheck = findViewById(R.id.disclaimerimgcheck);
-        disclaimer.setOnClickListener(this);
         title.setTypeface(VodafoneExB);
-        nameLable.setTypeface(VodafoneExB);
-        emailLable.setTypeface(VodafoneExB);
-        phoneLable.setTypeface(VodafoneExB);
-        lanLable.setTypeface(VodafoneExB);
-        autoPlayCheck.setTypeface(VodafoneRg);
-        genderLable.setTypeface(VodafoneExB);
+
         //cancel.setTypeface(VodafoneRg);
         save.setTypeface(VodafoneRg);
-        male.setTypeface(VodafoneRg);
-        female.setTypeface(VodafoneRg);
         leftArrow.setText(Html.fromHtml("&#xf04d;"));
-        //  enterName = (EditText) findViewById(R.id.enterName);
-        //  enterEmail = (EditText) findViewById(R.id.enterEmail);
-        enterPhone = (EditText) findViewById(R.id.enterPhone);
-        spinner = (Spinner) findViewById(R.id.spinner);
-        // style="@style/Widget.AppCompat.Spinner.Underlined"
-        spinner.getBackground().setColorFilter(Color.parseColor("#4a4d4e"), PorterDuff.Mode.SRC_ATOP);
-        DbHelper db = new DbHelper(NewUserActivity.this);
-        data = db.getAllLanguageDataEntity();
-        if (data != null) {
-            LanguageAdapter languageAdapter = new LanguageAdapter(this, data);
-            //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinner.setAdapter(languageAdapter);
-            int languagePos = Utility.getLanguagePositionFromSharedPreferences(this);
-            spinner.setSelection(languagePos);//set default value
-        }
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                setLanguage(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-         showIntro(disclaimer, INTRO_FOCUS_1, getString(R.string.plsrd), Focus.NORMAL);
-
+        enterName =findViewById(R.id.name);
+        enterEmail =  findViewById(R.id.email);
     }
 
 
-    //call create account service
-    private void callCreateAccountService() {
-        final CustomProgressDialog customProgressDialog = new CustomProgressDialog(this, R.mipmap.syc);
-        int languageId = Utility.getLanguageIdFromSharedPreferences(this);
-        AccountServiceRequest accountServiceRequest = new AccountServiceRequest();
-        // accountServiceRequest.setName(name_string);
-        // accountServiceRequest.setEmail(email_string);
-        accountServiceRequest.setPhone(pnone_no_string);
-        accountServiceRequest.setPreferred_language_id(languageId);
-        if (Utility.isOnline(this)) {
+    //call update account service
+    private void callProfileUpdateService() {
+        customProgressDialog = new CustomProgressDialog(NewUserActivity.this, R.mipmap.syc);
+
+        int languageId = Utility.getLanguageIdFromSharedPreferences(NewUserActivity.this);
+
+        ProfileUpdateServiceRequest ServiceRequest = new ProfileUpdateServiceRequest();
+
+        ServiceRequest.setLanguage_id(languageId);
+        ServiceRequest.setName(name_string);
+        ServiceRequest.setEmail(email_string);
+        if (Utility.isOnline(NewUserActivity.this)) {
             customProgressDialog.show();
             ServiceCaller sc = new ServiceCaller(NewUserActivity.this);
-            sc.CreateAccount(accountServiceRequest, new IAsyncWorkCompletedCallback() {
+            sc.updateProfile(ServiceRequest, new IAsyncWorkCompletedCallback() {
                 @Override
                 public void onDone(String workName, boolean isComplete) {
+
                     if (isComplete) {
                         if (Consts.IS_DEBUG_LOG) {
-                            Log.d(Consts.LOG_TAG, " callCreateAccountService success result: " + isComplete);
+                            Log.d(Consts.LOG_TAG, " callProfileUpdateService success result: " + isComplete);
                         }
-                        Intent intentOtp = new Intent(NewUserActivity.this, VerificationActivity.class);
+                        Toast.makeText(NewUserActivity.this, getString(R.string.profile_update), Toast.LENGTH_LONG).show();
+                        Intent intentOtp = new Intent(NewUserActivity.this, MainActivity.class);
+                        intentOtp.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+
                         startActivity(intentOtp);
-                        Toast.makeText(NewUserActivity.this, getString(R.string.otp_sent), Toast.LENGTH_LONG).show();
                         customProgressDialog.dismiss();
                     } else {
-                        Toast.makeText(NewUserActivity.this, getString(R.string.account_not_valid), Toast.LENGTH_LONG).show();
+                        Toast.makeText(NewUserActivity.this, getString(R.string.profile_not_updated), Toast.LENGTH_LONG).show();
                         customProgressDialog.dismiss();
                     }
+
                 }
             });
         } else {
-            SharedPreferences offlineAccountPref = getSharedPreferences("offlineAccountPref", Context.MODE_PRIVATE);
-            AccountData accountData = new AccountData();
-            //   accountData.setName(name_string);
-            //    accountData.setEmail(email_string);
-            accountData.setPhone(pnone_no_string);
-            accountData.setIsVerified(1);
-            DbHelper dbhelper = new DbHelper(NewUserActivity.this);
-            dbhelper.upsertAccountData(accountData);
-            //for offline service hit in mainactivity
-            if (offlineAccountPref != null) {
-                SharedPreferences.Editor editor = offlineAccountPref.edit();
-                editor.putBoolean("AccountCreate", true);
-                editor.commit();
-            }
-            if (Consts.IS_DEBUG_LOG) {
-                Log.d(Consts.LOG_TAG, " account Data insert in offline mode: " + accountData);
-            }
-            Intent intent = new Intent(NewUserActivity.this, MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-
+            Toast.makeText(NewUserActivity.this, getString(R.string.online_msg), Toast.LENGTH_LONG).show();
         }
     }
 
-    private void setLanguage(int langpos) {
-        if (data != null) {
-            String StringCode = data.get(langpos).getCode();
-            String[] parts = StringCode.split("-");
-            String code = parts[0];
-            String part2 = parts[1];
-            Utility.setLanguageIntoSharedPreferences(this, data.get(langpos).getId(), code, langpos);
-        }
-    }
+//    private void setLanguage(int langpos) {
+//        if (data != null) {
+//            String StringCode = data.get(langpos).getCode();
+//            String[] parts = StringCode.split("-");
+//            String code = parts[0];
+//            String part2 = parts[1];
+//            Utility.setLanguageIntoSharedPreferences(this, data.get(langpos).getId(), code, langpos);
+//        }
+//    }
 
     @Override
     public void onBackPressed() {
@@ -259,13 +187,12 @@ public class NewUserActivity extends AppCompatActivity implements View.OnClickLi
     // ----validation -----
     private boolean isValidate() {
         String numberRegex = "[0-9]+";
-        //String emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-        // String emailReg = "^[A-Za-z0-9_.]+(\\.[_A-Za-z0-9]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        String emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+//         String emailReg = "^[A-Za-z0-9_.]+(\\.[_A-Za-z0-9]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
-        // name_string = enterName.getText().toString().trim();
-        // email_string = enterEmail.getText().toString().trim();
-        pnone_no_string = enterPhone.getText().toString().trim();
-    /*    if (name_string.length() == 0) {
+        name_string = enterName.getText().toString().trim();
+        email_string = enterEmail.getText().toString().trim();
+        if (name_string.length() == 0) {
             Utility.alertForErrorMessage(getString(R.string.enter_name), this);
             return false;
         } else if (email_string.length() == 0) {
@@ -273,22 +200,6 @@ public class NewUserActivity extends AppCompatActivity implements View.OnClickLi
             return false;
         } else if (!email_string.matches(emailRegex)) {
             Utility.alertForErrorMessage(getString(R.string.enter_valid_mail), this);
-            return false;
-        } */
-        if (pnone_no_string.length() == 0) {
-            Utility.alertForErrorMessage(getString(R.string.enter_phone_no), this);
-            return false;
-        } else if (pnone_no_string.length() != 10) {
-            Utility.alertForErrorMessage(getString(R.string.enter_valid_phone), this);
-            return false;
-        } else if (pnone_no_string.length() > 10) {
-            Utility.alertForErrorMessage(getString(R.string.enter_valid_phone), this);
-            return false;
-        } else if (!pnone_no_string.matches(numberRegex)) {
-            Utility.alertForErrorMessage(getString(R.string.enter_valid_phone), this);
-            return false;
-        } else if (!isRaddesmri) {
-            Utility.alertForErrorMessage(getString(R.string.disclaimerstr), this);
             return false;
         }
 
@@ -307,21 +218,8 @@ public class NewUserActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.save:
                 if (isValidate()) {
-                    callCreateAccountService();
+                    callProfileUpdateService();
                     v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.click_animation));//onclick animation
-                }
-                break;
-            case R.id.disclaimer:
-                Intent in = new Intent(this, DisclaimerActivity.class);
-                startActivityForResult(in, 5);
-                break;
-            case R.id.autoPlay:
-                if (checkFlag) {
-                    checkFlag = false;
-                    autoPlay.setImageResource(R.drawable.checkbox);
-                } else {
-                    checkFlag = true;
-                    autoPlay.setImageResource(R.drawable.checkboxchecked);
                 }
                 break;
         }
@@ -339,15 +237,6 @@ public class NewUserActivity extends AppCompatActivity implements View.OnClickLi
         LocationUtility.stopLocationUpdates();
     }
 
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 5) {
-            isRaddesmri = true;
-            disclaimerimgcheck.setImageResource(R.drawable.checkboxchecked);
-        }
-    }
 
     public void showIntro(View view, String id, String text, Focus focusType) {
         new MaterialIntroView.Builder(NewUserActivity.this)
