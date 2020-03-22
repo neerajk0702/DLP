@@ -1,0 +1,148 @@
+<resources>
+    <string name="app_name">সংলাপ</string>
+
+    <string name="navigation_drawer_open">ন্যাভিগেশন ড্রয়ারের খুলুন</string>
+    <string name="navigation_drawer_close">ন্যাভিগেশন ড্রয়ারের বন্ধ করুন</string>
+
+    <string name="action_settings">সেটিংস</string>
+
+    <!-- Account settings text-->
+    <string name="account_settings" translatable="true">অ্যাকাউন্ট সেটিংস</string>
+    <string name="name" translatable="true">নাম</string>
+    <string name="email" translatable="true">ইমেইল</string>
+    <string name="phone" translatable="true">ফোন</string>
+    <string name="app_language" translatable="true">অ্যাপ ভাষা</string>
+    <string name="autoplay_videos" translatable="true">অটোপ্লে ভিডিও</string>
+    <string name="gender" translatable="true">লিঙ্গ</string>
+    <string name="male" translatable="true">পুরুষ</string>
+    <string name="female" translatable="true">মহিলা</string>
+    <string name="cancel" translatable="true">বাতিল</string>
+    <string name="save" translatable="true">সংরক্ষণ করুন</string>
+    <string name="enter_name" translatable="true">নাম লিখুন</string>
+    <string name="enter_email" translatable="true">ইমেইল প্রদান করুন</string>
+    <string name="enter_phone" translatable="true">ফোন প্রদান করুন</string>
+    <string name="otp_sent">ওটিপি ফোন নম্বরটি পাঠানো হয়েছে।</string>
+    <string name="account_not_create">অ্যাকাউন্ট এখনও তৈরি করা হয়নি</string>
+    <string name="account_not_valid">এই ইমেল আইডি এবং ফোন নম্বরটি বৈধ নয়.</string>
+    <string name="enter_e_mail">ইমেইল অ্যাড্রেস দিন</string>
+    <string name="enter_valid_mail">বৈধ ই-মেইল অ্যাড্রেস দিন</string>
+    <string name="enter_phone_no">ফোন নম্বর দিন</string>
+    <string name="enter_valid_phone">একটি বৈধ ফোন নম্বর দিন</string>
+    <string name="profile_update">আপনার প্রোফাইলটি সফলভাবে আপডেট করা হয়েছে</string>
+    <string name="profile_not_updated">এই প্রোফাইলটি এখনো আপডেট করা হয়নি</string>
+
+
+    <!-- verification screen text-->
+    <string name="description">আপনার প্রদত্ত মোবাইল নম্বরে OTP পাঠানো হয়েছে। আমরা এটি স্বয়ংক্রিয়ভাবে 10 সেকেন্ডের মধ্যে সনাক্ত করবো বা আপনি নিজেই এখানে OTP প্রবেশ করতে পারেন</string>
+    <string name="otp_text">আপনি প্রাপ্ত 6 অঙ্ক OTP কোড লিখুন</string>
+    <string name="otp_msg">OTP শুধুমাত্র 5 মিনিটের জন্য সক্রিয়</string>
+    <string name="verify">যাচাই</string>
+    <string name="try_otp">OTP পান নি? Try</string>
+    <string name="resend_otp">পুনরায় OTP পাঠান</string>
+    <string name="verification_title">প্রতিপাদন</string>
+    <string name="enter_otp">দয়া করে OTP লিখুন</string>
+    <string name="enter_valid_otp">দয়া করে একটি বৈধ OTP লিখুন</string>
+    <string name="registered">আপনি সফলভাবে নিবন্ধিত হয়েছে</string>
+
+    <!-- notification screen text-->
+    <string name="notification">বিজ্ঞপ্তিগুলি</string>
+    <string name="title_activity_notifications">বিজ্ঞপ্তিগুলি কার্যকলাপ</string>
+
+    <!-- language screen text-->
+    <string name="select_language">ভাষা নির্বাচন করুন</string>
+    <string name="choose_language">ভাষা নির্বাচন করুন</string>
+    <string name="done">সম্পন্ন</string>
+    <string name="select_fav_language">আপনার প্রিয় ভাষা নির্বাচন করুন</string>
+
+    <!-- course screen text-->
+    <string name="title">মূল পৃষ্ঠা</string>
+    <string name="our_programs">আমাদের প্রোগ্রাম</string>
+    <string name="learn">শিক্ষা</string>
+    <string name="course_description">টেকসই জীবিকা তৈরির জন্য নারী, যুব ও কৃষকদের মাঝে দক্ষতা ঘাটতি পূরণ করে</string>
+
+    <!-- video play screen text-->
+    <string name="buffring">বাফারিং ...</string>
+
+    <string name="about_us">আমাদের সম্পর্কে</string>
+    <string name="terms_of">ব্যবহারের শর্তাবলী</string>
+
+    <string name="online_msg">তুমি অনলাইনে নেই!!!!</string>
+    <string name="logout">আপনি সফলভাবে লগ আউট করা হয়</string>
+
+    <!-- navigaton screen text-->
+    <string name="home">বাড়ি</string>
+    <string name="Notification">বিজ্ঞপ্তি</string>
+    <string name="Favorites">প্রিয়</string>
+    <string name="Profile">পরিলেখ</string>
+    <string name="Change_Language">ভাষা পরিবর্তন করুন</string>
+    <string name="Change_Folder">ডাউনলোড ফোল্ডার পরিবর্তন করুন</string>
+    <string name="Terms_of_use">ব্যবহারের শর্তাবলী</string>
+    <string name="About_Us">আমাদের সম্পর্কে</string>
+    <string name="Downloads">ডাউনলোড</string>
+
+    <!-- content screen text-->
+    <string name="contents">সূচীপত্র</string>
+    <string name="Daksh">পরিচিত</string>
+    <string name="downloading_cancel">ডাউনলোড ফাইল বাতিল!</string>
+
+    <!-- favorites screen text-->
+    <string name="chapters">অধ্যায়</string>
+    <string name="topic">বিষয়</string>
+
+    <string name="select_location">স্থান নির্বাচন করুন</string>
+    <string name="default_folder">ডিফল্ট ফোল্ডার</string>
+    <string name="select_folder">ফোল্ডার নির্বাচন করুন</string>
+    <string name="Chapters">অধ্যায়</string>
+    <string name="Topic">বিষয়</string>
+
+    <string name="no_record">কোন রেকর্ড খুঁজে পাওয়া যায় নি</string>
+    <string name="read">পড়া</string>
+    <string name="mark_as_favourite">প্রিয় হিসাবে চিহ্নিত করুন</string>
+    <string name="download_update">আপডেট ডাউনলোড করুন</string>
+    <string name="update">আপডেট করা হয়েছে</string>
+    <string name="favourite">প্রিয়</string>
+    <string name="Take_Offline">অফলাইন নিন</string>
+
+    <string name="import_data">তথ্য আমদানি করা হচ্ছে</string>
+    <string name="import_data_from">থেকে তথ্য আমদানি করা</string>
+    <string name="Quiz">প্রশ্ন</string>
+    <string name="Start_Quiz_Now">अএখন প্রশ্ন শুরু করুন</string>
+    <string name="Close">বন্ধ</string>
+    <string name="QUIT">বিদায়</string>
+    <string name="SKIP">বাদ দিয়া যাত্তয়া</string>
+    <string name="Multiple_choice">একাধিক পছন্দ টাইপ প্রশ্ন</string>
+    <string name="Question">জিজ্ঞাসা</string>
+    <string name="Listen">শুনুন</string>
+    <string name="Select_any">নিম্নলিখিত বিকল্প থেকে কোন 1 উত্তর নির্বাচন করুন</string>
+    <string name="View">পরিদর্শন</string>
+    <string name="Submit">জমা দিন</string>
+    <string name="Your_Score">তোমার ফলাফল</string>
+    <string name="OUT">বাহির</string>
+    <string name="OF">এর</string>
+    <string name="RESTART">পুনরারম্ভ</string>
+    <string name="Run_Simulator">এটি নিজে চেষ্টা করো</string>
+    <string name="Simulator">सस्वयं प्रयास करें</string>
+    <string name="EXIT">প্রস্থান</string>
+    <string name="Description">বিবরণ</string>
+    <string name="This_is_correct">এটি সঠিক</string>
+    <string name="Correct_Answer">সঠিক উত্তর-</string>
+    <string name="simulator_s">এটি নিজে চেষ্টা করো</string>
+    <string name="Next">পরবর্তী</string>
+    <string name="Pause">বিরাম</string>
+    <string name="Buffering">বাফারিং</string>
+    <string name="quiz_quit_are">আপনি কি নিশ্চিত যে আপনি পরিত্যাগ করতে চান?</string>
+    <string name="quiz_quit_progress">আপনার অগ্রগতি সংরক্ষিত হবে না !!</string>
+    <string name="description_available">বর্ণনা উপলব্ধ নয়</string>
+    <!-- update alert string popup-->
+    <string name="update_text">এখন হালনাগাদ করুন</string>
+    <string name="remind_me_later">আমাকে পরে মনে করিয়ে দিবেন</string>
+    <string name="Update_heading">আপডেট উপলব্ধ</string>
+    <string name="update2">অ্যাপ্লিকেশনের একটি আপডেট সংস্করণ এখন উপলব্ধ।</string>
+    <string name="Media">খেলা</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_audio">AudioActivity</string>
+          <string name="doyou">আপনি সত্যিই প্রস্থান করতে চান?</string>
+         <string name="please">বিকল্প নির্বাচন করুন</string>
+          <string name="ok">ঠিক আছে</string>
+
+</resources>

@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dimValue_5"
+    card_view:cardPreventCornerOverlap="true"
+    card_view:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EEEEEE"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <dlp.bluelupin.dlp.Utilities.ScaleImageView
+                    android:id="@+id/chapterImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/imageplaceholder" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignParentBottom="true">
+                <LinearLayout
+                    android:id="@+id/quizLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/chapterImage"
+                    android:layout_alignRight="@+id/chapterImage"
+                    android:layout_margin="@dimen/dimValue_20"
+                    android:background="@color/colorRad"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorDrakRed"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/dimValue_10">
+
+                        <TextView
+                            android:id="@+id/quiz_Icon"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorDrakRed"
+                            android:gravity="center"
+                            android:text="icon"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/dimTextSize_18" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/submit_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="left"
+                        android:padding="@dimen/dimValue_10"
+                        android:text="@string/Quiz"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/dimTextSize_16" />
+
+                </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/mediaLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/chapterImage"
+                        android:layout_alignRight="@+id/chapterImage"
+                        android:layout_margin="@dimen/dimValue_20"
+                        android:background="@color/colorRad"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorDrakRed"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/dimValue_10">
+
+                            <TextView
+                                android:id="@+id/media_Icon"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorDrakRed"
+                                android:gravity="center"
+                                android:text=""
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/dimTextSize_18" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/media_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="left"
+                            android:padding="@dimen/dimValue_10"
+                            android:text="@string/Media"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/dimTextSize_16" />
+
+                    </LinearLayout>
+                </LinearLayout>
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:progressDrawable="@drawable/custom_progressbar"
+                    android:visibility="gone" />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/titleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimValue_5"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dimValue_5"
+            android:paddingRight="@dimen/dimValue_5">
+
+            <TextView
+                android:id="@+id/chapterTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:text=""
+                android:textColor="#000"
+                android:layout_marginTop="@dimen/dimValue_5"
+                android:paddingTop="@dimen/dimValue_10"
+                android:textSize="@dimen/dimTextSize_16" />
+
+            <TextView
+                android:id="@+id/chapterDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dimValue_5"
+                android:text=""
+                android:textColor="#4a4d4e"
+                android:textSize="@dimen/dimTextSize_16" />
+
+        </LinearLayout>
+
+
+        <View
+            android:id="@+id/divView"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/dimValue_10"
+            android:background="#929495" />
+
+        <LinearLayout
+            android:id="@+id/buttonLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EEEEEE"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/favoriteLayout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/dimValue_10">
+
+                <RelativeLayout
+                    android:id="@+id/starIconlayout"
+                    android:layout_width="@dimen/size_30px"
+                    android:layout_height="@dimen/size_30px"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/circle"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/starIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:textColor="#ffffff"
+                        android:textSize="@dimen/dimTextSize_16" />
+
+                </RelativeLayout>
+
+
+                <TextView
+                    android:id="@+id/favourite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/dimValue_5"
+                    android:paddingTop="@dimen/dimValue_5"
+                    android:text="@string/mark_as_favourite"
+                    android:textColor="#e60000"
+                    android:textSize="@dimen/dimTextSize_14" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#929495" />
+
+            <LinearLayout
+                android:id="@+id/download_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/dimValue_10">
+
+                <!--  <View
+                      android:layout_width="1dp"
+                      android:layout_height="@dimen/size_30px"
+                      android:layout_gravity="left|center"
+                      android:layout_marginRight="@dimen/dimValue_16"
+                      android:background="#e60000" />-->
+
+
+                <RelativeLayout
+                    android:id="@+id/downloadIconlayout"
+                    android:layout_width="@dimen/size_30px"
+                    android:layout_height="@dimen/size_30px"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/circle"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/downloadIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:textColor="#ffffff"
+                        android:textSize="@dimen/dimTextSize_16" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/download"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/dimValue_5"
+                    android:paddingTop="@dimen/dimValue_6"
+                    android:text="@string/Take_Offline"
+                    android:textColor="#e60000"
+                    android:textSize="@dimen/dimTextSize_14" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:background="#A7358C"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/read"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/read"
+                    android:textColor="#fff"
+                    android:textSize="@dimen/dimTextSize_14" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/quizStartLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorRad"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:background="@color/colorDrakRed"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/dimValue_10"
+                android:paddingTop="@dimen/dimValue_10">
+
+                <TextView
+                    android:id="@+id/start_quiz_Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorDrakRed"
+                    android:gravity="center"
+                    android:text="icon"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/dimTextSize_18" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/quiz"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.6"
+                android:gravity="left|center"
+                android:padding="@dimen/dimValue_10"
+                android:text="@string/Start_Quiz_Now"
+                android:textColor="#fff"
+                android:textSize="@dimen/dimTextSize_20" />
+
+            <TextView
+                android:id="@+id/arrowIcon"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="0.2"
+                android:gravity="center"
+                android:paddingBottom="@dimen/dimValue_20"
+                android:paddingTop="@dimen/dimValue_20"
+                android:text=""
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/dimTextSize_18" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

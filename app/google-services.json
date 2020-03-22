@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "558996630766",
+    "firebase_url": "https://samvaad-379cd.firebaseio.com",
+    "project_id": "samvaad-379cd",
+    "storage_bucket": "samvaad-379cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:558996630766:android:c72a5487c04994ec",
+        "android_client_info": {
+          "package_name": "dlp.bluelupin.dlp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "558996630766-kig7atk0mmdpm014elf96t3f25asehoq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dlp.bluelupin.dlp",
+            "certificate_hash": "b36cc174fe8236ce38bacc2a62ab6f5cae38cba6"
+          }
+        },
+        {
+          "client_id": "558996630766-huvod5g2tk65rvcmi52ge13pble5lbtf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyd_Ia5ZI7U8iUFbAQcj_jEZBkLkUbiIE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "558996630766-huvod5g2tk65rvcmi52ge13pble5lbtf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

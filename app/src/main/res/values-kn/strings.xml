@@ -1,0 +1,134 @@
+<resources>
+    <string name="app_name">ಸಂವಾದ</string>
+    <string name="navigation_drawer_open">ನೇವಿಗೇಶನ್ ಆರಂಭಿಸಿ</string>
+    <string name="navigation_drawer_close">ನೇವಿಗೇಶನ್ ಮುಕ್ತಾಯಗೊಳಿಸಿ</string>
+    <string name="action_settings">ಸೆಟ್ಟಿಂಗ್ಸ್</string>
+    <!-- Account settings screen text-->
+    <string name="account_settings">ಅಕೌಂಟ್ ಸೆಟ್ಟಿಂಗ್ಸ್</string>
+    <string name="name">ಹೆಸರು </string>
+    <string name="email">ಈ ಮೇಲ್</string>
+    <string name="phone">ಫೋನ್</string>
+    <string name="app_language">ಯಾಪ್ ಭಾಷೆ</string>
+    <string name="autoplay_videos">ವೀಡಿಯೊ ಆರಂಭಿಸು</string>
+    <string name="gender">ಲಿಂಗ</string>
+    <string name="male">ಗಂಡು</string>
+    <string name="female">ಹೆಣ್ಣು</string>
+    <string name="cancel">ರದ್ದುಗೊಳಿಸಿ</string>
+    <string name="save">ಉಳಿಸಿ</string>
+    <string name="enter_name">ಹೆಸರು ನಮೂದಿಸಿ</string>
+    <string name="enter_email">ಈ ಮೇಲ್ ವಿಳಾಸ ನಮೂದಿಸಿ</string>
+    <string name="enter_phone">ಫೋನ್ ನಂಬರ್ ನಮೂದಿಸಿ</string>
+    <string name="otp_sent">ನಿಮ್ಮ ಮೊಬೈಲ್ ಸಂಖ್ಯೆಗೆ ಓ ಟಿ ಪಿ ಯನ್ನು ಕಳುಹಿಸಲಾಗಿದೆ</string>
+    <string name="account_not_create">ಈ ಇಮೇಲ್ ಮತ್ತು ಫೋನ್ ಸಂಖ್ಯೆ ಈಗಾಗಲೇ ನೋಂದಾಯಿಸಲಾಗಿದೆ. ದಯವಿಟ್ಟು ಬೇರೆ  ಸಂಯೋಜನೆಯನ್ನು ಪ್ರಯತ್ನಿಸಿ.</string>
+    <string name="account_not_valid">ಈ ಇಮೇಲ್ ಐಡಿ ಮತ್ತು ಫೋನ್ ಸಂಖ್ಯೆ ಮಾನ್ಯವಾಗಿಲ್ಲ.</string>
+    <string name="enter_e_mail">ಈ ಮೇಲ್ ವಿಳಾಸ ನಮೂದಿಸಿ</string>
+    <string name="enter_valid_mail">ಮಾನ್ಯವಾದ ಈ ಮೇಲ್ ವಿಳಾಸ ನಮೂದಿಸಿ</string>
+    <string name="enter_phone_no">ಫೋನ್ ನಂಬರ್ ನಮೂದಿಸಿ</string>
+    <string name="enter_valid_phone">ಸರಿಯಾದ ಫೋನ್ ನಂಬರ್ ನಮೂದಿಸಿ</string>
+    <string name="profile_update">ನಿಮ್ಮ ಪ್ರೊಫೈಲ್ ಯಶಸ್ವಿಯಾಗಿ ಆಧುನಿಕರಣಗೊಂಡಿದೆ</string>
+    <string name="profile_not_updated">ಈ ಪ್ರೊಫೈಲನ್ನು ಆಧುನಿಕರಣಗೊಂಡಿಲ್ಲ</string>
+    <!-- verification screen text-->
+    <string name="description">ನಿಮ್ಮ ಒದಗಿಸಿದ ಮೊಬೈಲ್ ಸಂಖ್ಯೆಗೆ OTP ಕಳುಹಿಸಲಾಗಿದೆ. ನಾವು ಅದನ್ನು 10 ಸೆಕೆಂಡುಗಳಲ್ಲಿ ಸ್ವಯಂಚಾಲಿತವಾ ನಮುದಿಸಿಕೊಳ್ಳುತ್ತೇವೆ  ಅಥವಾ ನೀವು OTP ಯನ್ನು ಇಲ್ಲಿ ನಮೂದಿಸಬಹುದು</string>
+    <string name="otp_text">ನೀವು ಸ್ವೀಕರಿಸಿದ ಆರು ಸಂಖ್ಯೆಯ ಓ ಟಿ ಪಿ ಯನ್ನು ನಮೂದಿಸಿ</string>
+    <string name="otp_msg">ಓ ಟಿ ಪಿ ಯು 5 ನಿಮಿಷಗಳವರೆಗೆ ಮಾನ್ಯತೆ ಹೊಂದಿರುತ್ತದೆ</string>
+    <string name="verify">ಪರಿಶೀಲಿಸು</string>
+    <string name="try_otp">ಓ ಟಿ ಪಿ ಸ್ವೀಕರಿಸಿರುವುದಿಲ್ಲವೇ?  ಮತ್ತೊಮ್ಮೆ ಪ್ರಯತ್ನಿಸಿ</string>
+    <string name="resend_otp">ಓ ಟಿ ಪಿ ಯನ್ನು ಮತ್ತೊಮ್ಮೆ ಕಳುಹಿಸಿ</string>
+    <string name="verification_title">ಪರಿಶೀಲಿಸು</string>
+    <string name="enter_otp">ದಯವಿಟ್ಟು ಓ ಟಿ ಪಿ ಯನ್ನು ನಮೂದಿಸಿ</string>
+    <string name="enter_valid_otp">ದಯವಿಟ್ಟು ಮಾನ್ಯವಾದ ಓ ಟಿ ಪಿ ಯನ್ನು ನಮೂದಿಸಿ</string>
+    <string name="registered">ಯಶಸ್ವಿಯಾಗಿ ನೊಂದಾಯಿಸಲಾಗಿದೆ</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_activity_notifications">ಅಧಿಸೂಚನೆಯ ಚಟುವಟಿಕೆ</string>
+    <!-- notification screen text-->
+    <string name="notification">ಅಧಿಸೂಚನೆ</string>
+    <!-- language screen text-->
+    <string name="select_language">ಭಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="choose_language">ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="done">ಮುಕ್ತಾಯ</string>
+    <string name="select_fav_language">ನಿಮ್ಮ ಭಾಷೆಯನ್ನು  ಆಯ್ಕೆಮಾಡಿ</string>
+    <!-- course screen text-->
+    <string name="title">ಹೋಂ</string>
+    <string name="our_programs">ನಮ್ಮ ಕಾರ್ಯಕ್ರಮಗಳು</string>
+    <string name="learn">ಕಲಿಯಿರಿ</string>
+    <string name="course_description">ಸಮರ್ಥನೀಯ ಜೀವನೋಪಾಯಕ್ಕಾಗಿ ಮಹಿಳೆಯರಿಗೆ, ಯುವಕರಿಗೆ  ಮತ್ತು ರೈತರಿಗೆ ಕೌಶಲ್ಯದ  ಕೊರತೆಯನ್ನು ನೀಗಿಸುವುದು</string>
+    <!-- video play screen text-->
+    <string name="buffring">ನಿಧಾನಿಸು</string>
+    <string name="about_us">ನಮ್ಮ ವಿವರ</string>
+    <string name="terms_of">ಉಪಯೋಗಿಕ ನಿಯಮಗಳು</string>
+    <string name="online_msg">ನೀವು ಆನ್ಲೈನ್ ನಲ್ಲಿ ಇಲ್ಲ</string>
+    <string name="logout">ನೀವು ಯಶಸ್ವಿಯಾಗಿ ಲಾಗ್ ಔಟ್ ಆಗಿದ್ದೀರಿ</string>
+    <!-- navigaton screen text-->
+    <string name="home">ಹೋಂ</string>
+    <string name="Notification">ಅಧಿಸೂಚನೆ</string>
+    <string name="Favorites">ಇಷ್ಟದ</string>
+    <string name="Profile">ಪ್ರೊಫೈಲ್</string>
+    <string name="Change_Language">ಭಾಷೆ ಬದಲಿಸಿ</string>
+    <string name="Change_Folder">ಡೌನ್ಲೋಡ್ ಫೋಲ್ಡರ್ ಬದಲಿಸಿ</string>
+    <string name="Terms_of_use">ಉಪಯೋಗಿಕ ನಿಯಮಗಳು</string>
+    <string name="About_Us">ನಮ್ಮ ವಿವರ</string>
+    <string name="Downloads">ಡೌನ್ಲೋಡ್</string>
+    <!-- content screen text-->
+    <string name="contents">ವಿಷಯಗಳು</string>
+    <string name="Daksh">ದಕ್ಷ</string>
+    <string name="downloading_cancel">ಡೌನ್ಲೋಡ್ ಫೈಲ್ ನಿಲ್ಲಿಸು</string>
+    <!-- favorites screen text-->
+    <string name="chapters">ಅಧ್ಯಾಗಳು</string>
+    <string name="topic">ವಿಷಯಗಳು</string>
+    <string name="select_location">ಸ್ಥಳ ಆಯ್ಕೆ ಮಾಡಿ</string>
+    <string name="default_folder">ಪ್ರಸ್ತುತ ಫೋಲ್ಡರ್</string>
+    <string name="select_folder">ಫೋಲ್ಡರ್ ಆಯ್ಕೆ ಮಾಡಿ</string>
+    <string name="Chapters">ಅಧ್ಯಾಯಗಳು</string>
+    <string name="Topic">ವಿಷಯ</string>
+    <string name="no_record">ಹೊಸ ದಾಖಲೆ ಕಂಡುಬಂದಿದೆ</string>
+    <string name="read">ಓದು</string>
+    <string name="mark_as_favourite">ಇಷ್ಟವಾದದ್ದೆಂದು ಗುರುತಿಸಿ</string>
+    <string name="download_update">ಆಧಿಉನಿಕರಣಗೊಳಿಸಿ</string>
+    <string name="update">ಆಧುನಿಕರಣಗೊಂಡ</string>
+    <string name="favourite">ಇಷ್ಟವಾದ</string>
+    <string name="Take_Offline">ಆಫ್ ಲೈನ್ ಗೆ ತೆಗೆದುಕೊಳ್ಳಿ</string>
+    <string name="import_data">ವಿವರವನ್ನು ನೀಡಲಾಗುತ್ತಿದೆ</string>
+    <string name="import_data_from">ವಿವರವನ್ನು ನೀಡಲಾಗುತ್ತಿದೆ</string>
+    <string name="Quiz">ಪ್ರಶ್ನಾವಳಿ</string>
+    <string name="Start_Quiz_Now">ಪ್ರಶ್ನಾವಳಿ ಆರಂಭಿಸಿ</string>
+    <string name="Close">ಮುಚ್ಚು</string>
+
+    <string name="QUIT">ತ್ಯಜಿಸು</string>
+    <string name="SKIP">ಬಿಟ್ಟುಬಿಡು</string>
+    <string name="Multiple_choice">ಬಹು ಆಯ್ಕೆಯ ಪ್ರಶ್ನೆಗಳು</string>
+    <string name="Question">ಪ್ರಶ್ನೆ</string>
+    <string name="Listen">ಕೇಳು</string>
+    <string name="Select_any">ಕೆಳಗಿನ ಆಯ್ಕೆಗಳಲ್ಲಿ ಒಂದು ಉತ್ತರವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ</string>
+    <string name="View">ನೋಟ</string>
+    <string name="Submit">ಸಲ್ಲಿಸು</string>
+    <string name="Your_Score">ನಿಮ್ಮ ಅಂಕ</string>
+    <string name="OUT">ಹೊರಗೆ</string>
+    <string name="OF">ಕಾರಣ</string>
+    <string name="RESTART">ಮತ್ತೊಮ್ಮೆ ಆರಂಭಿಸಿ</string>
+    <string name="Run_Simulator">ನೀವೇ ಮಾಡಿ ನೋಡಿ</string>
+    <string name="Simulator">ಸಿಮ್ಯುಲೇಟರ್</string>
+    <string name="EXIT">ಹೊರಗೆ</string>
+    <string name="Description">ವಿವರಣೆ</string>
+    <string name="This_is_correct">ಇದು ಸರಿಯಾಗಿದೆ</string>
+    <string name="Correct_Answer">ಸರಿಯಾದ ಉತ್ತರ</string>
+    <string name="simulator_s">ನೀವೇ ಮಾಡಿ ನೋಡಿ</string>
+    <string name="Next">ನಂತರ</string>
+    <string name="Pause">ನಿಲ್ಲಿಸಿ</string>
+    <string name="Buffering">ಬಫರಿಂಗ್</string>
+    <string name="quiz_quit_are">ನಿಜವಾಗಿಯೂ ನೀವು ಇಲ್ಲಿಂದ ಹೊರಗೆ ಹೋಗಲು ಇಚ್ಚಿಸುವಿರಾ?</string>
+    <string name="quiz_quit_progress">ನಿಮ್ಮ ಪ್ರಗತಿಯ ವಿವರವು ಲಭ್ಯವಾಗುವುದಿಲ್ಲ</string>
+    <string name="description_available">ವಿವರಣೆ ಲಭ್ಯವಿರುವುದಿಲ್ಲ</string>
+
+    <!-- update alert string popup-->
+    <string name="update_text">ಆಧುನಿಕರಿಸು</string>
+    <string name="remind_me_later">ಮತ್ತೆ ನಂತರ ನೆನಪಿಸಿ</string>
+    <string name="Update_heading">ಆಧುನೀಕರಣಗೊಳಿಸಲಾಗಿದೆ</string>
+    <string name="update2">ಆಧುನಿಕರಣಗೊಂಡ ಯಾಪ್ ಲಭ್ಯವಿದೆ</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_audio">AudioActivity</string>
+    <string name="Media">ಆರಂಭಿಸು</string>
+    <string name="doyou">ನಿಜವಾಗಿಯೂ ನೀವು ಇಲ್ಲಿಂದ ಹೊರಗೆ ಹೋಗಲು ಇಚ್ಚಿಸುವಿರಾ?</string>
+    <string name="please">ದಯವಿಟ್ಟು ಆಯ್ಕೆ ಮಾಡಿ</string>
+    <string name="ok">ಸರಿ</string>
+
+</resources>

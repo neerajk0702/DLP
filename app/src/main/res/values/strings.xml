@@ -1,0 +1,154 @@
+<resources>
+    <string name="app_name">SamVaad</string>
+    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Account settings screen text-->
+    <string name="account_settings">Account Settings</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="app_language">App Language</string>
+    <string name="autoplay_videos">Autoplay Videos</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="cancel">CANCEL</string>
+    <string name="save">SAVE</string>
+    <string name="enter_name">Enter name</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_phone">Enter phone</string>
+    <string name="otp_sent">OTP has been sent to the provided Phone Number.</string>
+    <string name="account_not_create">This email ID and phone number is already registered. Please try different combination.</string>
+    <string name="account_not_valid">This email ID and phone number is not valid.</string>
+    <string name="enter_e_mail">Enter E-mail address</string>
+    <string name="enter_valid_mail">Enter valid E-mail address</string>
+    <string name="enter_phone_no">Enter phone number</string>
+    <string name="enter_valid_phone">Enter a valid phone number</string>
+    <string name="profile_update">Your profile updated successfully.</string>
+    <string name="profile_not_updated">This profile is not yet updated.</string>
+
+
+    <!-- verification screen text-->
+    <string name="description">OTP has been sent to your provided mobile number. We will detect it automatically within 10 seconds or you can enter OTP manually here.</string>
+    <string name="otp_text">Enter 6 digit OTP code you received</string>
+    <string name="otp_msg">OTP is only active for 5 minutes</string>
+    <string name="verify">VERIFY</string>
+    <string name="try_otp"> Didn\'t receive OTP?  TRY</string>
+    <string name="resend_otp">RESEND OTP</string>
+    <string name="verification_title">Verification</string>
+    <string name="enter_otp">Please enter OTP</string>
+    <string name="enter_valid_otp">Please enter a valid OTP.</string>
+    <string name="registered">You are registered successfully.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_activity_notifications">NotificationsActivity</string>
+
+
+    <!-- notification screen text-->
+    <string name="notification">Notification</string>
+
+    <!-- language screen text-->
+    <string name="select_language">Select Language</string>
+    <string name="choose_language">Choose Language</string>
+    <string name="done">Done</string>
+    <string name="select_fav_language">Select your favourite language</string>
+
+    <!-- course screen text-->
+    <string name="title">Home</string>
+    <string name="our_programs">OUR PROGRAMS</string>
+    <string name="learn">Learn</string>
+    <string name="course_description">Bridging the skills deficit gap among women, youth and farmers for creating sustainable livelihoods.</string>
+
+    <!-- video play screen text-->
+    <string name="buffring">Buffering...</string>
+
+    <string name="about_us">About Us</string>
+    <string name="terms_of">Terms of use</string>
+
+    <string name="online_msg">You are not online!!!!</string>
+    <string name="logout">You are successfully logged out.</string>
+
+    <!-- navigaton screen text-->
+    <string name="home">Home</string>
+    <string name="Notification">Notification</string>
+    <string name="Favorites">Favourite</string>
+    <string name="Profile">Profile</string>
+    <string name="Change_Language">Change Language</string>
+    <string name="Change_Folder">Change Downloads Folder</string>
+    <string name="Terms_of_use">Terms of use</string>
+    <string name="About_Us">About Us</string>
+    <string name="Downloads">Downloads</string>
+
+    <!-- content screen text-->
+    <string name="contents">Contents</string>
+    <string name="Daksh">Daksh</string>
+    <string name="downloading_cancel">DownloadFile cancel!</string>
+
+    <!-- favorites screen text-->
+    <string name="chapters">CHAPTERS</string>
+    <string name="topic">TOPICS</string>
+
+    <string name="select_location">Select Location</string>
+    <string name="default_folder">Default Folder</string>
+    <string name="select_folder">SELECT FOLDER</string>
+    <string name="Chapters">Chapters</string>
+    <string name="Topic">Topic</string>
+
+    <string name="no_record">No Record Found</string>
+    <string name="read">Read</string>
+    <string name="mark_as_favourite">Mark as favourite</string>
+    <string name="download_update">Download update</string>
+    <string name="update">Updated</string>
+    <string name="favourite">Favourite</string>
+    <string name="Take_Offline">Take Offline</string>
+
+    <string name="import_data">Importing data</string>
+    <string name="import_data_from">Importing data from</string>
+    <string name="Quiz">Quiz</string>
+    <string name="Start_Quiz_Now">Start Quiz Now</string>
+    <string name="Close">CLOSE</string>
+
+    <string name="QUIT">QUIT</string>
+    <string name="SKIP">SKIP</string>
+    <string name="Multiple_choice">Multiple choice type question</string>
+    <string name="Question">Question</string>
+    <string name="Listen">LISTEN</string>
+    <string name="Select_any">Select any 1 answer from following options</string>
+    <string name="View">View</string>
+    <string name="Submit">Submit</string>
+    <string name="Your_Score">Your Score!!</string>
+    <string name="OUT">OUT</string>
+    <string name="OF">OF</string>
+    <string name="RESTART">RESTART</string>
+    <string name="Run_Simulator">Try it yourself</string>
+    <string name="Simulator">Try it yourself</string>
+    <string name="EXIT">EXIT</string>
+    <string name="Description">Description-</string>
+    <string name="This_is_correct">This is correct</string>
+    <string name="Correct_Answer">Correct Answer-</string>
+    <string name="simulator_s"> Try it yourself</string>
+    <string name="Next">Next</string>
+    <string name="Pause">PAUSE</string>
+    <string name="Buffering">BUFFERING</string>
+    <string name="quiz_quit_are">Are you sure you want to quit?</string>
+    <string name="quiz_quit_progress">your progress won\'t be saved!!</string>
+    <string name="description_available">Description Not Available</string>
+
+    <!-- update alert string popup-->
+    <string name="update_text">Update Now</string>
+    <string name="remind_me_later">Remind me Later</string>
+    <string name="Update_heading">Update Available</string>
+    <string name="update2">An updated version of the app is now available.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_audio">AudioActivity</string>
+    <string name="Media">Play</string>
+    <string name="doyou">Do you realy want to exit ?</string>
+    <string name="please">Please select option</string>
+    <string name="ok">OK</string>
+</resources>

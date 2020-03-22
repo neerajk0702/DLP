@@ -1,0 +1,149 @@
+<resources>
+    <string name="app_name">സംവാദ്</string>
+
+    <string name="navigation_drawer_open">ഗതിനിയന്ത്രണ പാളി തുറക്കുക</string>
+    <string name="navigation_drawer_close">ഗതിനിയന്ത്രണ പാളി അടയ്ക്കുക</string>
+
+    <string name="action_settings">ക്രമീകരണങ്ങള്‍</string>
+
+    <!-- Account settings text-->
+    <string name="account_settings" translatable="true">അക്കൗണ്ട് ക്രമീകരണങ്ങള്‍</string>
+    <string name="name" translatable="true">പേര്</string>
+    <string name="email" translatable="true">ഇമെയിൽ</string>
+    <string name="phone" translatable="true">ഫോൺ നമ്പർ</string>
+    <string name="app_language" translatable="true">ആപ്പിന്റെ ഭാഷ</string>
+    <string name="autoplay_videos" translatable="true">സ്വയംപ്രവൃത്തിത വീഡിയോകള്‍</string>
+    <string name="gender" translatable="true">ലിംഗഭേദം</string>
+    <string name="male" translatable="true">പുരുഷൻ</string>
+    <string name="female" translatable="true">സ്ത്രീ</string>
+    <string name="cancel" translatable="true">റദ്ദുചെയ്യുക</string>
+    <string name="save" translatable="true">സേവ്</string>
+    <string name="enter_name" translatable="true">പേര് എന്റർ ചെയ്യുക</string>
+    <string name="enter_email" translatable="true">ഇമെയിൽ എന്റർ ചെയ്യുക</string>
+    <string name="enter_phone" translatable="true">ഫോൺ നമ്പർ എന്റർ ചെയ്യുക</string>
+    <string name="otp_sent">തന്നിട്ടുള്ള ഫോൺ നമ്പറിലേക്ക് OTP അയച്ചിരിയ്ക്കുന്നു</string>
+    <string name="account_not_create">खाता अभी तक नहीं बना है</string>
+    <string name="account_not_valid">ഈ ഇമെയിൽ ഐഡിയും ഫോൺ നമ്പറും സാധുവല്ല.</string>
+    <string name="enter_e_mail">ഇമെയിൽ അഡ്രസ് എന്റർ ചെയ്യുക</string>
+    <string name="enter_valid_mail">സാധുവായ ഇമെയിൽ അഡ്രസ് എന്റർ ചെയ്യുക</string>
+    <string name="enter_phone_no">ഫോൺ നമ്പർ എന്റർ ചെയ്യുക</string>
+    <string name="enter_valid_phone">സാധുവായ ഫോൺ നമ്പർ എന്റർ ചെയ്യുക</string>
+    <string name="profile_update">താങ്കളുടെ പ്രൊഫൈല്‍ വിജയകരമായി പരിഷ്കരിച്ചു</string>
+    <string name="profile_not_updated">ഈ പ്രൊഫൈല്‍ ഇതുവരെ പരിഷ്കരിച്ചില്ല</string>
+
+
+    <!-- verification screen text-->
+    <string name="description">താങ്കൾ തന്നിട്ടുള്ള ഫോൺ നമ്പറിലേക്ക് OTP അയച്ചിരിയ്ക്കുന്നു. തന്നെത്താനേ അത് പരിശോധിക്കപ്പെടാന്‍ 10സെക്കന്റ് കാത്തിരിക്കൂ, അല്ലെങ്കില്‍ ഇവിടെ താങ്കള്‍ക്ക് OTP എന്റര്‍ ചെയ്യാം.</string>
+    <string name="otp_text">താങ്കള്‍ക്ക് ലഭിച്ച ആറക്ക OTP കോഡ് എന്റർ ചെയ്യുക</string>
+    <string name="otp_msg">OTP അഞ്ച്‌ മിനിറ്റുമാത്രമേ സജീവമായിരിക്കൂ</string>
+    <string name="verify">ദൃഢീകരിക്കുക.</string>
+    <string name="try_otp">OTP കിട്ടിയില്ലേ? ശ്രമിക്കുക</string>
+    <string name="resend_otp">OTP വീണ്ടും അയക്കുക</string>
+    <string name="verification_title">ദൃഢീകരിക്കല്‍</string>
+    <string name="enter_otp">कOTP എന്റർ ചെയ്യുക</string>
+    <string name="enter_valid_otp">സാധുവായ OTP എന്റർ ചെയ്യുക</string>
+    <string name="registered">താങ്കൾ വിജയകരമായി രജിസ്റ്റർ ചെയ്തു</string>
+
+    <!-- notification screen text-->
+    <string name="notification">വിജ്ഞാപനം</string>
+    <string name="title_activity_notifications">വിജ്ഞാപന പ്രവർത്തി</string>
+
+    <!-- language screen text-->
+    <string name="select_language">ഭാഷ തിരഞ്ഞെടുക്കുക</string>
+    <string name="choose_language">ഭാഷ തീരുമാനിക്കുക</string>
+    <string name="done">ചെയ്തുകഴിഞ്ഞു</string>
+    <string name="select_fav_language">താങ്കൾക്ക് ഇഷ്‌ടപ്പെട്ട ഭാഷ തിരഞ്ഞെടുക്കുക</string>
+
+    <!-- course screen text-->
+    <string name="title">ഹോം</string>
+    <string name="our_programs">ഞങ്ങളുടെ പരിപാടികൾ</string>
+    <string name="learn">അറിയുക</string>
+    <string name="course_description">टനൈപുണ്യ കുറവുകൾ പരിഹരിച്ച് സ്ത്രീകൾ യുവതിയുവാക്കൾ കൃഷിക്കാർ തുടങ്ങിയവരിൽ സ്ഥായിയായ  ഉപജീവനമാര്‍ഗ്ഗം സൃഷ്ഠിക്കുവാൻ</string>
+
+    <!-- video play screen text-->
+    <string name="buffring">ആവൃത്തി വിശകലനം</string>
+
+    <string name="about_us">ഞങ്ങളെക്കുറിച്ച്</string>
+    <string name="terms_of">ഉപയോഗ വ്യവസ്ഥകൾ</string>
+
+    <string name="online_msg">താങ്കൾ ഓണ്‍ലൈന്‍ അല്ല</string>
+    <string name="logout">താങ്കൾ വിജയകരമായി ലോഗൗട്ട് ചെയ്തു</string>
+
+    <!-- navigaton screen text-->
+    <string name="home">ഹോം</string>
+    <string name="Notification">വിജ്ഞാപനം</string>
+    <string name="Favorites">ഇഷ്ടപെട്ടത്</string>
+    <string name="Profile">പ്രൊഫൈല്‍</string>
+    <string name="Change_Language">ഭാഷ മാറ്റുക</string>
+    <string name="Change_Folder">डഡൗൺലോഡ്സ് ഫോൾഡർ മാറ്റുക</string>
+    <string name="Terms_of_use">ഉപയോഗ വ്യവസ്ഥകൾ</string>
+    <string name="About_Us">ഞങ്ങളെക്കുറിച്ച്</string>
+    <string name="Downloads">डഡൗൺലോഡ്സ്</string>
+
+    <!-- content screen text-->
+    <string name="contents">सഉള്ളടക്കം</string>
+    <string name="Daksh">दक्ष</string>
+    <string name="downloading_cancel">ഡൗൺലോഡ്ഫയൽ റദ്ദാക്കുക</string>
+
+    <!-- favorites screen text-->
+    <string name="chapters">അധ്യായങ്ങൾ</string>
+    <string name="topic">വിഷയങ്ങള്‍</string>
+
+    <string name="select_location">സ്ഥലം തിരഞ്ഞെടുക്കുക</string>
+    <string name="default_folder">തനതു ഫോള്‍ഡര്‍</string>
+    <string name="select_folder">ഫോൾഡർ തിരഞ്ഞെടുക്കുക</string>
+    <string name="Chapters">അധ്യായങ്ങൾ</string>
+    <string name="Topic">വിഷയം</string>
+
+    <string name="no_record">രേഖപ്പെടുത്തലുകളൊന്നും കണ്ടില്ല</string>
+    <string name="read">വായിക്കുക</string>
+    <string name="mark_as_favourite">ഇഷ്ടപ്പെട്ടതെന്ന് കുറിക്കൂ</string>
+    <string name="download_update">പരിഷ്കരിച്ച  ഡൗണ്‍ലോഡ്</string>
+    <string name="update">പരിഷ്കരിച്ചു</string>
+    <string name="favourite">ഇഷ്ടപെട്ടത്</string>
+    <string name="Take_Offline">ഓഫ്‌ലൈനിൽ പ്രവർത്തിക്കുക</string>
+
+    <string name="import_data">ഡാറ്റ ഇംപോര്‍ട്ട് ചെയ്യുന്നു</string>
+    <string name="import_data_from">നിന്നും ഡാറ്റ ഇംപോര്‍ട്ട് ചെയ്യുന്നു</string>
+    <string name="Quiz">പ്രശ്‌നോത്തരി</string>
+    <string name="Start_Quiz_Now">പ്രശ്‌നോത്തരി ഇപ്പോൾ തുടങ്ങുക</string>
+    <string name="Close">അടക്കുക</string>
+    <string name="QUIT">പുറത്തുകടക്കുക</string>
+    <string name="SKIP">ഒഴിവാക്കുക </string>
+    <string name="Multiple_choice">മള്‍ട്ടിപ്പിള്‍ ചോയ്‌സ് ചോദ്യങ്ങള്‍</string>
+    <string name="Question">ചോദ്യം</string>
+    <string name="Listen">കേള്‍ക്കുക</string>
+    <string name="Select_any">താഴെ ഓപ്‌ഷനുകളില്‍ നിന്നും ഒരുത്തരം തെരഞ്ഞെടുക്കുക</string>
+    <string name="View">കാണുക</string>
+    <string name="Submit">സമര്‍പ്പിക്കുക</string>
+    <string name="Your_Score">താങ്കളുടെ സ്കോര്‍</string>
+    <string name="OUT">ഔട്ട്</string>
+    <string name="OF">ഓഫ്</string>
+    <string name="RESTART">റീസ്റ്റാർട്</string>
+    <string name="Run_Simulator">താങ്കൾ സ്വയം ശ്രമിക്കുക</string>
+    <string name="Simulator">सस्वयं प्रयास करें</string> 
+    <string name="EXIT">പുറത്തുകടക്കുക</string>
+    <string name="Description">വിവരണം</string>
+    <string name="This_is_correct">ഇത് ശരിയാണ്</string>
+    <string name="Correct_Answer">ശരിയായ ഉത്തരം</string>
+    <string name="simulator_s">താങ്കൾ സ്വയം ശ്രമിക്കുക</string>
+    <string name="Next">അടുത്തത്</string>
+    <string name="Pause">തത്‌കാലത്തേക്ക്‌ നിറുത്തുക</string>
+    <string name="Buffering">ആവൃത്തി വിശകലനം</string>
+    <string name="quiz_quit_are">താങ്കൾക്ക് തീർച്ചയായും പുറത്തേക്ക് കടക്കണമോ?</string>
+    <string name="quiz_quit_progress">താങ്കളുടെ പുരോഗതി സൂക്ഷിക്കുകയില്ല</string>
+    <string name="description_available">വിവരണം ലഭ്യമല്ല</string>
+    <!-- update alert string popup-->
+    <string name="update_text">ഇപ്പോൾ പരിഷ്കരിക്കുക</string>
+    <string name="remind_me_later">എന്നെ പിന്നീട് ഓര്‍മ്മപ്പെടുത്തുക</string>
+    <string name="Update_heading">പരിഷ്കരണം ലഭ്യമാണ്</string>
+    <string name="update2">ഈ ആപ്പിന്റെ പരിഷ്കരിച്ച പതിപ്പ് ഇപ്പോൾ ലഭ്യമാണ്</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_audio">AudioActivity</string>
+    <string name="Media">കളി</string>
+
+          <string name="doyou">താങ്കൾക്ക് ശരിക്കും പുറത്തേക്ക് കടക്കണമോ?</string>
+         <string name="please">ഒരു ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക</string>
+          <string name="ok">ഓകെ</string>
+
+</resources>

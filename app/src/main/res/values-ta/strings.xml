@@ -1,0 +1,133 @@
+<resources>
+    <string name="app_name">உரையாடல்</string>
+    <string name="navigation_drawer_open">வழிகாட்டும் பொத்தானை திறக்க</string>
+    <string name="navigation_drawer_close">வழிகாட்டும் பொத்தானை மூடுக</string>
+    <string name="action_settings">அமைப்புகள்</string>
+    <!-- Account settings screen text-->
+    <string name="account_settings">கணக்கு அமைப்புகள்</string>
+    <string name="name">பெயர்</string>
+    <string name="email">மின்னஞ்சல்</string>
+    <string name="phone">அழைப்பான்/தொலைபேசி</string>
+    <string name="app_language">செயலி மொழி</string>
+    <string name="autoplay_videos">காணொளி தானியக்கம்</string>
+    <string name="gender">பாலினம்</string>
+    <string name="male">ஆண்</string>
+    <string name="female">பெண்</string>
+    <string name="cancel">ரத்து செய்</string>
+    <string name="save">சேமி</string>
+    <string name="enter_name">பெயர் பதிவிடவும்</string>
+    <string name="enter_email">மின்னஞ்சல் பதிவிடவும்</string>
+    <string name="enter_phone">தொலைபேசி எண் பதிவிடவும்</string>
+    <string name="otp_sent">உங்கள் தொலைபேசி எண்ணிற்கு OTP அனுப்பப்பட்டுள்ளது</string>
+    <string name="account_not_create">இந்த மின்னஞ்சல் மற்றும் தொலைபேசி எண் முன்னரே பதிவு செய்யப்பட்டு விட்டது. தயவு செய்து வேறு தல்கவல்களை பதிவிடவும்</string>
+    <string name="enter_e_mail">மின்னஞ்சல் முகவரியை பதிவிடவும்</string>
+    <string name="account_not_valid">இந்த மின்னஞ்சல் ஐடி மற்றும் தொலைபேசி எண் செல்லுபடியாகாது.</string>
+    <string name="enter_valid_mail">சரியான மின்னஞ்சல் முகவரியை பதிவிடவும்</string>
+    <string name="enter_phone_no">தொலைபேசி எண் பதிவிடவும்</string>
+    <string name="enter_valid_phone">சரியான தொலைபேசி எண் பதிவிடவும்</string>
+    <string name="profile_update">உங்கள் விவரம் வெற்றிகரமாக சேமிக்க பட்டுவிட்டது</string>
+    <string name="profile_not_updated">இந்த கணக்கின் விவரம் இன்னும் சேமிக்க படவில்லை</string>
+    <!-- verification screen text-->
+    <string name="description">பதிவிடப்பட்ட அலைபேசி எண்ணிற்கு OTP அனுப்பப்பட்டுள்ளது. நாங்கள் அதனை தானாக 10 நொடிகளில் சரிபார்த்து கொள்வோம் (அல்லது) நீங்கள் அதனை பதிவிடலாம்</string>
+    <string name="otp_text">நீங்கள் பெற்ற 6 இலக்க OTP எண்ணை பதிவிடவும்</string>
+    <string name="otp_msg">OTP 5 நிமிடங்களுக்குள் மட்டுமே உபயோக படுத்தலாம்</string>
+    <string name="verify">சரி பார்க்க</string>
+    <string name="try_otp">OTP கிடைக்கவில்லையா? முயலவும்</string>
+    <string name="resend_otp">OTP மீண்டும் அனுப்பு</string>
+    <string name="verification_title">சரி பார்க்க</string>
+    <string name="enter_otp">தயவுசெய்து OTP-யை பதிவிடவும்</string>
+    <string name="enter_valid_otp">சரியான OTP-யை பதிவிடவும்</string>
+    <string name="registered">நீங்கள் வெற்றிகரமாக பதிவு செய்துவிட்டீர்கள்</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_activity_notifications">அறிவிப்பு செயல்பாடு</string>
+    <!-- notification screen text-->
+    <string name="notification">அறிவிப்பு</string>
+    <!-- language screen text-->
+    <string name="select_language">மொழி தேர்வு செய்க</string>
+    <string name="choose_language">மொழி தேர்வு செய்க</string>
+    <string name="done">முடிந்தது</string>
+    <string name="select_fav_language">உங்கள் விருப்ப மொழியை தேர்வு செய்க</string>
+    <!-- course screen text-->
+    <string name="title">முகப்பு</string>
+    <string name="our_programs">எங்கள் நிகழ்சிகள்/ எங்கள் செயல் நிரல்</string>
+    <string name="learn">அறிக</string>
+    <string name="course_description">பெண்கள், இளைஞர்கள் மற்றும் விவசாயிகளுக்கிடையே உள்ள திறமை குறைபாடுகளை குறைத்து, நிலையான வாழ்வாதாரத்தை ஏற்படுத்துதல்</string>
+    <!-- video play screen text-->
+    <string name="buffring">தகவல் வந்து கொண்டிருகிறது</string>
+    <string name="about_us">எங்களைப் பற்றி</string>
+    <string name="terms_of">பயன்பாட்டு விதிமுறைகள்</string>
+    <string name="online_msg">நீங்கள் ஆன்லைனில் இல்லை!!!!</string>
+    <string name="logout">நீங்கள் வெற்றிகரமாக வெளியேறிவிட்டீர்கள்</string>
+    <!-- navigaton screen text-->
+    <string name="home">முகப்பு</string>
+    <string name="Notification">அறிவிப்பு</string>
+    <string name="Favorites">விருப்பம்</string>
+    <string name="Profile">சுயவிவரம் / கணக்கு</string>
+    <string name="Change_Language">மொழியை மாற்று</string>
+    <string name="Change_Folder">மாற்றம் இறக்கம் அடைவு</string>
+    <string name="Terms_of_use">பயன்பாடு விதிமுறைகள்</string>
+    <string name="About_Us">எங்களைப் பற்றி</string>
+    <string name="Downloads">பதிவிறக்கங்கள்</string>
+    <!-- content screen text-->
+    <string name="contents">உள்ளடக்கங்கள்</string>
+    <string name="Daksh">பரவலாக</string>
+    <string name="downloading_cancel">கோப்பு பதிவிறக்கத்தை ரத்து செய்</string>
+    <!-- favorites screen text-->
+    <string name="chapters">பாடங்கள்</string>
+    <string name="topic">தலைப்புகள்</string>
+    <string name="select_location">இடத்தை தேர்வு செய்க</string>
+    <string name="default_folder">இயல் கோப்புறை</string>
+    <string name="select_folder">கோப்புறை தேர்வு செய்க</string>
+    <string name="Chapters">பாடங்கள்</string>
+    <string name="Topic">தலைப்பு</string>
+    <string name="no_record">எந்த பதிவும் இல்லை</string>
+    <string name="read">படிக்க</string>
+    <string name="mark_as_favourite">விருப்பமாக குறிக்கவும்</string>
+    <string name="download_update">புதியதை பதிவிறக்கம் செய்ய</string>
+    <string name="update">புதிப்பித்தல் முடிந்தது</string>
+    <string name="favourite">விருப்பங்கள்</string>
+    <string name="Take_Offline">ஆஃப்லைன் செல்க</string>
+    <string name="import_data">தகவல்கள் இறக்குமதி செய்யப்படுகிறது</string>
+    <string name="import_data_from">இலிருந்து தகவல்கள் இறக்குமதி செய்யப்படுகிறது</string>
+    <string name="Quiz">வினாடி வினா</string>
+    <string name="Start_Quiz_Now">வினாடி வினாவை தொடங்கவும்</string>
+    <string name="Close">மூடவும்</string>
+
+    <string name="QUIT">வெளியேறு</string>
+    <string name="SKIP">தவிர்க்க</string>
+    <string name="Multiple_choice">பல தேர்வு கேள்விகள்</string>
+    <string name="Question">கேள்வி</string>
+    <string name="Listen">கவனி</string>
+    <string name="Select_any">பின்வரும் ஏதேனும் ஒரு விடையை தேர்வு செய்யவும்</string>
+    <string name="View">பார்வையிடு</string>
+    <string name="Submit">சமர்பிக்க</string>
+    <string name="Your_Score">உங்கள் மதிப்பெண்!</string>
+    <string name="OUT">வெளியே</string>
+    <string name="OF">இன்</string>
+    <string name="RESTART">மறுதொடக்கம்</string>
+    <string name="Run_Simulator">நீங்களே முயற்சி செய்க</string>
+    <string name="Simulator">சிமுலேட்டர்</string>
+    <string name="EXIT">வெளியேறு</string>
+    <string name="Description">விளக்கம் -</string>
+    <string name="This_is_correct">இது சரி</string>
+    <string name="Correct_Answer">சரியான விடை</string>
+    <string name="simulator_s">நீங்களே முயற்சி செய்க</string>
+    <string name="Next">அடுத்து</string>
+    <string name="Pause">இடைநிறுத்து</string>
+    <string name="Buffering">தகவல் வந்து கொண்டிருகிறது</string>
+    <string name="quiz_quit_are">நீங்கள் நிச்சயமாக வெளியேற வேண்டுமா?</string>
+    <string name="quiz_quit_progress">உங்கள் முன்னேற்றம் சேமிக்கப் படாது!!</string>
+    <string name="description_available">விளக்கம் எதுவும் இல்லை</string>
+
+    <!-- update alert string popup-->
+    <string name="update_text">இப்போது பபுதிப்பிக்கவும்</string>
+    <string name="remind_me_later">பின்னர் நினைவு படுத்துக</string>
+    <string name="Update_heading">புதிய பதிப்பு உள்ளது</string>
+    <string name="update2">இந்த செயலியின் புதிய பாதிப்பு உள்ளது</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_audio">AudioActivity</string>
+    <string name="Media">இயக்கு</string>
+    <string name="doyou">நீங்கள் நிச்சயமாக வெளியேற வேண்டுமா?</string>
+    <string name="please">தயவு செய்து தேர்வு செய்யவும்</string>
+    <string name="ok">சரி</string>
+</resources>
