@@ -30,7 +30,7 @@
     <string name="enter_valid_phone">Enter a valid phone number</string>
     <string name="profile_update">Your profile updated successfully.</string>
     <string name="profile_not_updated">This profile is not yet updated.</string>
-
+    <string name="disclaimerstr">Please Read disclaimer first</string>
 
     <!-- verification screen text-->
     <string name="description">OTP has been sent to your provided mobile number. We will detect it automatically within 10 seconds or you can enter OTP manually here.</string>
@@ -151,4 +151,44 @@
     <string name="doyou">Do you realy want to exit ?</string>
     <string name="please">Please select option</string>
     <string name="ok">OK</string>
+    <string name="disclaimer">Disclaimer</string>
+    <string name="iagree">I agree to term and conditions</string>
+
+    <string name="plsrd">Please Read Disclaimer</string>
+    <string name="viewpastinvitestr">View past invites</string>
+    <string name="Invite">Invite</string>
+    <string name="sharejoy">Share the joy of learning. Invite your friends</string>
+
+    <string name="otp_textnew">Please Enter 6 digit OTP code sent on your mobile number</string>
+    <string name="Verifyotp">Verify OTP</string>
+    <string name="alearn">A learning experience delivery  plateform</string>
+
+    <string name="distring">Disclaimer\n
+IndiaAI (IndiaAI  we  or us) knows that you care how information about you is used and shared. This Privacy Policy explains what information of yours will be collected by IndiaAI when you use www.India-ai.in (the site) and related services (the Service)  how the information will be used, and how you can control the collection, correction and/or deletion of information. We will not use or share your information with anyone except as described in this Privacy Policy.
+Personal data and use
+We take your privacy extremely seriously and use your personal data only for legitimate reasons and in accordance with data protection law, and any other applicable legislation, for purposes such as: providing and improving the Site, allowing you to participate in various projects implemented by us through the Site, responding to queries addressed by you through the Site, research, maintenance of accounts and records and the promotion of services.
+Processing personal data of end users
+While using our Site, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally, identifiable information may include, but is not limited to, your name, email address, postal address and phone number.
+We process your personal data for the purposes described in this Privacy Policy, based on the following legal grounds:
+•	with your consent: we may ask for your agreement to process your personal data for specific purposes and you have the right to withdraw your consent at any time; or
+•	IndiaAI s legitimate interests while applying appropriate safeguards that protect your privacy. This means that we may process your personal data for things like:
+•	providing, maintaining, and improving our Site; or
+•	detecting preventing, or otherwise addressing fraud, abuse, security, or technical issues with our Site.
+
+Cookies
+Cookies are alphanumeric identifiers that we transfer to your computer s hard drive through your Web browser. These cookies enable us to understand how you use the Site and enhance your experience whilst on it. They help us to provide you with a better Site, by enabling us to monitor which pages you find useful, and those you do not. Please be assured that cookies in no way give us access to your computer or any information about you, other than the data you choose to share with us. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Site.
+By continuing to use our Site without changing your browser settings you consent to the use of cookies as described in this Privacy Policy.
+You may, at times, encounter cookies or other similar data collection devices on certain pages of the website that belong to and are placed by third parties. We do not control the use of such cookies of third parties.
+Links to other sites
+Our Site may contain links to other sites that are not operated by us. If you click on a third party link, you will be directed to that third party s site. Third parties may display advertisements on their sites. These advertisements may contain cookies, web beacons and other similar technologies. These third parties may collect information or insert cookies or similar technologies without our knowledge. We strongly advise you to review the privacy policy and terms and conditions of every site you visit. We have no control over, assume no responsibility for, and do not endorse, the content, privacy policies, or practices of any third party sites or services.
+Data Retention
+Data is retained on our file in accordance with legal requirements, the professional status of the data subject, and the data subject s choice and preference.
+Changes to this Privacy Policy
+We may update this Privacy Policy from time to time. We will inform you of any changes by posting the new Privacy Policy on the Site without other notice to you. You are advised to review this Privacy Policy periodically for any changes.
+
+</string>
+
+
+
+
 </resources>

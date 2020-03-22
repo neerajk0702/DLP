@@ -17,7 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
@@ -602,7 +601,7 @@ public class VideoControllerView extends FrameLayout {
     }
     
     private static class MessageHandler extends Handler {
-        private final WeakReference<VideoControllerView> mView; 
+        private final WeakReference<VideoControllerView> mView;
 
         MessageHandler(VideoControllerView view) {
             mView = new WeakReference<VideoControllerView>(view);

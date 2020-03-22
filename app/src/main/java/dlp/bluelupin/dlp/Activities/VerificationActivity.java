@@ -7,8 +7,6 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
@@ -22,6 +20,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import dlp.bluelupin.dlp.Consts;
 import dlp.bluelupin.dlp.Database.DbHelper;
@@ -41,10 +42,9 @@ import dlp.bluelupin.dlp.Utilities.Utility;
  */
 public class VerificationActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView title, leftArrow;
-    private TextView appName, phoneNo, description, otpLable, otpmsg, verify, resend_otp;
+    private TextView   description, otpLable, otpmsg, verify, resend_otp;
     private EditText oneNo, twoNo, threeNo, fourNo, fiveNo, sixNo;
     private String one_string, two_string, three_string, four_string, five_string, six_string;
-
 
 
     @Override
@@ -91,10 +91,10 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
         otpLable.setTypeface(VodafoneExB);
         description = (TextView) findViewById(R.id.description);
         description.setTypeface(VodafoneRgBd);
-        phoneNo = (TextView) findViewById(R.id.phoneNo);
-        phoneNo.setTypeface(VodafoneLt);
-        appName = (TextView) findViewById(R.id.appName);
-        appName.setTypeface(VodafoneRg);
+     //   phoneNo = (TextView) findViewById(R.id.phoneNo);
+      //  phoneNo.setTypeface(VodafoneLt);
+        //appName = (TextView) findViewById(R.id.appName);
+      //  appName.setTypeface(VodafoneRg);
         oneNo = (EditText) findViewById(R.id.oneNo);
         twoNo = (EditText) findViewById(R.id.twoNo);
         threeNo = (EditText) findViewById(R.id.threeNo);
@@ -104,9 +104,9 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
 
         DbHelper dbHelper = new DbHelper(VerificationActivity.this);
         AccountData acData = dbHelper.getAccountData();
-        if (acData != null) {
+       /* if (acData != null) {
             phoneNo.setText(acData.getPhone());
-        }
+        }*/
         setFocusChangeInEditText();
 
     }
@@ -114,7 +114,6 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
     // ----validation -----
     private boolean isValidate() {
         String numberRegex = "[0-9]+";
-
         one_string = oneNo.getText().toString().trim();
         two_string = twoNo.getText().toString().trim();
         three_string = threeNo.getText().toString().trim();
@@ -217,9 +216,25 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
                         if (Consts.IS_DEBUG_LOG) {
                             Log.d(Consts.LOG_TAG, " callOTPVerificationService success result: " + isComplete);
                         }
-                        Intent intentOtp = new Intent(VerificationActivity.this, MainActivity.class);
-                        intentOtp.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intentOtp);
+                        boolean isnewUSer = false;
+                        DbHelper dbhelper = new DbHelper(VerificationActivity.this);
+                        AccountData accountData = dbhelper.getAccountData();
+                        if (accountData != null && !accountData.equals("")) {
+                            isnewUSer = accountData.isIs_new_user();
+                        }
+                        if (isnewUSer) {
+                            Intent intentOtp = new Intent(VerificationActivity.this, NewUserActivity.class);
+                            intentOtp.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                            startActivity(intentOtp);
+                        } else {
+                            Intent intentOtp = new Intent(VerificationActivity.this, MainActivity.class);
+                            intentOtp.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                            startActivity(intentOtp);
+                        }
+
+
                     } else {
                         //Utility.alertForErrorMessage("Please enter a valid OTP.", VerificationActivity.this);
                     }
@@ -233,7 +248,6 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
     //call resend OTP service
     private void callResendOtpService() {
         final CustomProgressDialog customProgressDialog = new CustomProgressDialog(this, R.mipmap.syc);
-
         DbHelper dbHelper = new DbHelper(VerificationActivity.this);
         AccountData acData = dbHelper.getAccountData();
         int languageId = Utility.getLanguageIdFromSharedPreferences(this);
@@ -249,7 +263,6 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
                 sc.CreateAccount(accountServiceRequest, new IAsyncWorkCompletedCallback() {
                     @Override
                     public void onDone(String workName, boolean isComplete) {
-
                         if (isComplete) {
                             if (Consts.IS_DEBUG_LOG) {
                                 Log.d(Consts.LOG_TAG, " callCreateAccountService success result: " + isComplete);

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/DLP_git_22_3_2020.iml" filepath="$PROJECT_DIR$/.idea/DLP_git_22_3_2020.iml" group="DLP_git_22_3_2020" />
+      <module fileurl="file://$PROJECT_DIR$/DLPLIVE.iml" filepath="$PROJECT_DIR$/DLPLIVE.iml" />
       <module fileurl="file://$PROJECT_DIR$/afiledialog/afiledialog.iml" filepath="$PROJECT_DIR$/afiledialog/afiledialog.iml" group="DLP_git_22_3_2020/afiledialog" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="DLP_git_22_3_2020/app" />
     </modules>

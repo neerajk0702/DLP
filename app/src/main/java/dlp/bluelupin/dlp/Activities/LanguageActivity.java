@@ -6,10 +6,6 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +16,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.List;
@@ -29,7 +28,6 @@ import dlp.bluelupin.dlp.Consts;
 import dlp.bluelupin.dlp.Database.DbHelper;
 import dlp.bluelupin.dlp.MainActivity;
 import dlp.bluelupin.dlp.Models.AccountData;
-import dlp.bluelupin.dlp.Models.Data;
 import dlp.bluelupin.dlp.Models.LanguageData;
 import dlp.bluelupin.dlp.Models.LogsDataRequest;
 import dlp.bluelupin.dlp.Models.ProfileUpdateServiceRequest;
@@ -42,11 +40,15 @@ import dlp.bluelupin.dlp.Utilities.FontManager;
 import dlp.bluelupin.dlp.Utilities.LocationUtility;
 import dlp.bluelupin.dlp.Utilities.LogAnalyticsHelper;
 import dlp.bluelupin.dlp.Utilities.Utility;
+import dlp.bluelupin.dlp.shwocaseview.animation.MaterialIntroListener;
+import dlp.bluelupin.dlp.shwocaseview.shape.Focus;
+import dlp.bluelupin.dlp.shwocaseview.shape.FocusGravity;
+import dlp.bluelupin.dlp.shwocaseview.view.MaterialIntroView;
 
 /**
  * Created by Neeraj on 7/22/2016.
  */
-public class LanguageActivity extends AppCompatActivity implements View.OnClickListener {
+public class LanguageActivity extends AppCompatActivity implements View.OnClickListener, MaterialIntroListener {
 
     private TextView languageIcon, chooseLanguage, description;
     private Spinner spinner;
@@ -56,6 +58,12 @@ public class LanguageActivity extends AppCompatActivity implements View.OnClickL
     private String name_string;
     CustomProgressDialog customProgressDialog;
     SharedPreferences InstallationLogprefs;
+
+    private static final String INTRO_CARD1 = "intro_card_1";
+    private static final String INTRO_CARD2 = "intro_card_2";
+    private static final String INTRO_CARD3 = "intro_card_3";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -160,9 +168,13 @@ public class LanguageActivity extends AppCompatActivity implements View.OnClickL
             if (!Installation) {
                 logInstallationDetails();
             }
+
         }
+        showIntro(doneLayout, INTRO_CARD1, getString(R.string.save), Focus.ALL);
+     //   showIntro(spinner, INTRO_CARD1, "Choose Your Language You Want to view App", FocusGravity.CENTER);
 
     }
+
     //set select language into sharepreferences
     private void setLanguage(int langpos) {
         if (data != null) {
@@ -291,7 +303,8 @@ public class LanguageActivity extends AppCompatActivity implements View.OnClickL
             customProgressDialog.dismiss();
         }
     }
-//first time install logInstallationDetails
+
+    //first time install logInstallationDetails
     private void logInstallationDetails() {
         LogAnalyticsHelper analyticsHelper = new LogAnalyticsHelper(LanguageActivity.this);
         Bundle bundle = new Bundle();
@@ -337,4 +350,44 @@ public class LanguageActivity extends AppCompatActivity implements View.OnClickL
             });
         }
     }
+
+    @Override
+    public void onUserClicked(String materialIntroViewId) {
+       // if (materialIntroViewId == INTRO_CARD1)
+         //   showIntro(doneLayout, INTRO_CARD2, "Select Done", FocusGravity.CENTER);
+    }
+
+ /*   public void showIntro(View view, String id, String text, FocusGravity focusGravity) {
+        new MaterialIntroView.Builder(LanguageActivity.this)
+                .enableDotAnimation(true)
+                .setFocusGravity(focusGravity)
+                .setFocusType(Focus.NORMAL)
+                .setDelayMillis(200)
+                .enableFadeAnimation(true)
+                .performClick(true)
+                .setInfoText(text)
+                .setTarget(view)
+                .setListener(this)
+                .setUsageId(id) //THIS SHOULD BE UNIQUE ID
+                .show();
+    }*/
+
+
+
+    public void showIntro(View view, String id, String text, Focus focusType) {
+        new MaterialIntroView.Builder(LanguageActivity.this)
+                .enableDotAnimation(true)
+                .setFocusGravity(FocusGravity.CENTER)
+                .setFocusType(focusType)
+                .setDelayMillis(200)
+                .enableFadeAnimation(true)
+                .setListener(this)
+                .performClick(true)
+                .setInfoText(text)
+                .setTarget(view)
+                .setUsageId(id) //THIS SHOULD BE UNIQUE ID
+                .show();
+    }
+
+
 }

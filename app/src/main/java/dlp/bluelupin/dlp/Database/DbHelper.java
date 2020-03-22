@@ -5,8 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import androidx.annotation.NonNull;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ import dlp.bluelupin.dlp.Utilities.Utility;
 public class DbHelper extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
     public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME =  Consts.dataBaseName;// Consts.outputDirectoryLocation +  "dlp_db.db"; //Consts.dataBaseName; //
+    public static final String DATABASE_NAME = Consts.dataBaseName;;// Consts.outputDirectoryLocation +  "dlp_db.db"; //Consts.dataBaseName; //
 
     public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -86,7 +87,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_MedialanguageLatestDataEntity_TABLE);
 
         if (!tableAlreadyExists(db, "AccountEntity")) {
-            String CREATE_AccountEntity_TABLE = "CREATE TABLE AccountEntity(clientId INTEGER PRIMARY KEY, server_id INTEGER, name TEXT, email TEXT, phone TEXT, preferred_language_id INTEGER, role TEXT, api_token TEXT, otp INTEGER, isVerified INTEGER)";
+            String CREATE_AccountEntity_TABLE = "CREATE TABLE AccountEntity(clientId INTEGER PRIMARY KEY, server_id INTEGER, name TEXT, email TEXT, phone TEXT, preferred_language_id INTEGER, role TEXT, api_token TEXT, otp INTEGER, isVerified INTEGER,is_new_user INTEGER)";
             //clientId, server_id , name , email , phone ,preferred_language_id , role, api_token, otp, isVerified
             db.execSQL(CREATE_AccountEntity_TABLE);
         }
@@ -150,7 +151,7 @@ public class DbHelper extends SQLiteOpenHelper {
         return count > 0;
     }
 
-     /* business logic persistance */
+    /* business logic persistance */
 
     // region cacheResource
     public boolean insertCacheServiceCall(CacheServiceCallData ob) {
@@ -243,9 +244,9 @@ public class DbHelper extends SQLiteOpenHelper {
             Log.d(Consts.LOG_TAG, "updateCacheServiceCall called with" + "url = '" + ob.getUrl() + "' and dataIdentifier = '" +
                     ob.getDataIdentifier() + " " + ob.getLastCalled());
         }
-        if(i>0){
+        if (i > 0) {
 
-            Log.d(Consts.LOG_TAG,"*******: updateCacheServiceCall: "+ ob.getUrl());
+            Log.d(Consts.LOG_TAG, "*******: updateCacheServiceCall: " + ob.getUrl());
         }
         db.close();
         return i > 0;
@@ -437,25 +438,24 @@ public class DbHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query, null);
 
         List<Data> list = new ArrayList<Data>();
-try {
+        try {
 
 
-    if (cursor.moveToFirst()) {
-        while (cursor.isAfterLast() == false) {
-            Data ob = new Data();
-            populateDataEntity(cursor, ob);
-            list.add(ob);
-            cursor.moveToNext();
+            if (cursor.moveToFirst()) {
+                while (cursor.isAfterLast() == false) {
+                    Data ob = new Data();
+                    populateDataEntity(cursor, ob);
+                    list.add(ob);
+                    cursor.moveToNext();
+                }
+            }
+            cursor.close();
+        } catch (Exception ex) {
+
+        } finally {
+            cursor.close();
+            db.close();
         }
-    }
-    cursor.close();
-}catch(Exception ex){
-
-}
-finally {
-    cursor.close();
-    db.close();
-}
 
         return list;
     }
@@ -729,14 +729,13 @@ finally {
 
     public Data getMediaEntityByIdAndLaunguageId(int id, int languageId) {
         String query = "SELECT clientId , server_id , name , type ,download_url , thumbnail_url , thumbnail_file_path , url , file_path , language_id ,created_at , updated_at , deleted_at, thumbnail_url_Local_file_path, thumbnail_localFilename  from MediaEntity WHERE server_id = " + id + " ";
-        SQLiteDatabase db =null;
+        SQLiteDatabase db = null;
         Data ob = new Data();
         try {
 
             db = this.getReadableDatabase();
 
             Cursor cursor = db.rawQuery(query, null);
-
 
 
             if (cursor.moveToFirst()) {
@@ -781,22 +780,22 @@ finally {
             } else {
                 ob = null;
             }
-        }catch(Exception ex){
+        } catch (Exception ex) {
 
             if (Consts.IS_DEBUG_LOG) {
-                Log.d(Consts.LOG_TAG, "error in getMediaEntityByIdAndLaunguageId "  +  ex.getMessage());
+                Log.d(Consts.LOG_TAG, "error in getMediaEntityByIdAndLaunguageId " + ex.getMessage());
             }
-        }
-        finally {
-            if(db!=null){
+        } finally {
+            if (db != null) {
                 db.close();
             }
         }
 
         return ob;
     }
+
     public Data getMediaEntityByDownloadUrlAndLanguageIdLaunguageId(String download_url, int languageId) {
-        String query = "SELECT clientId , server_id , name , type ,download_url , thumbnail_url , thumbnail_file_path , url , file_path , language_id ,created_at , updated_at , deleted_at, thumbnail_url_Local_file_path, thumbnail_localFilename  from MediaEntity WHERE download_url = '" + download_url+ "' ";
+        String query = "SELECT clientId , server_id , name , type ,download_url , thumbnail_url , thumbnail_file_path , url , file_path , language_id ,created_at , updated_at , deleted_at, thumbnail_url_Local_file_path, thumbnail_localFilename  from MediaEntity WHERE download_url = '" + download_url + "' ";
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -1053,6 +1052,11 @@ finally {
         values.put("api_token", accountData.getApi_token());
         values.put("otp", accountData.getOtp());
         values.put("isVerified", accountData.getIsVerified());
+        if (accountData.isIs_new_user()) {
+            values.put("is_new_user", 1);
+        } else {
+            values.put("is_new_user", 0);
+        }
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -1071,13 +1075,16 @@ finally {
         values.put("role", accountData.getRole());
         values.put("api_token", accountData.getApi_token());
         values.put("otp", accountData.getOtp());
+
+        if (accountData.isIs_new_user()) {
+            values.put("is_new_user", 1);
+        } else {
+            values.put("is_new_user", 0);
+        }
+
         // values.put("isVerified", accountData.getIsVerified());
-
-
         SQLiteDatabase db = this.getWritableDatabase();
-
         long i = db.update("AccountEntity", values, "phone = '" + accountData.getPhone() + "'", null);
-
         db.close();
         return i > 0;
     }
@@ -1087,18 +1094,15 @@ finally {
         ContentValues values = new ContentValues();
         //values.put("server_id", accountData.getId());
         values.put("isVerified", accountData.getIsVerified());
-
         SQLiteDatabase db = this.getWritableDatabase();
-
         long i = db.update("AccountEntity", values, "server_id = '" + accountData.getId() + "'", null);
-
         db.close();
         return i > 0;
     }
 
     public AccountData getAccountData() {
         //clientId, server_id , name , email , phone ,preferred_language_id , role, api_token,otp
-        String query = "Select clientId, server_id, name, email, phone, preferred_language_id, role,api_token,otp,isVerified  FROM AccountEntity ";
+        String query = "Select clientId, server_id, name, email, phone, preferred_language_id, role,api_token,otp,isVerified,is_new_user FROM AccountEntity";
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -1118,6 +1122,8 @@ finally {
             ob.setApi_token(cursor.getString(7));
             ob.setOtp(Integer.parseInt(cursor.getString(8)));
             ob.setIsVerified(Integer.parseInt(cursor.getString(9)));
+            Boolean flag = (cursor.getInt(10) == 1);
+            ob.setIs_new_user(flag);
             cursor.close();
         } else {
             ob = null;
@@ -1280,6 +1286,7 @@ finally {
         db.close();
         return list;
     }
+
     public boolean deleteFavoriteData() {
         boolean result = false;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -1288,6 +1295,7 @@ finally {
         result = true;
         return result;
     }
+
     //download MediaEntity
     public boolean upsertDownloadMediaEntity(Data ob) {
         boolean done = false;
@@ -2161,33 +2169,32 @@ finally {
         String query = "Select * FROM QuizzesQuestionsEntity where quiz_id = '" + quizId + "' and deleted_at IS  NULL";
         List<Data> list = new ArrayList<Data>();
 
-        SQLiteDatabase db =null;
+        SQLiteDatabase db = null;
         try {
             db = this.getWritableDatabase();
 
 
-        Cursor cursor = db.rawQuery(query, null);
+            Cursor cursor = db.rawQuery(query, null);
 
 
-        if (cursor.moveToFirst()) {
-            while (cursor.isAfterLast() == false) {
-                Data ob = new Data();
-                populateQuizzesQuestionsDataEntity(cursor, ob);
-                list.add(ob);
-                cursor.moveToNext();
-            }
-        }}
-        catch(Exception ex){
-
-                if (Consts.IS_DEBUG_LOG) {
-                    Log.d(Consts.LOG_TAG, "error in getAllQuizzesQuestionsDataEntity "  +  ex.getMessage());
+            if (cursor.moveToFirst()) {
+                while (cursor.isAfterLast() == false) {
+                    Data ob = new Data();
+                    populateQuizzesQuestionsDataEntity(cursor, ob);
+                    list.add(ob);
+                    cursor.moveToNext();
                 }
             }
-        finally {
-                if(db!=null){
-                    db.close();
-                }
+        } catch (Exception ex) {
+
+            if (Consts.IS_DEBUG_LOG) {
+                Log.d(Consts.LOG_TAG, "error in getAllQuizzesQuestionsDataEntity " + ex.getMessage());
             }
+        } finally {
+            if (db != null) {
+                db.close();
+            }
+        }
         return list;
     }
 
@@ -2258,7 +2265,7 @@ finally {
         values.put("created_at", ob.getCreated_at());
         values.put("updated_at", ob.getUpdated_at());
         values.put("deleted_at", ob.getDeleted_at());
-        values.put("lang_resource_correct_answer_description",ob.getLang_resource_correct_answer_description());
+        values.put("lang_resource_correct_answer_description", ob.getLang_resource_correct_answer_description());
     }
 
     //update Quizzes Questions
@@ -2635,22 +2642,21 @@ finally {
     // delete QuizAnswerEntity Data ById
     public boolean deleteQuizAnswerEntityById(int quizId, int contentId) {
         boolean result = false;
-        SQLiteDatabase db =null;
+        SQLiteDatabase db = null;
 
         try {
-             db = this.getWritableDatabase();
+            db = this.getWritableDatabase();
 
             String query = "quiz_id = '" + quizId + "' and contentId='" + contentId + "'";
             db.delete("QuizAnswerEntity", query, null);
-        }catch(Exception ex){
+        } catch (Exception ex) {
 
             if (Consts.IS_DEBUG_LOG) {
-            Log.d(Consts.LOG_TAG, "error in deleteQuizAnswerEntityById "  +  ex.getMessage());
-             }
-        }
-        finally {
-            if(db!=null){
-                  db.close();
+                Log.d(Consts.LOG_TAG, "error in deleteQuizAnswerEntityById " + ex.getMessage());
+            }
+        } finally {
+            if (db != null) {
+                db.close();
             }
         }
 
