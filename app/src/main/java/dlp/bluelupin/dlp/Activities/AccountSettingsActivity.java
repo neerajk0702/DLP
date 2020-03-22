@@ -369,7 +369,7 @@ public class AccountSettingsActivity extends AppCompatActivity implements View.O
 
     @Override
     public void onUserClicked(String materialIntroViewId) {
-        if (materialIntroViewId == INTRO_FOCUS_1)
-            showIntro(save, INTRO_FOCUS_2, "Save and Continue", Focus.MINIMUM, FocusGravity.CENTER);
+        //if (materialIntroViewId == INTRO_FOCUS_1)
+        //   showIntro(save, INTRO_FOCUS_2, "Save and Continue", Focus.MINIMUM, FocusGravity.CENTER);
     }
 }
