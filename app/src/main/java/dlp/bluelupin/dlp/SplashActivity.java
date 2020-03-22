@@ -2,11 +2,8 @@ package dlp.bluelupin.dlp;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.AlarmManager;
 import android.app.AlertDialog;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -16,9 +13,6 @@ import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.os.Messenger;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -26,16 +20,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
-
-import com.google.gson.Gson;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.jsoup.Jsoup;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -43,17 +30,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
-import dlp.bluelupin.dlp.Activities.LanguageActivity;
 import dlp.bluelupin.dlp.Database.DbHelper;
 import dlp.bluelupin.dlp.Models.AccountData;
 import dlp.bluelupin.dlp.Models.ApplicationVersionResponse;
 import dlp.bluelupin.dlp.Models.CacheServiceCallData;
 import dlp.bluelupin.dlp.Models.ContentServiceRequest;
-import dlp.bluelupin.dlp.Models.Data;
-import dlp.bluelupin.dlp.Services.BackgroundSyncService;
 import dlp.bluelupin.dlp.Services.IAsyncWorkCompletedCallback;
 import dlp.bluelupin.dlp.Services.IServiceSuccessCallback;
 import dlp.bluelupin.dlp.Services.ServiceCaller;
@@ -64,8 +46,6 @@ import dlp.bluelupin.dlp.Utilities.LocationUtility;
 import dlp.bluelupin.dlp.Utilities.Utility;
 import dlp.bluelupin.dlp.runtimepermission.PermissionResultCallback;
 import dlp.bluelupin.dlp.runtimepermission.PermissionUtils;
-
-import static dlp.bluelupin.dlp.Utilities.EnumLanguage.en;
 
 /**
  * Created by Neeraj on 7/22/2016.
@@ -105,9 +85,9 @@ public class SplashActivity extends Activity implements ActivityCompat.OnRequest
     }
     private void runTimePermission() {
         permissionUtils = new PermissionUtils(SplashActivity.this);
-        permissions.add(android.Manifest.permission.READ_EXTERNAL_STORAGE);
-        permissions.add(android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        permissions.add(android.Manifest.permission.WAKE_LOCK);
+        permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+        permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        permissions.add(Manifest.permission.WAKE_LOCK);
         permissions.add(Manifest.permission.INTERNET);
         permissions.add(Manifest.permission.ACCESS_NETWORK_STATE);
         permissions.add(Manifest.permission.ACCESS_FINE_LOCATION);
@@ -170,13 +150,13 @@ public class SplashActivity extends Activity implements ActivityCompat.OnRequest
             } else {
                 dbhelper.deleteAccountData();
                 // app running for the first time
-                Intent mainIntent = new Intent(SplashActivity.this, LanguageActivity.class);
+                Intent mainIntent = new Intent(SplashActivity.this, WelcomeActivity.class);
                 startActivity(mainIntent);
                 finish();
             }
         } else {
             // app running for the first time
-            Intent mainIntent = new Intent(SplashActivity.this, LanguageActivity.class);
+            Intent mainIntent = new Intent(SplashActivity.this, WelcomeActivity.class);
             startActivity(mainIntent);
             finish();
         }

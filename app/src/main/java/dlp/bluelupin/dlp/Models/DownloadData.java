@@ -69,7 +69,7 @@ public class DownloadData  implements Parcelable {
         totalFileSize = in.readInt();
     }
 
-    public static final Parcelable.Creator<DownloadData> CREATOR = new Parcelable.Creator<DownloadData>() {
+    public static final Creator<DownloadData> CREATOR = new Creator<DownloadData>() {
         public DownloadData createFromParcel(Parcel in) {
             return new DownloadData(in);
         }

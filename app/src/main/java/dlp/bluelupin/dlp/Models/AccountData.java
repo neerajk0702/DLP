@@ -28,6 +28,8 @@ public class AccountData {
 
     private int otp;
 
+    private boolean is_new_user;
+
 
     public String getCreated_by() {
         return created_by;
@@ -138,6 +140,14 @@ public class AccountData {
     @Override
     public String toString() {
         return "ClassPojo [id = " + id + ", created_by = " + created_by + ", phone = " + phone + ", updated_at = " + updated_at + ", email = " + email + ", api_token = " + api_token + ", name = " + name + ", created_at = " + created_at + ", preferred_language_id = " + preferred_language_id + ", role = " + role + ", client_id = " + client_id + ", otp = " + otp + ",isVerified=" + isVerified + "]";
+    }
+
+    public boolean isIs_new_user() {
+        return is_new_user;
+    }
+
+    public void setIs_new_user(boolean is_new_user) {
+        this.is_new_user = is_new_user;
     }
 }
 

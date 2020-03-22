@@ -1,7 +1,5 @@
 package dlp.bluelupin.dlp.Activities;
 
-import java.io.IOException;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.pm.ActivityInfo;
@@ -15,8 +13,9 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.FrameLayout;
 
+import java.io.IOException;
+
 import dlp.bluelupin.dlp.Consts;
-import dlp.bluelupin.dlp.MainActivity;
 import dlp.bluelupin.dlp.R;
 import dlp.bluelupin.dlp.Utilities.Utility;
 
