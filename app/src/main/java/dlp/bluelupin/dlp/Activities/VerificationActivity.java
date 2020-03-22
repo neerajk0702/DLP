@@ -43,7 +43,7 @@ import dlp.bluelupin.dlp.Utilities.Utility;
 public class VerificationActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView title, leftArrow;
     private TextView   description, otpLable, otpmsg, verify, resend_otp;
-    private EditText oneNo, twoNo, threeNo, fourNo, fiveNo, sixNo;
+    private EditText oneNo, twoNo, threeNo, fourNo;
     private String one_string, two_string, three_string, four_string, five_string, six_string;
 
 
@@ -99,8 +99,8 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
         twoNo = (EditText) findViewById(R.id.twoNo);
         threeNo = (EditText) findViewById(R.id.threeNo);
         fourNo = (EditText) findViewById(R.id.fourNo);
-        fiveNo = (EditText) findViewById(R.id.fiveNo);
-        sixNo = (EditText) findViewById(R.id.sixNo);
+     //   fiveNo = (EditText) findViewById(R.id.fiveNo);
+        //sixNo = (EditText) findViewById(R.id.sixNo);
 
         DbHelper dbHelper = new DbHelper(VerificationActivity.this);
         AccountData acData = dbHelper.getAccountData();
@@ -118,8 +118,8 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
         two_string = twoNo.getText().toString().trim();
         three_string = threeNo.getText().toString().trim();
         four_string = fourNo.getText().toString().trim();
-        five_string = fiveNo.getText().toString().trim();
-        six_string = sixNo.getText().toString().trim();
+      //  five_string = fiveNo.getText().toString().trim();
+       // six_string = sixNo.getText().toString().trim();
         if (one_string.length() == 0) {
             Utility.alertForErrorMessage(getString(R.string.enter_otp), VerificationActivity.this);
             return false;
@@ -358,8 +358,8 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (fourNo.length() == 1) {
                     fourNo.clearFocus();
-                    fiveNo.requestFocus();
-                    fiveNo.setCursorVisible(true);
+                   // fiveNo.requestFocus();
+                   // fiveNo.setCursorVisible(true);
                 }
             }
 
@@ -368,7 +368,7 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
 
             }
         });
-        fiveNo.addTextChangedListener(new TextWatcher() {
+  /*      fiveNo.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -387,7 +387,7 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
             public void afterTextChanged(Editable s) {
 
             }
-        });
+        });*/
     }
 
     @Override
