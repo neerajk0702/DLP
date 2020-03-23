@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -21,7 +22,12 @@ import dlp.bluelupin.dlp.Consts;
 import dlp.bluelupin.dlp.Database.DbHelper;
 import dlp.bluelupin.dlp.MainActivity;
 import dlp.bluelupin.dlp.Models.Data;
+import dlp.bluelupin.dlp.Models.ProfileUpdateServiceRequest;
+import dlp.bluelupin.dlp.Models.StatusUpdateService;
 import dlp.bluelupin.dlp.R;
+import dlp.bluelupin.dlp.Services.IAsyncWorkCompletedCallback;
+import dlp.bluelupin.dlp.Services.ServiceCaller;
+import dlp.bluelupin.dlp.Utilities.CustomProgressDialog;
 import dlp.bluelupin.dlp.Utilities.FontManager;
 import dlp.bluelupin.dlp.Utilities.LocationUtility;
 import dlp.bluelupin.dlp.Utilities.Utility;
@@ -109,6 +115,7 @@ public class ContentFragment extends Fragment {
             noRecordIcon.setTypeface(materialdesignicons_font);
             noRecordIcon.setText(Html.fromHtml("&#xf187;"));
         } else {
+            callStatusUpdatService(1);//browsed = 1
             //ContentAdapter contentAdapter = new ContentAdapter(context, dataList);
             ContentRecycleAdapter contentAdapter = new ContentRecycleAdapter(context, dataList);
             contentAdapter.setHasStableIds(true);
@@ -118,6 +125,13 @@ public class ContentFragment extends Fragment {
             recyclerView.setAdapter(contentAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
             //listView.setAdapter(contentAdapter);
+            TextView mark_complete=view.findViewById(R.id.save);
+            mark_complete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    callStatusUpdatService(2); //completed = 2
+                }
+            });
         }
         if (Consts.IS_DEBUG_LOG) {
             Log.d(Consts.LOG_TAG, "Content Fragment: data_item count: " + dataList.size());
@@ -133,5 +147,40 @@ public class ContentFragment extends Fragment {
     public void onPause() {
         super.onPause();
         LocationUtility.stopLocationUpdates();
+    }
+
+
+    //call Status Updat Service
+    private void callStatusUpdatService(final int status) {
+        final CustomProgressDialog customProgressDialog = new CustomProgressDialog(context, R.mipmap.syc);
+        StatusUpdateService ServiceRequest = new StatusUpdateService();
+        ServiceRequest.setCompletion_status(status);
+        ServiceRequest.setContent_id(parentId);
+        if (Utility.isOnline(context)) {
+            customProgressDialog.show();
+            ServiceCaller sc = new ServiceCaller(context);
+            sc.StatusUpdat(ServiceRequest, new IAsyncWorkCompletedCallback() {
+                @Override
+                public void onDone(String workName, boolean isComplete) {
+
+
+                    if (isComplete) {
+                        if (Consts.IS_DEBUG_LOG) {
+                            Log.d(Consts.LOG_TAG, " callProfileUpdateService success result: " + isComplete);
+                        }
+                        if(status==2) {
+                            Toast.makeText(context, getString(R.string.updatestatus), Toast.LENGTH_LONG).show();
+                        }
+                        customProgressDialog.dismiss();
+                    } else {
+                        Utility.alertForErrorMessage(getString(R.string.updatestatusnot), context);
+                        customProgressDialog.dismiss();
+                    }
+
+                }
+            });
+        } else {
+            Utility.alertForErrorMessage(context.getString(R.string.online_msg), context);
+        }
     }
 }

@@ -63,6 +63,7 @@ public class Consts {
     public static final String ContentQuiz = "content/quiz";
     public static final String PlayStoreVersion = "appstoreversion";
     public static final String SENDER = "MOBKNT";
+    public static final String statusUpdate = "usr/content/status/update";
     public static String inputDirectoryLocation = "/dlp/";
 
 

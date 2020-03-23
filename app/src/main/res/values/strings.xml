@@ -163,6 +163,9 @@
     <string name="Verifyotp">Verify OTP</string>
     <string name="alearn">A learning experience delivery  plateform</string>
     <string name="optional">Optional</string>
+    <string name="mark_complete">Mark Complete</string>
+    <string name="updatestatus">Your Topic has been Mark Complete successfully.</string>
+    <string name="updatestatusnot">Your Topic has not been Mark Complete!.</string>
 
     <string name="distring">Disclaimer\n
 IndiaAI (IndiaAI  we  or us) knows that you care how information about you is used and shared. This Privacy Policy explains what information of yours will be collected by IndiaAI when you use www.India-ai.in (the site) and related services (the Service)  how the information will be used, and how you can control the collection, correction and/or deletion of information. We will not use or share your information with anyone except as described in this Privacy Policy.

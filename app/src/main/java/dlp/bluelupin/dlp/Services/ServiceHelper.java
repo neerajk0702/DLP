@@ -30,6 +30,7 @@ import dlp.bluelupin.dlp.Models.LogsDataRequest;
 import dlp.bluelupin.dlp.Models.OtpData;
 import dlp.bluelupin.dlp.Models.OtpVerificationServiceRequest;
 import dlp.bluelupin.dlp.Models.ProfileUpdateServiceRequest;
+import dlp.bluelupin.dlp.Models.StatusUpdateService;
 import dlp.bluelupin.dlp.R;
 import dlp.bluelupin.dlp.Utilities.LocationUtility;
 import dlp.bluelupin.dlp.Utilities.LogAnalyticsHelper;
@@ -955,8 +956,39 @@ public class ServiceHelper {
             }
 
         });
-
-
     }
+    //callStatusUpdatServiceservice
+    public void callStatusUpdatService(StatusUpdateService request, final IServiceSuccessCallback<AccountData> callback) {
+        final DbHelper dbhelper = new DbHelper(context);
+        AccountData accountDataApToken = dbhelper.getAccountData();
+        if (accountDataApToken != null) {
+            if (accountDataApToken.getApi_token() != null) {
+                request.setApi_token(accountDataApToken.getApi_token());
+            }
+        }
 
+        Call<AccountData> ac = service.statusUpdated(request);
+        Log.d(Consts.LOG_TAG, "payload***" + request);
+        ac.enqueue(new Callback<AccountData>() {
+            @Override
+            public void onResponse(Call<AccountData> call, Response<AccountData> response) {
+                AccountData data = response.body();
+
+                if (data != null) {
+                    Log.d(Consts.LOG_TAG, "callStatusUpdatServices :" + data.toString());
+                    callback.onDone(Consts.Profile_Update, data, null);
+                } else {
+                    callback.onDone(Consts.Profile_Update, null, null);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<AccountData> call, Throwable t) {
+                Log.d(Consts.LOG_TAG, "Failure in service callStatusUpdatServices" + t.toString());
+                callback.onDone(Consts.Profile_Update, null, t.toString());
+            }
+
+        });
+    }
 }
