@@ -56,17 +56,17 @@ import dlp.bluelupin.dlp.shwocaseview.view.MaterialIntroView;
 
 public class NewUserActivity extends AppCompatActivity implements View.OnClickListener, MaterialIntroListener {
     private TextView title, leftArrow;
-    private TextView save;
+    private TextView save, skip;
 
 
     //  private EditText enterName, enterEmail;
     private EditText enterName, enterEmail;
     String name_string, email_string;
-    private static final String INTRO_FOCUS_1 = "intro_focus_1";
-    private static final String INTRO_FOCUS_2 = "intro_focus_2";
-    private static final String INTRO_FOCUS_3 = "intro_focus_3";
-    private static final String INTRO_FOCUS_4 = "intro_focus_3";
+    private static final String INTRO_CARD1 = "intro_card_1";
+    private static final String INTRO_CARD2 = "intro_card_2";
+
     CustomProgressDialog customProgressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,14 +98,16 @@ public class NewUserActivity extends AppCompatActivity implements View.OnClickLi
         leftArrow.setOnClickListener(this);
         int textColor = Color.parseColor("#e60000");
         save = (TextView) findViewById(R.id.save);
+        skip = (TextView) findViewById(R.id.skip);
         save.setOnClickListener(this);
         title.setTypeface(VodafoneExB);
 
         //cancel.setTypeface(VodafoneRg);
         save.setTypeface(VodafoneRg);
         leftArrow.setText(Html.fromHtml("&#xf04d;"));
-        enterName =findViewById(R.id.name);
-        enterEmail =  findViewById(R.id.email);
+        enterName = findViewById(R.id.name);
+        enterEmail = findViewById(R.id.email);
+        showIntro(save, INTRO_CARD1, getString(R.string.Verifyotp), Focus.ALL);
     }
 
 
@@ -241,7 +243,7 @@ public class NewUserActivity extends AppCompatActivity implements View.OnClickLi
     public void showIntro(View view, String id, String text, Focus focusType) {
         new MaterialIntroView.Builder(NewUserActivity.this)
                 .enableDotAnimation(true)
-                .setFocusGravity(FocusGravity.LEFT)
+                .setFocusGravity(FocusGravity.CENTER)
                 .setFocusType(focusType)
                 .setDelayMillis(200)
                 .enableFadeAnimation(true)
@@ -255,7 +257,7 @@ public class NewUserActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onUserClicked(String materialIntroViewId) {
-        if (materialIntroViewId == INTRO_FOCUS_1)
-            showIntro(save, INTRO_FOCUS_2, "Save and Continue", Focus.MINIMUM);
+        if (materialIntroViewId == INTRO_CARD1)
+            showIntro(skip, INTRO_CARD2, "Yo can Skip", Focus.ALL);
     }
 }

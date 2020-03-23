@@ -18,4 +18,10 @@ public class ReferFriendActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_refer_friend);
     }
+
+    public void init(){
+        viewpastInvite=findViewById(R.id.viewpastInvite);
+                invite=findViewById(R.id.invite);
+        mobileNo=findViewById(R.id.mobileNo);
+    }
 }

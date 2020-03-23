@@ -351,11 +351,6 @@ public class LanguageActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    @Override
-    public void onUserClicked(String materialIntroViewId) {
-       // if (materialIntroViewId == INTRO_CARD1)
-         //   showIntro(doneLayout, INTRO_CARD2, "Select Done", FocusGravity.CENTER);
-    }
 
  /*   public void showIntro(View view, String id, String text, FocusGravity focusGravity) {
         new MaterialIntroView.Builder(LanguageActivity.this)
@@ -389,5 +384,10 @@ public class LanguageActivity extends AppCompatActivity implements View.OnClickL
                 .show();
     }
 
+    @Override
+    public void onUserClicked(String materialIntroViewId) {
+        // if (materialIntroViewId == INTRO_CARD1)
+        //   showIntro(doneLayout, INTRO_CARD2, "Select Done", FocusGravity.CENTER);
+    }
 
 }

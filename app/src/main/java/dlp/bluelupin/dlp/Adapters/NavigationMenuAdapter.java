@@ -24,6 +24,7 @@ import java.util.List;
 
 import dlp.bluelupin.dlp.Activities.LanguageActivity;
 import dlp.bluelupin.dlp.Activities.NotificationsActivity;
+import dlp.bluelupin.dlp.Activities.UserProfileActivity;
 import dlp.bluelupin.dlp.Fragments.AboutUsFragment;
 import dlp.bluelupin.dlp.Fragments.CourseFragment;
 import dlp.bluelupin.dlp.Fragments.FavoritesFragment;
@@ -137,8 +138,12 @@ public class NavigationMenuAdapter extends BaseAdapter {
                     CourseFragment fragment = CourseFragment.newInstance("", "");
                     navigateToFragment(fragment);
                 } else if (menuList.get(position).toString().equalsIgnoreCase("Profile")) {
-                    UserProfileFragment aboutUs = UserProfileFragment.newInstance("", "");
-                    navigateToFragment(aboutUs);
+                   // UserProfileFragment aboutUs = UserProfileFragment.newInstance("", "");
+                  //  navigateToFragment(aboutUs);
+
+                    Intent intent=new Intent(mContext, UserProfileActivity.class);
+                    mContext.startActivity(intent);
+
                 } else if (menuList.get(position).toString().equalsIgnoreCase("About Us")) {
                     AboutUsFragment aboutUs = AboutUsFragment.newInstance("", "");
                     navigateToFragment(aboutUs);

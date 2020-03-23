@@ -29,7 +29,6 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -38,6 +37,7 @@
         <activity android:name=".Activities.AccountSettingsActivity" />
         <activity android:name=".Activities.VerificationActivity" />
         <activity android:name=".Activities.DisclaimerActivity" />
+        <activity android:name=".Activities.UserProfileActivity"/>
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />

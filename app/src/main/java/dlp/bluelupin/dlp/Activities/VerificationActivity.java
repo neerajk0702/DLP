@@ -36,15 +36,20 @@ import dlp.bluelupin.dlp.Services.ServiceCaller;
 import dlp.bluelupin.dlp.Utilities.CustomProgressDialog;
 import dlp.bluelupin.dlp.Utilities.FontManager;
 import dlp.bluelupin.dlp.Utilities.Utility;
+import dlp.bluelupin.dlp.shwocaseview.animation.MaterialIntroListener;
+import dlp.bluelupin.dlp.shwocaseview.shape.Focus;
+import dlp.bluelupin.dlp.shwocaseview.shape.FocusGravity;
+import dlp.bluelupin.dlp.shwocaseview.view.MaterialIntroView;
 
 /**
  * Created by Neeraj on 7/25/2016.
  */
-public class VerificationActivity extends AppCompatActivity implements View.OnClickListener {
+public class VerificationActivity extends AppCompatActivity implements View.OnClickListener , MaterialIntroListener {
     private TextView title, leftArrow;
     private TextView   description, otpLable, otpmsg, verify, resend_otp;
     private EditText oneNo, twoNo, threeNo, fourNo;
     private String one_string, two_string, three_string, four_string, five_string, six_string;
+    private static final String INTRO_CARD1 = "intro_card_1";
 
 
     @Override
@@ -108,6 +113,7 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
             phoneNo.setText(acData.getPhone());
         }*/
         setFocusChangeInEditText();
+        showIntro(verify, INTRO_CARD1, getString(R.string.Verifyotp), Focus.ALL);
 
     }
 
@@ -389,5 +395,27 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
+    }
+
+
+
+    public void showIntro(View view, String id, String text, Focus focusType) {
+        new MaterialIntroView.Builder(VerificationActivity.this)
+                .enableDotAnimation(true)
+                .setFocusGravity(FocusGravity.CENTER)
+                .setFocusType(focusType)
+                .setDelayMillis(200)
+                .enableFadeAnimation(true)
+                .setListener(this)
+                .performClick(true)
+                .setInfoText(text)
+                .setTarget(view)
+                .setUsageId(id) //THIS SHOULD BE UNIQUE ID
+                .show();
+    }
+    @Override
+    public void onUserClicked(String materialIntroViewId) {
+        // if (materialIntroViewId == INTRO_CARD1)
+        //   showIntro(doneLayout, INTRO_CARD2, "Select Done", FocusGravity.CENTER);
     }
 }

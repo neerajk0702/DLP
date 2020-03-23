@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@drawable/ic_refer_bg"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="dlp.bluelupin.dlp.MainActivity">
@@ -35,22 +35,22 @@
                     android:layout_margin="@dimen/dimValue_5"
                     android:gravity="center">
 
-                    <TextView
+                    <ImageView
                         android:id="@+id/leftArrow"
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:text="arr"
-                        android:textColor="#fff"
-                        android:textSize="@dimen/dimTextSize_30" />
+                        android:layout_width="@dimen/dimValue_40"
+                        android:layout_height="@dimen/dimValue_40"
+                        android:src="@drawable/ic_back_arrow" />
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/dimValue_10"
                     android:gravity="left|center"
-                    android:text="@string/account_settings"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:text="@string/referfriend"
                     android:textColor="#fff"
                     android:textSize="@dimen/dimTextSize_22" />
             </LinearLayout>
@@ -61,18 +61,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dimValue_16"
-        android:layout_marginTop="@dimen/dimValue_20"
-        android:layout_marginRight="@dimen/dimValue_16"
         android:layout_weight="1"
         android:orientation="vertical">
 
 
         <ImageView
-            android:layout_width="@dimen/dimValue_115"
+            android:layout_width="@dimen/size_250px"
             android:layout_height="@dimen/size_250px"
             android:layout_gravity="center"
-            android:src="@drawable/applogo" />
+            android:layout_margin="@dimen/dimValue_5"
+            android:src="@drawable/ic_refer_friend" />
 
 
         <TextView
@@ -80,6 +78,7 @@
             android:layout_height="wrap_content"
             android:text="@string/sharejoy"
             android:textColor="#4a4d4e"
+            android:layout_margin="@dimen/dimValue_5"
             android:padding="@dimen/dimValue_5"
             android:textSize="@dimen/dimTextSize_20"
             android:textStyle="bold" />
@@ -90,6 +89,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimValue_10"
             android:orientation="vertical"
+            android:layout_marginRight="@dimen/dimValue_5"
+            android:layout_marginLeft="@dimen/dimValue_5"
             android:padding="@dimen/dimValue_5"
             android:visibility="visible">
 
@@ -118,7 +119,7 @@
 
             <TextView
                 android:id="@+id/invite"
-                android:layout_width="@dimen/size_250px"
+                android:layout_width="@dimen/size_350px"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dimValue_10"
                 android:layout_marginRight="@dimen/dimValue_10"

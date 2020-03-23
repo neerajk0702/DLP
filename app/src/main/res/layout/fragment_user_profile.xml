@@ -19,6 +19,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/ic_oval_bg"
                 android:layout_marginLeft="@dimen/dimValue_16"
                 android:layout_marginRight="@dimen/dimValue_16"
                 android:layout_marginTop="@dimen/dimValue_20"

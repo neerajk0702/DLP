@@ -60,17 +60,14 @@ public class MainActivity extends AppCompatActivity
 
 
     private static final int PERMISSION_REQUEST_CODE = 1;
-
     private Toolbar toolbar;
     public TextView title, question, question_no, totalQuestion;
     public FrameLayout downloadContainer;
     private static MainActivity mainActivity;
     private CustomProgressDialog customProgressDialog;
-
     public static MainActivity getInstace() {
         return mainActivity;
     }
-
     private TextView name, email;
     AlertDialog alert;
     public ImageView splashImage;

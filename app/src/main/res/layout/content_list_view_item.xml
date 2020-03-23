@@ -7,8 +7,11 @@
     card_view:cardPreventCornerOverlap="true"
     card_view:cardUseCompatPadding="true">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
         android:layout_height="wrap_content">
 
         <LinearLayout
@@ -52,7 +55,35 @@
             android:textSize="@dimen/dimTextSize_51"
             android:visibility="gone" />
 
+        <LinearLayout
+            android:id="@+id/playIconView"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_margin="@dimen/dimValue_10"
+            android:background="@drawable/round_boder_new"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="@string/markcomplete"
+                android:layout_margin="@dimen/dimValue_5"
+                android:padding="@dimen/dimValue_10"
+                android:textColor="@color/colorWhite"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_width="@dimen/dimValue_30"
+                android:src="@drawable/ic_media_play"
+                android:layout_margin="@dimen/dimValue_5"
+                android:layout_gravity="center"
+                android:layout_height="@dimen/dimValue_30" />
 
 
-    </RelativeLayout>
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
 </androidx.cardview.widget.CardView>
