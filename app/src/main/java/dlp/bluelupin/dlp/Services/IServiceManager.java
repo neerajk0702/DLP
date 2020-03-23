@@ -13,6 +13,7 @@ import dlp.bluelupin.dlp.Models.LogsDataRequest;
 import dlp.bluelupin.dlp.Models.OtpData;
 import dlp.bluelupin.dlp.Models.OtpVerificationServiceRequest;
 import dlp.bluelupin.dlp.Models.ProfileUpdateServiceRequest;
+import dlp.bluelupin.dlp.Models.StatusUpdateService;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -85,4 +86,7 @@ public interface IServiceManager {
 
     @POST(Consts.send_Otp)
     Call<AccountData> resendOtp(@Body AccountServiceRequest request);
+
+    @POST(Consts.statusUpdate)
+    Call<AccountData> statusUpdated(@Body StatusUpdateService request);
 }

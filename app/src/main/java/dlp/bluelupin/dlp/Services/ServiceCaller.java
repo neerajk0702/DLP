@@ -14,6 +14,7 @@ import dlp.bluelupin.dlp.Models.LogsDataRequest;
 import dlp.bluelupin.dlp.Models.OtpData;
 import dlp.bluelupin.dlp.Models.OtpVerificationServiceRequest;
 import dlp.bluelupin.dlp.Models.ProfileUpdateServiceRequest;
+import dlp.bluelupin.dlp.Models.StatusUpdateService;
 
 /**
  * Created by subod on 25-Jul-16.
@@ -480,6 +481,26 @@ public class ServiceCaller {
                 } else {
                     success = false;
                     workCompletedCallback.onDone("Account not created", success);
+                }
+            }
+        });
+    }
+
+
+    //call Status Updat service
+    public void StatusUpdat(final StatusUpdateService request, final IAsyncWorkCompletedCallback workCompletedCallback) {
+        final ServiceHelper sh = new ServiceHelper(context);
+        sh.callStatusUpdatService(request, new IServiceSuccessCallback<AccountData>() {
+            @Override
+            public void onDone(final String callerUrl, final AccountData result, String error) {
+                Boolean success = false;
+                if (result != null) {
+                    success = true;
+                    workCompletedCallback.onDone("Profile updated", success);
+
+                } else {
+                    success = false;
+                    workCompletedCallback.onDone("Profile not updated", success);
                 }
             }
         });
