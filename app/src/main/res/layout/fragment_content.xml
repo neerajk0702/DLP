@@ -40,18 +40,37 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/save"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dimValue_10"
-                        android:layout_marginRight="@dimen/dimValue_10"
-                        android:background="@drawable/done_corner_round"
-                        android:gravity="center"
-                        android:padding="@dimen/dimValue_13"
-                        android:text="@string/mark_complete"
-                        android:textColor="#fff"
-                        android:textSize="@dimen/dimTextSize_20" />
+
+                    <LinearLayout
+                        android:layout_width="@dimen/size_180px"
+                        android:orientation="horizontal"
+                        android:gravity="center_horizontal"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/dimValue_10"
+                        android:background="@drawable/round_boder_new"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/save"
+                            android:layout_width="wrap_content"
+                            android:text="@string/markcomplete"
+                            android:layout_margin="@dimen/dimValue_5"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:padding="@dimen/dimValue_10"
+                            android:textColor="@color/colorWhite"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:layout_width="@dimen/dimValue_30"
+                            android:src="@drawable/ic_media_play"
+                            android:layout_margin="@dimen/dimValue_5"
+                            android:layout_gravity="center"
+                            android:layout_height="@dimen/dimValue_30" />
+
+
+                    </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>

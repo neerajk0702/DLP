@@ -69,8 +69,8 @@ public class CourseFragment extends Fragment {
         return fragment;
     }
 
-    private ImageView courseImage;
-    private TextView title, sub_title, description, programTitle;
+    //private ImageView courseImage;
+   // private TextView title, sub_title, description, programTitle;
     private Context context;
 
     @Override
@@ -86,7 +86,7 @@ public class CourseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_course, container, false);
+        View view = inflater.inflate(R.layout.fragment_course_new, container, false);
         context = getActivity();
         if (Utility.isTablet(context)) {
             getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -110,15 +110,15 @@ public class CourseFragment extends Fragment {
         Typeface materialdesignicons_font = FontManager.getFontTypefaceMaterialDesignIcons(context, "fonts/materialdesignicons-webfont.otf");
         Typeface VodafoneExB = FontManager.getFontTypeface(context, "fonts/VodafoneExB.TTF");
         Typeface VodafoneRg = FontManager.getFontTypeface(context, "fonts/VodafoneRg.ttf");
-        courseImage = (ImageView) view.findViewById(R.id.courseImage);
-        title = (TextView) view.findViewById(R.id.title);
-        sub_title = (TextView) view.findViewById(R.id.sub_title);
-        description = (TextView) view.findViewById(R.id.description);
-        programTitle = (TextView) view.findViewById(R.id.programTitle);
-        title.setTypeface(VodafoneExB);
-        programTitle.setTypeface(VodafoneExB);
-        sub_title.setTypeface(VodafoneRg);
-        description.setTypeface(VodafoneRg);
+       // courseImage = (ImageView) view.findViewById(R.id.courseImage);
+       // title = (TextView) view.findViewById(R.id.title);
+        //sub_title = (TextView) view.findViewById(R.id.sub_title);
+        //description = (TextView) view.findViewById(R.id.description);
+      //  programTitle = (TextView) view.findViewById(R.id.programTitle);
+       // title.setTypeface(VodafoneExB);
+       // programTitle.setTypeface(VodafoneExB);
+      //  sub_title.setTypeface(VodafoneRg);
+       // description.setTypeface(VodafoneRg);
 
 //        List<String> list = new ArrayList<String>();
 //        list.add("English");

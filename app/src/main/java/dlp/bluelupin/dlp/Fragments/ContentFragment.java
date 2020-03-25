@@ -12,11 +12,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
 
+import dlp.bluelupin.dlp.Activities.LanguageActivity;
 import dlp.bluelupin.dlp.Adapters.ContentRecycleAdapter;
 import dlp.bluelupin.dlp.Consts;
 import dlp.bluelupin.dlp.Database.DbHelper;
@@ -31,6 +33,10 @@ import dlp.bluelupin.dlp.Utilities.CustomProgressDialog;
 import dlp.bluelupin.dlp.Utilities.FontManager;
 import dlp.bluelupin.dlp.Utilities.LocationUtility;
 import dlp.bluelupin.dlp.Utilities.Utility;
+import dlp.bluelupin.dlp.shwocaseview.animation.MaterialIntroListener;
+import dlp.bluelupin.dlp.shwocaseview.shape.Focus;
+import dlp.bluelupin.dlp.shwocaseview.shape.FocusGravity;
+import dlp.bluelupin.dlp.shwocaseview.view.MaterialIntroView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,7 +45,7 @@ import dlp.bluelupin.dlp.Utilities.Utility;
  * Use the {@link ContentFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ContentFragment extends Fragment {
+public class ContentFragment extends Fragment implements MaterialIntroListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -48,8 +54,9 @@ public class ContentFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private int parentId;
     private String contentTitle;
+    TextView mark_complete;
 
-
+    private static final String INTRO_CARD1 = "intro_card_1";
 
     public ContentFragment() {
         // Required empty public constructor
@@ -125,7 +132,7 @@ public class ContentFragment extends Fragment {
             recyclerView.setAdapter(contentAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
             //listView.setAdapter(contentAdapter);
-            TextView mark_complete=view.findViewById(R.id.save);
+             mark_complete=view.findViewById(R.id.save);
             mark_complete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -136,6 +143,7 @@ public class ContentFragment extends Fragment {
         if (Consts.IS_DEBUG_LOG) {
             Log.d(Consts.LOG_TAG, "Content Fragment: data_item count: " + dataList.size());
         }
+        showIntro(mark_complete, INTRO_CARD1, getString(R.string.save), Focus.ALL);
     }
     @Override
     public void onResume() {
@@ -183,4 +191,26 @@ public class ContentFragment extends Fragment {
             Utility.alertForErrorMessage(context.getString(R.string.online_msg), context);
         }
     }
+
+    public void showIntro(View view, String id, String text, Focus focusType) {
+        new MaterialIntroView.Builder(getActivity())
+                .enableDotAnimation(true)
+                .setFocusGravity(FocusGravity.CENTER)
+                .setFocusType(focusType)
+                .setDelayMillis(200)
+                .enableFadeAnimation(true)
+                .setListener(this)
+                .performClick(true)
+                .setInfoText(text)
+                .setTarget(view)
+                .setUsageId(id) //THIS SHOULD BE UNIQUE ID
+                .show();
+    }
+
+    @Override
+    public void onUserClicked(String materialIntroViewId) {
+        // if (materialIntroViewId == INTRO_CARD1)
+        //   showIntro(doneLayout, INTRO_CARD2, "Select Done", FocusGravity.CENTER);
+    }
+
 }

@@ -66,7 +66,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
 
     @Override
     public CourseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.course_list_view_item, parent, false);
+        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.course_list_view_item_new, parent, false);
         return new CourseViewHolder(layoutView);
     }
 
@@ -79,10 +79,10 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
         Typeface materialdesignicons_font = FontManager.getFontTypefaceMaterialDesignIcons(context, "fonts/materialdesignicons-webfont.otf");
         holder.courseTitle.setTypeface(VodafoneExB);
         holder.courseDescription.setTypeface(VodafoneRg);
-        holder.cardView.setCardBackgroundColor(Color.parseColor("#00000000"));
-        holder.learnIcon.setTypeface(materialdesignicons_font);
-        holder.learnIcon.setText(Html.fromHtml("&#xf5da;"));
-        holder.learnLable.setTypeface(VodafoneExB);
+       //holder.cardView.setCardBackgroundColor(Color.parseColor("#00000000"));
+       // holder.learnIcon.setTypeface(materialdesignicons_font);
+       // holder.learnIcon.setText(Html.fromHtml("&#xf5da;"));
+       // holder.learnLable.setTypeface(VodafoneExB);
 
         final DbHelper dbHelper = new DbHelper(context);
         final Data data = itemList.get(position);
@@ -94,17 +94,17 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
 
 
                 if (media.getType().equalsIgnoreCase("video")) {
-                    holder.media_Icon.setTypeface(materialdesignicons_font);
-                    holder.media_Icon.setText(Html.fromHtml("&#xf36b;"));
+              //      holder.media_Icon.setTypeface(materialdesignicons_font);
+                   // holder.media_Icon.setText(Html.fromHtml("&#xf36b;"));
                 } else if (media.getType().equalsIgnoreCase("Audio")) {
-                    holder.media_Icon.setTypeface(materialdesignicons_font);
-                    holder.media_Icon.setText(Html.fromHtml("&#xf387;"));
+                 //   holder.media_Icon.setTypeface(materialdesignicons_font);
+                   // holder.media_Icon.setText(Html.fromHtml("&#xf387;"));
                 } else if (media.getType().equalsIgnoreCase("Url")) {
-                    holder.media_Icon.setTypeface(materialdesignicons_font);
-                    holder.media_Icon.setText(Html.fromHtml("&#xf57e;"));
+                   // holder.media_Icon.setTypeface(materialdesignicons_font);
+                   // holder.media_Icon.setText(Html.fromHtml("&#xf57e;"));
                 } else if (media.getType().equalsIgnoreCase("Youtube")) {
-                    holder.media_Icon.setTypeface(materialdesignicons_font);
-                    holder.media_Icon.setText(Html.fromHtml("&#xf36b;"));
+                  //  holder.media_Icon.setTypeface(materialdesignicons_font);
+                  //  holder.media_Icon.setText(Html.fromHtml("&#xf36b;"));
                 }
 
 
@@ -161,9 +161,9 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
                     Utility.getLanguageIdFromSharedPreferences(context));
             if (media != null) {
 
-                holder.mediaLayout.setVisibility(View.VISIBLE);
-                holder.mediaLayout.setOnClickListener(new View.OnClickListener() {
-                    @Override
+              //  holder.mediaLayout.setVisibility(View.VISIBLE);
+             /*     holder.mediaLayout.setOnClickListener(new View.OnClickListener() {
+                  @Override
                     public void onClick(View v) {
 
 
@@ -177,15 +177,15 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
                             playVideoOnSelect(data, holder, "Youtube");
                         }
                     }
-                });
+                });*/
 
             }
-            if (media == null) {
+          /*  if (media == null) {
                 holder.mediaLayout.setVisibility(View.INVISIBLE);
-            }
+            }*/
         }
 
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+   /*     holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
@@ -202,7 +202,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
                         .addToBackStack(null)
                         .commit();
             }
-        });
+        });*/
     }
 
     private void logCourseDetails(Data data, String actionType, String mediaPath, String eventName) {
