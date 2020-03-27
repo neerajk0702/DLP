@@ -25,14 +25,9 @@ public class ChaptersViewHolderNew extends RecyclerView.ViewHolder {
     //public LinearLayout download_layout, favoriteLayout;
     public ProgressBar progressBar;
     // public LinearLayout quizStartLayout,quizLayout,titleLayout,buttonLayout;
-    public View divView;
 
 
-    LinearLayout topicView;
     LinearLayout chapterView;
-    public TextView topicTitle;
-    public TextView statusText;
-    public ScaleImageView tpoicimage;
 
 
     public ChaptersViewHolderNew(View itemView) {
@@ -57,7 +52,6 @@ public class ChaptersViewHolderNew extends RecyclerView.ViewHolder {
         // quiz_Icon = (TextView) itemView.findViewById(R.id.quiz_Icon);
         // start_quiz_Icon = (TextView) itemView.findViewById(R.id.start_quiz_Icon);
         // arrowIcon = (TextView) itemView.findViewById(R.id.arrowIcon);
-        divView = (View) itemView.findViewById(R.id.divView);
         //quizStartLayout = (LinearLayout) itemView.findViewById(R.id.quizStartLayout);
         //quizLayout = (LinearLayout) itemView.findViewById(R.id.quizLayout);
         //titleLayout = (LinearLayout) itemView.findViewById(R.id.titleLayout);
@@ -68,11 +62,7 @@ public class ChaptersViewHolderNew extends RecyclerView.ViewHolder {
         // mediaLayout = (LinearLayout) itemView.findViewById(R.id.mediaLayout);
 
 
-        topicView = itemView.findViewById(R.id.topicView);
         chapterView = itemView.findViewById(R.id.chapterView);
-        topicTitle = itemView.findViewById(R.id.topicTitle);
-        statusText = itemView.findViewById(R.id.statusText);
-        tpoicimage = itemView.findViewById(R.id.tpoicimage);
 
     }
 

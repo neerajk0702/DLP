@@ -134,7 +134,7 @@ public class ChaptersFragment extends Fragment implements View.OnClickListener {
         quiztext = view.findViewById(R.id.quiztext);
         Name = view.findViewById(R.id.Name);
         moreChapter = view.findViewById(R.id.moreChapter);
-        totalItemView= view.findViewById(R.id.totalItemView);
+        totalItemView = view.findViewById(R.id.totalItemView);
         if (type.equalsIgnoreCase("Chapter")) {
             rootActivity.setScreenTitle(context.getString(R.string.Chapters));
             totalItemView.setVisibility(View.VISIBLE);
@@ -166,14 +166,22 @@ public class ChaptersFragment extends Fragment implements View.OnClickListener {
                 if (contentData != null) {
                     contentData.setQuizAvailable(true);
                     contentData.setContent_id(parentId);
+
                     dataList.add(contentData);
                 }
             }
 
             ChaptersAdapterNew chaptersAdapter = new ChaptersAdapterNew(context, dataList, type);
             RecyclerView chaptersRecyclerView = (RecyclerView) view.findViewById(R.id.chaptersRecyclerView);
-           // chaptersRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-            GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+            // chaptersRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+            GridLayoutManager gridLayoutManager;
+            if (type.equalsIgnoreCase("Topic")) {
+                gridLayoutManager = new GridLayoutManager(getContext(), 1);
+            } else {
+                gridLayoutManager = new GridLayoutManager(getContext(), 2);
+            }
+
+
             chaptersRecyclerView.setLayoutManager(gridLayoutManager);
             chaptersRecyclerView.setHasFixedSize(true);
             chaptersRecyclerView.setNestedScrollingEnabled(false);

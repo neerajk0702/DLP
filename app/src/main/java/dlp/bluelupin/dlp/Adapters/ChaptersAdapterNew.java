@@ -70,7 +70,16 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
 
     @Override
     public ChaptersViewHolderNew onCreateViewHolder(ViewGroup parent, int viewType) {
-        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.chapters_list_view_item_new, parent, false);
+        View layoutView;
+        if (selectType.equalsIgnoreCase("Topic")) {
+            layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.topic_list_view_item_new, parent, false);
+
+        } else {
+            layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.chapters_list_view_item_new, parent, false);
+
+        }
+
+
         return new ChaptersViewHolderNew(layoutView);
     }
 
@@ -80,25 +89,25 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
         Typeface VodafoneExB = FontManager.getFontTypeface(context, "fonts/VodafoneExB.TTF");
         Typeface VodafoneRg = FontManager.getFontTypeface(context, "fonts/VodafoneRg.ttf");
         holder.chapterTitle.setTypeface(VodafoneExB);
-      //  holder.chapterDescription.setTypeface(VodafoneRg);
-      //  holder.favorite.setTypeface(VodafoneRg);
-      //  holder.download.setTypeface(VodafoneRg);
-        holder.cardView.setCardBackgroundColor(Color.parseColor("#EEEEEE"));
-       // holder.quiz.setTypeface(VodafoneExB);
-       // holder.quiz_Icon.setTypeface(materialdesignicons_font);
-       // holder.quiz_Icon.setText(Html.fromHtml("&#xf186;"));
-       // holder.start_quiz_Icon.setTypeface(materialdesignicons_font);
-       // holder.start_quiz_Icon.setText(Html.fromHtml("&#xf186;"));
-       // holder.arrowIcon.setTypeface(materialdesignicons_font);
-       //// holder.arrowIcon.setText(Html.fromHtml("&#xf054;"));
+        //  holder.chapterDescription.setTypeface(VodafoneRg);
+        //  holder.favorite.setTypeface(VodafoneRg);
+        //  holder.download.setTypeface(VodafoneRg);
+       // holder.cardView.setCardBackgroundColor(Color.parseColor("#EEEEEE"));
+        // holder.quiz.setTypeface(VodafoneExB);
+        // holder.quiz_Icon.setTypeface(materialdesignicons_font);
+        // holder.quiz_Icon.setText(Html.fromHtml("&#xf186;"));
+        // holder.start_quiz_Icon.setTypeface(materialdesignicons_font);
+        // holder.start_quiz_Icon.setText(Html.fromHtml("&#xf186;"));
+        // holder.arrowIcon.setTypeface(materialdesignicons_font);
+        //// holder.arrowIcon.setText(Html.fromHtml("&#xf054;"));
 
         // holder.downloadIcon.setImageResource(R.drawable.downloadupdate);
 
         //holder.starIcon.setTypeface(materialdesignicons_font);
 //        holder.starIcon.setText(Html.fromHtml("&#xf4ce;"));
-     //   holder.favorite.setTypeface(VodafoneRg);
-     //   holder.download.setTypeface(VodafoneRg);
-     //   holder.downloadIcon.setTypeface(materialdesignicons_font);
+        //   holder.favorite.setTypeface(VodafoneRg);
+        //   holder.download.setTypeface(VodafoneRg);
+        //   holder.downloadIcon.setTypeface(materialdesignicons_font);
 
         //show and hide favorite icon layout only in chapter layout
         /*if (type.equalsIgnoreCase(Consts.CHAPTER)) {
@@ -117,17 +126,17 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
                     Utility.getLanguageIdFromSharedPreferences(context));
             if (media != null)
                 if (media.getType().equalsIgnoreCase("video")) {
-                 //   holder.media_Icon.setTypeface(materialdesignicons_font);
-                 //   holder.media_Icon.setText(Html.fromHtml("&#xf36b;"));
+                    //   holder.media_Icon.setTypeface(materialdesignicons_font);
+                    //   holder.media_Icon.setText(Html.fromHtml("&#xf36b;"));
 
                 }
             if (media.getType().equalsIgnoreCase("Audio")) {
                 //holder.media_Icon.setTypeface(materialdesignicons_font);
-               // holder.media_Icon.setText(Html.fromHtml("&#xf387;"));
+                // holder.media_Icon.setText(Html.fromHtml("&#xf387;"));
             }
             if (media.getType().equalsIgnoreCase("Youtube")) {
-               // holder.media_Icon.setTypeface(materialdesignicons_font);
-               // holder.media_Icon.setText(Html.fromHtml("&#xf36b;"));
+                // holder.media_Icon.setTypeface(materialdesignicons_font);
+                // holder.media_Icon.setText(Html.fromHtml("&#xf36b;"));
             }
 
         }
@@ -150,13 +159,13 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
             Data descriptionResource = dbHelper.getResourceEntityByName(data.getLang_resource_description(),
                     Utility.getLanguageIdFromSharedPreferences(context));
             if (descriptionResource != null) {
-             //   holder.chapterDescription.setVisibility(View.VISIBLE);
-               // holder.chapterDescription.setText(Html.fromHtml(descriptionResource.getContent()));
+                //   holder.chapterDescription.setVisibility(View.VISIBLE);
+                // holder.chapterDescription.setText(Html.fromHtml(descriptionResource.getContent()));
             } else {
-              //  holder.chapterDescription.setVisibility(View.GONE);
+                //  holder.chapterDescription.setVisibility(View.GONE);
             }
         } else {
-           // holder.chapterDescription.setVisibility(View.GONE);
+            // holder.chapterDescription.setVisibility(View.GONE);
         }
 
       /*  if (data.getThumbnail_media_id() != 0) {
@@ -195,15 +204,11 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
             holder.chapterImage.setImageBitmap(null);
             if (media != null && media.getDownload_url() != null) {
                 if (selectType.equalsIgnoreCase("Topic")) {
-                    holder.chapterView.setVisibility(View.GONE);
-                    holder.topicView.setVisibility(View.VISIBLE);
 
-                    Picasso.with(context).load(media.getDownload_url()).placeholder(R.drawable.imageplaceholder).into(holder.tpoicimage);
-
-                }else {
                     Picasso.with(context).load(media.getDownload_url()).placeholder(R.drawable.imageplaceholder).into(holder.chapterImage);
-                    holder.chapterView.setVisibility(View.VISIBLE);
-                    holder.topicView.setVisibility(View.GONE);
+
+                } else {
+                    Picasso.with(context).load(media.getDownload_url()).placeholder(R.drawable.imageplaceholder).into(holder.chapterImage);
                 }
 
                /* if(media.getLocalFilePath()!=null) {
@@ -252,18 +257,18 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
                 super.onPostExecute(resourcesToDownloadList);
                 if (resourcesToDownloadList.size() <= 0) {
                     // holder.downloadIcon.setTextColor(Color.parseColor("#ffffff"));
-               //     holder.downloadIcon.setText(Html.fromHtml("&#xf12c;"));
-                //    holder.download.setText(context.getString(R.string.update));
+                    //     holder.downloadIcon.setText(Html.fromHtml("&#xf12c;"));
+                    //    holder.download.setText(context.getString(R.string.update));
                 } else {
-                  //  holder.downloadIcon.setText(Html.fromHtml("&#xf1da;"));
+                    //  holder.downloadIcon.setText(Html.fromHtml("&#xf1da;"));
                     // holder.downloadIcon.setTextColor(Color.parseColor("#ffffff"));
-                   // holder.download.setText(context.getString(R.string.Take_Offline));
+                    // holder.download.setText(context.getString(R.string.Take_Offline));
                 }
                 //if meadia not downloaded then show download_layout
                 if (data.getThumbnail_media_id() != 0) {
                     final Data media = dbHelper.getDownloadMediaEntityById(data.getThumbnail_media_id());
                     if (media != null) {
-                     //   holder.download_layout.setVisibility(View.VISIBLE);
+                        //   holder.download_layout.setVisibility(View.VISIBLE);
 
                     /*    holder.download_layout.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -306,7 +311,7 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
 */
                     } else {
 
-                       // holder.download_layout.setVisibility(View.GONE);
+                        // holder.download_layout.setVisibility(View.GONE);
                     }
                 }
             }
@@ -315,23 +320,16 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
         if (selectType.equalsIgnoreCase("Topic")) {//Quiz show only in Topic
             quizList = dbhelper.getDataEntityByParentIdAndType(data.getId(), "Quiz");
             if (data.getQuizAvailable()) {
-                holder.chapterImage.setVisibility(View.GONE);
-                holder.chapterView.setVisibility(View.GONE);
-                holder.topicView.setVisibility(View.VISIBLE);
 
 
-              //  holder.titleLayout.setVisibility(View.GONE);
-               // holder.buttonLayout.setVisibility(View.GONE);
-                holder.divView.setVisibility(View.GONE);
-               // holder.quizStartLayout.setVisibility(View.VISIBLE);
+                //  holder.titleLayout.setVisibility(View.GONE);
+                // holder.buttonLayout.setVisibility(View.GONE);
+                // holder.quizStartLayout.setVisibility(View.VISIBLE);
             } else {
-               // holder.quizStartLayout.setVisibility(View.GONE);
+                // holder.quizStartLayout.setVisibility(View.GONE);
                 holder.chapterImage.setVisibility(View.VISIBLE);
-               // holder.titleLayout.setVisibility(View.VISIBLE);
-               // holder.buttonLayout.setVisibility(View.VISIBLE);
-                holder.divView.setVisibility(View.VISIBLE);
-                holder.chapterView.setVisibility(View.VISIBLE);
-                holder.topicView.setVisibility(View.GONE);
+                // holder.titleLayout.setVisibility(View.VISIBLE);
+                // holder.buttonLayout.setVisibility(View.VISIBLE);
 
 
             }
@@ -372,7 +370,7 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
                 });*/
 
             } else {
-               // holder.quizLayout.setVisibility(View.GONE);
+                // holder.quizLayout.setVisibility(View.GONE);
             }
         }
 
@@ -383,7 +381,7 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
                     Utility.getLanguageIdFromSharedPreferences(context));
             if (media != null) {
 
-             //   holder.mediaLayout.setVisibility(View.VISIBLE);
+                //   holder.mediaLayout.setVisibility(View.VISIBLE);
           /*      holder.mediaLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -403,7 +401,7 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
 
             }
             if (media == null) {
-               // holder.mediaLayout.setVisibility(View.INVISIBLE);
+                // holder.mediaLayout.setVisibility(View.INVISIBLE);
             }
         }
         holder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -419,9 +417,9 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
                 if (Consts.IS_DEBUG_LOG) {
                     Log.d(Consts.LOG_TAG, "Navigating to  data_item id: " + data.getId() + " type: " + type);
                 }
-                if(selectType.equalsIgnoreCase(Consts.CHAPTER)){
+                if (selectType.equalsIgnoreCase(Consts.CHAPTER)) {
                     logChapterDetails(data, "", "", "Chapters Details");
-                }else if(selectType.equalsIgnoreCase(Consts.TOPIC)){
+                } else if (selectType.equalsIgnoreCase(Consts.TOPIC)) {
                     logChapterDetails(data, "", "", "Topic Details");
                 }
                 if (type.equalsIgnoreCase(Consts.COURSE) || type.equalsIgnoreCase(Consts.CHAPTER) || type.equalsIgnoreCase(Consts.TOPIC)) {
@@ -429,7 +427,6 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
                     stopAudio();
                     FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
                     ChaptersFragment fragment = ChaptersFragment.newInstance(data.getId(), type);
-
                     FragmentTransaction transaction = fragmentManager.beginTransaction();
                     transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
                     transaction.replace(R.id.container, fragment)
@@ -456,7 +453,7 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
             }
         });
 
-       // isFavorites(data, holder);//set favorites icon
+        // isFavorites(data, holder);//set favorites icon
   /*      holder.favoriteLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -491,9 +488,9 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
                     Utility.getLanguageIdFromSharedPreferences(context));
 
             if (media != null) {
-                if(selectType.equalsIgnoreCase(Consts.CHAPTER)){
+                if (selectType.equalsIgnoreCase(Consts.CHAPTER)) {
                     logChapterDetails(data, "", "", "Chapters Details");
-                }else if(selectType.equalsIgnoreCase(Consts.TOPIC)){
+                } else if (selectType.equalsIgnoreCase(Consts.TOPIC)) {
                     logChapterDetails(data, "", "", "Topic Details");
                 }
                 if (Consts.IS_DEBUG_LOG) {
@@ -511,9 +508,9 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
                     Utility.getLanguageIdFromSharedPreferences(context));
 
             if (media != null) {
-                if(selectType.equalsIgnoreCase(Consts.CHAPTER)){
+                if (selectType.equalsIgnoreCase(Consts.CHAPTER)) {
                     logChapterDetails(data, "", "", "Chapters Details");
-                }else if(selectType.equalsIgnoreCase(Consts.TOPIC)){
+                } else if (selectType.equalsIgnoreCase(Consts.TOPIC)) {
                     logChapterDetails(data, "", "", "Topic Details");
                 }
                 if (Consts.IS_DEBUG_LOG) {
@@ -550,7 +547,7 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
                             mediaPlayer = MediaPlayer.create(context, myUri);
                         }
 
-                        if (mediaPlayer!=null && mediaPlayer.isPlaying()) {//listen_text.getText() == "PAUSE") {
+                        if (mediaPlayer != null && mediaPlayer.isPlaying()) {//listen_text.getText() == "PAUSE") {
                             mediaPlayer.pause();
                         } else {
 
@@ -592,20 +589,20 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
                     if (url != null && !url.equals("")) {
                         showOfflineVideo(media);
                     } else {
-                        try{
-                        if (Utility.isOnline(context)) {
-                            url = media.getUrl();
-                            if (url != null && !url.equals("")) {
-                                Intent intent = new Intent(Intent.ACTION_VIEW);
-                                intent.setData(Uri.parse(url));
-                                intent.putExtra("force_fullscreen", true);
-                                context.startActivity(intent);
-                                Consts.playYouTubeFlag = false;//after device back press MainAtivity don't reload
+                        try {
+                            if (Utility.isOnline(context)) {
+                                url = media.getUrl();
+                                if (url != null && !url.equals("")) {
+                                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                                    intent.setData(Uri.parse(url));
+                                    intent.putExtra("force_fullscreen", true);
+                                    context.startActivity(intent);
+                                    Consts.playYouTubeFlag = false;//after device back press MainAtivity don't reload
+                                }
+                            } else {
+                                Utility.alertForErrorMessage(context.getString(R.string.online_msg), context);
                             }
-                        } else {
-                            Utility.alertForErrorMessage(context.getString(R.string.online_msg), context);
-                        }
-                        }catch (Exception e) {
+                        } catch (Exception e) {
 
                         }
                     }
@@ -671,9 +668,9 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
                         Utility.getLanguageIdFromSharedPreferences(context));
                 if (titleResource != null) {
                     contentTitle = titleResource.getContent();
-                    if(selectType.equalsIgnoreCase(Consts.CHAPTER)){
+                    if (selectType.equalsIgnoreCase(Consts.CHAPTER)) {
                         logChapterDetails(data, "", "", "Chapters Details");
-                    }else if(selectType.equalsIgnoreCase(Consts.TOPIC)){
+                    } else if (selectType.equalsIgnoreCase(Consts.TOPIC)) {
                         logChapterDetails(data, "", "", "Topic Details");
                     }
                 }
@@ -774,7 +771,6 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
             });
         }
     }
-
 
 
     @Override

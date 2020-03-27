@@ -47,7 +47,6 @@
                         android:id="@+id/logiiocn"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/dimValue_20"
                         android:scaleType="fitXY"
                         android:src="@drawable/maincurs" />
 
@@ -72,6 +71,7 @@
                     android:id="@+id/titletxt"
                     android:layout_width="match_parent"
                     android:textSize="@dimen/dimTextSize_26"
+                    android:text="Jaddu Ginni Ka"
                     android:layout_alignParentRight="true"
                     android:padding="@dimen/dimValue_5"
                     android:textColor="@color/colorWhite"
