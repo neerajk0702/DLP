@@ -46,6 +46,9 @@ import dlp.bluelupin.dlp.Utilities.FontManager;
 import dlp.bluelupin.dlp.Utilities.LocationUtility;
 import dlp.bluelupin.dlp.Utilities.LogAnalyticsHelper;
 import dlp.bluelupin.dlp.Utilities.Utility;
+import dlp.bluelupin.dlp.shwocaseview.shape.Focus;
+import dlp.bluelupin.dlp.shwocaseview.shape.FocusGravity;
+import dlp.bluelupin.dlp.shwocaseview.view.MaterialIntroView;
 
 /**
  * Created by Neeraj on 7/26/2016.
@@ -493,4 +496,8 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
             mediaPlayer.release();
         }
     }
+
+
+
+
 }

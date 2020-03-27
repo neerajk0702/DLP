@@ -34,6 +34,10 @@ import dlp.bluelupin.dlp.R;
 import dlp.bluelupin.dlp.Utilities.FontManager;
 import dlp.bluelupin.dlp.Utilities.LocationUtility;
 import dlp.bluelupin.dlp.Utilities.Utility;
+import dlp.bluelupin.dlp.shwocaseview.animation.MaterialIntroListener;
+import dlp.bluelupin.dlp.shwocaseview.shape.Focus;
+import dlp.bluelupin.dlp.shwocaseview.shape.FocusGravity;
+import dlp.bluelupin.dlp.shwocaseview.view.MaterialIntroView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,12 +47,12 @@ import dlp.bluelupin.dlp.Utilities.Utility;
  * Use the {@link ChaptersFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ChaptersFragment extends Fragment implements View.OnClickListener {
+public class ChaptersFragment extends Fragment implements View.OnClickListener , MaterialIntroListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private static final String INTRO_CARD = "recyclerView_material_intro";
     // TODO: Rename and change types of parameters
     private int parentId;
     private String type;
@@ -64,7 +68,7 @@ public class ChaptersFragment extends Fragment implements View.OnClickListener {
     TextView Name;
     ImageView moreChapter;
     LinearLayout totalItemView;
-
+    RecyclerView chaptersRecyclerView;
     private OnFragmentInteractionListener mListener;
 
     public ChaptersFragment() {
@@ -172,7 +176,7 @@ public class ChaptersFragment extends Fragment implements View.OnClickListener {
             }
 
             ChaptersAdapterNew chaptersAdapter = new ChaptersAdapterNew(context, dataList, type);
-            RecyclerView chaptersRecyclerView = (RecyclerView) view.findViewById(R.id.chaptersRecyclerView);
+             chaptersRecyclerView = (RecyclerView) view.findViewById(R.id.chaptersRecyclerView);
             // chaptersRecyclerView.setLayoutManager(new LinearLayoutManager(context));
             GridLayoutManager gridLayoutManager;
             if (type.equalsIgnoreCase("Topic")) {
@@ -242,5 +246,27 @@ public class ChaptersFragment extends Fragment implements View.OnClickListener {
     public void onPause() {
         super.onPause();
         LocationUtility.stopLocationUpdates();
+    }
+
+    private void showMaterialIntro() {
+        new MaterialIntroView.Builder(getActivity())
+                .enableDotAnimation(true)
+                .setFocusGravity(FocusGravity.CENTER)
+                .setFocusType(Focus.NORMAL)
+                .setDelayMillis(200)
+                .enableFadeAnimation(true)
+                .setListener(this)
+                .performClick(true)
+                .setInfoText(getString(R.string.startlearning))
+                .setTarget(chaptersRecyclerView.getChildAt(0))
+                .setUsageId(INTRO_CARD) //THIS SHOULD BE UNIQUE ID
+                .show();
+    }
+
+    @Override
+    public void onUserClicked(String materialIntroViewId) {
+        if (materialIntroViewId.equals(INTRO_CARD)) {
+            //   Toast.makeText(getActivity(), "User Clicked", Toast.LENGTH_SHORT).show();
+        }
     }
 }
