@@ -144,5 +144,28 @@
           <string name="doyou">क्या आप वाकई सटीक होना चाहते हैं ?</string>
          <string name="please">कृपया विकल्प का चयन करें</string>
           <string name="ok">ठीक</string>
+    <string name="Certifictae">प्रशंसा प्रमाण पत्र</string>
+    <string name="InProgress">चालू</string>
+    <string name="Invite">आमंत्रण</string>
+    <string name="Share">शेयर</string>
+    <string name="Verifyotp">OTP सत्यापित करें</string>
+    <string name="alearn">एक सीखने का अनुभव वितरण मंच</string>
+    <string name="disclaimer">अस्वीकरण</string>
+    <string name="disclaimerstr">कृपया पहले अस्वीकरण पढ़ें</string>
+    <string name="iagree">मैं टर्म एंड कंडीशंस के लिए सहमत हूं</string>
+    <string name="learntoady">आज आप क्या सीखना चाहेंगे?</string>
+    <string name="mark_complete">पूरा मार्क</string>
+    <string name="optional">ऐच्छिक</string>
+    <string name="otp_textnew">कृपया अपने मोबाइल नंबर पर भेजा गया 4 अंकों का ओटीपी कोड दर्ज करें</string>
+    <string name="plsrd">कृपया अस्वीकरण पढ़ें</string>
+    <string name="referfriend">मित्र को आमंत्रित करें</string>
+    <string name="sharejoy">ભણતરનો આનંદ વહેંચો. તમારા મિત્રોને આમંત્રણ આપો</string>
+    <string name="signupsingin">प्रवेश या साइन अप</string>
+    <string name="startlearning">सीखना शुरू करें</string>
+    <string name="tendigitno">कृपया अपना 10 अंकों का मोबाइल नंबर दर्ज करें</string>
+    <string name="updatestatus">आपका विषय सफलतापूर्वक मार्क पूरा हो गया है।</string>
+    <string name="updatestatusnot">आपका विषय मार्क पूरा नहीं किया गया है!।</string>
+    <string name="viewpastinvitestr">अतीत के निमंत्रण देखें</string>
+    <string name="user">उपयोगकर्ता</string>
 
 </resources>

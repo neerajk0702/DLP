@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimValue_10"
-            android:text="What you would like to learn today?"
+            android:text="@string/learntoady"
             android:textColor="#000"
             android:textSize="@dimen/dimTextSize_22"
             android:visibility="visible" />

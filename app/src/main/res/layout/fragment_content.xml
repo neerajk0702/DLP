@@ -53,7 +53,7 @@
                         <TextView
                             android:id="@+id/save"
                             android:layout_width="wrap_content"
-                            android:text="@string/markcomplete"
+                            android:text="@string/mark_complete"
                             android:layout_margin="@dimen/dimValue_5"
                             android:layout_gravity="center"
                             android:gravity="center"

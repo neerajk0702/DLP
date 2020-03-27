@@ -330,7 +330,7 @@
                             android:layout_gravity="center"
                             android:gravity="left"
                             android:padding="@dimen/dimValue_5"
-                            android:text="Appreciation Certifictae"
+                            android:text="@string/Certifictae"
                             android:textColor="#4a4d4e"
                             android:textSize="@dimen/dimTextSize_16" />
 
@@ -347,7 +347,7 @@
 
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:text="Share"
+                                android:text="@string/Share"
                                 android:layout_margin="@dimen/dimValue_5"
                                 android:padding="@dimen/dimValue_10"
                                 android:textColor="@color/colorWhite"

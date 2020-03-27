@@ -130,4 +130,27 @@
     <string name="doyou">நீங்கள் நிச்சயமாக வெளியேற வேண்டுமா?</string>
     <string name="please">தயவு செய்து தேர்வு செய்யவும்</string>
     <string name="ok">சரி</string>
+    <string name="Certifictae">பாராட்டு சான்றிதழ்</string>
+    <string name="InProgress">முன்னேற்றத்தில் உள்ளது</string>
+    <string name="Invite">அழைக்கவும்</string>
+    <string name="Share">பகிர்</string>
+    <string name="Verifyotp">OTP ஐ சரிபார்க்கவும்</string>
+    <string name="alearn">ஒரு கற்றல் அனுபவம் விநியோக தளம்</string>
+    <string name="disclaimer">மறுப்பு</string>
+    <string name="disclaimerstr">முதலில் மறுப்பு படிக்கவும்</string>
+    <string name="iagree">கால மற்றும் நிபந்தனைகளுக்கு நான் ஒப்புக்கொள்கிறேன்</string>
+    <string name="learntoady">இன்று நீங்கள் என்ன கற்றுக்கொள்ள விரும்புகிறீர்கள்?</string>
+    <string name="mark_complete">குறி முழுமையானது</string>
+    <string name="optional">விரும்பினால்</string>
+    <string name="otp_textnew">உங்கள் மொபைல் எண்ணில் அனுப்பப்பட்ட 4 இலக்க OTP குறியீட்டை உள்ளிடவும்</string>
+    <string name="plsrd">மறுப்பு படிக்கவும்</string>
+    <string name="referfriend">ஒரு நண்பரைப் பார்க்கவும்</string>
+    <string name="sharejoy">கற்றலின் மகிழ்ச்சியைப் பகிர்ந்து கொள்ளுங்கள். உங்கள் நண்பர்களை அழைக்கவும் Kaṟṟaliṉ makiḻcciyaip pakirntu koḷḷuṅkaḷ. Uṅkaḷ naṇparkaḷai aḻaikkavum</string>
+    <string name="signupsingin">உள்நுழைவு / பதிவுபெறுதல்</string>
+    <string name="startlearning">கற்கத் தொடங்குங்கள்</string>
+    <string name="tendigitno">உங்கள் 10 இலக்க மொபைல் எண்ணை உள்ளிடவும்</string>
+    <string name="updatestatus">உங்கள் தலைப்பு வெற்றிகரமாக முழுமையானது.</string>
+    <string name="updatestatusnot">உங்கள் தலைப்பு மார்க் முழுமையானதாக இல்லை!</string>
+    <string name="viewpastinvitestr">கடந்த அழைப்புகளைக் காண்க</string>
+    <string name="user">பயனர்</string>
 </resources>

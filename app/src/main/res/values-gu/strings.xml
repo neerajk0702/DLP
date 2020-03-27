@@ -144,5 +144,28 @@
           <string name="doyou">શું તમે ખરેખર બહાર નીકળવા માંગો છો?</string>
          <string name="please">કૃપા કરી વિકલ્પ પસંદ કરો</string>
           <string name="ok">ઠીક છે</string>
+    <string name="Certifictae">પ્રશંસા પ્રમાણપત્ર</string>
+    <string name="InProgress">પ્રગતિમાં</string>
+    <string name="Invite">આમંત્રિત</string>
+    <string name="Share">શેર કરો</string>
+    <string name="Verifyotp">ઓટીપી ચકાસો</string>
+    <string name="alearn">એક લર્નિંગ અનુભવ ડિલિવરી પ્લેટફોર્મ</string>
+    <string name="disclaimer">અસ્વીકરણ</string>
+    <string name="disclaimerstr">કૃપા કરીને અસ્વીકરણ પ્રથમ વાંચો</string>
+    <string name="iagree">હું મુદત અને શરતોથી સંમત છું</string>
+    <string name="learntoady">તમે આજે શું શીખવા માંગો છો?</string>
+    <string name="mark_complete">માર્ક પૂર્ણ</string>
+    <string name="optional">વૈકલ્પિક</string>
+    <string name="otp_textnew">કૃપા કરીને તમારા મોબાઇલ નંબર પર મોકલેલો 4 અંકનો ઓટીપી કોડ દાખલ કરો</string>
+    <string name="plsrd">કૃપા કરીને અસ્વીકરણ વાંચો</string>
+    <string name="referfriend">મિત્ર નો સંદર્ભ લો</string>
+    <string name="sharejoy">ભણતરનો આનંદ વહેંચો. તમારા મિત્રોને આમંત્રણ આપો</string>
+    <string name="signupsingin">સાઇન ઇન / સાઇનઅપ</string>
+    <string name="startlearning">લર્નિંગ શરૂ કરો</string>
+    <string name="tendigitno">કૃપા કરી તમારો 10 અંકનો મોબાઇલ નંબર દાખલ કરો</string>
+    <string name="updatestatus">તમારો વિષય સફળતાપૂર્વક માર્ક પૂર્ણ થયો છે.</string>
+    <string name="updatestatusnot">તમારો વિષય માર્ક પૂર્ણ થયો નથી.</string>
+    <string name="viewpastinvitestr">પાછલા આમંત્રણો જુઓ</string>
+    <string name="user">વપરાશકર્તા</string>
 
 </resources>

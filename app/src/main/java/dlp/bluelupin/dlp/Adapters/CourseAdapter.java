@@ -185,7 +185,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
             }*/
         }
 
-   /*     holder.cardView.setOnClickListener(new View.OnClickListener() {
+      holder.startlearning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
@@ -202,7 +202,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
                         .addToBackStack(null)
                         .commit();
             }
-        });*/
+        });
     }
 
     private void logCourseDetails(Data data, String actionType, String mediaPath, String eventName) {

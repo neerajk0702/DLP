@@ -33,47 +33,47 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_alignParentBottom="true">
-                <LinearLayout
-                    android:id="@+id/quizLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/chapterImage"
-                    android:layout_alignRight="@+id/chapterImage"
-                    android:layout_margin="@dimen/dimValue_20"
-                    android:background="@color/colorRad"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
-
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:background="@color/colorDrakRed"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/dimValue_10">
-
-                        <TextView
-                            android:id="@+id/quiz_Icon"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/colorDrakRed"
-                            android:gravity="center"
-                            android:text="icon"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="@dimen/dimTextSize_18" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/submit_text"
+                        android:id="@+id/quizLayout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="left"
-                        android:padding="@dimen/dimValue_10"
-                        android:text="@string/Quiz"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="@dimen/dimTextSize_16" />
+                        android:layout_alignBottom="@+id/chapterImage"
+                        android:layout_alignRight="@+id/chapterImage"
+                        android:layout_margin="@dimen/dimValue_20"
+                        android:background="@color/colorRad"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
 
-                </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorDrakRed"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/dimValue_10">
+
+                            <TextView
+                                android:id="@+id/quiz_Icon"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorDrakRed"
+                                android:gravity="center"
+                                android:text="icon"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/dimTextSize_18" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/submit_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="left"
+                            android:padding="@dimen/dimValue_10"
+                            android:text="@string/Quiz"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/dimTextSize_16" />
+
+                    </LinearLayout>
                     <LinearLayout
                         android:id="@+id/mediaLayout"
                         android:layout_width="wrap_content"

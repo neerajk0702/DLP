@@ -7,20 +7,25 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
 
 import dlp.bluelupin.dlp.Adapters.ChaptersAdapter;
+import dlp.bluelupin.dlp.Adapters.ChaptersAdapterNew;
 import dlp.bluelupin.dlp.Consts;
 import dlp.bluelupin.dlp.Database.DbHelper;
 import dlp.bluelupin.dlp.MainActivity;
@@ -47,6 +52,18 @@ public class ChaptersFragment extends Fragment implements View.OnClickListener {
     // TODO: Rename and change types of parameters
     private int parentId;
     private String type;
+    ImageView logiiocn;
+    TextView titletxt;
+    TextView countchapter;
+    TextView learnLable;
+    TextView topicCount;
+    TextView topictext;
+
+    TextView quizCount;
+    TextView quiztext;
+    TextView Name;
+    ImageView moreChapter;
+    LinearLayout totalItemView;
 
     private OnFragmentInteractionListener mListener;
 
@@ -107,11 +124,26 @@ public class ChaptersFragment extends Fragment implements View.OnClickListener {
         //chapterTitle = (TextView) view.findViewById(R.id.chapterTitle);
         //chapterTitle.setTypeface(VodafoneExB);
         DbHelper db = new DbHelper(context);
+        logiiocn = view.findViewById(R.id.logiiocn);
+        titletxt = view.findViewById(R.id.titletxt);
+        countchapter = view.findViewById(R.id.countchapter);
+        learnLable = view.findViewById(R.id.learnLable);
+        topicCount = view.findViewById(R.id.topicCount);
+        topictext = view.findViewById(R.id.topictext);
+        quizCount = view.findViewById(R.id.quizCount);
+        quiztext = view.findViewById(R.id.quiztext);
+        Name = view.findViewById(R.id.Name);
+        moreChapter = view.findViewById(R.id.moreChapter);
+        totalItemView= view.findViewById(R.id.totalItemView);
         if (type.equalsIgnoreCase("Chapter")) {
             rootActivity.setScreenTitle(context.getString(R.string.Chapters));
+            totalItemView.setVisibility(View.VISIBLE);
+            Name.setText(context.getString(R.string.Chapters));
             // chapterTitle.setText(context.getString(R.string.Chapters));
         } else if (type.equalsIgnoreCase("Topic")) {
             rootActivity.setScreenTitle(context.getString(R.string.Topic));
+            totalItemView.setVisibility(View.GONE);
+            Name.setText(context.getString(R.string.Topic));
             //chapterTitle.setText(context.getString(R.string.Topic));
         }
 
@@ -138,10 +170,11 @@ public class ChaptersFragment extends Fragment implements View.OnClickListener {
                 }
             }
 
-            ChaptersAdapter chaptersAdapter = new ChaptersAdapter(context, dataList, type);
+            ChaptersAdapterNew chaptersAdapter = new ChaptersAdapterNew(context, dataList, type);
             RecyclerView chaptersRecyclerView = (RecyclerView) view.findViewById(R.id.chaptersRecyclerView);
-            chaptersRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-            //chaptersRecyclerView.setLayoutManager(new LinearLayoutManagerWithSmoothScroller(context));
+           // chaptersRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+            chaptersRecyclerView.setLayoutManager(gridLayoutManager);
             chaptersRecyclerView.setHasFixedSize(true);
             chaptersRecyclerView.setNestedScrollingEnabled(false);
             chaptersRecyclerView.setAdapter(chaptersAdapter);
@@ -190,6 +223,7 @@ public class ChaptersFragment extends Fragment implements View.OnClickListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
     @Override
     public void onResume() {
         super.onResume();

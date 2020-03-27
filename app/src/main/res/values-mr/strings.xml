@@ -151,5 +151,28 @@
     <string name="doyou">आपण खरोखर बाहेर पडू इच्छिता?</string>
     <string name="please">कृपया पर्याय निवडा</string>
     <string name="ok">ठीक आहे</string>
+    <string name="Certifictae">कौतुक प्रमाणपत्र</string>
+    <string name="InProgress">प्रगतीपथावर</string>
+    <string name="Invite">आमंत्रित करा</string>
+    <string name="Share">सामायिक करा</string>
+    <string name="Verifyotp">ओटीपी सत्यापित करा</string>
+    <string name="alearn">एक अनुभव अनुभव वितरण मंच</string>
+    <string name="disclaimer">अस्वीकरण</string>
+    <string name="disclaimerstr">कृपया अस्वीकरण प्रथम वाचा</string>
+    <string name="iagree">मी अटी व शर्तींशी सहमत आहे</string>
+    <string name="learntoady">आज आपण काय शिकू इच्छिता?</string>
+    <string name="mark_complete">पूर्ण चिन्हांकित करा</string>
+    <string name="optional">पर्यायी</string>
+    <string name="otp_textnew">कृपया आपल्या मोबाइल नंबरवर पाठविलेले 4 अंकी ओटीपी कोड प्रविष्ट करा</string>
+    <string name="plsrd">कृपया अस्वीकरण वाचा</string>
+    <string name="referfriend">मित्रालासूचव</string>
+    <string name="sharejoy">शिकण्याचा आनंद सामायिक करा. तुमच्या मित्रांना आमंत्रित करा</string>
+    <string name="signupsingin">साइन इन / साइन अप</string>
+    <string name="startlearning">शिकणे प्रारंभ करा</string>
+    <string name="tendigitno">कृपया आपला 10 अंकी मोबाइल नंबर प्रविष्ट करा</string>
+    <string name="updatestatus">आपला विषय मार्क यशस्वीरित्या यशस्वी झाला आहे.</string>
+    <string name="updatestatusnot">तुमचा विषय मार्क कॉम्प्लीट झाला नाही.</string>
+    <string name="viewpastinvitestr">मागील आमंत्रणे पहा</string>
+    <string name="user">ଉପଯୋଗକର୍ତ୍ତା |...</string>
 
 </resources>
