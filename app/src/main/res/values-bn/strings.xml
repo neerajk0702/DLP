@@ -144,5 +144,28 @@
           <string name="doyou">আপনি সত্যিই প্রস্থান করতে চান?</string>
          <string name="please">বিকল্প নির্বাচন করুন</string>
           <string name="ok">ঠিক আছে</string>
+    <string name="Certifictae">প্রশংসা শংসাপত্র</string>
+    <string name="InProgress">চলমান</string>
+    <string name="Invite">আমন্ত্রণ করা</string>
+    <string name="Share">ভাগ</string>
+    <string name="Verifyotp">OTP যাচাই করুন</string>
+    <string name="alearn">একটি শেখার অভিজ্ঞতা বিতরণ প্ল্যাটফর্ম</string>
+    <string name="disclaimer">দাবি পরিত্যাগী</string>
+    <string name="disclaimerstr">প্রথমে দাবি অস্বীকার করুন</string>
+    <string name="iagree">আমি শর্ত এবং শর্তে সম্মত</string>
+    <string name="learntoady">আপনি আজ কি শিখতে চান?</string>
+    <string name="mark_complete">চিহ্ন সম্পূর্ণ</string>
+    <string name="optional">ঐচ্ছিক</string>
+    <string name="otp_textnew">আপনার মোবাইল নম্বরটিতে প্রেরিত 4 ডিজিটের ওটিপি কোড লিখুন</string>
+    <string name="plsrd">দাবিত্যাগ পড়ুন দয়া করে</string>
+    <string name="referfriend">একটা বন্ধু উল্লেখ কর</string>
+    <string name="sharejoy">শেখার আনন্দ ভাগ করুন। আপনার বন্ধুদের আমন্ত্রণ জানান</string>
+    <string name="signupsingin">সাইন ইন সাইন আপ</string>
+    <string name="startlearning">শেখা শুরু করো</string>
+    <string name="tendigitno">দয়া করে আপনার 10 ডিজিটের মোবাইল নম্বর লিখুন</string>
+    <string name="updatestatus">আপনার বিষয় সফলভাবে মার্ক সম্পূর্ণ হয়েছে।</string>
+    <string name="updatestatusnot">আপনার টপিকটি মার্ক কমপ্লিট হয়নি!</string>
+    <string name="viewpastinvitestr">অতীত আমন্ত্রণগুলি দেখুন</string>
+    <string name="user">ଉପଯୋଗକର୍ତ୍ତା |...</string>
 
 </resources>

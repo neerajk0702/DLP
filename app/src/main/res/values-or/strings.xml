@@ -146,4 +146,27 @@
     <string name="doyou">ଆପଣ ନିଶ୍ଚିତ ବାହାରକୁ ଯିବା ପାଇଁ ଚାହୁଁଛନ୍ତି ?</string>
     <string name="please">ଦୟାକରି ପସନ୍ଦ ଚୟନ କରନ୍ତୁ</string>
     <string name="ok">ଓକେ</string>
+    <string name="Certifictae">ପ୍ରଶଂସା ପ୍ରମାଣପତ୍ର</string>
+    <string name="InProgress">ଚାଲୁଛି</string>
+    <string name="Invite">ଆମନ୍ତ୍ରଣ</string>
+    <string name="Share">ଅଂଶୀଦାର କରନ୍ତୁ |</string>
+    <string name="Verifyotp">OTP ଯାଞ୍ଚ କରନ୍ତୁ |</string>
+    <string name="alearn">ଏକ ଶିକ୍ଷଣ ଅଭିଜ୍ଞତା ବିତରଣ ପ୍ଲାଟଫର୍ମ |</string>
+    <string name="disclaimer">ପ୍ରତ୍ୟାଖ୍ୟାନ |</string>
+    <string name="disclaimerstr">ଦୟାକରି ପ୍ରଥମେ ପ୍ରତ୍ୟାଖ୍ୟାନ ପ Read ନ୍ତୁ |</string>
+    <string name="iagree">ମୁଁ ସର୍ତ୍ତ ଏବଂ ସର୍ତ୍ତଗୁଡିକ ପାଇଁ ରାଜି ଅଛି |</string>
+    <string name="learntoady">ଆଜି ଆପଣ କ’ଣ ଶିଖିବାକୁ ଚାହାଁନ୍ତି?</string>
+    <string name="mark_complete">ମାର୍କ ସଂପୂର୍ଣ୍ଣ କରନ୍ତୁ |</string>
+    <string name="optional">ବ tion କଳ୍ପିକ</string>
+    <string name="otp_textnew">ଦୟାକରି ଆପଣଙ୍କର ମୋବାଇଲ୍ ନମ୍ବରରେ ପଠାଯାଇଥିବା 4 ଅଙ୍କ ବିଶିଷ୍ଟ OTP କୋଡ୍ ପ୍ରବେଶ କରନ୍ତୁ |</string>
+    <string name="plsrd">ଦୟାକରି ପ୍ରତ୍ୟାଖ୍ୟାନ ପ Read ନ୍ତୁ |</string>
+    <string name="referfriend">ஒரு நண்பரைப் பார்க்கவும்...</string>
+    <string name="sharejoy">ଶିଖିବାର ଆନନ୍ଦ ବାଣ୍ଟନ୍ତୁ | ଆପଣଙ୍କର ସାଙ୍ଗମାନଙ୍କୁ ଆମନ୍ତ୍ରଣ କରନ୍ତୁ |</string>
+    <string name="signupsingin">ସାଇନ୍ ଇନ୍ / ସାଇନ୍ ଅପ୍ |</string>
+    <string name="startlearning">ଶିଖିବା ଆରମ୍ଭ କରନ୍ତୁ |</string>
+    <string name="tendigitno">ଦୟାକରି ଆପଣଙ୍କର 10 ଅଙ୍କ ବିଶିଷ୍ଟ ମୋବାଇଲ୍ ନମ୍ବର ପ୍ରବେଶ କରନ୍ତୁ |</string>
+    <string name="updatestatus">ତୁମର ବିଷୟ ସଫଳତାର ସହିତ ମାର୍କ ସଂପୂର୍ଣ୍ଣ ହୋଇଛି |</string>
+    <string name="updatestatusnot">ତୁମର ବିଷୟ ମାର୍କ ସଂପୂର୍ଣ୍ଣ ହୋଇନାହିଁ!</string>
+    <string name="viewpastinvitestr">ଅତୀତର ନିମନ୍ତ୍ରଣଗୁଡିକ ଦେଖନ୍ତୁ |</string>
+    <string name="user">ଉପଯୋଗକର୍ତ୍ତା |</string>
 </resources>

@@ -93,7 +93,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="A learning experience delivery platform"
+                        android:text="@string/alearn"
                         android:textColor="#4a4d4e"
                         android:textSize="@dimen/dimTextSize_20" />
 

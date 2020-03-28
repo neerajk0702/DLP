@@ -130,5 +130,28 @@
     <string name="doyou">ನಿಜವಾಗಿಯೂ ನೀವು ಇಲ್ಲಿಂದ ಹೊರಗೆ ಹೋಗಲು ಇಚ್ಚಿಸುವಿರಾ?</string>
     <string name="please">ದಯವಿಟ್ಟು ಆಯ್ಕೆ ಮಾಡಿ</string>
     <string name="ok">ಸರಿ</string>
+    <string name="Certifictae">ಮೆಚ್ಚುಗೆ ಪ್ರಮಾಣಪತ್ರ</string>
+    <string name="InProgress">ಪ್ರಗತಿಯಲ್ಲಿದೆ</string>
+    <string name="Invite">ಆಹ್ವಾನಿಸಿ</string>
+    <string name="Share">ಹಂಚಿಕೊಳ್ಳಿ</string>
+    <string name="Verifyotp">OTP പരിശോധിക്കുക...</string>
+    <string name="alearn">ಕಲಿಕೆಯ ಅನುಭವ ವಿತರಣಾ ವೇದಿಕೆ</string>
+    <string name="disclaimer">ಹಕ್ಕುತ್ಯಾಗ</string>
+    <string name="disclaimerstr">ದಯವಿಟ್ಟು ಹಕ್ಕು ನಿರಾಕರಣೆಯನ್ನು ಮೊದಲು ಓದಿ</string>
+    <string name="iagree">ನಾನು ಅವಧಿ ಮತ್ತು ಷರತ್ತುಗಳನ್ನು ಒಪ್ಪುತ್ತೇನೆ</string>
+    <string name="learntoady">ಇಂದು ನೀವು ಏನು ಕಲಿಯಲು ಬಯಸುತ್ತೀರಿ?</string>
+    <string name="mark_complete">ಮಾರ್ಕ್ ಕಂಪ್ಲೀಟ್</string>
+    <string name="optional">ಐಚ್ al ಿಕ</string>
+    <string name="otp_textnew">ದಯವಿಟ್ಟು ನಿಮ್ಮ ಮೊಬೈಲ್ ಸಂಖ್ಯೆಯಲ್ಲಿ ಕಳುಹಿಸಲಾದ 4 ಅಂಕಿಯ ಒಟಿಪಿ ಕೋಡ್ ಅನ್ನು ನಮೂದಿಸಿ</string>
+    <string name="plsrd">ಹಕ್ಕುತ್ಯಾಗ ಓದಿ</string>
+    <string name="referfriend">ಸ್ನೇಹಿತನನ್ನು ನೋಡಿ</string>
+    <string name="sharejoy">ಕಲಿಕೆಯ ಸಂತೋಷವನ್ನು ಹಂಚಿಕೊಳ್ಳಿ. ನಿಮ್ಮ ಸ್ನೇಹಿತರನ್ನು ಆಹ್ವಾನಿಸಿ</string>
+    <string name="signupsingin">ಸೈನ್ ಇನ್ / ಸೈನ್ ಅಪ್</string>
+    <string name="startlearning">ಕಲಿಯಲು ಪ್ರಾರಂಭಿಸಿ</string>
+    <string name="tendigitno">ದಯವಿಟ್ಟು ನಿಮ್ಮ 10 ಅಂಕಿಯ ಮೊಬೈಲ್ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ</string>
+    <string name="updatestatus">ನಿಮ್ಮ ವಿಷಯವು ಯಶಸ್ವಿಯಾಗಿ ಮಾರ್ಕ್ ಆಗಿದೆ.</string>
+    <string name="updatestatusnot">ನಿಮ್ಮ ವಿಷಯವು ಮಾರ್ಕ್ ಕಂಪ್ಲೀಟ್ ಆಗಿಲ್ಲ!</string>
+    <string name="viewpastinvitestr">ಹಿಂದಿನ ಆಮಂತ್ರಣಗಳನ್ನು ವೀಕ್ಷಿಸಿ</string>
+    <string name="user">ഉപയോക്താവ്...</string>
 
 </resources>

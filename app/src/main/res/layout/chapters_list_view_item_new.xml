@@ -3,20 +3,25 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/size_150px"
     android:layout_marginTop="@dimen/dimValue_5"
     card_view:cardPreventCornerOverlap="true"
+    card_view:cardCornerRadius="@dimen/dimValue_5"
+    card_view:cardElevation="@dimen/dimValue_3"
     card_view:cardUseCompatPadding="true">
 
     <LinearLayout
+        android:id="@+id/chapterView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="visible"
         android:background="#EEEEEE"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="visible"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -27,95 +32,75 @@
                     android:id="@+id/chapterImage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
                     android:src="@drawable/imageplaceholder" />
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_alignParentBottom="true">
+
                     <LinearLayout
-                        android:id="@+id/quizLayout"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/titleLayout"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/chapterImage"
-                        android:layout_alignRight="@+id/chapterImage"
-                        android:layout_margin="@dimen/dimValue_20"
-                        android:background="@color/colorRad"
-                        android:orientation="horizontal"
-                        android:visibility="gone">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:background="@color/colorDrakRed"
-                            android:orientation="horizontal"
-                            android:padding="@dimen/dimValue_10">
-
-                            <TextView
-                                android:id="@+id/quiz_Icon"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@color/colorDrakRed"
-                                android:gravity="center"
-                                android:text="icon"
-                                android:textColor="@color/colorWhite"
-                                android:textSize="@dimen/dimTextSize_18" />
-                        </LinearLayout>
+                        android:layout_marginTop="@dimen/dimValue_5"
+                        android:orientation="vertical"
+                        android:layout_margin="@dimen/dimValue_5"
+                        android:paddingLeft="@dimen/dimValue_5"
+                        android:paddingRight="@dimen/dimValue_5">
 
                         <TextView
-                            android:id="@+id/submit_text"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/chapterTitle"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:maxLines="3"
                             android:layout_gravity="center"
-                            android:gravity="left"
-                            android:padding="@dimen/dimValue_10"
-                            android:text="@string/Quiz"
-                            android:textColor="@color/colorWhite"
+                            android:textStyle="bold"
+                            android:padding="@dimen/dimValue_5"
+                            android:textColor="#FFFFFF"
+                            android:layout_marginTop="@dimen/dimValue_5"
+                            android:paddingTop="@dimen/dimValue_10"
                             android:textSize="@dimen/dimTextSize_16" />
 
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/mediaLayout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/chapterImage"
-                        android:layout_alignRight="@+id/chapterImage"
-                        android:layout_margin="@dimen/dimValue_20"
-                        android:background="@color/colorRad"
-                        android:orientation="horizontal"
-                        android:visibility="gone">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:background="@color/colorDrakRed"
-                            android:orientation="horizontal"
-                            android:padding="@dimen/dimValue_10">
-
-                            <TextView
-                                android:id="@+id/media_Icon"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@color/colorDrakRed"
-                                android:gravity="center"
-                                android:text=""
-                                android:textColor="@color/colorWhite"
-                                android:textSize="@dimen/dimTextSize_18" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/media_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="left"
-                            android:padding="@dimen/dimValue_10"
-                            android:text="@string/Media"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="@dimen/dimTextSize_16" />
 
                     </LinearLayout>
                 </LinearLayout>
+
+
+
+
+                    <LinearLayout
+                        android:id="@+id/status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimValue_5"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:layout_margin="@dimen/dimValue_10"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/white_bg"
+                        android:layout_gravity="right">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLines="3"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"
+                            android:layout_margin="@dimen/dimValue_5"
+                            android:padding="@dimen/dimValue_5"
+                            android:text="@string/InProgress"
+                            android:textColor="#101111"
+                            android:textSize="@dimen/dimTextSize_16" />
+
+
+                    </LinearLayout>
+
+
                 <ProgressBar
                     android:id="@+id/progressBar"
                     android:layout_width="wrap_content"
@@ -131,36 +116,7 @@
         </LinearLayout>
 
 
-        <LinearLayout
-            android:id="@+id/titleLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimValue_5"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/dimValue_5"
-            android:paddingRight="@dimen/dimValue_5">
 
-            <TextView
-                android:id="@+id/chapterTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLines="3"
-                android:text=""
-                android:textColor="#000"
-                android:layout_marginTop="@dimen/dimValue_5"
-                android:paddingTop="@dimen/dimValue_10"
-                android:textSize="@dimen/dimTextSize_16" />
-
-            <TextView
-                android:id="@+id/chapterDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="@dimen/dimValue_5"
-                android:text=""
-                android:textColor="#4a4d4e"
-                android:textSize="@dimen/dimTextSize_16" />
-
-        </LinearLayout>
 
 
         <View
@@ -175,6 +131,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#EEEEEE"
+            android:visibility="gone"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -348,5 +305,7 @@
 
         </LinearLayout>
     </LinearLayout>
+
+
 
 </androidx.cardview.widget.CardView>

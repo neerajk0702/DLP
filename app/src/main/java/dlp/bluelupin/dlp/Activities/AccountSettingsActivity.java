@@ -59,7 +59,7 @@ public class AccountSettingsActivity extends AppCompatActivity implements View.O
     private TextView chooseLanguage;
     private Spinner spinner;
     private TextView title, leftArrow;
-    private TextView     cancel, save;
+    private TextView cancel, save;
 
 
     //  private EditText enterName, enterEmail;
@@ -113,31 +113,47 @@ public class AccountSettingsActivity extends AppCompatActivity implements View.O
         //RadioButton female = (RadioButton) findViewById(R.id.radioF);
         int textColor = Color.parseColor("#e60000");
         //emailLable = (TextView) findViewById(R.id.emailLable);
-       // nameLable = (TextView) findViewById(R.id.nameLable);
-       // phoneLable = (TextView) findViewById(R.id.phoneLable);
+        // nameLable = (TextView) findViewById(R.id.nameLable);
+        // phoneLable = (TextView) findViewById(R.id.phoneLable);
         //lanLable = (TextView) findViewById(R.id.lanLable);
-       // genderLable = (TextView) findViewById(R.id.genderLable);
+        // genderLable = (TextView) findViewById(R.id.genderLable);
         // cancel = (TextView) findViewById(R.id.cancel);
         save = (TextView) findViewById(R.id.save);
         save.setOnClickListener(this);
-       // autoPlayCheck = (TextView) findViewById(R.id.autoPlayCheck);
+        // autoPlayCheck = (TextView) findViewById(R.id.autoPlayCheck);
         //autoPlay = (ImageView) findViewById(R.id.autoPlay);
         //autoPlay.setOnClickListener(this);
-       // autoPlay.setImageResource(R.drawable.checkbox);
+        // autoPlay.setImageResource(R.drawable.checkbox);
         disclaimer = findViewById(R.id.disclaimer);
         disclaimerimgcheck = findViewById(R.id.disclaimerimgcheck);
+        disclaimerimgcheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (isRaddesmri) {
+                    isRaddesmri = false;
+                    disclaimerimgcheck.setImageResource(R.drawable.checkbox);
+                } else {
+                    Intent in = new Intent(AccountSettingsActivity.this, DisclaimerActivity.class);
+                    startActivityForResult(in, 5);
+                }
+
+            }
+        });
+
+
         disclaimer.setOnClickListener(this);
         title.setTypeface(VodafoneExB);
-       // nameLable.setTypeface(VodafoneExB);
-       // emailLable.setTypeface(VodafoneExB);
-       // phoneLable.setTypeface(VodafoneExB);
-      //  lanLable.setTypeface(VodafoneExB);
-       // autoPlayCheck.setTypeface(VodafoneRg);
-      //  genderLable.setTypeface(VodafoneExB);
+        // nameLable.setTypeface(VodafoneExB);
+        // emailLable.setTypeface(VodafoneExB);
+        // phoneLable.setTypeface(VodafoneExB);
+        //  lanLable.setTypeface(VodafoneExB);
+        // autoPlayCheck.setTypeface(VodafoneRg);
+        //  genderLable.setTypeface(VodafoneExB);
         //cancel.setTypeface(VodafoneRg);
         save.setTypeface(VodafoneRg);
         //male.setTypeface(VodafoneRg);
-       // female.setTypeface(VodafoneRg);
+        // female.setTypeface(VodafoneRg);
         leftArrow.setText(Html.fromHtml("&#xf04d;"));
         //  enterName = (EditText) findViewById(R.id.enterName);
         //  enterEmail = (EditText) findViewById(R.id.enterEmail);
@@ -165,7 +181,7 @@ public class AccountSettingsActivity extends AppCompatActivity implements View.O
 
             }
         });
-         showIntro(disclaimer, INTRO_FOCUS_1, getString(R.string.plsrd), Focus.NORMAL, FocusGravity.LEFT);
+        showIntro(disclaimer, INTRO_FOCUS_1, getString(R.string.plsrd), Focus.NORMAL, FocusGravity.LEFT);
 
     }
 
@@ -321,10 +337,10 @@ public class AccountSettingsActivity extends AppCompatActivity implements View.O
             case R.id.autoPlay:
                 if (checkFlag) {
                     checkFlag = false;
-                  //  autoPlay.setImageResource(R.drawable.checkbox);
+                    //  autoPlay.setImageResource(R.drawable.checkbox);
                 } else {
                     checkFlag = true;
-                   // autoPlay.setImageResource(R.drawable.checkboxchecked);
+                    // autoPlay.setImageResource(R.drawable.checkboxchecked);
                 }
                 break;
         }

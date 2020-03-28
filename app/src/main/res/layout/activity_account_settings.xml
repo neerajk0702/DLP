@@ -106,7 +106,7 @@
                             android:id="@+id/nameLable"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Signin / Signup"
+                            android:text="@string/signupsingin"
                             android:textAlignment="center"
                             android:textColor="@color/colorBlack"
                             android:textSize="@dimen/dimTextSize_24" />
@@ -116,7 +116,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dimValue_10"
-                            android:text="Please Enter your 10 digit mobile number"
+                            android:text="@string/tendigitno"
                             android:textAlignment="center"
                             android:textColor="#4a4d4e"
                             android:textSize="@dimen/dimTextSize_16" />

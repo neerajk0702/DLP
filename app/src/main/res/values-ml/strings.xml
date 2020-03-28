@@ -145,5 +145,28 @@
           <string name="doyou">താങ്കൾക്ക് ശരിക്കും പുറത്തേക്ക് കടക്കണമോ?</string>
          <string name="please">ഒരു ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക</string>
           <string name="ok">ഓകെ</string>
+    <string name="Certifictae">"അഭിനന്ദന സർട്ടിഫിക്കറ്റ് "</string>
+    <string name="InProgress">പുരോഗതിയിൽ</string>
+    <string name="Invite">ക്ഷണിക്കുക</string>
+    <string name="Share">പങ്കിടുക</string>
+    <string name="Verifyotp">OTP പരിശോധിക്കുക</string>
+    <string name="alearn">ഒരു പഠന അനുഭവ ഡെലിവറി പ്ലാറ്റ്ഫോം</string>
+    <string name="disclaimer">നിരാകരണം</string>
+    <string name="disclaimerstr">ആദ്യം നിരാകരണം വായിക്കുക</string>
+    <string name="iagree">നിബന്ധനകളും വ്യവസ്ഥകളും ഞാൻ അംഗീകരിക്കുന്നു</string>
+    <string name="learntoady">ഇന്ന് നിങ്ങൾ എന്താണ് പഠിക്കാൻ ആഗ്രഹിക്കുന്നത്?</string>
+    <string name="mark_complete">അടയാളപ്പെടുത്തുക പൂർത്തിയായി</string>
+    <string name="optional">ഓപ്ഷണൽ</string>
+    <string name="otp_textnew">നിങ്ങളുടെ മൊബൈൽ‌ നമ്പറിൽ‌ അയച്ച 4 അക്ക OTP കോഡ് ദയവായി നൽ‌കുക</string>
+    <string name="plsrd">നിരാകരണം വായിക്കുക</string>
+    <string name="referfriend">ഒരു സുഹൃത്തിനെ റഫർ ചെയ്യുക</string>
+    <string name="sharejoy">പഠനത്തിന്റെ സന്തോഷം പങ്കിടുക. നിങ്ങളുടെ സുഹൃത്തുക്കളെ ക്ഷണിക്കുക</string>
+    <string name="signupsingin">സൈൻ ഇൻ / സൈനപ്പ്</string>
+    <string name="startlearning">ಕಲಿಯಲು ಪ್ರಾರಂಭಿಸಿ</string>
+    <string name="tendigitno">നിങ്ങളുടെ 10 അക്ക മൊബൈൽ നമ്പർ നൽകുക</string>
+    <string name="updatestatus">നിങ്ങളുടെ വിഷയം മാർക്ക് പൂർത്തിയായി.</string>
+    <string name="updatestatusnot">നിങ്ങളുടെ വിഷയം മാർക്ക് പൂർത്തിയായിട്ടില്ല!</string>
+    <string name="viewpastinvitestr">മുൻ ക്ഷണങ്ങൾ കാണുക</string>
+    <string name="user">ഉപയോക്താവ്</string>
 
 </resources>
