@@ -22,36 +22,40 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimValue_10"
                 android:layout_weight="1"
-                android:paddingBottom="@dimen/dimValue_30"
+                android:paddingBottom="@dimen/dimValue_16"
                 android:scrollbars="none" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimValue_16"
+                android:layout_marginTop="@dimen/dimValue_10"
                 android:layout_marginBottom="@dimen/dimValue_10"
+                android:gravity="center"
                 android:orientation="vertical">
-
-
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimValue_20"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:id="@+id/save"
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/dimValue_10"
+                    android:background="@drawable/round_boder_new"
+                    android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/save"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dimValue_10"
-                        android:layout_marginRight="@dimen/dimValue_10"
-                        android:background="@drawable/done_corner_round"
-                        android:gravity="center"
-                        android:padding="@dimen/dimValue_13"
-                        android:text="@string/mark_complete"
-                        android:textColor="#fff"
-                        android:textSize="@dimen/dimTextSize_20" />
+                        android:layout_width="wrap_content"
+                        android:text="@string/markcomplete"
+                        android:layout_margin="@dimen/dimValue_5"
+                        android:padding="@dimen/dimValue_10"
+                        android:textColor="@color/colorWhite"
+                        android:layout_height="wrap_content" />
+
+                    <ImageView
+                        android:layout_width="@dimen/dimValue_30"
+                        android:src="@drawable/ic_media_play"
+                        android:layout_margin="@dimen/dimValue_5"
+                        android:layout_gravity="center"
+                        android:layout_height="@dimen/dimValue_30" />
+
+
                 </LinearLayout>
 
             </LinearLayout>

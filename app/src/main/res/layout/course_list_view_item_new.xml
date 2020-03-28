@@ -106,7 +106,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@string/Chapters"
-                    android:textColor="#FFFFF"
+                    android:textColor="#FFFFFF"
                     android:textSize="@dimen/dimTextSize_18" />
 
             </LinearLayout>

@@ -99,6 +99,7 @@ public class NewUserActivity extends AppCompatActivity implements View.OnClickLi
         int textColor = Color.parseColor("#e60000");
         save = (TextView) findViewById(R.id.save);
         skip = (TextView) findViewById(R.id.skip);
+        skip.setOnClickListener(this);
         save.setOnClickListener(this);
         title.setTypeface(VodafoneExB);
 
@@ -224,6 +225,11 @@ public class NewUserActivity extends AppCompatActivity implements View.OnClickLi
                     v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.click_animation));//onclick animation
                 }
                 break;
+            case R.id.skip:
+                Intent intentma = new Intent(this, MainActivity.class);
+                startActivity(intentma);
+                break;
+
         }
     }
 

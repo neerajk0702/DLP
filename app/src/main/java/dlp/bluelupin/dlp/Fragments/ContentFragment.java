@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -125,7 +126,7 @@ public class ContentFragment extends Fragment {
             recyclerView.setAdapter(contentAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
             //listView.setAdapter(contentAdapter);
-            TextView mark_complete=view.findViewById(R.id.save);
+            LinearLayout mark_complete=view.findViewById(R.id.save);
             mark_complete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
