@@ -15,11 +15,13 @@ import java.util.List;
 import dlp.bluelupin.dlp.Consts;
 import dlp.bluelupin.dlp.Models.AccountData;
 import dlp.bluelupin.dlp.Models.CacheServiceCallData;
+import dlp.bluelupin.dlp.Models.DashboardData;
 import dlp.bluelupin.dlp.Models.Data;
 import dlp.bluelupin.dlp.Models.FavoritesData;
 import dlp.bluelupin.dlp.Models.LanguageData;
 import dlp.bluelupin.dlp.Models.QuizAnswer;
 import dlp.bluelupin.dlp.Models.SimulatorData;
+import dlp.bluelupin.dlp.Models.StatusUpdateService;
 import dlp.bluelupin.dlp.Utilities.Utility;
 //import org.apache.commons.io.FilenameUtils;
 
@@ -57,6 +59,8 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS ContentQuizEntity");
         db.execSQL("DROP TABLE IF EXISTS QuizAnswerEntity");
         db.execSQL("DROP TABLE IF EXISTS SimulatorEntity");
+        db.execSQL("DROP TABLE IF EXISTS DashboarddataEntity");
+        db.execSQL("DROP TABLE IF EXISTS contentStatusEntity");
 
         onCreate(db);
     }
@@ -137,6 +141,15 @@ public class DbHelper extends SQLiteOpenHelper {
         String CREATE_SimulatorDataEntity_TABLE = "CREATE TABLE SimulatorEntity(id INTEGER PRIMARY KEY, content_id INTEGER, url TEXT,  download_url TEXT, localPathUrl TEXT,language_id INTEGER,isDeleted INTEGER)";
         //id , content_id , url, download_url,localPathUrl,language_id,isDeleted   SimulatorEntity
         db.execSQL(CREATE_SimulatorDataEntity_TABLE);
+
+
+        String CREATE_Dashboarddata_TABLE = "CREATE TABLE DashboarddataEntity(id INTEGER PRIMARY KEY,courseChapterType INTEGER, courses INTEGER, users INTEGER,  topics INTEGER, chapters INTEGER,quizzes INTEGER)";
+        //id ,courseChapterType, courses , users, topics,chapters,quizzes   DashboarddataEntity
+        db.execSQL(CREATE_Dashboarddata_TABLE);
+
+        String CREATE_content_status_TABLE = "CREATE TABLE contentStatusEntity(contentid INTEGER, completionstatus INTEGER, updated_at TEXT)";
+        //contentid, completionstatus , updated_at,   contentStatusEntity
+        db.execSQL(CREATE_content_status_TABLE);
     }
 
     private Boolean tableAlreadyExists(SQLiteDatabase db, String tableName) {
@@ -2779,4 +2792,187 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
         return i > 0;
     }
+
+
+    //-----------------Dashboarddata Entity--------------------
+    //get all DashboarddataEntity
+    public List<DashboardData> getAllDashboarddataEntity() {
+        String query = "Select * FROM DashboarddataEntity ";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        List<DashboardData> list = new ArrayList<DashboardData>();
+
+        if (cursor.moveToFirst()) {
+            while (cursor.isAfterLast() == false) {
+                DashboardData ob = new DashboardData();
+                populateDashboarddataEntity(cursor, ob);
+                list.add(ob);
+                cursor.moveToNext();
+            }
+        }
+        db.close();
+        return list;
+    }
+
+
+    public DashboardData getDashboarddataEntityById(int id) {
+        String query = "Select * FROM DashboarddataEntity WHERE courseChapterType = '" + id + "'";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        DashboardData ob = new DashboardData();
+
+        if (cursor.moveToFirst()) {
+            cursor.moveToFirst();
+            populateDashboarddataEntity(cursor, ob);
+
+            cursor.close();
+        } else {
+            ob = null;
+        }
+        db.close();
+        return ob;
+    }
+    //id ,courseChapterType, courses , users, topics,chapters,quizzes   DashboarddataEntity
+    private void populateDashboarddataEntity(Cursor cursor, DashboardData ob) {
+        ob.setId(cursor.getInt(0));
+        ob.setCourseChapterType(cursor.getInt(1));
+        ob.setCourses(cursor.getInt(2));
+        ob.setUsers(cursor.getInt(3));
+        ob.setTopics(cursor.getInt(4));
+        ob.setChapters(cursor.getInt(5));
+        ob.setQuizzes(cursor.getInt(6));
+    }
+
+    //insert DashboarddataEntity
+    public boolean insertDashboarddataEntity(DashboardData ob) {
+
+        ContentValues values = new ContentValues();
+        populateDashboarddataEntityValues(values, ob);
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        long i = db.insert("DashboarddataEntity", null, values);
+        db.close();
+        return i > 0;
+    }
+    private void populateDashboarddataEntityValues(ContentValues values, DashboardData ob) {
+        values.put("courseChapterType", ob.getCourseChapterType());
+        values.put("courses", ob.getCourses());
+        values.put("users", ob.getUsers());
+        values.put("topics", ob.getTopics());
+        values.put("chapters", ob.getChapters());
+        values.put("quizzes", ob.getQuizzes());
+    }
+    public boolean deleteDashboarddataEntity(int id) {
+        boolean result = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "courseChapterType = '" + id + "' ";
+        db.delete("DashboarddataEntity", query, null);
+        db.close();
+        result = true;
+        return result;
+    }
+
+
+    //-----------------contentStatusEntity Entity--------------------
+    public boolean upsertcontentStatusEntity(StatusUpdateService ob) {
+        boolean done = false;
+        StatusUpdateService data = null;
+        if (ob.getContent_id() != 0) {
+            data = getcontentStatusEntityById(ob.getContent_id());
+            if (data == null) {
+                done = insertcontentStatusEntity(ob);
+            } else {
+                done = updatecontentStatusEntity(ob);
+            }
+        }
+        return done;
+    }
+
+    public StatusUpdateService getcontentStatusEntityById(int id) {
+        String query = "Select * FROM contentStatusEntity WHERE contentid = '" + id + "'";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        StatusUpdateService ob = new StatusUpdateService();
+
+        if (cursor.moveToFirst()) {
+            cursor.moveToFirst();
+            populatecontentStatusEntity(cursor, ob);
+
+            cursor.close();
+        } else {
+            ob = null;
+        }
+        db.close();
+        return ob;
+    }
+    public List<StatusUpdateService> getAllcontentStatusEntity() {
+        String query = "Select * FROM contentStatusEntity ";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        List<StatusUpdateService> list = new ArrayList<StatusUpdateService>();
+
+        if (cursor.moveToFirst()) {
+            while (cursor.isAfterLast() == false) {
+                StatusUpdateService ob = new StatusUpdateService();
+                populatecontentStatusEntity(cursor, ob);
+                list.add(ob);
+                cursor.moveToNext();
+            }
+        }
+        db.close();
+        return list;
+    }
+    //contentid, completionstatus , updated_at,   contentStatusEntity
+    private void populatecontentStatusEntity(Cursor cursor, StatusUpdateService ob) {
+        ob.setContent_id(cursor.getInt(0));
+        ob.setCompletion_status(cursor.getInt(1));
+        ob.setUpdated_at(cursor.getString(2));
+    }
+    //insert contentStatusEntity
+    public boolean insertcontentStatusEntity(StatusUpdateService ob) {
+
+        ContentValues values = new ContentValues();
+        populatecontentStatusEntityValues(values, ob);
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        long i = db.insert("contentStatusEntity", null, values);
+        db.close();
+        return i > 0;
+    }
+    private void populatecontentStatusEntityValues(ContentValues values, StatusUpdateService ob) {
+        values.put("contentid", ob.getContent_id());
+        values.put("completionstatus", ob.getCompletion_status());
+        values.put("updated_at", ob.getUpdated_at());
+    }
+    public boolean updatecontentStatusEntity(StatusUpdateService ob) {
+
+        ContentValues values = new ContentValues();
+        populatecontentStatusEntityValues(values, ob);
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        long i = 0;
+        if (ob.getContent_id() != 0) {
+            i = db.update("contentStatusEntity", values, " contentid = '" + ob.getContent_id() + "' ", null);
+        }
+
+        db.close();
+        return i > 0;
+    }
+
+
+
 }

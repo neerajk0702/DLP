@@ -14,20 +14,20 @@ import dlp.bluelupin.dlp.R;
  * Created by Neeraj on 7/26/2016.
  */
 public class CourseViewHolder extends RecyclerView.ViewHolder {
-    public TextView courseTitle, courseDescription;
-    //public CardView cardView;
+    public TextView courseTitle, courseDescription,startlearningtext;
+    public CardView cardView;
     public ImageView courseImage;
    // public LinearLayout mediaLayout;
 
     ImageView mainImage;
-    TextView countchapter, topicCount, topiclabel, quizCount, quizlabel, viewCount, viewlabel, userCount, userlabel;
+    TextView countchapter, topicCount, topiclabel, quizCount, quizlabel, viewCount, viewlabel, userCount, userlabel,chapterLable;
     LinearLayout startlearning;
 
 
     public CourseViewHolder(View itemView) {
         super(itemView);
 
-      //  cardView = (CardView) itemView.findViewById(R.id.card_view);
+        cardView = (CardView) itemView.findViewById(R.id.card_view);
         //cardView.setCardElevation(2);
        // cardView.setRadius(10);
         courseTitle = (TextView) itemView.findViewById(R.id.courseTitle);
@@ -39,7 +39,7 @@ public class CourseViewHolder extends RecyclerView.ViewHolder {
        // media_text = (TextView) itemView.findViewById(R.id.media_text);
        // mediaLayout = (LinearLayout) itemView.findViewById(R.id.mediaLayout);
 
-
+        chapterLable = (TextView) itemView.findViewById(R.id.chapterLable);
         countchapter = itemView.findViewById(R.id.countchapter);
         topicCount = itemView.findViewById(R.id.topicCount);
         topiclabel = itemView.findViewById(R.id.topiclabel);
@@ -50,6 +50,7 @@ public class CourseViewHolder extends RecyclerView.ViewHolder {
         userCount = itemView.findViewById(R.id.userCount);
         userlabel = itemView.findViewById(R.id.userlabel);
         startlearning = itemView.findViewById(R.id.startlearning);
+        startlearningtext = itemView.findViewById(R.id.startlearningtext);
 
 
     }

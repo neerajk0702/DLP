@@ -7,25 +7,21 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import dlp.bluelupin.dlp.Adapters.ChaptersAdapter;
-import dlp.bluelupin.dlp.Adapters.ChaptersAdapterNew;
 import dlp.bluelupin.dlp.Consts;
 import dlp.bluelupin.dlp.Database.DbHelper;
 import dlp.bluelupin.dlp.MainActivity;
@@ -34,10 +30,6 @@ import dlp.bluelupin.dlp.R;
 import dlp.bluelupin.dlp.Utilities.FontManager;
 import dlp.bluelupin.dlp.Utilities.LocationUtility;
 import dlp.bluelupin.dlp.Utilities.Utility;
-import dlp.bluelupin.dlp.shwocaseview.animation.MaterialIntroListener;
-import dlp.bluelupin.dlp.shwocaseview.shape.Focus;
-import dlp.bluelupin.dlp.shwocaseview.shape.FocusGravity;
-import dlp.bluelupin.dlp.shwocaseview.view.MaterialIntroView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,28 +39,16 @@ import dlp.bluelupin.dlp.shwocaseview.view.MaterialIntroView;
  * Use the {@link ChaptersFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ChaptersFragment extends Fragment implements View.OnClickListener , MaterialIntroListener {
+public class ChaptersFragment extends Fragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private static final String INTRO_CARD = "recyclerView_material_intro";
+
     // TODO: Rename and change types of parameters
     private int parentId;
     private String type;
-    ImageView logiiocn;
-    TextView titletxt;
-    TextView countchapter;
-    TextView learnLable;
-    TextView topicCount;
-    TextView topictext;
 
-    TextView quizCount;
-    TextView quiztext;
-    TextView Name;
-    ImageView moreChapter;
-    LinearLayout totalItemView;
-    RecyclerView chaptersRecyclerView;
     private OnFragmentInteractionListener mListener;
 
     public ChaptersFragment() {
@@ -128,26 +108,11 @@ public class ChaptersFragment extends Fragment implements View.OnClickListener ,
         //chapterTitle = (TextView) view.findViewById(R.id.chapterTitle);
         //chapterTitle.setTypeface(VodafoneExB);
         DbHelper db = new DbHelper(context);
-        logiiocn = view.findViewById(R.id.logiiocn);
-        titletxt = view.findViewById(R.id.titletxt);
-        countchapter = view.findViewById(R.id.countchapter);
-        learnLable = view.findViewById(R.id.learnLable);
-        topicCount = view.findViewById(R.id.topicCount);
-        topictext = view.findViewById(R.id.topictext);
-        quizCount = view.findViewById(R.id.quizCount);
-        quiztext = view.findViewById(R.id.quiztext);
-        Name = view.findViewById(R.id.Name);
-        moreChapter = view.findViewById(R.id.moreChapter);
-        totalItemView = view.findViewById(R.id.totalItemView);
         if (type.equalsIgnoreCase("Chapter")) {
             rootActivity.setScreenTitle(context.getString(R.string.Chapters));
-            totalItemView.setVisibility(View.VISIBLE);
-            Name.setText(context.getString(R.string.Chapters));
             // chapterTitle.setText(context.getString(R.string.Chapters));
         } else if (type.equalsIgnoreCase("Topic")) {
             rootActivity.setScreenTitle(context.getString(R.string.Topic));
-            totalItemView.setVisibility(View.GONE);
-            Name.setText(context.getString(R.string.Topic));
             //chapterTitle.setText(context.getString(R.string.Topic));
         }
 
@@ -170,23 +135,14 @@ public class ChaptersFragment extends Fragment implements View.OnClickListener ,
                 if (contentData != null) {
                     contentData.setQuizAvailable(true);
                     contentData.setContent_id(parentId);
-
                     dataList.add(contentData);
                 }
             }
 
-            ChaptersAdapterNew chaptersAdapter = new ChaptersAdapterNew(context, dataList, type);
-             chaptersRecyclerView = (RecyclerView) view.findViewById(R.id.chaptersRecyclerView);
-            // chaptersRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-            GridLayoutManager gridLayoutManager;
-            if (type.equalsIgnoreCase("Topic")) {
-                gridLayoutManager = new GridLayoutManager(getContext(), 1);
-            } else {
-                gridLayoutManager = new GridLayoutManager(getContext(), 2);
-            }
-
-
-            chaptersRecyclerView.setLayoutManager(gridLayoutManager);
+            ChaptersAdapter chaptersAdapter = new ChaptersAdapter(context, dataList, type);
+            RecyclerView chaptersRecyclerView = (RecyclerView) view.findViewById(R.id.chaptersRecyclerView);
+            chaptersRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+            //chaptersRecyclerView.setLayoutManager(new LinearLayoutManagerWithSmoothScroller(context));
             chaptersRecyclerView.setHasFixedSize(true);
             chaptersRecyclerView.setNestedScrollingEnabled(false);
             chaptersRecyclerView.setAdapter(chaptersAdapter);
@@ -235,7 +191,6 @@ public class ChaptersFragment extends Fragment implements View.OnClickListener ,
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
     @Override
     public void onResume() {
         super.onResume();
@@ -246,27 +201,5 @@ public class ChaptersFragment extends Fragment implements View.OnClickListener ,
     public void onPause() {
         super.onPause();
         LocationUtility.stopLocationUpdates();
-    }
-
-    private void showMaterialIntro() {
-        new MaterialIntroView.Builder(getActivity())
-                .enableDotAnimation(true)
-                .setFocusGravity(FocusGravity.CENTER)
-                .setFocusType(Focus.NORMAL)
-                .setDelayMillis(200)
-                .enableFadeAnimation(true)
-                .setListener(this)
-                .performClick(true)
-                .setInfoText(getString(R.string.startlearning))
-                .setTarget(chaptersRecyclerView.getChildAt(0))
-                .setUsageId(INTRO_CARD) //THIS SHOULD BE UNIQUE ID
-                .show();
-    }
-
-    @Override
-    public void onUserClicked(String materialIntroViewId) {
-        if (materialIntroViewId.equals(INTRO_CARD)) {
-            //   Toast.makeText(getActivity(), "User Clicked", Toast.LENGTH_SHORT).show();
-        }
     }
 }

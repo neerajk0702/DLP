@@ -4,12 +4,13 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     card_view:cardUseCompatPadding="true"
+    card_view:cardCornerRadius="@dimen/dimValue_5"
+    android:layout_marginBottom="@dimen/dimValue_10"
     android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/ic_orange_bg"
         android:orientation="vertical">
 
 
@@ -23,7 +24,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
+                android:paddingBottom="@dimen/dimValue_10"
+                android:paddingLeft="@dimen/dimValue_10"
+                android:paddingRight="@dimen/dimValue_10"
+                android:paddingTop="@dimen/dimValue_5"
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
@@ -35,8 +39,8 @@
 
                     <ImageView
                         android:id="@+id/courseImage"
-                        android:layout_width="@dimen/size_90px"
-                        android:layout_height="@dimen/size_90px"
+                        android:layout_width="@dimen/size_80px"
+                        android:layout_height="@dimen/size_80px"
                         android:layout_gravity="center"
                         android:scaleType="fitXY"
                         android:src="@drawable/maincurs" />
@@ -47,6 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/dimValue_5"
+                    android:layout_marginTop="@dimen/dimValue_10"
                     android:orientation="vertical">
 
                     <TextView
@@ -54,7 +59,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="#fff"
-                        android:textSize="@dimen/dimTextSize_20" />
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textSize="@dimen/dimTextSize_24" />
 
                     <TextView
                         android:id="@+id/courseDescription"
@@ -62,7 +69,9 @@
                         android:layout_height="wrap_content"
                         android:padding="@dimen/dimValue_5"
                         android:textColor="#fff"
-                        android:textSize="@dimen/dimTextSize_16" />
+                        android:ellipsize="end"
+                        android:maxLines="3"
+                        android:textSize="@dimen/dimTextSize_18" />
 
                 </LinearLayout>
 
@@ -81,58 +90,58 @@
 
 
             <LinearLayout
-                android:layout_width="@dimen/size_90px"
+                android:layout_width="@dimen/size_80px"
                 android:layout_height="@dimen/size_90px"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/dimValue_10"
                 android:background="@drawable/round_boder"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="@dimen/dimValue_10">
+               >
 
                 <TextView
                     android:id="@+id/countchapter"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="10"
+                    android:text="0"
+                    android:layout_marginTop="@dimen/dimValue_10"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textSize="@dimen/dimTextSize_24" />
+                    android:textColor="#fff"
+                    android:textSize="@dimen/dimTextSize_26" />
 
                 <TextView
-                    android:id="@+id/learnLable"
+                    android:id="@+id/chapterLable"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/Chapters"
-                    android:textColor="#FFFFFF"
-                    android:textSize="@dimen/dimTextSize_18" />
+                    android:textColor="#fff"
+                    android:textSize="@dimen/dimTextSize_16" />
 
             </LinearLayout>
 
 
             <LinearLayout
-                android:layout_width="@dimen/size_90px"
+                android:layout_width="@dimen/size_80px"
                 android:layout_height="@dimen/size_90px"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/dimValue_10"
                 android:background="@drawable/round_boder"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="@dimen/dimValue_10">
+                >
 
                 <TextView
                     android:id="@+id/topicCount"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="3"
+                    android:text="0"
+                    android:layout_marginTop="@dimen/dimValue_10"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
-                    android:textSize="@dimen/dimTextSize_24" />
+                    android:textSize="@dimen/dimTextSize_26" />
 
                 <TextView
                     android:id="@+id/topiclabel"
@@ -141,31 +150,31 @@
                     android:gravity="center"
                     android:text="@string/Topic"
                     android:textColor="#FFFFFF"
-                    android:textSize="@dimen/dimTextSize_18" />
+                    android:textSize="@dimen/dimTextSize_16" />
 
             </LinearLayout>
 
 
             <LinearLayout
-                android:layout_width="@dimen/size_90px"
+                android:layout_width="@dimen/size_80px"
                 android:layout_height="@dimen/size_90px"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/dimValue_10"
                 android:background="@drawable/round_boder"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="@dimen/dimValue_10">
+                >
 
                 <TextView
                     android:id="@+id/quizCount"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="50"
+                    android:text="0"
+                    android:layout_marginTop="@dimen/dimValue_10"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
-                    android:textSize="@dimen/dimTextSize_24" />
+                    android:textSize="@dimen/dimTextSize_26" />
 
                 <TextView
                     android:id="@+id/quizlabel"
@@ -174,7 +183,7 @@
                     android:gravity="center"
                     android:text="@string/Quiz"
                     android:textColor="#FFFFFF"
-                    android:textSize="@dimen/dimTextSize_18" />
+                    android:textSize="@dimen/dimTextSize_16" />
 
             </LinearLayout>
 
@@ -190,25 +199,25 @@
 
 
             <LinearLayout
-                android:layout_width="@dimen/size_90px"
+                android:layout_width="@dimen/size_80px"
                 android:layout_height="@dimen/size_90px"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/dimValue_10"
                 android:background="@drawable/round_boder"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="@dimen/dimValue_10">
+               >
 
                 <TextView
                     android:id="@+id/viewCount"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="10"
+                    android:text="0"
+                    android:layout_marginTop="@dimen/dimValue_10"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
-                    android:textSize="@dimen/dimTextSize_24" />
+                    android:textSize="@dimen/dimTextSize_26" />
 
                 <TextView
                     android:id="@+id/viewlabel"
@@ -217,31 +226,30 @@
                     android:gravity="center"
                     android:text="@string/View"
                     android:textColor="#FFFFFF"
-                    android:textSize="@dimen/dimTextSize_18" />
+                    android:textSize="@dimen/dimTextSize_16" />
 
             </LinearLayout>
 
 
             <LinearLayout
-                android:layout_width="@dimen/size_90px"
+                android:layout_width="@dimen/size_80px"
                 android:layout_height="@dimen/size_90px"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/dimValue_10"
                 android:background="@drawable/round_boder"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:padding="@dimen/dimValue_10">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/userCount"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="10"
+                    android:text="0"
+                    android:layout_marginTop="@dimen/dimValue_10"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
-                    android:textSize="@dimen/dimTextSize_24" />
+                    android:textSize="@dimen/dimTextSize_26" />
 
                 <TextView
                     android:id="@+id/userlabel"
@@ -250,7 +258,7 @@
                     android:gravity="center"
                     android:text="@string/user"
                     android:textColor="#FFFFFF"
-                    android:textSize="@dimen/dimTextSize_18" />
+                    android:textSize="@dimen/dimTextSize_16" />
 
 
             </LinearLayout>
@@ -260,30 +268,28 @@
 
         <LinearLayout
             android:id="@+id/startlearning"
-            android:layout_width="@dimen/size_150px"
+            android:layout_width="@dimen/size_140px"
             android:layout_height="wrap_content"
             android:layout_gravity="right|center"
-            android:layout_margin="@dimen/dimValue_10"
+            android:layout_marginTop="@dimen/dimValue_10"
+            android:layout_marginBottom="@dimen/dimValue_20"
+            android:layout_marginRight="@dimen/dimValue_16"
             android:background="@drawable/white_boder"
             android:gravity="center|right"
             android:orientation="horizontal">
 
-            <TextView
+            <TextView android:id="@+id/startlearningtext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimValue_5"
-                android:layout_gravity="center"
-                android:textAlignment="center"
-                android:gravity="center"
                 android:padding="@dimen/dimValue_10"
                 android:text="@string/startlearning"
                 android:textColor="@color/colorBlack" />
 
             <ImageView
-                android:layout_width="@dimen/dimValue_30"
-                android:layout_height="@dimen/dimValue_30"
+                android:layout_width="@dimen/dimValue_20"
+                android:layout_height="@dimen/dimValue_20"
                 android:layout_gravity="center"
-                android:layout_marginRight="@dimen/dimValue_10"
+                android:layout_margin="@dimen/dimValue_10"
                 android:background="@drawable/ic_orange_bg"
                 android:src="@drawable/ic_media_play" />
 

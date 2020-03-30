@@ -24,6 +24,7 @@ import dlp.bluelupin.dlp.Models.ApplicationVersionResponse;
 import dlp.bluelupin.dlp.Models.CacheServiceCallData;
 import dlp.bluelupin.dlp.Models.ContentData;
 import dlp.bluelupin.dlp.Models.ContentServiceRequest;
+import dlp.bluelupin.dlp.Models.DashboardData;
 import dlp.bluelupin.dlp.Models.Data;
 import dlp.bluelupin.dlp.Models.LanguageData;
 import dlp.bluelupin.dlp.Models.LogsDataRequest;
@@ -990,5 +991,42 @@ public class ServiceHelper {
             }
 
         });
+    }
+
+
+    //dashboarddata service
+    public void calldashboarddataService(final int courseChapterType,int parentId, final IServiceSuccessCallback<DashboardData> callback) {
+        Call<DashboardData> cd=null;
+        if(courseChapterType==1) {
+            cd = service.Getdashboarddata(Consts.dashboarddata);
+        }else   if(courseChapterType==2) {
+            cd = service.Getchapterdata(Consts.chapterdata+parentId);
+        }
+        cd.enqueue(new Callback<DashboardData>() {
+
+            @Override
+            public void onResponse(Call<DashboardData> call, Response<DashboardData> response) {
+                if (response != null) {
+                     DbHelper dbhelper = new DbHelper(context);
+                    DashboardData dashboardData=response.body();
+                    if(courseChapterType==1){//for save course details
+                        dashboardData.setCourseChapterType(1);
+                    }else if (courseChapterType==2){//for save chapter details
+                        dashboardData.setCourseChapterType(2);
+                    }
+                    dbhelper.deleteDashboarddataEntity(courseChapterType);//delete old data
+                    dbhelper.insertDashboarddataEntity(dashboardData);
+                    callback.onDone(Consts.dashboarddata, response.body(), null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DashboardData> call, Throwable t) {
+                Log.d(Consts.LOG_TAG, "Failure in service dashboarddata" + t.toString());
+                callback.onDone(Consts.dashboarddata, null, t.toString());
+            }
+        });
+
+//
     }
 }

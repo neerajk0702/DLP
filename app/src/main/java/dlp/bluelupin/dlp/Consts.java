@@ -64,6 +64,9 @@ public class Consts {
     public static final String PlayStoreVersion = "appstoreversion";
     public static final String SENDER = "MOBKNT";
     public static final String statusUpdate = "usr/content/status/update";
+    public static final String dashboarddata = "dashboarddata";
+    public static final String chapterdata = "chapterdata/";
+
     public static String inputDirectoryLocation = "/dlp/";
 
 

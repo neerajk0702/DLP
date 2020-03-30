@@ -30,9 +30,10 @@ import dlp.bluelupin.dlp.Activities.AudioActivity;
 import dlp.bluelupin.dlp.Activities.VideoPlayerActivity;
 import dlp.bluelupin.dlp.Consts;
 import dlp.bluelupin.dlp.Database.DbHelper;
-import dlp.bluelupin.dlp.Fragments.ChaptersFragment;
+import dlp.bluelupin.dlp.Fragments.ChaptersFragmentNew;
 import dlp.bluelupin.dlp.Fragments.WebFragment;
 import dlp.bluelupin.dlp.Models.AccountData;
+import dlp.bluelupin.dlp.Models.DashboardData;
 import dlp.bluelupin.dlp.Models.Data;
 import dlp.bluelupin.dlp.Models.LogsDataRequest;
 import dlp.bluelupin.dlp.R;
@@ -46,9 +47,6 @@ import dlp.bluelupin.dlp.Utilities.FontManager;
 import dlp.bluelupin.dlp.Utilities.LocationUtility;
 import dlp.bluelupin.dlp.Utilities.LogAnalyticsHelper;
 import dlp.bluelupin.dlp.Utilities.Utility;
-import dlp.bluelupin.dlp.shwocaseview.shape.Focus;
-import dlp.bluelupin.dlp.shwocaseview.shape.FocusGravity;
-import dlp.bluelupin.dlp.shwocaseview.view.MaterialIntroView;
 
 /**
  * Created by Neeraj on 7/26/2016.
@@ -60,10 +58,12 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
     private CustomProgressDialog customProgressDialog;
     private String contentTitle;
     private MediaPlayer mediaPlayer;
+    private DashboardData dadata;
 
-    public CourseAdapter(Context context, List<Data> itemList) {
+    public CourseAdapter(Context context, List<Data> itemList, DashboardData dadata) {
         this.itemList = itemList;
         this.context = context;
+        this.dadata = dadata;
         customProgressDialog = new CustomProgressDialog(context, R.mipmap.syc);
     }
 
@@ -82,10 +82,30 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
         Typeface materialdesignicons_font = FontManager.getFontTypefaceMaterialDesignIcons(context, "fonts/materialdesignicons-webfont.otf");
         holder.courseTitle.setTypeface(VodafoneExB);
         holder.courseDescription.setTypeface(VodafoneRg);
-       //holder.cardView.setCardBackgroundColor(Color.parseColor("#00000000"));
-       // holder.learnIcon.setTypeface(materialdesignicons_font);
-       // holder.learnIcon.setText(Html.fromHtml("&#xf5da;"));
-       // holder.learnLable.setTypeface(VodafoneExB);
+        holder.countchapter.setTypeface(VodafoneExB);
+        holder.topicCount.setTypeface(VodafoneExB);
+        holder.quizCount.setTypeface(VodafoneExB);
+        holder.viewCount.setTypeface(VodafoneExB);
+        holder.userCount.setTypeface(VodafoneExB);
+//        holder.cardView.setCardBackgroundColor(Color.parseColor("#00000000"));
+        if (position % 2 == 0) {
+            holder.cardView.setBackgroundResource(R.drawable.ic_orange_bg);
+            holder.startlearningtext.setTextColor(Color.parseColor("#FFF5AF19"));
+        } else {
+            holder.cardView.setBackgroundResource(R.drawable.ic_purple_bg);
+            holder.startlearningtext.setTextColor(Color.parseColor("#FFFF00CC"));
+        }
+        // holder.learnIcon.setTypeface(materialdesignicons_font);
+        // holder.learnIcon.setText(Html.fromHtml("&#xf5da;"));
+        // holder.learnLable.setTypeface(VodafoneExB);
+        if (dadata != null) {
+            holder.countchapter.setText(dadata.getChapters()+"");
+            holder.topicCount.setText(dadata.getTopics()+"");
+            holder.quizCount.setText(dadata.getQuizzes()+"");
+            holder.viewCount.setText(dadata.getCourses()+"");
+            holder.userCount.setText(dadata.getUsers()+"");
+        }
+
 
         final DbHelper dbHelper = new DbHelper(context);
         final Data data = itemList.get(position);
@@ -97,17 +117,17 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
 
 
                 if (media.getType().equalsIgnoreCase("video")) {
-              //      holder.media_Icon.setTypeface(materialdesignicons_font);
-                   // holder.media_Icon.setText(Html.fromHtml("&#xf36b;"));
+                    //      holder.media_Icon.setTypeface(materialdesignicons_font);
+                    // holder.media_Icon.setText(Html.fromHtml("&#xf36b;"));
                 } else if (media.getType().equalsIgnoreCase("Audio")) {
-                 //   holder.media_Icon.setTypeface(materialdesignicons_font);
-                   // holder.media_Icon.setText(Html.fromHtml("&#xf387;"));
+                    //   holder.media_Icon.setTypeface(materialdesignicons_font);
+                    // holder.media_Icon.setText(Html.fromHtml("&#xf387;"));
                 } else if (media.getType().equalsIgnoreCase("Url")) {
-                   // holder.media_Icon.setTypeface(materialdesignicons_font);
-                   // holder.media_Icon.setText(Html.fromHtml("&#xf57e;"));
+                    // holder.media_Icon.setTypeface(materialdesignicons_font);
+                    // holder.media_Icon.setText(Html.fromHtml("&#xf57e;"));
                 } else if (media.getType().equalsIgnoreCase("Youtube")) {
-                  //  holder.media_Icon.setTypeface(materialdesignicons_font);
-                  //  holder.media_Icon.setText(Html.fromHtml("&#xf36b;"));
+                    //  holder.media_Icon.setTypeface(materialdesignicons_font);
+                    //  holder.media_Icon.setText(Html.fromHtml("&#xf36b;"));
                 }
 
 
@@ -164,7 +184,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
                     Utility.getLanguageIdFromSharedPreferences(context));
             if (media != null) {
 
-              //  holder.mediaLayout.setVisibility(View.VISIBLE);
+                //  holder.mediaLayout.setVisibility(View.VISIBLE);
              /*     holder.mediaLayout.setOnClickListener(new View.OnClickListener() {
                   @Override
                     public void onClick(View v) {
@@ -188,7 +208,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
             }*/
         }
 
-      holder.startlearning.setOnClickListener(new View.OnClickListener() {
+        holder.startlearning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
@@ -198,7 +218,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
                 }
                 logCourseDetails(data, "", "", "CourseDetails");
                 stopAudio();
-                ChaptersFragment fragment = ChaptersFragment.newInstance(data.getId(), type);
+                ChaptersFragmentNew fragment = ChaptersFragmentNew.newInstance(data.getId(), type, holder.courseTitle.getText().toString());
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
                 transaction.replace(R.id.container, fragment)
@@ -323,7 +343,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
 
                         }
 
-                        if (mediaPlayer!=null && mediaPlayer.isPlaying()) {//listen_text.getText() == "PAUSE") {
+                        if (mediaPlayer != null && mediaPlayer.isPlaying()) {//listen_text.getText() == "PAUSE") {
 
                             mediaPlayer.pause();
 
@@ -490,14 +510,13 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
     public int getItemCount() {
         return itemList.size();
     }
+
     private void stopAudio() {
-        if (mediaPlayer!=null && mediaPlayer.isPlaying()) {//listen_text.getText() == "PAUSE") {
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {//listen_text.getText() == "PAUSE") {
             mediaPlayer.stop();
             mediaPlayer.release();
         }
     }
-
-
 
 
 }

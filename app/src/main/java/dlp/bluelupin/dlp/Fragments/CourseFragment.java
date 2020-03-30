@@ -24,8 +24,13 @@ import dlp.bluelupin.dlp.Adapters.CourseAdapter;
 import dlp.bluelupin.dlp.Consts;
 import dlp.bluelupin.dlp.Database.DbHelper;
 import dlp.bluelupin.dlp.MainActivity;
+import dlp.bluelupin.dlp.Models.DashboardData;
 import dlp.bluelupin.dlp.Models.Data;
+import dlp.bluelupin.dlp.Models.ProfileUpdateServiceRequest;
 import dlp.bluelupin.dlp.R;
+import dlp.bluelupin.dlp.Services.IAsyncWorkCompletedCallback;
+import dlp.bluelupin.dlp.Services.ServiceCaller;
+import dlp.bluelupin.dlp.Utilities.CustomProgressDialog;
 import dlp.bluelupin.dlp.Utilities.FontManager;
 import dlp.bluelupin.dlp.Utilities.LocationUtility;
 import dlp.bluelupin.dlp.Utilities.Utility;
@@ -120,12 +125,12 @@ public class CourseFragment extends Fragment implements MaterialIntroListener {
        // courseImage = (ImageView) view.findViewById(R.id.courseImage);
        // title = (TextView) view.findViewById(R.id.title);
         //sub_title = (TextView) view.findViewById(R.id.sub_title);
-        //description = (TextView) view.findViewById(R.id.description);
+        TextView description = (TextView) view.findViewById(R.id.description);
       //  programTitle = (TextView) view.findViewById(R.id.programTitle);
        // title.setTypeface(VodafoneExB);
        // programTitle.setTypeface(VodafoneExB);
       //  sub_title.setTypeface(VodafoneRg);
-       // description.setTypeface(VodafoneRg);
+        description.setTypeface(VodafoneRg);
 
 //        List<String> list = new ArrayList<String>();
 //        list.add("English");
@@ -135,29 +140,27 @@ public class CourseFragment extends Fragment implements MaterialIntroListener {
 //        list.add("Hindi");
 //        list.add("Tamil");
 
-        DbHelper db = new DbHelper(context);
-        //List<Data> temList = db.getAllMedia();
-
-        List<Data> dataList = db.getDataEntityByParentIdAndType(null, "Course"); // first level is course
-
-        if (Consts.IS_DEBUG_LOG) {
-            Log.d(Consts.LOG_TAG, "CourseFragment: data_item count: " + dataList.size());
-        }
-        CourseAdapter courseAdapter = new CourseAdapter(context, dataList);
-        recyclerView= (RecyclerView) view.findViewById(R.id.recycler_view);
+        recyclerView= view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setHasFixedSize(true);
         recyclerView.setNestedScrollingEnabled(false);
-        recyclerView.setAdapter(courseAdapter);
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 showMaterialIntro();
             }
         }, 1000);
-
+        calldashboarddataService();
     }
-
+    private void showListData() {
+        DbHelper db = new DbHelper(context);
+        DashboardData dadata=db.getDashboarddataEntityById(1);//for save course details
+        //List<Data> temList = db.getAllMedia();
+        List<Data> dataList = db.getDataEntityByParentIdAndType(null, "Course"); // first level is course
+        CourseAdapter courseAdapter = new CourseAdapter(context, dataList,dadata);
+        recyclerView.setAdapter(courseAdapter);
+    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -231,6 +234,35 @@ public class CourseFragment extends Fragment implements MaterialIntroListener {
     public void onUserClicked(String materialIntroViewId) {
         if (materialIntroViewId.equals(INTRO_CARD)) {
          //   Toast.makeText(getActivity(), "User Clicked", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    //call dashboarddata service
+    private void calldashboarddataService() {
+        final CustomProgressDialog customProgressDialog = new CustomProgressDialog(context, R.mipmap.syc);
+
+        int languageId = Utility.getLanguageIdFromSharedPreferences(context);
+
+        if (Utility.isOnline(context)) {
+            customProgressDialog.show();
+            ServiceCaller sc = new ServiceCaller(context);
+            sc.dashboarddata(1,0,new IAsyncWorkCompletedCallback() {
+                @Override
+                public void onDone(String workName, boolean isComplete) {
+                    if (isComplete) {
+                        showListData();
+                        customProgressDialog.dismiss();
+                    } else {
+                        Utility.alertForErrorMessage(getString(R.string.profile_not_updated), context);
+                        customProgressDialog.dismiss();
+                    }
+
+                }
+            });
+        }
+        else {
+            showListData();
         }
     }
 }

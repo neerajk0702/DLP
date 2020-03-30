@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_account_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_180px"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/ic_orange_bg" />
+
+
+    <RelativeLayout
+        android:id="@+id/linear_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimValue_70"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView_account_details"
+                    android:layout_width="@dimen/size_150px"
+                    android:layout_height="@dimen/size_140px"
+                    android:layout_marginLeft="@dimen/dimValue_20">
+
+
+                    <ImageView
+                        android:id="@+id/logiiocn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/maincurs" />
+
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/titletxt"
+                    android:layout_width="match_parent"
+                    android:textSize="@dimen/dimTextSize_24"
+                    android:text=""
+                    android:layout_alignParentRight="true"
+                    android:padding="@dimen/dimValue_5"
+                    android:textColor="@color/colorWhite"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/totalItemView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dimValue_10"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/countchapter"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textAlignment="center"
+                            android:textColor="#FFFFFF"
+                            android:textSize="@dimen/dimTextSize_26" />
+
+                        <TextView
+                            android:id="@+id/learnLable"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/Chapters"
+                            android:textColor="#FFFFFF"
+                            android:textSize="@dimen/dimTextSize_14" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/topicCount"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textAlignment="center"
+                            android:textColor="#FFFFFF"
+                            android:textSize="@dimen/dimTextSize_26" />
+
+                        <TextView
+                            android:id="@+id/topictext"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/Topic"
+                            android:textColor="#FFFFFF"
+                            android:textSize="@dimen/dimTextSize_14" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/quizCount"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textAlignment="center"
+                            android:textColor="#FFFFFF"
+                            android:textSize="@dimen/dimTextSize_26" />
+
+                        <TextView
+                            android:id="@+id/quiztext"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/Quiz"
+                            android:textColor="#FFFFFF"
+                            android:textSize="@dimen/dimTextSize_14" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/linear_account"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:padding="@dimen/dimValue_5"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/Name"
+                android:layout_width="match_parent"
+                android:textSize="@dimen/dimTextSize_20"
+                android:text="@string/Chapters"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+
+            <ImageView
+                android:id="@+id/moreChapter"
+                android:layout_width="@dimen/size_40px"
+                android:src="@drawable/ic_more"
+                android:layout_height="@dimen/size_50px"/>
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dimValue_10"
+                android:layout_marginTop="@dimen/dimValue_5"
+                android:layout_marginRight="@dimen/dimValue_10"
+                android:layout_marginBottom="@dimen/dimValue_10"
+                android:orientation="vertical">
+
+
+                <!-- <TextView
+                     android:id="@+id/chapterTitle"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:textColor="#4a4d4e"
+                     android:textSize="@dimen/dimTextSize_22" />-->
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/chaptersRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.9"
+                    android:scrollbars="none" />
+
+                <LinearLayout
+                    android:id="@+id/quizStartLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.1"
+                    android:background="@color/colorRad"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <TextView
+                        android:id="@+id/quiz"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Start Quiz"
+                        android:textColor="#fff"
+                        android:textSize="@dimen/dimTextSize_22" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+</RelativeLayout>
+
+
+
+
+

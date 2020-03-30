@@ -257,6 +257,8 @@
                     android:id="@+id/verifyLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimValue_16"
+                    android:layout_marginRight="@dimen/dimValue_6"
                     android:layout_marginTop="@dimen/dimValue_30"
                     android:gravity="center">
 

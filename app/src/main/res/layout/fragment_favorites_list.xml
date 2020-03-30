@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="#fff"
     android:orientation="vertical"
-    tools:context="dlp.bluelupin.dlp.Fragments.ChaptersFragment">
+    tools:context="dlp.bluelupin.dlp.Fragments.ChaptersFragmentNew">
 
 
     <LinearLayout

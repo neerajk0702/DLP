@@ -24,20 +24,18 @@ import android.view.animation.AnimationUtils;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
-import java.lang.ref.WeakReference;
 import java.util.List;
 
 import dlp.bluelupin.dlp.Activities.AudioActivity;
 import dlp.bluelupin.dlp.Activities.VideoPlayerActivity;
 import dlp.bluelupin.dlp.Consts;
 import dlp.bluelupin.dlp.Database.DbHelper;
-import dlp.bluelupin.dlp.Fragments.ChaptersFragment;
+import dlp.bluelupin.dlp.Fragments.ChaptersFragmentNew;
 import dlp.bluelupin.dlp.Fragments.ContentFragment;
 import dlp.bluelupin.dlp.Fragments.DownloadingFragment;
 import dlp.bluelupin.dlp.Fragments.QuizQuestionFragment;
 import dlp.bluelupin.dlp.Fragments.WebFragment;
 import dlp.bluelupin.dlp.Models.AccountData;
-import dlp.bluelupin.dlp.Models.AccountServiceRequest;
 import dlp.bluelupin.dlp.Models.Data;
 import dlp.bluelupin.dlp.Models.FavoritesData;
 import dlp.bluelupin.dlp.Models.LogsDataRequest;
@@ -413,7 +411,7 @@ public class ChaptersAdapter extends RecyclerView.Adapter<ChaptersViewHolder> {
 
                     stopAudio();
                     FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
-                    ChaptersFragment fragment = ChaptersFragment.newInstance(data.getId(), type);
+                    ChaptersFragmentNew fragment = ChaptersFragmentNew.newInstance(data.getId(), type,holder.chapterTitle.getText().toString());
 
                     FragmentTransaction transaction = fragmentManager.beginTransaction();
                     transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);

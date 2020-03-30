@@ -10,6 +10,7 @@ import dlp.bluelupin.dlp.Models.AccountServiceRequest;
 import dlp.bluelupin.dlp.Models.CacheServiceCallData;
 import dlp.bluelupin.dlp.Models.ContentData;
 import dlp.bluelupin.dlp.Models.ContentServiceRequest;
+import dlp.bluelupin.dlp.Models.DashboardData;
 import dlp.bluelupin.dlp.Models.LogsDataRequest;
 import dlp.bluelupin.dlp.Models.OtpData;
 import dlp.bluelupin.dlp.Models.OtpVerificationServiceRequest;
@@ -501,6 +502,26 @@ public class ServiceCaller {
                 } else {
                     success = false;
                     workCompletedCallback.onDone("Profile not updated", success);
+                }
+            }
+        });
+    }
+
+
+    //call dashboarddata service
+    public void dashboarddata(int courseChapterType,int parentId,final IAsyncWorkCompletedCallback workCompletedCallback) {
+        final ServiceHelper sh = new ServiceHelper(context);
+        sh.calldashboarddataService(courseChapterType,parentId,new IServiceSuccessCallback<DashboardData>() {
+            @Override
+            public void onDone(final String callerUrl, final DashboardData result, String error) {
+                Boolean success = false;
+                if (result != null) {
+                    success = true;
+                    workCompletedCallback.onDone("dashboarddata", success);
+
+                } else {
+                    success = false;
+                    workCompletedCallback.onDone("dashboarddata", success);
                 }
             }
         });

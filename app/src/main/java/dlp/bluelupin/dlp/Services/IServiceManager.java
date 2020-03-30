@@ -8,6 +8,7 @@ import dlp.bluelupin.dlp.Models.AccountServiceRequest;
 import dlp.bluelupin.dlp.Models.ApplicationVersionResponse;
 import dlp.bluelupin.dlp.Models.ContentData;
 import dlp.bluelupin.dlp.Models.ContentServiceRequest;
+import dlp.bluelupin.dlp.Models.DashboardData;
 import dlp.bluelupin.dlp.Models.LanguageData;
 import dlp.bluelupin.dlp.Models.LogsDataRequest;
 import dlp.bluelupin.dlp.Models.OtpData;
@@ -89,4 +90,10 @@ public interface IServiceManager {
 
     @POST(Consts.statusUpdate)
     Call<AccountData> statusUpdated(@Body StatusUpdateService request);
+
+    @GET
+    Call<DashboardData> Getdashboarddata(@Url String url);
+
+    @GET
+    Call<DashboardData> Getchapterdata(@Url String url);
 }

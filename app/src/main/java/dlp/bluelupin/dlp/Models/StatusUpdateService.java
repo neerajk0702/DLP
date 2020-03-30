@@ -4,6 +4,15 @@ public class StatusUpdateService {
     private String api_token;
     private int content_id;
     private int completion_status;
+    private String updated_at;
+
+    public String getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(String updated_at) {
+        this.updated_at = updated_at;
+    }
 
     public String getApi_token() {
         return api_token;
@@ -32,6 +41,6 @@ public class StatusUpdateService {
     @Override
     public String toString()
     {
-        return "ClassPojo [api_token = "+api_token+", content_id = "+content_id+", completion_status = "+completion_status+"]";
+        return "ClassPojo [api_token = "+api_token+", content_id = "+content_id+", completion_status = "+completion_status+", updated_at = "+updated_at+"]";
     }
 }
