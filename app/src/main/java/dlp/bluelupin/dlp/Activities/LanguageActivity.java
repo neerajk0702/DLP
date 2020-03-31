@@ -55,7 +55,7 @@ public class LanguageActivity extends AppCompatActivity implements View.OnClickL
     private TextView tickIcon, done, title;
     private LinearLayout doneLayout;
     List<LanguageData> data;
-    private String name_string;
+    private String name_string,email_string;
     CustomProgressDialog customProgressDialog;
     SharedPreferences InstallationLogprefs;
 
@@ -257,12 +257,14 @@ public class LanguageActivity extends AppCompatActivity implements View.OnClickL
         AccountData accountData = dbhelper.getAccountData();
         if (accountData != null && !accountData.equals("")) {
             name_string = accountData.getName();
+            email_string = accountData.getEmail();
         }
 
         ProfileUpdateServiceRequest ServiceRequest = new ProfileUpdateServiceRequest();
 
         ServiceRequest.setLanguage_id(languageId);
         ServiceRequest.setName(name_string);
+        ServiceRequest.setEmail(email_string);
         if (Utility.isOnline(LanguageActivity.this)) {
             customProgressDialog.show();
             ServiceCaller sc = new ServiceCaller(LanguageActivity.this);

@@ -156,6 +156,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
 //            Data media = dbHelper.getMediaEntityByDownloadUrlAndLanguageIdLaunguageId(media1.getDownload_url(),
 //                           Utility.getLanguageIdFromSharedPreferences(context));
             if (media != null && media.getUrl() != null) {
+                holder.courseImage.setTag(media.getDownload_url().toString());
                 Picasso.with(context).load(media.getDownload_url()).placeholder(R.drawable.imageplaceholder).into(holder.courseImage);
                /* if(media.getLocalFilePath()!=null) {
                     String localFileName = Utility.getFileName(media.getLocalFilePath());
@@ -218,7 +219,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
                 }
                 logCourseDetails(data, "", "", "CourseDetails");
                 stopAudio();
-                ChaptersFragmentNew fragment = ChaptersFragmentNew.newInstance(data.getId(), type, holder.courseTitle.getText().toString());
+                ChaptersFragmentNew fragment = ChaptersFragmentNew.newInstance(data.getId(), type, holder.courseTitle.getText().toString(), holder.courseImage.getTag().toString());
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
                 transaction.replace(R.id.container, fragment)

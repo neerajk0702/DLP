@@ -24,6 +24,7 @@ import java.util.List;
 
 import dlp.bluelupin.dlp.Activities.LanguageActivity;
 import dlp.bluelupin.dlp.Activities.NotificationsActivity;
+import dlp.bluelupin.dlp.Activities.ReferFriendActivity;
 import dlp.bluelupin.dlp.Activities.UserProfileActivity;
 import dlp.bluelupin.dlp.Fragments.AboutUsFragment;
 import dlp.bluelupin.dlp.Fragments.CourseFragment;
@@ -153,6 +154,12 @@ public class NavigationMenuAdapter extends BaseAdapter {
                 } else if (menuList.get(position).toString().equalsIgnoreCase("Downloads")) {
                     ShowDownloadedMediaFileFragment downloaded = ShowDownloadedMediaFileFragment.newInstance("");
                     navigateToFragment(downloaded);
+                }
+                else if (menuList.get(position).toString().equalsIgnoreCase("Refer a Friend")) {
+                    Intent intent = new Intent(mContext, ReferFriendActivity.class);
+                    mContext.startActivity(intent);
+                    Activity activity = (Activity) mContext;
+                    activity.overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
                 }
                 int pos = (int) v.getTag();
                 if (selectedPosition.contains(pos)) {

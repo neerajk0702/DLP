@@ -116,6 +116,7 @@ public class FavoritesListAdapter extends RecyclerView.Adapter<FavoritesViewHold
                     }*/
                     Uri uri = Uri.fromFile(new File(media.getLocalFilePath()));
                     if (uri != null) {
+                        holder.chapterImage.setTag(uri.toString());
                         Picasso.with(context).load(uri).placeholder(R.drawable.imageplaceholder).into(holder.chapterImage);
                     }
                 }
@@ -130,7 +131,7 @@ public class FavoritesListAdapter extends RecyclerView.Adapter<FavoritesViewHold
                     Log.d(Consts.LOG_TAG, "Navigating to  data_item id: " + data.getId() + " type: " + type);
                 if (type.equalsIgnoreCase(Consts.COURSE) || type.equalsIgnoreCase(Consts.CHAPTER) || type.equalsIgnoreCase(Consts.TOPIC)) {
                     FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
-                    ChaptersFragmentNew fragment = ChaptersFragmentNew.newInstance(data.getId(), type,holder.chapterTitle.getText().toString());
+                    ChaptersFragmentNew fragment = ChaptersFragmentNew.newInstance(data.getId(), type,holder.chapterTitle.getText().toString(),holder.chapterImage.getTag().toString());
 
                     FragmentTransaction transaction = fragmentManager.beginTransaction();
                     transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);

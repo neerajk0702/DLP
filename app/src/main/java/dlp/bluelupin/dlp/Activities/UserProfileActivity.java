@@ -9,6 +9,8 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import java.util.List;
 
@@ -41,15 +44,13 @@ import dlp.bluelupin.dlp.shwocaseview.view.MaterialIntroView;
 
 public class UserProfileActivity extends AppCompatActivity implements View.OnClickListener, MaterialIntroListener {
 
-    private TextView done, certificateName, mainName, mainemail;
-    private EditText mobileNo;
+    private TextView done, certificateName, mainName, mainemail,title;
     ImageView leftArrow, certificateimg;
     private Context context;
-    private TextView nameLable, emailLable, email, phoneLable, phone, lanLable, save;
-    private Spinner spinner;
-    private EditText enterName;
+    private TextView nameLable, emailLable, phoneLable, phone, lanLable, save,language;
+    private EditText enterName,email;
     private List<LanguageData> data;
-    private String name_string;
+    private String name_string,email_string;
     LinearLayout shareviewcertificate;
     private static final String INTRO_CARD1 = "intro_card_1";
     private static final String INTRO_CARD2 = "intro_card_2";
@@ -57,10 +58,24 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         setContentView(R.layout.activity_user_profile);
+        context=UserProfileActivity.this;
+        init();
     }
 
     public void init() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        title =  toolbar.findViewById(R.id.title);
+        leftArrow =  toolbar.findViewById(R.id.leftArrow);
+        leftArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         if (Utility.isTablet(context)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         } else {
@@ -70,53 +85,44 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         Typeface VodafoneRg = FontManager.getFontTypeface(context, "fonts/VodafoneRg.ttf");
         nameLable = (TextView) this.findViewById(R.id.nameLable);
         emailLable = (TextView) this.findViewById(R.id.emailLable);
-        email = (TextView) this.findViewById(R.id.email);
+        email = this.findViewById(R.id.email);
         phoneLable = (TextView) this.findViewById(R.id.phoneLable);
         phone = (TextView) this.findViewById(R.id.phone);
         lanLable = (TextView) this.findViewById(R.id.lanLable);
         save = (TextView) this.findViewById(R.id.save);
         enterName = (EditText) this.findViewById(R.id.enterName);
-        done = this.findViewById(R.id.done);
+        done = toolbar.findViewById(R.id.done);
+        done.setOnClickListener(this);
+        done.setTypeface(VodafoneExB);
+        title.setTypeface(VodafoneExB);
         certificateName = this.findViewById(R.id.certificateName);
         mainName = this.findViewById(R.id.mainName);
+        mainName.setTypeface(VodafoneExB);
         mainemail = this.findViewById(R.id.mainemail);
-        leftArrow = this.findViewById(R.id.leftArrow);
+        mainemail.setTypeface(VodafoneRg);
         certificateimg = this.findViewById(R.id.certificateimg);
         shareviewcertificate = this.findViewById(R.id.shareviewcertificate);
-
+        shareviewcertificate.setOnClickListener(this);
         emailLable.setTypeface(VodafoneExB);
         nameLable.setTypeface(VodafoneExB);
         phoneLable.setTypeface(VodafoneExB);
         lanLable.setTypeface(VodafoneExB);
         save.setTypeface(VodafoneRg);
-        spinner = (Spinner) this.findViewById(R.id.spinner);
-        spinner.getBackground().setColorFilter(Color.parseColor("#4a4d4e"), PorterDuff.Mode.SRC_ATOP);
-        save.setOnClickListener(this);
+        language =  this.findViewById(R.id.language);
         DbHelper dbhelper = new DbHelper(context);
         data = dbhelper.getAllLanguageDataEntity();
         if (data != null) {
-            LanguageAdapter languageAdapter = new LanguageAdapter(context, data);
-            //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinner.setAdapter(languageAdapter);
             int languagePos = Utility.getLanguagePositionFromSharedPreferences(context);
-            spinner.setSelection(languagePos);//set default value
+            String languagecode = Utility.getLanguageCodeFromSharedPreferences(context);
+            language.setText(data.get(languagePos).getName());
         }
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                setLanguage(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
         AccountData accountData = dbhelper.getAccountData();
         if (accountData != null && !accountData.equals("")) {
             enterName.setText(accountData.getName());
             email.setText(accountData.getEmail());
             phone.setText(accountData.getPhone());
+            mainName.setText(accountData.getName());
+            mainemail.setText(accountData.getEmail());
         }
 
         showIntro(done, INTRO_CARD1, getString(R.string.save), Focus.ALL);
@@ -135,10 +141,19 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.save:
+            case R.id.done:
                 if (isValidate()) {
                     callProfileUpdateService();
                 }
+                break;
+            case R.id.shareviewcertificate:
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+                sendIntent.setType("text/plain");
+
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
                 break;
         }
     }
@@ -150,8 +165,15 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         // String emailReg = "^[A-Za-z0-9_.]+(\\.[_A-Za-z0-9]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
         name_string = enterName.getText().toString().trim();
+        email_string = email.getText().toString().trim();
         if (name_string.length() == 0) {
             Utility.alertForErrorMessage(getString(R.string.enter_name), context);
+            return false;
+        }else if (email_string.length() == 0) {
+            Utility.alertForErrorMessage(getString(R.string.enter_e_mail), this);
+            return false;
+        } else if (!email_string.matches(emailRegex)) {
+            Utility.alertForErrorMessage(getString(R.string.enter_valid_mail), this);
             return false;
         }
         return true;
@@ -166,13 +188,13 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         ProfileUpdateServiceRequest ServiceRequest = new ProfileUpdateServiceRequest();
         ServiceRequest.setName(name_string);
         ServiceRequest.setLanguage_id(languageId);
+        ServiceRequest.setEmail(email_string);
         if (Utility.isOnline(context)) {
             customProgressDialog.show();
             ServiceCaller sc = new ServiceCaller(context);
             sc.updateProfile(ServiceRequest, new IAsyncWorkCompletedCallback() {
                 @Override
                 public void onDone(String workName, boolean isComplete) {
-
                     if (isComplete) {
                         if (Consts.IS_DEBUG_LOG) {
                             Log.d(Consts.LOG_TAG, " callProfileUpdateService success result: " + isComplete);

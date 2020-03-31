@@ -197,6 +197,7 @@ public class ChaptersAdapter extends RecyclerView.Adapter<ChaptersViewHolder> {
 //                           Utility.getLanguageIdFromSharedPreferences(context));
             holder.chapterImage.setImageBitmap(null);
             if (media != null && media.getDownload_url() != null) {
+                holder.chapterImage.setTag(media.getDownload_url().toString());
                 Picasso.with(context).load(media.getDownload_url()).placeholder(R.drawable.imageplaceholder).into(holder.chapterImage);
                /* if(media.getLocalFilePath()!=null) {
                     String localFileName = Utility.getFileName(media.getLocalFilePath());
@@ -411,7 +412,7 @@ public class ChaptersAdapter extends RecyclerView.Adapter<ChaptersViewHolder> {
 
                     stopAudio();
                     FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
-                    ChaptersFragmentNew fragment = ChaptersFragmentNew.newInstance(data.getId(), type,holder.chapterTitle.getText().toString());
+                    ChaptersFragmentNew fragment = ChaptersFragmentNew.newInstance(data.getId(), type,holder.chapterTitle.getText().toString(),holder.chapterImage.getTag().toString());
 
                     FragmentTransaction transaction = fragmentManager.beginTransaction();
                     transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);

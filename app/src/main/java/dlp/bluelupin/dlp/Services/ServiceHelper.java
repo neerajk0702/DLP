@@ -569,7 +569,7 @@ public class ServiceHelper {
 
                 if (data != null) {
                     Log.d(Consts.LOG_TAG, "profile updated data_item:" + data.toString());
-                    if (dbhelper.upsertAccountData(data)) {
+                    if (dbhelper.updateAccountDataAfter(data)) {
                         Log.d(Consts.LOG_TAG, "Profile updated successfully in database ");
                     }
                     callback.onDone(Consts.Profile_Update, data, null);

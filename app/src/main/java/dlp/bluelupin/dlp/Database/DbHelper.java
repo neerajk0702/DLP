@@ -1086,7 +1086,9 @@ public class DbHelper extends SQLiteOpenHelper {
         values.put("phone", accountData.getPhone());
         values.put("preferred_language_id", accountData.getPreferred_language_id());
         values.put("role", accountData.getRole());
-        values.put("api_token", accountData.getApi_token());
+        if(accountData.getApi_token()!=null && !accountData.getApi_token().equals("")) {
+            values.put("api_token", accountData.getApi_token());
+        }
         values.put("otp", accountData.getOtp());
 
         if (accountData.isIs_new_user()) {
@@ -1101,7 +1103,20 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
         return i > 0;
     }
-
+    public boolean updateAccountDataAfter(AccountData accountData) {
+        ContentValues values = new ContentValues();
+        values.put("server_id", accountData.getId());
+        values.put("name", accountData.getName());
+        values.put("email", accountData.getEmail());
+        values.put("phone", accountData.getPhone());
+        values.put("preferred_language_id", accountData.getPreferred_language_id());
+        values.put("role", accountData.getRole());
+        values.put("otp", accountData.getOtp());
+        SQLiteDatabase db = this.getWritableDatabase();
+        long i = db.update("AccountEntity", values, "phone = '" + accountData.getPhone() + "'", null);
+        db.close();
+        return i > 0;
+    }
     //update account verified
     public boolean updateAccountDataVerified(AccountData accountData) {
         ContentValues values = new ContentValues();

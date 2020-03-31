@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_account_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -39,6 +40,7 @@
                     android:id="@+id/cardView_account_details"
                     android:layout_width="@dimen/size_150px"
                     android:layout_height="@dimen/size_140px"
+                    app:cardCornerRadius="@dimen/dimValue_5"
                     android:layout_marginLeft="@dimen/dimValue_20">
 
 
@@ -210,6 +212,7 @@
                 android:textSize="@dimen/dimTextSize_20"
                 android:text="@string/Chapters"
                 android:layout_weight="1"
+                android:layout_marginLeft="@dimen/dimValue_10"
                 android:layout_height="wrap_content"/>
 
 

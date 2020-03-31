@@ -46,7 +46,6 @@
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/dimValue_10"
                     android:gravity="left|center"
                     android:layout_gravity="center"
                     android:textAlignment="center"

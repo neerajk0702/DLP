@@ -3,8 +3,8 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/size_140px"
-    android:layout_marginTop="@dimen/dimValue_5"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dimValue_10"
     card_view:cardPreventCornerOverlap="true"
     card_view:cardCornerRadius="@dimen/dimValue_5"
     card_view:cardElevation="@dimen/dimValue_3"
@@ -24,14 +24,22 @@
             android:layout_height="wrap_content"
             android:visibility="visible"
             android:orientation="horizontal">
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/size_120px"
+                android:layout_height="@dimen/size_120px"
+                card_view:cardElevation="@dimen/dimValue_5"
+                card_view:cardUseCompatPadding="true"
+                card_view:cardCornerRadius="@dimen/dimValue_5">
 
-            <dlp.bluelupin.dlp.Utilities.ScaleImageView
-                android:id="@+id/chapterImage"
-                android:layout_width="@dimen/size_250px"
-                android:layout_height="wrap_content"
-                android:scaleType="fitXY"
-                android:layout_weight="1"
-                android:src="@drawable/maincurs" />
+                <dlp.bluelupin.dlp.Utilities.ScaleImageView
+                    android:id="@+id/chapterImage"
+                    android:layout_width="@dimen/size_120px"
+                    android:layout_height="@dimen/size_120px"
+                    android:scaleType="fitXY"
+                    android:layout_weight="1"
+                    android:src="@drawable/maincurs" />
+            </androidx.cardview.widget.CardView>
+
 
 
             <LinearLayout
@@ -55,7 +63,7 @@
                         android:maxLines="3"
                         android:padding="@dimen/dimValue_5"
                         android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/dimTextSize_16"
+                        android:textSize="@dimen/dimTextSize_18"
                         android:textStyle="bold" />
 
 
@@ -63,7 +71,7 @@
 
                 <LinearLayout
                     android:id="@+id/topicStatus"
-                    android:layout_width="@dimen/size_120px"
+                    android:layout_width="@dimen/size_100px"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimValue_12"
                     android:orientation="vertical"
@@ -82,10 +90,10 @@
                         android:textStyle="bold"
                         android:textAlignment="center"
                         android:layout_margin="@dimen/dimValue_5"
-                        android:padding="@dimen/dimValue_5"
+                        android:padding="@dimen/dimValue_2"
                         android:text="@string/InProgress"
                         android:textColor="#FFFFFF"
-                        android:textSize="@dimen/dimTextSize_16" />
+                        android:textSize="@dimen/dimTextSize_14" />
 
 
                 </LinearLayout>

@@ -25,6 +25,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import dlp.bluelupin.dlp.Adapters.ChaptersAdapterNew;
@@ -59,6 +61,7 @@ public class ChaptersFragmentNew extends Fragment implements View.OnClickListene
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private static final String ARG_PARAM3 = "param3";
+    private static final String ARG_PARAM4 = "param4";
     private static final String INTRO_CARD = "recyclerView_material_intro";
     // TODO: Rename and change types of parameters
     private int parentId;
@@ -84,18 +87,20 @@ public class ChaptersFragmentNew extends Fragment implements View.OnClickListene
 
 
     // TODO: Rename and change types and number of parameters
-    public static ChaptersFragmentNew newInstance(Integer parentId, String type, String title) {
+    public static ChaptersFragmentNew newInstance(Integer parentId, String type, String title, String imagePath) {
         ChaptersFragmentNew fragment = new ChaptersFragmentNew();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, parentId);
         args.putString(ARG_PARAM2, type);
         args.putString(ARG_PARAM3, title);
+        args.putString(ARG_PARAM4, imagePath);
         fragment.setArguments(args);
         return fragment;
     }
 
     private TextView chapterTitle;
     private Context context;
+    private String imagePath;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -104,6 +109,7 @@ public class ChaptersFragmentNew extends Fragment implements View.OnClickListene
             parentId = getArguments().getInt(ARG_PARAM1);
             type = getArguments().getString(ARG_PARAM2);
             title = getArguments().getString(ARG_PARAM3);
+            imagePath = getArguments().getString(ARG_PARAM4);
         }
     }
 
@@ -138,6 +144,9 @@ public class ChaptersFragmentNew extends Fragment implements View.OnClickListene
         //chapterTitle.setTypeface(VodafoneExB);
         DbHelper db = new DbHelper(context);
         logiiocn = view.findViewById(R.id.logiiocn);
+        if (imagePath != null && !imagePath.equals("")) {
+            Picasso.with(context).load(imagePath).placeholder(R.drawable.imageplaceholder).into(logiiocn);
+        }
         titletxt = view.findViewById(R.id.titletxt);
         titletxt.setTypeface(VodafoneExB);
         titletxt.setText(title);
