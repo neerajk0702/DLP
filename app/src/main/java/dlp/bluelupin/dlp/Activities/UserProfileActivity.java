@@ -248,6 +248,6 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onUserClicked(String materialIntroViewId) {
         if (materialIntroViewId == INTRO_CARD1)
-            showIntro(shareviewcertificate, INTRO_CARD2, "Share Certificate", Focus.ALL);
+            showIntro(shareviewcertificate, INTRO_CARD2, getString(R.string.Share), Focus.ALL);
     }
 }

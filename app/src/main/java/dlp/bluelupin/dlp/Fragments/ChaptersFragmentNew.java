@@ -29,6 +29,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import dlp.bluelupin.dlp.Activities.ReferFriendActivity;
 import dlp.bluelupin.dlp.Adapters.ChaptersAdapterNew;
 import dlp.bluelupin.dlp.Consts;
 import dlp.bluelupin.dlp.Database.DbHelper;
@@ -79,6 +80,8 @@ public class ChaptersFragmentNew extends Fragment implements View.OnClickListene
     ImageView moreChapter;
     LinearLayout totalItemView;
     RecyclerView chaptersRecyclerView;
+    private static final String INTRO_FOCUS_1 = "intro_focus_1";
+    private static final String INTRO_FOCUS_2 = "intro_focus_2";
     private OnFragmentInteractionListener mListener;
 
     public ChaptersFragmentNew() {
@@ -223,6 +226,8 @@ public class ChaptersFragmentNew extends Fragment implements View.OnClickListene
         }
 
         callchapterDetailsService();
+        showIntro(moreChapter, INTRO_FOCUS_1, "More", Focus.NORMAL, FocusGravity.CENTER);
+
     }
 
 
@@ -285,27 +290,6 @@ public class ChaptersFragmentNew extends Fragment implements View.OnClickListene
         LocationUtility.stopLocationUpdates();
     }
 
-    private void showMaterialIntro() {
-        new MaterialIntroView.Builder(getActivity())
-                .enableDotAnimation(true)
-                .setFocusGravity(FocusGravity.CENTER)
-                .setFocusType(Focus.NORMAL)
-                .setDelayMillis(200)
-                .enableFadeAnimation(true)
-                .setListener(this)
-                .performClick(true)
-                .setInfoText(getString(R.string.startlearning))
-                .setTarget(chaptersRecyclerView.getChildAt(0))
-                .setUsageId(INTRO_CARD) //THIS SHOULD BE UNIQUE ID
-                .show();
-    }
-
-    @Override
-    public void onUserClicked(String materialIntroViewId) {
-        if (materialIntroViewId.equals(INTRO_CARD)) {
-            //   Toast.makeText(getActivity(), "User Clicked", Toast.LENGTH_SHORT).show();
-        }
-    }
 
 
     //call chapterDetails service
@@ -341,4 +325,29 @@ public class ChaptersFragmentNew extends Fragment implements View.OnClickListene
             quizCount.setText(dadata.getQuizzes() + "");
         }
     }
+
+
+    public void showIntro(View view, String id, String text, Focus focusType, FocusGravity focusGravity) {
+        new MaterialIntroView.Builder(getActivity())
+                .enableDotAnimation(true)
+                .setFocusGravity(focusGravity)
+                .setFocusType(focusType)
+                .setDelayMillis(200)
+                .enableFadeAnimation(true)
+                .setListener(this)
+                .performClick(true)
+                .setInfoText(text)
+                .setTarget(view)
+                .setUsageId(id) //THIS SHOULD BE UNIQUE ID
+                .show();
+    }
+
+    @Override
+    public void onUserClicked(String materialIntroViewId) {
+        if (materialIntroViewId.equals(INTRO_CARD)) {
+            //   Toast.makeText(getActivity(), "User Clicked", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 }

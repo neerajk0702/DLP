@@ -150,7 +150,7 @@ public class CourseFragment extends Fragment implements MaterialIntroListener {
             public void run() {
                 showMaterialIntro();
             }
-        }, 1000);
+        }, 3000);
         calldashboarddataService();
     }
     private void showListData() {

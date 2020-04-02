@@ -19,12 +19,19 @@ import dlp.bluelupin.dlp.SplashActivity;
 import dlp.bluelupin.dlp.Utilities.FontManager;
 import dlp.bluelupin.dlp.Utilities.Utility;
 import dlp.bluelupin.dlp.WelcomeActivity;
+import dlp.bluelupin.dlp.shwocaseview.animation.MaterialIntroListener;
+import dlp.bluelupin.dlp.shwocaseview.shape.Focus;
+import dlp.bluelupin.dlp.shwocaseview.shape.FocusGravity;
+import dlp.bluelupin.dlp.shwocaseview.view.MaterialIntroView;
 
-public class ReferFriendActivity extends AppCompatActivity {
+public class ReferFriendActivity extends AppCompatActivity implements  MaterialIntroListener {
 
     private TextView viewpastInvite, invite;
     private EditText mobileNo;
     private ImageView leftArrow;
+    private static final String INTRO_FOCUS_1 = "intro_focus_1";
+    private static final String INTRO_FOCUS_2 = "intro_focus_2";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,5 +68,32 @@ public class ReferFriendActivity extends AppCompatActivity {
                 startActivity(mainIntent);
             }
         });
+
+        showIntro(invite, INTRO_FOCUS_1, getString(R.string.Invite), Focus.NORMAL, FocusGravity.LEFT);
     }
+
+
+
+
+    public void showIntro(View view, String id, String text, Focus focusType, FocusGravity focusGravity) {
+        new MaterialIntroView.Builder(ReferFriendActivity.this)
+                .enableDotAnimation(true)
+                .setFocusGravity(focusGravity)
+                .setFocusType(focusType)
+                .setDelayMillis(200)
+                .enableFadeAnimation(true)
+                .setListener(this)
+                .performClick(true)
+                .setInfoText(text)
+                .setTarget(view)
+                .setUsageId(id) //THIS SHOULD BE UNIQUE ID
+                .show();
+    }
+
+    @Override
+    public void onUserClicked(String materialIntroViewId) {
+        if (materialIntroViewId == INTRO_FOCUS_1)
+          showIntro(viewpastInvite, INTRO_FOCUS_2, getString(R.string.viewpastinvitestr), Focus.MINIMUM, FocusGravity.CENTER);
+    }
+
 }
