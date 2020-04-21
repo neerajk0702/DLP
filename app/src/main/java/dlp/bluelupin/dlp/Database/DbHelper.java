@@ -15,6 +15,7 @@ import java.util.List;
 import dlp.bluelupin.dlp.Consts;
 import dlp.bluelupin.dlp.Models.AccountData;
 import dlp.bluelupin.dlp.Models.CacheServiceCallData;
+import dlp.bluelupin.dlp.Models.Content_status;
 import dlp.bluelupin.dlp.Models.DashboardData;
 import dlp.bluelupin.dlp.Models.Data;
 import dlp.bluelupin.dlp.Models.FavoritesData;
@@ -2896,9 +2897,9 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
     //-----------------contentStatusEntity Entity--------------------
-    public boolean upsertcontentStatusEntity(StatusUpdateService ob) {
+    public boolean upsertcontentStatusEntity(Content_status ob) {
         boolean done = false;
-        StatusUpdateService data = null;
+        Content_status data = null;
         if (ob.getContent_id() != 0) {
             data = getcontentStatusEntityById(ob.getContent_id());
             if (data == null) {
@@ -2910,14 +2911,14 @@ public class DbHelper extends SQLiteOpenHelper {
         return done;
     }
 
-    public StatusUpdateService getcontentStatusEntityById(int id) {
+    public Content_status getcontentStatusEntityById(int id) {
         String query = "Select * FROM contentStatusEntity WHERE contentid = '" + id + "'";
 
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(query, null);
 
-        StatusUpdateService ob = new StatusUpdateService();
+        Content_status ob = new Content_status();
 
         if (cursor.moveToFirst()) {
             cursor.moveToFirst();
@@ -2930,18 +2931,18 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
         return ob;
     }
-    public List<StatusUpdateService> getAllcontentStatusEntity() {
+    public List<Content_status> getAllcontentStatusEntity() {
         String query = "Select * FROM contentStatusEntity ";
 
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(query, null);
 
-        List<StatusUpdateService> list = new ArrayList<StatusUpdateService>();
+        List<Content_status> list = new ArrayList<Content_status>();
 
         if (cursor.moveToFirst()) {
             while (cursor.isAfterLast() == false) {
-                StatusUpdateService ob = new StatusUpdateService();
+                Content_status ob = new Content_status();
                 populatecontentStatusEntity(cursor, ob);
                 list.add(ob);
                 cursor.moveToNext();
@@ -2951,13 +2952,13 @@ public class DbHelper extends SQLiteOpenHelper {
         return list;
     }
     //contentid, completionstatus , updated_at,   contentStatusEntity
-    private void populatecontentStatusEntity(Cursor cursor, StatusUpdateService ob) {
+    private void populatecontentStatusEntity(Cursor cursor, Content_status ob) {
         ob.setContent_id(cursor.getInt(0));
         ob.setCompletion_status(cursor.getInt(1));
         ob.setUpdated_at(cursor.getString(2));
     }
     //insert contentStatusEntity
-    public boolean insertcontentStatusEntity(StatusUpdateService ob) {
+    public boolean insertcontentStatusEntity(Content_status ob) {
 
         ContentValues values = new ContentValues();
         populatecontentStatusEntityValues(values, ob);
@@ -2968,12 +2969,12 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
         return i > 0;
     }
-    private void populatecontentStatusEntityValues(ContentValues values, StatusUpdateService ob) {
+    private void populatecontentStatusEntityValues(ContentValues values, Content_status ob) {
         values.put("contentid", ob.getContent_id());
         values.put("completionstatus", ob.getCompletion_status());
         values.put("updated_at", ob.getUpdated_at());
     }
-    public boolean updatecontentStatusEntity(StatusUpdateService ob) {
+    public boolean updatecontentStatusEntity(Content_status ob) {
 
         ContentValues values = new ContentValues();
         populatecontentStatusEntityValues(values, ob);

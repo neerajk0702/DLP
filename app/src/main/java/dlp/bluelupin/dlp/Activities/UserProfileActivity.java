@@ -44,14 +44,13 @@ import dlp.bluelupin.dlp.shwocaseview.view.MaterialIntroView;
 
 public class UserProfileActivity extends AppCompatActivity implements View.OnClickListener, MaterialIntroListener {
 
-    private TextView done, certificateName, mainName, mainemail,title;
-    ImageView leftArrow, certificateimg;
+    private TextView done, mainName, mainemail,title;
+    ImageView leftArrow;
     private Context context;
     private TextView nameLable, emailLable, phoneLable, phone, lanLable, save,language;
     private EditText enterName,email;
     private List<LanguageData> data;
     private String name_string,email_string;
-    LinearLayout shareviewcertificate;
     private static final String INTRO_CARD1 = "intro_card_1";
     private static final String INTRO_CARD2 = "intro_card_2";
 
@@ -95,14 +94,10 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         done.setOnClickListener(this);
         done.setTypeface(VodafoneExB);
         title.setTypeface(VodafoneExB);
-        certificateName = this.findViewById(R.id.certificateName);
         mainName = this.findViewById(R.id.mainName);
         mainName.setTypeface(VodafoneExB);
         mainemail = this.findViewById(R.id.mainemail);
         mainemail.setTypeface(VodafoneRg);
-        certificateimg = this.findViewById(R.id.certificateimg);
-        shareviewcertificate = this.findViewById(R.id.shareviewcertificate);
-        shareviewcertificate.setOnClickListener(this);
         emailLable.setTypeface(VodafoneExB);
         nameLable.setTypeface(VodafoneExB);
         phoneLable.setTypeface(VodafoneExB);
@@ -145,15 +140,6 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
                 if (isValidate()) {
                     callProfileUpdateService();
                 }
-                break;
-            case R.id.shareviewcertificate:
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
-                sendIntent.setType("text/plain");
-
-                Intent shareIntent = Intent.createChooser(sendIntent, null);
-                startActivity(shareIntent);
                 break;
         }
     }
@@ -247,7 +233,7 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onUserClicked(String materialIntroViewId) {
-        if (materialIntroViewId == INTRO_CARD1)
-            showIntro(shareviewcertificate, INTRO_CARD2, "Share Certificate", Focus.ALL);
+//        if (materialIntroViewId == INTRO_CARD1)
+//            showIntro(shareviewcertificate, INTRO_CARD2, "Share Certificate", Focus.ALL);
     }
 }

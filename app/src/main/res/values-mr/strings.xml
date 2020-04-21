@@ -173,6 +173,17 @@
     <string name="updatestatus">आपला विषय मार्क यशस्वीरित्या यशस्वी झाला आहे.</string>
     <string name="updatestatusnot">तुमचा विषय मार्क कॉम्प्लीट झाला नाही.</string>
     <string name="viewpastinvitestr">मागील आमंत्रणे पहा</string>
-    <string name="user">ଉପଯୋଗକର୍ତ୍ତା |...</string>
+    <string name="user">वापरकर्ता | ...</string>
+
+    <string name="Complete">पूर्ण</string>
+    <string name="Invitefriend">आमंत्रण यशस्वीरित्या पाठविले गेले आहे</string>
+    <string name="Invitefriendnot">आमंत्रण यशस्वीरित्या पाठवले गेले नाही!</string>
+
+    <string name="Invited">आमंत्रित केले</string>
+    <string name="Joined">सामील झाले</string>
+    <string name="certificates">प्रमाणपत्रे</string>
+    <string name="notcomplete">आपण अद्याप कोणताही अभ्यासक्रम पूर्ण केलेला नाही</string>
+    <string name="certificatesdownload">जोपर्यंत आपण प्रमाणपत्र डाउनलोड करत नाही तोपर्यंत आपण ते सामायिक करू शकत नाही.</string>
+    <string name="certificatesdownloadsuccessfully">आपले प्रमाणपत्र यशस्वीरित्या डाउनलोड केले गेले आहे.</string>
 
 </resources>

@@ -29,11 +29,14 @@ import dlp.bluelupin.dlp.Consts;
 import dlp.bluelupin.dlp.Database.DbHelper;
 import dlp.bluelupin.dlp.Fragments.ChaptersFragmentNew;
 import dlp.bluelupin.dlp.Fragments.ContentFragment;
+import dlp.bluelupin.dlp.Fragments.QuizQuestionFragment;
 import dlp.bluelupin.dlp.Fragments.WebFragment;
 import dlp.bluelupin.dlp.Models.AccountData;
+import dlp.bluelupin.dlp.Models.Content_status;
 import dlp.bluelupin.dlp.Models.Data;
 import dlp.bluelupin.dlp.Models.FavoritesData;
 import dlp.bluelupin.dlp.Models.LogsDataRequest;
+import dlp.bluelupin.dlp.Models.StatusUpdateService;
 import dlp.bluelupin.dlp.R;
 import dlp.bluelupin.dlp.Services.AppController;
 import dlp.bluelupin.dlp.Services.DownloadService1;
@@ -87,17 +90,16 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
         Typeface VodafoneExB = FontManager.getFontTypeface(context, "fonts/VodafoneExB.TTF");
         Typeface VodafoneRg = FontManager.getFontTypeface(context, "fonts/VodafoneRg.ttf");
         holder.chapterTitle.setTypeface(VodafoneExB);
+        holder.statustext.setTypeface(VodafoneExB);
         //  holder.chapterDescription.setTypeface(VodafoneRg);
         //  holder.favorite.setTypeface(VodafoneRg);
         //  holder.download.setTypeface(VodafoneRg);
-       // holder.cardView.setCardBackgroundColor(Color.parseColor("#EEEEEE"));
-        // holder.quiz.setTypeface(VodafoneExB);
-        // holder.quiz_Icon.setTypeface(materialdesignicons_font);
-        // holder.quiz_Icon.setText(Html.fromHtml("&#xf186;"));
-        // holder.start_quiz_Icon.setTypeface(materialdesignicons_font);
-        // holder.start_quiz_Icon.setText(Html.fromHtml("&#xf186;"));
-        // holder.arrowIcon.setTypeface(materialdesignicons_font);
-        //// holder.arrowIcon.setText(Html.fromHtml("&#xf054;"));
+        // holder.cardView.setCardBackgroundColor(Color.parseColor("#EEEEEE"));
+         holder.quiz.setTypeface(VodafoneExB);
+         holder.start_quiz_Icon.setTypeface(materialdesignicons_font);
+         holder.start_quiz_Icon.setText(Html.fromHtml("&#xf186;"));
+         holder.arrowIcon.setTypeface(materialdesignicons_font);
+         holder.arrowIcon.setText(Html.fromHtml("&#xf054;"));
 
         // holder.downloadIcon.setImageResource(R.drawable.downloadupdate);
 
@@ -115,6 +117,21 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
         }*/
         final DbHelper dbHelper = new DbHelper(context);
         final Data data = itemList.get(position);
+        //set content status details
+        Content_status service = dbHelper.getcontentStatusEntityById(data.getId());
+        if (service != null) {
+            if (service.getCompletion_status() == 1) {
+                holder.statusLayout.setVisibility(View.VISIBLE);
+                holder.statustext.setText(R.string.InProgress);
+            } else if (service.getCompletion_status() == 2) {
+                holder.statusLayout.setVisibility(View.VISIBLE);
+                holder.statustext.setText(R.string.Complete);
+            } else {
+                holder.statusLayout.setVisibility(View.GONE);
+            }
+        } else {
+            holder.statusLayout.setVisibility(View.GONE);
+        }
 
         final Data resource = dbHelper.getResourceEntityByName(data.getLang_resource_name(),
                 Utility.getLanguageIdFromSharedPreferences(context));
@@ -319,32 +336,19 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
         if (selectType.equalsIgnoreCase("Topic")) {//Quiz show only in Topic
             quizList = dbhelper.getDataEntityByParentIdAndType(data.getId(), "Quiz");
             if (data.getQuizAvailable()) {
-
-
-                //  holder.titleLayout.setVisibility(View.GONE);
-                // holder.buttonLayout.setVisibility(View.GONE);
-                // holder.quizStartLayout.setVisibility(View.VISIBLE);
+                holder.chapterImage.setVisibility(View.GONE);
+                holder.titleLayout.setVisibility(View.GONE);
+                holder.buttonLayout.setVisibility(View.GONE);
+                holder.divView.setVisibility(View.GONE);
+                holder.quizStartLayout.setVisibility(View.VISIBLE);
+                holder.imageLayout.setVisibility(View.GONE);//only use in topic case
             } else {
-                // holder.quizStartLayout.setVisibility(View.GONE);
+                holder.quizStartLayout.setVisibility(View.GONE);
                 holder.chapterImage.setVisibility(View.VISIBLE);
-                // holder.titleLayout.setVisibility(View.VISIBLE);
-                // holder.buttonLayout.setVisibility(View.VISIBLE);
-
-
+                holder.titleLayout.setVisibility(View.VISIBLE);
+                holder.buttonLayout.setVisibility(View.VISIBLE);
+                holder.divView.setVisibility(View.GONE);
             }
-           /* int contentId=itemList.get(position).getId();
-            List<Data> contentQuiz=dbHelper.getAllContentQuizEntity();
-            for(int i=0;i<contentQuiz.size();i++){
-                Pivot pivot=contentQuiz.get(i).getPivot();
-                if(pivot.getContent_id()==contentId){
-                    int QuizId=pivot.getQuiz_id();
-                    holder.quizStartLayout.setVisibility(View.VISIBLE);
-
-                }else{
-                    holder.quizStartLayout.setVisibility(View.GONE);
-                }
-
-            }*/
         }
         //for chapter show Quiz icon
         if (selectType.equalsIgnoreCase("Chapter")) {
@@ -425,7 +429,7 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
 
                     stopAudio();
                     FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
-                    ChaptersFragmentNew fragment = ChaptersFragmentNew.newInstance(data.getId(), type,holder.chapterTitle.getText().toString(),holder.chapterImage.getTag().toString());
+                    ChaptersFragmentNew fragment = ChaptersFragmentNew.newInstance(data.getId(), type, holder.chapterTitle.getText().toString(), holder.chapterImage.getTag().toString());
                     FragmentTransaction transaction = fragmentManager.beginTransaction();
                     transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
                     transaction.replace(R.id.container, fragment)
@@ -462,7 +466,7 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
             }
         });*/
 
-   /*     holder.quizStartLayout.setOnClickListener(new View.OnClickListener() {
+        holder.quizStartLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 stopAudio();
@@ -477,7 +481,7 @@ public class ChaptersAdapterNew extends RecyclerView.Adapter<ChaptersViewHolderN
                             .commit();
                 }
             }
-        });*/
+        });
     }
 
     private void playVideoOnSelect(Data data, ChaptersViewHolderNew holder, String actionType) {

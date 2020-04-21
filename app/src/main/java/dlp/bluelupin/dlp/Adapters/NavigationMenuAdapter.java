@@ -22,6 +22,7 @@ import android.widget.TextView;
 import java.util.HashSet;
 import java.util.List;
 
+import dlp.bluelupin.dlp.Activities.CertificateListActivity;
 import dlp.bluelupin.dlp.Activities.LanguageActivity;
 import dlp.bluelupin.dlp.Activities.NotificationsActivity;
 import dlp.bluelupin.dlp.Activities.ReferFriendActivity;
@@ -157,6 +158,11 @@ public class NavigationMenuAdapter extends BaseAdapter {
                 }
                 else if (menuList.get(position).toString().equalsIgnoreCase("Refer a Friend")) {
                     Intent intent = new Intent(mContext, ReferFriendActivity.class);
+                    mContext.startActivity(intent);
+                    Activity activity = (Activity) mContext;
+                    activity.overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
+                } else if (menuList.get(position).toString().equalsIgnoreCase("Certificates")) {
+                    Intent intent = new Intent(mContext, CertificateListActivity.class);
                     mContext.startActivity(intent);
                     Activity activity = (Activity) mContext;
                     activity.overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);

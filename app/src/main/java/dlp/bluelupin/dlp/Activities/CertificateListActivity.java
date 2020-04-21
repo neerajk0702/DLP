@@ -1,9 +1,6 @@
 package dlp.bluelupin.dlp.Activities;
 
-import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -15,28 +12,23 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import dlp.bluelupin.dlp.Adapters.CertificatesAdapter;
 import dlp.bluelupin.dlp.Adapters.MyInviteFragmentRecyclerViewAdapter;
-import dlp.bluelupin.dlp.Models.AccountServiceRequest;
+import dlp.bluelupin.dlp.Models.Certificates;
 import dlp.bluelupin.dlp.Models.ContentData;
-import dlp.bluelupin.dlp.Models.Data;
 import dlp.bluelupin.dlp.Models.Invitations;
 import dlp.bluelupin.dlp.R;
-import dlp.bluelupin.dlp.Services.IAsyncWorkCompletedCallback;
 import dlp.bluelupin.dlp.Services.IAsyncWorkCompletedCallbackWithContentData;
 import dlp.bluelupin.dlp.Services.ServiceCaller;
 import dlp.bluelupin.dlp.Utilities.CustomProgressDialog;
-import dlp.bluelupin.dlp.Utilities.FontManager;
 import dlp.bluelupin.dlp.Utilities.Utility;
-import dlp.bluelupin.dlp.WelcomeActivity;
 
-public class InviteFriendList extends AppCompatActivity {
+public class CertificateListActivity extends AppCompatActivity {
 
     private TextView viewpastInvite, invite;
     private EditText mobileNo;
@@ -47,7 +39,7 @@ public class InviteFriendList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-        setContentView(R.layout.fragment_invitefragment_list);
+        setContentView(R.layout.certificate_list_activity_layout);
         init();
     }
 
@@ -62,41 +54,46 @@ public class InviteFriendList extends AppCompatActivity {
             }
         });
 
-        if (Utility.isTablet(InviteFriendList.this)) {
+        if (Utility.isTablet(CertificateListActivity.this)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         } else {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
         recyclerView=findViewById(R.id.list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(InviteFriendList.this));
-        callInviteListService();
+        recyclerView.setLayoutManager(new LinearLayoutManager(CertificateListActivity.this));
+        callCertificateListService();
     }
 
 
-    //call invite  list Service
-    private void callInviteListService() {
-        final CustomProgressDialog customProgressDialog = new CustomProgressDialog(InviteFriendList.this, R.mipmap.syc);
-        if (Utility.isOnline(InviteFriendList.this)) {
+    //call certificate list Service
+    private void callCertificateListService() {
+        final CustomProgressDialog customProgressDialog = new CustomProgressDialog(CertificateListActivity.this, R.mipmap.syc);
+        if (Utility.isOnline(CertificateListActivity.this)) {
             customProgressDialog.show();
-            ServiceCaller sc = new ServiceCaller(InviteFriendList.this);
-            sc.inviteFriendList( new IAsyncWorkCompletedCallbackWithContentData() {
+            ServiceCaller sc = new ServiceCaller(CertificateListActivity.this);
+            sc.certificateList( new IAsyncWorkCompletedCallbackWithContentData() {
                 @Override
                 public void onDone(ContentData result, boolean isComplete) {
                     if (isComplete) {
-                        List<Invitations> invitations=result.getInvitations();
-                        recyclerView.setAdapter(new MyInviteFragmentRecyclerViewAdapter(InviteFriendList.this,invitations));
-
-                        Toast.makeText(InviteFriendList.this, getString(R.string.Invitefriend), Toast.LENGTH_LONG).show();
+                        List<Certificates> invitations=result.getCertificates();
+                        if(invitations!=null && invitations.size()>0) {
+                            recyclerView.setAdapter(new CertificatesAdapter(CertificateListActivity.this, invitations));
+                        }else {
+                            Toast.makeText(CertificateListActivity.this, getString(R.string.notcomplete), Toast.LENGTH_LONG).show();
+                            finish();
+                        }
                     }else{
-                        Toast.makeText(InviteFriendList.this, getString(R.string.Invitefriendnot), Toast.LENGTH_LONG).show();
+                        Toast.makeText(CertificateListActivity.this, getString(R.string.notcomplete), Toast.LENGTH_LONG).show();
+                        finish();
                     }
                     customProgressDialog.dismiss();
                 }
             });
         } else {
-            Utility.alertForErrorMessage(InviteFriendList.this.getString(R.string.online_msg), InviteFriendList.this);
+            Utility.alertForErrorMessage(CertificateListActivity.this.getString(R.string.online_msg), CertificateListActivity.this);
         }
     }
 }
+
 

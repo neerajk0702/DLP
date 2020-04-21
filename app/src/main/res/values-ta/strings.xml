@@ -153,4 +153,15 @@
     <string name="updatestatusnot">உங்கள் தலைப்பு மார்க் முழுமையானதாக இல்லை!</string>
     <string name="viewpastinvitestr">கடந்த அழைப்புகளைக் காண்க</string>
     <string name="user">பயனர்</string>
+    <string name="Complete">முழுமை</string>
+
+    <string name="Invitefriend">அழைப்பு வெற்றிகரமாக அனுப்பப்பட்டது</string>
+    <string name="Invitefriendnot">அழைப்பு வெற்றிகரமாக அனுப்பப்படவில்லை!</string>
+
+    <string name="Invited">அழைக்கப்பட்டார்</string>
+    <string name="Joined">சேர்ந்தார்</string>
+    <string name="certificates">சான்றிதழ்கள்</string>
+    <string name="notcomplete">நீங்கள் இதுவரை எந்த படிப்பையும் முடிக்கவில்லை</string>
+    <string name="certificatesdownload">நீங்கள் சான்றிதழை பதிவிறக்கம் செய்யாவிட்டால் அதைப் பகிர முடியாது.</string>
+    <string name="certificatesdownloadsuccessfully">உங்கள் சான்றிதழ் வெற்றிகரமாக பதிவிறக்கம் செய்யப்பட்டது.</string>
 </resources>

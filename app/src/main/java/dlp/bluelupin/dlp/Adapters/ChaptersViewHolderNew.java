@@ -3,6 +3,7 @@ package dlp.bluelupin.dlp.Adapters;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
@@ -15,19 +16,20 @@ import dlp.bluelupin.dlp.Utilities.ScaleImageView;
  * Created by Neeraj on 7/26/2016.
  */
 public class ChaptersViewHolderNew extends RecyclerView.ViewHolder {
-    public TextView chapterTitle;
-    public CardView cardView;
+    public TextView chapterTitle,statustext,quiz;
+    public CardView cardView,imageLayout;
     public ScaleImageView chapterImage;
-    //public TextView starIcon,arrowIcon,start_quiz_Icon;
+    public TextView starIcon,arrowIcon,start_quiz_Icon;
     //public TextView  media_Icon,media_text;
     //public LinearLayout mediaLayout;
-    //public RelativeLayout starIconlayout, downloadIconlayout;
+    public RelativeLayout starIconlayout, downloadIconlayout;
     //public LinearLayout download_layout, favoriteLayout;
     public ProgressBar progressBar;
-    // public LinearLayout quizStartLayout,quizLayout,titleLayout,buttonLayout;
+     public LinearLayout quizStartLayout,quizLayout,titleLayout,buttonLayout;
+    public View divView;
 
 
-    LinearLayout chapterView;
+    LinearLayout chapterView,statusLayout;
 
 
     public ChaptersViewHolderNew(View itemView) {
@@ -37,6 +39,9 @@ public class ChaptersViewHolderNew extends RecyclerView.ViewHolder {
         cardView.setCardElevation(2);
         cardView.setRadius(10);
         chapterTitle = (TextView) itemView.findViewById(R.id.chapterTitle);
+        statustext=itemView.findViewById(R.id.statustext);
+        statusLayout=itemView.findViewById(R.id.statusLayout);
+        divView = (View) itemView.findViewById(R.id.divView);
         // chapterDescription = (TextView) itemView.findViewById(R.id.chapterDescription);
         //favorite = (TextView) itemView.findViewById(R.id.favourite);
         //  starIcon = (TextView) itemView.findViewById(R.id.starIcon);
@@ -48,20 +53,20 @@ public class ChaptersViewHolderNew extends RecyclerView.ViewHolder {
         // starIconlayout = (RelativeLayout) itemView.findViewById(R.id.starIconlayout);
         // downloadIconlayout = (RelativeLayout) itemView.findViewById(R.id.downloadIconlayout);
         progressBar = (ProgressBar) itemView.findViewById(R.id.progressBar);
-        // quiz = (TextView) itemView.findViewById(R.id.quiz);
+         quiz = (TextView) itemView.findViewById(R.id.quiz);
         // quiz_Icon = (TextView) itemView.findViewById(R.id.quiz_Icon);
-        // start_quiz_Icon = (TextView) itemView.findViewById(R.id.start_quiz_Icon);
-        // arrowIcon = (TextView) itemView.findViewById(R.id.arrowIcon);
-        //quizStartLayout = (LinearLayout) itemView.findViewById(R.id.quizStartLayout);
+         start_quiz_Icon = (TextView) itemView.findViewById(R.id.start_quiz_Icon);
+         arrowIcon = (TextView) itemView.findViewById(R.id.arrowIcon);
+        quizStartLayout = (LinearLayout) itemView.findViewById(R.id.quizStartLayout);
         //quizLayout = (LinearLayout) itemView.findViewById(R.id.quizLayout);
-        //titleLayout = (LinearLayout) itemView.findViewById(R.id.titleLayout);
-        //buttonLayout = (LinearLayout) itemView.findViewById(R.id.buttonLayout);
+        titleLayout = (LinearLayout) itemView.findViewById(R.id.titleLayout);
+        buttonLayout = (LinearLayout) itemView.findViewById(R.id.buttonLayout);
 
         //  media_Icon = (TextView) itemView.findViewById(R.id.media_Icon);
         // media_text = (TextView) itemView.findViewById(R.id.media_text);
         // mediaLayout = (LinearLayout) itemView.findViewById(R.id.mediaLayout);
 
-
+        imageLayout = itemView.findViewById(R.id.imageLayout);
         chapterView = itemView.findViewById(R.id.chapterView);
 
     }

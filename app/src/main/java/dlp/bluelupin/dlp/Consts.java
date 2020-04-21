@@ -66,6 +66,11 @@ public class Consts {
     public static final String statusUpdate = "user/content/status/update";
     public static final String dashboarddata = "dashboarddata";
     public static final String chapterdata = "chapterdata/";
+    public static final String GetContentstatus = "user/content/status?api_token=";
+    public static final String inviteFriend = "user/invitations/create?api_token=";
+    public static final String inviteFriendList = "user/invitations?api_token=";
+    public static final String certificatesList = "certificates?api_token=";
+    public static final String getCertificate = "certificates/";
 
     public static String inputDirectoryLocation = "/dlp/";
 

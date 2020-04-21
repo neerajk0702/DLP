@@ -526,4 +526,79 @@ public class ServiceCaller {
             }
         });
     }
+
+
+    //call content status service
+    public void getContentdata(final IAsyncWorkCompletedCallback workCompletedCallback) {
+        final ServiceHelper sh = new ServiceHelper(context);
+        sh.callContectStatusdataService(new IServiceSuccessCallback<ContentData>() {
+            @Override
+            public void onDone(final String callerUrl, final ContentData result, String error) {
+                Boolean success = false;
+                if (result != null) {
+                    success = true;
+                    workCompletedCallback.onDone("getContentdata", success);
+
+                } else {
+                    success = false;
+                    workCompletedCallback.onDone("getContentdata", success);
+                }
+            }
+        });
+    }
+    //call invite Friendservice
+    public void inviteFriend(final AccountServiceRequest request, final IAsyncWorkCompletedCallback workCompletedCallback) {
+        final ServiceHelper sh = new ServiceHelper(context);
+        sh.callInviteFriendService(request, new IServiceSuccessCallback<AccountServiceRequest>() {
+            @Override
+            public void onDone(final String callerUrl, final AccountServiceRequest result, String error) {
+                Boolean success = false;
+                if (result != null) {
+                    success = true;
+                    workCompletedCallback.onDone("inviteFriend", success);
+
+                } else {
+                    success = false;
+                    workCompletedCallback.onDone("inviteFriend not done", success);
+                }
+            }
+        });
+    }
+
+    //call invite Friend listservice
+    public void inviteFriendList(final IAsyncWorkCompletedCallbackWithContentData workCompletedCallback) {
+        final ServiceHelper sh = new ServiceHelper(context);
+        sh.callInviteFriendListService(new IServiceSuccessCallback<ContentData>() {
+            @Override
+            public void onDone(final String callerUrl, final ContentData result, String error) {
+                Boolean success = false;
+                if (result != null) {
+                    success = true;
+                    workCompletedCallback.onDone(result, success);
+                } else {
+                    success = false;
+                    workCompletedCallback.onDone(result, success);
+                }
+            }
+        });
+    }
+
+    //call certificate  listservice
+    public void certificateList(final IAsyncWorkCompletedCallbackWithContentData workCompletedCallback) {
+        final ServiceHelper sh = new ServiceHelper(context);
+        sh.callCertificatesListService(new IServiceSuccessCallback<ContentData>() {
+            @Override
+            public void onDone(final String callerUrl, final ContentData result, String error) {
+                Boolean success = false;
+                if (result != null) {
+                    success = true;
+                    workCompletedCallback.onDone(result, success);
+                } else {
+                    success = false;
+                    workCompletedCallback.onDone(result, success);
+                }
+            }
+        });
+    }
+
 }

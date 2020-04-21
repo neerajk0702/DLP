@@ -153,5 +153,14 @@
     <string name="updatestatusnot">ನಿಮ್ಮ ವಿಷಯವು ಮಾರ್ಕ್ ಕಂಪ್ಲೀಟ್ ಆಗಿಲ್ಲ!</string>
     <string name="viewpastinvitestr">ಹಿಂದಿನ ಆಮಂತ್ರಣಗಳನ್ನು ವೀಕ್ಷಿಸಿ</string>
     <string name="user">ഉപയോക്താവ്...</string>
+    <string name="Complete">ಪೂರ್ಣಗೊಂಡಿದೆ</string>
+    <string name="Invitefriend">ಆಹ್ವಾನವನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಕಳುಹಿಸಲಾಗಿದೆ</string>
+    <string name="Invitefriendnot">ಆಹ್ವಾನವನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಕಳುಹಿಸಲಾಗಿಲ್ಲ!</string>
 
+    <string name="Invited">ಆಹ್ವಾನಿಸಲಾಗಿದೆ</string>
+    <string name="Joined">ಸೇರಿದರು</string>
+    <string name="certificates">ಪ್ರಮಾಣಪತ್ರಗಳು</string>
+    <string name="notcomplete">ನೀವು ಇನ್ನೂ ಯಾವುದೇ ಕೋರ್ಸ್ ಅನ್ನು ಪೂರ್ಣಗೊಳಿಸಿಲ್ಲ</string>
+    <string name="certificatesdownload">ನೀವು ಪ್ರಮಾಣಪತ್ರವನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡದಿದ್ದರೆ ನೀವು ಅದನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ಸಾಧ್ಯವಿಲ್ಲ.</string>
+    <string name="certificatesdownloadsuccessfully">ನಿಮ್ಮ ಪ್ರಮಾಣಪತ್ರವನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಡೌನ್‌ಲೋಡ್ ಮಾಡಲಾಗಿದೆ.</string>
 </resources>

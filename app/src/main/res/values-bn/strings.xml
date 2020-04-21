@@ -167,5 +167,16 @@
     <string name="updatestatusnot">আপনার টপিকটি মার্ক কমপ্লিট হয়নি!</string>
     <string name="viewpastinvitestr">অতীত আমন্ত্রণগুলি দেখুন</string>
     <string name="user">ଉପଯୋଗକର୍ତ୍ତା |...</string>
+    <string name="Complete">সম্পূর্ণ</string>
+    <string name="Invitefriend">আমন্ত্রণ সফলভাবে প্রেরণ করা হয়েছে</string>
+    <string name="Invitefriendnot">আমন্ত্রণ সফলভাবে পাঠানো হয়নি!</string>
+
+    <string name="Invited">আমন্ত্রিত</string>
+    <string name="Joined">যোগ দিয়েছে</string>
+
+    <string name="certificates">সার্টিফিকেট</string>
+    <string name="notcomplete">আপনি এখনও কোনও কোর্স শেষ করেন নি</string>
+    <string name="certificatesdownload">আপনি যদি শংসাপত্রটি ডাউনলোড না করেন আপনি তা ভাগ করতে পারবেন না।</string>
+    <string name="certificatesdownloadsuccessfully">আপনার শংসাপত্রটি সফলভাবে ডাউনলোড করা হয়েছে।</string>
 
 </resources>

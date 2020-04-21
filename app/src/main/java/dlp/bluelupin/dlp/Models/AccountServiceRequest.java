@@ -82,6 +82,16 @@ public class AccountServiceRequest {
         this.is_development = is_development;
     }
 
+    private boolean status;
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "ClassPojo [phone = " + phone + ", email = " + email + ", name = " + name + ", api_token = " + api_token + ", preferred_language_id = " + preferred_language_id + ", device_token = " + device_token + ", service = " + service + ", is_development = " + is_development + "]";

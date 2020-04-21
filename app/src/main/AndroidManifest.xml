@@ -40,6 +40,7 @@
         <activity android:name=".Activities.VerificationActivity" />
         <activity android:name=".Activities.DisclaimerActivity" />
         <activity android:name=".Activities.UserProfileActivity"/>
+        <activity android:name=".Activities.CertificateListActivity"/>
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
@@ -56,6 +57,7 @@
 
         <service android:name=".Utilities.BindService" />
         <service android:name=".Services.DownloadService1" /> <!-- SMS Receiver for otp -->
+        <service android:name=".Services.DownloadCertificateService" />
         <!-- <receiver -->
         <!-- android:name=".Utilities.SmsReceiver" -->
         <!-- android:enabled="true" -->

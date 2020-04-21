@@ -167,5 +167,16 @@
     <string name="updatestatusnot">તમારો વિષય માર્ક પૂર્ણ થયો નથી.</string>
     <string name="viewpastinvitestr">પાછલા આમંત્રણો જુઓ</string>
     <string name="user">વપરાશકર્તા</string>
+    <string name="Complete">પૂર્ણ</string>
+    <string name="Invitefriend">આમંત્રણ સફળતાપૂર્વક મોકલવામાં આવ્યું છે</string>
+    <string name="Invitefriendnot">આમંત્રણ સફળતાપૂર્વક મોકલવામાં આવ્યું નથી!</string>
+
+    <string name="Invited">આમંત્રિત</string>
+    <string name="Joined">જોડાયા</string>
+
+    <string name="certificates">પ્રમાણપત્રો</string>
+    <string name="notcomplete">તમે હજી સુધી કોઈ અભ્યાસક્રમ પૂર્ણ કર્યો નથી</string>
+    <string name="certificatesdownload">જ્યાં સુધી તમે પ્રમાણપત્ર ડાઉનલોડ નહીં કરો ત્યાં સુધી તમે તેને શેર કરી શકતા નથી.</string>
+    <string name="certificatesdownloadsuccessfully">તમારું પ્રમાણપત્ર સફળતાપૂર્વક ડાઉનલોડ કરવામાં આવ્યું છે.</string>
 
 </resources>

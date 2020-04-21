@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -35,6 +36,7 @@ import dlp.bluelupin.dlp.Database.DbHelper;
 import dlp.bluelupin.dlp.MainActivity;
 import dlp.bluelupin.dlp.Models.DashboardData;
 import dlp.bluelupin.dlp.Models.Data;
+import dlp.bluelupin.dlp.Models.StatusUpdateService;
 import dlp.bluelupin.dlp.R;
 import dlp.bluelupin.dlp.Services.IAsyncWorkCompletedCallback;
 import dlp.bluelupin.dlp.Services.ServiceCaller;
@@ -177,8 +179,6 @@ public class ChaptersFragmentNew extends Fragment implements View.OnClickListene
             Name.setText(context.getString(R.string.Topic));
             //chapterTitle.setText(context.getString(R.string.Topic));
         }
-
-
         List<Data> dataList = db.getDataEntityByParentIdAndType(parentId, type);
         if (dataList.size() == 0) {
             view = view.inflate(context, R.layout.no_record_found_fragment, null);
@@ -197,13 +197,10 @@ public class ChaptersFragmentNew extends Fragment implements View.OnClickListene
                 if (contentData != null) {
                     contentData.setQuizAvailable(true);
                     contentData.setContent_id(parentId);
-
                     dataList.add(contentData);
                 }
             }
-
-            ChaptersAdapterNew chaptersAdapter = new ChaptersAdapterNew(context, dataList, type);
-            chaptersRecyclerView = (RecyclerView) view.findViewById(R.id.chaptersRecyclerView);
+            chaptersRecyclerView = view.findViewById(R.id.chaptersRecyclerView);
             // chaptersRecyclerView.setLayoutManager(new LinearLayoutManager(context));
             GridLayoutManager gridLayoutManager;
             if (type.equalsIgnoreCase("Topic")) {
@@ -211,12 +208,15 @@ public class ChaptersFragmentNew extends Fragment implements View.OnClickListene
             } else {
                 gridLayoutManager = new GridLayoutManager(getContext(), 2);
             }
-
-
             chaptersRecyclerView.setLayoutManager(gridLayoutManager);
             chaptersRecyclerView.setHasFixedSize(true);
             chaptersRecyclerView.setNestedScrollingEnabled(false);
-            chaptersRecyclerView.setAdapter(chaptersAdapter);
+
+            if (type.equalsIgnoreCase("Chapter")) {
+                callcontentstatusService(dataList);
+            } else if (type.equalsIgnoreCase("Topic")) {
+                callStatusUpdatService(1,dataList);//browsed = 1 call only in topic screen for update chapter status
+            }
         }
         if (Consts.IS_DEBUG_LOG) {
             Log.d(Consts.LOG_TAG, "Chapter Fragment: data_item count: " + dataList.size());
@@ -319,12 +319,8 @@ public class ChaptersFragmentNew extends Fragment implements View.OnClickListene
                 public void onDone(String workName, boolean isComplete) {
                     if (isComplete) {
                         setchapterDetails();
-                        customProgressDialog.dismiss();
-                    } else {
-                        Utility.alertForErrorMessage(getString(R.string.profile_not_updated), context);
-                        customProgressDialog.dismiss();
                     }
-
+                    customProgressDialog.dismiss();
                 }
             });
         } else {
@@ -341,4 +337,86 @@ public class ChaptersFragmentNew extends Fragment implements View.OnClickListene
             quizCount.setText(dadata.getQuizzes() + "");
         }
     }
+
+    //set adapter values after getting contentstatus
+    private void setAdapterValue(List<Data> dataList) {
+        ChaptersAdapterNew chaptersAdapter = new ChaptersAdapterNew(context, dataList, type);
+        chaptersRecyclerView.setAdapter(chaptersAdapter);
+    }
+
+    //call get content status service
+    private void callcontentstatusService(final List<Data> dataList) {
+        final CustomProgressDialog customProgressDialog = new CustomProgressDialog(context, R.mipmap.syc);
+        if (Utility.isOnline(context)) {
+            customProgressDialog.show();
+            ServiceCaller sc = new ServiceCaller(context);
+            sc.getContentdata(new IAsyncWorkCompletedCallback() {
+                @Override
+                public void onDone(String workName, boolean isComplete) {
+                    if (isComplete) {
+                        //add content status for show status of content
+                        /*DbHelper dbHelper = new DbHelper(context);
+                        List<StatusUpdateService> contentStatusList = dbHelper.getAllcontentStatusEntity();
+                        if (contentStatusList != null && contentStatusList.size() > 0) {
+                            for (Data data : dataList) {
+                                int contentStatus=isContentExistOrnot(data, contentStatusList);
+                                if (contentStatus!=0) {
+                                    data.setCompletion_status(contentStatus);
+                                }
+                            }
+                            setAdapterValue(dataList);
+                        } else {
+                            setAdapterValue(dataList);
+                        }*/
+                        setAdapterValue(dataList);
+                    }else{
+                        setAdapterValue(dataList);
+                    }
+                    customProgressDialog.dismiss();
+                }
+            });
+        } else {
+            setAdapterValue(dataList);
+            setchapterDetails();
+        }
+    }
+
+    //check content status exist in the datalist or not
+    private int isContentExistOrnot(Data data, List<StatusUpdateService> contentStatusList) {
+        int cstatus = 0;
+        for (StatusUpdateService service : contentStatusList) {
+            if (data.getContent_id() == service.getContent_id()) {
+                cstatus=service.getCompletion_status();
+                break;
+            }
+        }
+        return cstatus;
+    }
+
+
+    //call Status Updat Service
+    private void callStatusUpdatService(final int status,final List<Data> dataList) {
+        final CustomProgressDialog customProgressDialog = new CustomProgressDialog(context, R.mipmap.syc);
+        StatusUpdateService ServiceRequest = new StatusUpdateService();
+        ServiceRequest.setCompletion_status(status);
+        ServiceRequest.setContent_id(parentId);
+        if (Utility.isOnline(context)) {
+            customProgressDialog.show();
+            ServiceCaller sc = new ServiceCaller(context);
+            sc.StatusUpdat(ServiceRequest, new IAsyncWorkCompletedCallback() {
+                @Override
+                public void onDone(String workName, boolean isComplete) {
+
+                    if (isComplete) {
+                        Log.d(Consts.LOG_TAG, "callStatusUpdatService ");
+                    }
+                    customProgressDialog.dismiss();
+                    callcontentstatusService(dataList);
+                }
+            });
+        } else {
+            Utility.alertForErrorMessage(context.getString(R.string.online_msg), context);
+        }
+    }
+
 }

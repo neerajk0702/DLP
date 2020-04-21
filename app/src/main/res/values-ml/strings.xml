@@ -168,5 +168,14 @@
     <string name="updatestatusnot">നിങ്ങളുടെ വിഷയം മാർക്ക് പൂർത്തിയായിട്ടില്ല!</string>
     <string name="viewpastinvitestr">മുൻ ക്ഷണങ്ങൾ കാണുക</string>
     <string name="user">ഉപയോക്താവ്</string>
+    <string name="Complete">പൂർത്തിയായി</string>
+    <string name="Invitefriend">ക്ഷണം വിജയകരമായി അയച്ചു</string>
+    <string name="Invitefriendnot">ക്ഷണം വിജയകരമായി അയച്ചില്ല!</string>
 
+    <string name="Invited">ക്ഷണിച്ചു</string>
+    <string name="Joined">ചേർന്നു</string>
+    <string name="certificates">സർട്ടിഫിക്കറ്റുകൾ</string>
+    <string name="notcomplete">നിങ്ങൾ ഇതുവരെ ഒരു കോഴ്‌സും പൂർത്തിയാക്കിയിട്ടില്ല</string>
+    <string name="certificatesdownload">സർട്ടിഫിക്കറ്റ് ഡ download ൺലോഡ് ചെയ്തില്ലെങ്കിൽ നിങ്ങൾക്ക് അത് പങ്കിടാൻ കഴിയില്ല.</string>
+    <string name="certificatesdownloadsuccessfully">നിങ്ങളുടെ സർട്ടിഫിക്കറ്റ് വിജയകരമായി ഡ ed ൺലോഡ് ചെയ്തു.</string>
 </resources>

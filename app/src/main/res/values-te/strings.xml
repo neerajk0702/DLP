@@ -168,5 +168,16 @@
     <string name="updatestatusnot">మీ అంశం మార్క్ కంప్లీట్ కాలేదు!</string>
     <string name="viewpastinvitestr">గత ఆహ్వానాలను చూడండి</string>
     <string name="user">వాడుకరి</string>
+    <string name="Complete">పూర్తి</string>
+
+    <string name="Invitefriend">ఆహ్వానం విజయవంతంగా పంపబడింది</string>
+    <string name="Invitefriendnot">ఆహ్వానం విజయవంతంగా పంపబడలేదు!</string>
+
+    <string name="Invited">ఆహ్వానించారు</string>
+    <string name="Joined">చేరారు</string>
+    <string name="certificates">సర్టిఫికెట్లు</string>
+    <string name="notcomplete">మీరు ఇంకా ఏ కోర్సు పూర్తి చేయలేదు</string>
+    <string name="certificatesdownload">మీరు ప్రమాణపత్రాన్ని డౌన్‌లోడ్ చేయకపోతే మీరు దాన్ని భాగస్వామ్యం చేయలేరు.</string>
+    <string name="certificatesdownloadsuccessfully">మీ ప్రమాణపత్రం విజయవంతంగా డౌన్‌లోడ్ చేయబడింది.</string>
 
 </resources>

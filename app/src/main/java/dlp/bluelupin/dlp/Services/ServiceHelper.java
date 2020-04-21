@@ -4,11 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 
+import androidx.annotation.RequiresApi;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -24,6 +30,7 @@ import dlp.bluelupin.dlp.Models.ApplicationVersionResponse;
 import dlp.bluelupin.dlp.Models.CacheServiceCallData;
 import dlp.bluelupin.dlp.Models.ContentData;
 import dlp.bluelupin.dlp.Models.ContentServiceRequest;
+import dlp.bluelupin.dlp.Models.Content_status;
 import dlp.bluelupin.dlp.Models.DashboardData;
 import dlp.bluelupin.dlp.Models.Data;
 import dlp.bluelupin.dlp.Models.LanguageData;
@@ -457,7 +464,7 @@ public class ServiceHelper {
 
     //create account service
     public void callCreateAccountService(AccountServiceRequest request, final IServiceSuccessCallback<AccountData> callback) {
-       request.setApi_token(Consts.API_KEY);
+        request.setApi_token(Consts.API_KEY);
 
         final DbHelper dbhelper = new DbHelper(context);
         String device_token = Utility.getDeviceIDFromSharedPreferences(context);
@@ -609,7 +616,7 @@ public class ServiceHelper {
                 OtpData data = response.body();
                 AccountData accountData = new AccountData();
                 if (data != null) {
-                    Consts.USER_API_KEY=data.getApi_token();
+                    Consts.USER_API_KEY = data.getApi_token();
 
                     Log.d(Consts.LOG_TAG, "Api_token : " + data.getApi_token());
                     accountData.setId(serverId);
@@ -927,9 +934,10 @@ public class ServiceHelper {
 
         });
     }
+
     //resend opt service
     public void callResenOtpService(AccountServiceRequest request, final IServiceSuccessCallback<AccountData> callback) {
-       // request.setApi_token(Consts.API_KEY);
+        // request.setApi_token(Consts.API_KEY);
 
         Call<AccountData> ac = service.resendOtp(request);
         Log.d(Consts.LOG_TAG, "payload***" + request);
@@ -938,10 +946,10 @@ public class ServiceHelper {
             public void onResponse(Call<AccountData> call, Response<AccountData> response) {
                 AccountData data = response.body();
                 if (data != null) {
-                    if (data.getMessage()!=null && !data.getMessage().equals("")){
+                    if (data.getMessage() != null && !data.getMessage().equals("")) {
                         Log.d(Consts.LOG_TAG, "Otp Resend:" + data.toString());
                         callback.onDone(Consts.CREATE_NEW_USER, data, null);
-                    }else {
+                    } else {
                         callback.onDone(Consts.CREATE_NEW_USER, null, null);
                     }
                 } else {
@@ -958,6 +966,7 @@ public class ServiceHelper {
 
         });
     }
+
     //callStatusUpdatServiceservice
     public void callStatusUpdatService(StatusUpdateService request, final IServiceSuccessCallback<AccountData> callback) {
         final DbHelper dbhelper = new DbHelper(context);
@@ -995,23 +1004,23 @@ public class ServiceHelper {
 
 
     //dashboarddata service
-    public void calldashboarddataService(final int courseChapterType,int parentId, final IServiceSuccessCallback<DashboardData> callback) {
-        Call<DashboardData> cd=null;
-        if(courseChapterType==1) {
+    public void calldashboarddataService(final int courseChapterType, int parentId, final IServiceSuccessCallback<DashboardData> callback) {
+        Call<DashboardData> cd = null;
+        if (courseChapterType == 1) {
             cd = service.Getdashboarddata(Consts.dashboarddata);
-        }else   if(courseChapterType==2) {
-            cd = service.Getchapterdata(Consts.chapterdata+parentId);
+        } else if (courseChapterType == 2) {
+            cd = service.Getchapterdata(Consts.chapterdata + parentId);
         }
         cd.enqueue(new Callback<DashboardData>() {
 
             @Override
             public void onResponse(Call<DashboardData> call, Response<DashboardData> response) {
                 if (response != null) {
-                     DbHelper dbhelper = new DbHelper(context);
-                    DashboardData dashboardData=response.body();
-                    if(courseChapterType==1){//for save course details
+                    DbHelper dbhelper = new DbHelper(context);
+                    DashboardData dashboardData = response.body();
+                    if (courseChapterType == 1) {//for save course details
                         dashboardData.setCourseChapterType(1);
-                    }else if (courseChapterType==2){//for save chapter details
+                    } else if (courseChapterType == 2) {//for save chapter details
                         dashboardData.setCourseChapterType(2);
                     }
                     dbhelper.deleteDashboarddataEntity(courseChapterType);//delete old data
@@ -1029,4 +1038,145 @@ public class ServiceHelper {
 
 //
     }
+
+
+    //get contentStatus  service
+    public void callContectStatusdataService(final IServiceSuccessCallback<ContentData> callback) {
+        final DbHelper dbhelper = new DbHelper(context);
+        AccountData accountDataApToken = dbhelper.getAccountData();
+        String apiToken = "";
+        if (accountDataApToken != null) {
+            if (accountDataApToken.getApi_token() != null) {
+                apiToken = accountDataApToken.getApi_token();
+            }
+        }
+        Call<ContentData> cd = service.GetContentStatusdata(Consts.GetContentstatus + apiToken);
+        cd.enqueue(new Callback<ContentData>() {
+
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            public void onResponse(Call<ContentData> call, Response<ContentData> response) {
+                if (response != null) {
+                    DbHelper dbhelper = new DbHelper(context);
+                    ContentData statusData = response.body();
+//                    dbhelper.deleteDashboarddataEntity(courseChapterType);//delete old data
+                    if (statusData != null && statusData.getContent_status().length >= 0) {
+                        for (Content_status contentStatus : statusData.getContent_status()) {
+                            dbhelper.upsertcontentStatusEntity(contentStatus);
+                        }
+                    }
+                    callback.onDone(Consts.GetContentstatus, response.body(), null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ContentData> call, Throwable t) {
+                Log.d(Consts.LOG_TAG, "Failure in service callContectStatusdataService" + t.toString());
+                callback.onDone(Consts.GetContentstatus, null, t.toString());
+            }
+        });
+    }
+
+    public void callInviteFriendService(AccountServiceRequest request, final IServiceSuccessCallback<AccountServiceRequest> callback) {
+        final DbHelper dbhelper = new DbHelper(context);
+        AccountData accountDataApToken = dbhelper.getAccountData();
+        if (accountDataApToken != null) {
+            if (accountDataApToken.getApi_token() != null) {
+                request.setApi_token(accountDataApToken.getApi_token());
+            }
+        }
+
+        Call<AccountServiceRequest> ac = service.inviteFriend(request);
+        Log.d(Consts.LOG_TAG, "payload***" + request);
+        ac.enqueue(new Callback<AccountServiceRequest>() {
+            @Override
+            public void onResponse(Call<AccountServiceRequest> call, Response<AccountServiceRequest> response) {
+                AccountServiceRequest data = response.body();
+                if (data != null) {
+                    Log.d(Consts.LOG_TAG, "callInviteFriendService :" + data.toString());
+                    if(data.isStatus()){
+                        callback.onDone(Consts.inviteFriend, data, null);
+                    }else {
+                        callback.onDone(Consts.inviteFriend, null, null);
+                    }
+                } else {
+                    callback.onDone(Consts.inviteFriend, null, null);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<AccountServiceRequest> call, Throwable t) {
+                Log.d(Consts.LOG_TAG, "Failure in service callInviteFriendService" + t.toString());
+                callback.onDone(Consts.inviteFriend, null, t.toString());
+            }
+
+        });
+    }
+
+    public void callInviteFriendListService(final IServiceSuccessCallback<ContentData> callback) {
+        final DbHelper dbhelper = new DbHelper(context);
+        AccountData accountDataApToken = dbhelper.getAccountData();
+        String apiToken = "";
+        if (accountDataApToken != null) {
+            if (accountDataApToken.getApi_token() != null) {
+                apiToken=accountDataApToken.getApi_token();
+            }
+        }
+
+        Call<ContentData> ac = service.inviteFriendList(Consts.inviteFriendList+apiToken);
+        ac.enqueue(new Callback<ContentData>() {
+            @Override
+            public void onResponse(Call<ContentData> call, Response<ContentData> response) {
+                ContentData data = response.body();
+                if (data != null && data.getInvitations().size()>0) {
+                    Log.d(Consts.LOG_TAG, "callInviteFriendListService :" + data.toString());
+                    callback.onDone(Consts.inviteFriendList, data, null);
+                } else {
+                    callback.onDone(Consts.inviteFriendList, null, null);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ContentData> call, Throwable t) {
+                Log.d(Consts.LOG_TAG, "Failure in service callInviteFriendListService" + t.toString());
+                callback.onDone(Consts.inviteFriendList, null, t.toString());
+            }
+
+        });
+    }
+
+    public void callCertificatesListService(final IServiceSuccessCallback<ContentData> callback) {
+        final DbHelper dbhelper = new DbHelper(context);
+        AccountData accountDataApToken = dbhelper.getAccountData();
+        String apiToken = "";
+        if (accountDataApToken != null) {
+            if (accountDataApToken.getApi_token() != null) {
+                apiToken=accountDataApToken.getApi_token();//"amFA3kOKt5mXWDWVHs8gU5zk5gWe1KS6dV5yJ4pMloyDmJIRqQjI09ohtB9Z";//accountDataApToken.getApi_token();
+            }
+        }
+        Call<ContentData> ac = service.certificateList(Consts.certificatesList+apiToken);
+        ac.enqueue(new Callback<ContentData>() {
+            @Override
+            public void onResponse(Call<ContentData> call, Response<ContentData> response) {
+                ContentData data = response.body();
+                if (data != null && data.getCertificates().size()>0) {
+                    Log.d(Consts.LOG_TAG, "callCertificatesListService :" + data.toString());
+                    callback.onDone(Consts.certificatesList, data, null);
+                } else {
+                    callback.onDone(Consts.certificatesList, null, null);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ContentData> call, Throwable t) {
+                Log.d(Consts.LOG_TAG, "Failure in service callCertificatesListService" + t.toString());
+                callback.onDone(Consts.certificatesList, null, t.toString());
+            }
+
+        });
+    }
+
 }

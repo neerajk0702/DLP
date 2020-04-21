@@ -280,6 +280,7 @@ public class MainActivity extends AppCompatActivity
         itemList.add("Change Downloads Folder");
         itemList.add("Terms of use");
         itemList.add("Refer a Friend");
+        itemList.add("Certificates");
         //itemList.add("About Us");
 
         List<String> menuIconList = new ArrayList<String>();
@@ -290,6 +291,7 @@ public class MainActivity extends AppCompatActivity
         menuIconList.add("f631");
         menuIconList.add("f493");
         menuIconList.add("f24d");
+        menuIconList.add("f219");
         menuIconList.add("f219");
         menuIconList.add("f219");
        // menuIconList.add("f2fd");
@@ -304,6 +306,7 @@ public class MainActivity extends AppCompatActivity
         displayNameList.add(getString(R.string.Change_Folder));
         displayNameList.add(getString(R.string.Terms_of_use));
         displayNameList.add(getString(R.string.referfriend));
+        displayNameList.add(getString(R.string.certificates));
        // displayNameList.add(getString(R.string.about_us));
         NavigationMenuAdapter navigationMenuAdapter = new NavigationMenuAdapter(MainActivity.this, itemList, menuIconList, displayNameList);
         menuList.setAdapter(navigationMenuAdapter);

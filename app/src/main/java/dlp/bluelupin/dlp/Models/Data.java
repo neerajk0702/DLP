@@ -467,6 +467,16 @@ public class Data {
         isQuizAvailable = quizAvailable;
     }
 
+    private int completion_status;
+
+    public int getCompletion_status() {
+        return completion_status;
+    }
+
+    public void setCompletion_status(int completion_status) {
+        this.completion_status = completion_status;
+    }
+
     @Override
     public String toString() {
         return "ClassPojo [id = " + id + ", updated_at = " + updated_at + ", sequence = " + sequence + ", deleted_at = " + deleted_at + ", media_id = " + media_id + ", created_at = " + created_at + ", thumbnail_media_id = " + thumbnail_media_id + ", lang_resource_description = " + lang_resource_description + ", lang_resource_name = " + lang_resource_name + ", type = " + type + ", url = " + url + ", parent_id = " + parent_id + ", localFilePath = " + localFilePath + ", download_url = " + download_url + ", created_by = " + created_by + ", updated_by = " + updated_by + ", cloud_transferred = " + cloud_transferred + ", send_at = " + send_at + ", message = " + message + ", status = " + status + ", custom_data = " + custom_data + " thumbnail_url =" + thumbnail_url + ", thumbnail_localFilename = " + thumbnail_localFilename + ", localFileName = " + localFileName + ", isDownloaded=" + isDownloaded + " ]";

@@ -96,4 +96,19 @@ public interface IServiceManager {
 
     @GET
     Call<DashboardData> Getchapterdata(@Url String url);
+
+    @GET
+    Call<ContentData> GetContentStatusdata(@Url String url);
+
+    @POST(Consts.inviteFriend)
+    Call<AccountServiceRequest> inviteFriend(@Body AccountServiceRequest request);
+
+    @GET
+    Call<ContentData> inviteFriendList(@Url String url);
+
+    @GET
+    Call<ContentData> certificateList(@Url String url);
+
+    @GET
+    Call<ContentData> getCertificate(@Url String url);
 }

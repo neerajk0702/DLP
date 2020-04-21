@@ -1,5 +1,7 @@
 package dlp.bluelupin.dlp.Models;
 
+import java.util.List;
+
 /**
  * Created by subod on 19-Jul-16.
  */
@@ -112,7 +114,35 @@ public class ContentData {
         this.current_page = current_page;
     }
 
+    private Content_status[] content_status;
 
+    public Content_status[] getContent_status ()
+    {
+        return content_status;
+    }
+
+    public void setContent_status (Content_status[] content_status)
+    {
+        this.content_status = content_status;
+    }
+    private List<Invitations> invitations;
+
+    public List<Invitations> getInvitations() {
+        return invitations;
+    }
+
+    public void setInvitations(List<Invitations> invitations) {
+        this.invitations = invitations;
+    }
+    private List<Certificates> certificates;
+
+    public List<Certificates> getCertificates() {
+        return certificates;
+    }
+
+    public void setCertificates(List<Certificates> certificates) {
+        this.certificates = certificates;
+    }
 
     @Override
     public String toString()

@@ -169,4 +169,15 @@
     <string name="updatestatusnot">ତୁମର ବିଷୟ ମାର୍କ ସଂପୂର୍ଣ୍ଣ ହୋଇନାହିଁ!</string>
     <string name="viewpastinvitestr">ଅତୀତର ନିମନ୍ତ୍ରଣଗୁଡିକ ଦେଖନ୍ତୁ |</string>
     <string name="user">ଉପଯୋଗକର୍ତ୍ତା |</string>
+    <string name="Complete">ସଂପୂର୍ଣ୍ଣ</string>
+
+    <string name="Invitefriend">ନିମନ୍ତ୍ରଣ ସଫଳତାର ସହିତ ପଠାଯାଇଛି |</string>
+    <string name="Invitefriendnot">ନିମନ୍ତ୍ରଣ ସଫଳତାର ସହିତ ପଠାଯାଇ ନାହିଁ!</string>
+
+    <string name="Invited">ନିମନ୍ତ୍ରିତ</string>
+    <string name="Joined">ଯୋଗଦାନ</string>
+    <string name="certificates">ପ୍ରମାଣପତ୍ର</string>
+    <string name="notcomplete">ଆପଣ ଏପର୍ଯ୍ୟନ୍ତ କ course ଣସି ପାଠ୍ୟକ୍ରମ ସମାପ୍ତ କରିନାହାଁନ୍ତି |</string>
+    <string name="certificatesdownload">ଯେପର୍ଯ୍ୟନ୍ତ ଆପଣ ସାର୍ଟିଫିକେଟ୍ ଡାଉନଲୋଡ୍ ନକରନ୍ତି ଆପଣ ଏହାକୁ ଅଂଶୀଦାର କରିପାରିବେ ନାହିଁ |</string>
+    <string name="certificatesdownloadsuccessfully">ଆପଣଙ୍କର ସାର୍ଟିଫିକେଟ୍ ସଫଳତାର ସହିତ ଡାଉନଲୋଡ୍ ହୋଇଛି |</string>
 </resources>

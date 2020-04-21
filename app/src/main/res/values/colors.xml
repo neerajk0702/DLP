@@ -8,6 +8,12 @@
     <color name="colorLightGrey">#7e848c</color>
     <color name="colorBlack">#000000</color>
     <color name="colorDrakRed">#ac0000</color>
-
+    <color name="daidalos_backgroud">#000</color>
+    <color name="daidalos_active_file">#fff</color>
+    <color name="daidalos_inactive_file">#888</color>
+    <color name="buttonOk">#fff</color>
+    <color name="daidalos_gray">#888</color>
+    <color name="light_gray">#DCDCDC</color>
+    <color name="light_gray2">#FAF7F7</color>
 
 </resources>

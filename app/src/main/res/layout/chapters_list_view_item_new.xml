@@ -73,29 +73,29 @@
 
 
                     <LinearLayout
-                        android:id="@+id/status"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/statusLayout"
+                        android:layout_width="@dimen/size_100px"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimValue_5"
                         android:orientation="vertical"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         android:layout_margin="@dimen/dimValue_10"
+                        android:gravity="center"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentRight="true"
                         android:background="@drawable/white_bg"
                         android:layout_gravity="right">
 
-                        <TextView
+                        <TextView android:id="@+id/statustext"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:maxLines="3"
-                            android:layout_gravity="center"
-                            android:textStyle="bold"
-                            android:layout_margin="@dimen/dimValue_5"
-                            android:padding="@dimen/dimValue_5"
-                            android:text="@string/InProgress"
+                            android:maxLines="1"
+                            android:gravity="center"
+                            android:layout_marginLeft="@dimen/dimValue_10"
+                            android:layout_marginRight="@dimen/dimValue_10"
+                            android:padding="@dimen/dimValue_7"
+                            android:text="dd"
                             android:textColor="#101111"
-                            android:textSize="@dimen/dimTextSize_16" />
+                            android:textSize="@dimen/dimTextSize_14" />
 
 
                     </LinearLayout>
