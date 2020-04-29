@@ -87,9 +87,7 @@ public class InviteFriendList extends AppCompatActivity {
                         List<Invitations> invitations=result.getInvitations();
                         recyclerView.setAdapter(new MyInviteFragmentRecyclerViewAdapter(InviteFriendList.this,invitations));
 
-                        Toast.makeText(InviteFriendList.this, getString(R.string.Invitefriend), Toast.LENGTH_LONG).show();
-                    }else{
-                        Toast.makeText(InviteFriendList.this, getString(R.string.Invitefriendnot), Toast.LENGTH_LONG).show();
+//                        Toast.makeText(InviteFriendList.this, getString(R.string.Invitefriend), Toast.LENGTH_LONG).show();
                     }
                     customProgressDialog.dismiss();
                 }

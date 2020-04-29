@@ -1,240 +1,305 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    android:orientation="vertical">
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
+    android:fitsSystemWindows="true"
+    tools:context=".Activities.QuizResultActivity">
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/dimValue_10"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#e60000"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/logoLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dimValue_5"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/leftArrow"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Quiz"
+                            android:textColor="#fff"
+                            android:textSize="@dimen/dimTextSize_30" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dimValue_10"
+                        android:gravity="left|center"
+                        android:text="@string/Quiz"
+                        android:textColor="#fff"
+                        android:textSize="@dimen/dimTextSize_22" />
+
+                    <LinearLayout
+                        android:id="@+id/question_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/dimValue_10"
+                        android:layout_weight="0.5"
+                        android:gravity="right"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/question"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="@string/Question"
+                            android:textColor="#fff"
+                            android:textSize="@dimen/dimTextSize_16" />
+
+                        <TextView
+                            android:id="@+id/question_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dimValue_10"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="#fff"
+                            android:textSize="@dimen/dimTextSize_16" />
+
+                        <TextView
+                            android:id="@+id/totalQuestion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text=""
+                            android:textColor="#fff"
+                            android:textSize="@dimen/dimTextSize_16"
+                            android:textStyle="italic" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/bar"
+            android:background="#fff"
             android:orientation="vertical">
 
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/quit_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/dimValue_10"
-                    android:paddingBottom="@dimen/dimValue_10"
-                    android:gravity="center"
-                    android:text="@string/QUIT"
-                    android:textColor="@color/colorRad"
-                    android:textSize="@dimen/dimTextSize_16" />
-
-                <TextView
-                    android:id="@+id/quit_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dimValue_10"
-                    android:paddingTop="@dimen/dimValue_10"
-                    android:paddingBottom="@dimen/dimValue_10"
-                    android:gravity="center"
-                    android:text=""
-                    android:textColor="@color/colorRad"
-                    android:textSize="@dimen/dimTextSize_16" />
-
-                <View
-                    android:id="@+id/divider"
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/dimValue_5"
-                    android:layout_marginBottom="@dimen/dimValue_5"
-                    android:layout_marginLeft="@dimen/dimValue_10"
-                    android:background="@color/colorLightGrey" />
-
-                <TextView
-                    android:id="@+id/skip_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:paddingTop="@dimen/dimValue_10"
-                    android:paddingBottom="@dimen/dimValue_10"
-                    android:layout_marginLeft="@dimen/dimValue_10"
-                    android:gravity="center"
-                    android:text="@string/SKIP"
-                    android:textColor="@color/colorRad"
-                    android:textSize="@dimen/dimTextSize_16" />
-
-                <TextView
-                    android:id="@+id/skip_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/dimValue_10"
-                    android:paddingTop="@dimen/dimValue_10"
-                    android:paddingBottom="@dimen/dimValue_10"
-                    android:gravity="center"
-                    android:text=""
-                    android:textColor="@color/colorRad"
-                    android:textSize="@dimen/dimTextSize_16" />
-
-                <View
-                    android:id="@+id/divider2"
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/dimValue_5"
-                    android:layout_marginBottom="@dimen/dimValue_5"
-                    android:layout_marginLeft="@dimen/dimValue_10"
-                    android:background="@color/colorLightGrey" />
+                android:layout_height="match_parent">
 
                 <LinearLayout
-                    android:id="@+id/listenLayout"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/dimValue_10"
-                    android:gravity="right"
-                    android:paddingTop="@dimen/dimValue_10"
-                    android:paddingBottom="@dimen/dimValue_10"
-                    android:orientation="horizontal">
+                    android:layout_margin="@dimen/dimValue_10"
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/listen_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="right|center"
-                        android:text="@string/Listen"
-                        android:textColor="@color/colorRad"
-                        android:textSize="@dimen/dimTextSize_16" />
-
-                    <TextView
-                        android:id="@+id/listen_icon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/dimValue_10"
-                        android:layout_marginTop="@dimen/dimValue_3"
-                        android:gravity="center"
-                        android:text=""
-                        android:textColor="@color/colorRad"
-                        android:textSize="@dimen/dimTextSize_16" />
-                </LinearLayout>
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.2"
-                android:orientation="horizontal"
-                android:visibility="gone">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.5"
-                    android:gravity="left"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:id="@+id/question"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="@string/Question"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/dimTextSize_16" />
-
-                    <TextView
-                        android:id="@+id/question_no"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/dimValue_10"
-                        android:gravity="center"
-                        android:text="1"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/dimTextSize_16" />
-
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/question_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimValue_20"
-                android:text=""
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/dimTextSize_20" />
-
-            <TextView
-                android:id="@+id/select"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:paddingTop="@dimen/dimValue_3"
-                android:text="@string/Select_any"
-                android:textColor="@color/colorLightGrey"
-                android:textSize="@dimen/dimTextSize_14" />
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/quizRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimValue_20"
-            android:layout_weight="0.5" />
-
-        <LinearLayout
-            android:id="@+id/submitLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dimValue_16"
-            android:gravity="center|bottom">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/colorRad"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/submit_text"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="0.8"
-                    android:gravity="left"
-                    android:padding="@dimen/dimValue_10"
-                    android:text="@string/Submit"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/dimTextSize_22" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:background="@color/colorDrakRed"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/submit_Icon"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/colorDrakRed"
-                        android:gravity="center"
-                        android:text="."
-                        android:textColor="@color/colorWhite"
-                        android:textSize="@dimen/dimTextSize_24" />
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/quit_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:paddingTop="@dimen/dimValue_10"
+                                android:paddingBottom="@dimen/dimValue_10"
+                                android:text="@string/QUIT"
+                                android:textColor="@color/colorRad"
+                                android:textSize="@dimen/dimTextSize_16" />
+
+                            <TextView
+                                android:id="@+id/quit_icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/dimValue_10"
+                                android:gravity="center"
+                                android:paddingTop="@dimen/dimValue_10"
+                                android:paddingBottom="@dimen/dimValue_10"
+                                android:text=""
+                                android:textColor="@color/colorRad"
+                                android:textSize="@dimen/dimTextSize_16" />
+
+                            <View
+                                android:id="@+id/divider"
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="@dimen/dimValue_10"
+                                android:layout_marginTop="@dimen/dimValue_5"
+                                android:layout_marginBottom="@dimen/dimValue_5"
+                                android:background="@color/colorLightGrey" />
+
+                            <TextView
+                                android:id="@+id/skip_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="@dimen/dimValue_10"
+                                android:gravity="center"
+                                android:paddingTop="@dimen/dimValue_10"
+                                android:paddingBottom="@dimen/dimValue_10"
+                                android:text="@string/SKIP"
+                                android:textColor="@color/colorRad"
+                                android:textSize="@dimen/dimTextSize_16" />
+
+                            <TextView
+                                android:id="@+id/skip_icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="@dimen/dimValue_10"
+                                android:gravity="center"
+                                android:paddingTop="@dimen/dimValue_10"
+                                android:paddingBottom="@dimen/dimValue_10"
+                                android:text=""
+                                android:textColor="@color/colorRad"
+                                android:textSize="@dimen/dimTextSize_16" />
+
+                            <View
+                                android:id="@+id/divider2"
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="@dimen/dimValue_10"
+                                android:layout_marginTop="@dimen/dimValue_5"
+                                android:layout_marginBottom="@dimen/dimValue_5"
+                                android:background="@color/colorLightGrey" />
+
+                            <LinearLayout
+                                android:id="@+id/listenLayout"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="@dimen/dimValue_10"
+                                android:gravity="right"
+                                android:orientation="horizontal"
+                                android:paddingTop="@dimen/dimValue_10"
+                                android:paddingBottom="@dimen/dimValue_10">
+
+                                <TextView
+                                    android:id="@+id/listen_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="right|center"
+                                    android:text="@string/Listen"
+                                    android:textColor="@color/colorRad"
+                                    android:textSize="@dimen/dimTextSize_16" />
+
+                                <TextView
+                                    android:id="@+id/listen_icon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="@dimen/dimValue_10"
+                                    android:layout_marginTop="@dimen/dimValue_3"
+                                    android:gravity="center"
+                                    android:text=""
+                                    android:textColor="@color/colorRad"
+                                    android:textSize="@dimen/dimTextSize_16" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/question_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimValue_20"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/dimTextSize_20" />
+
+                        <TextView
+                            android:id="@+id/select"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:paddingTop="@dimen/dimValue_3"
+                            android:text="@string/Select_any"
+                            android:textColor="@color/colorLightGrey"
+                            android:textSize="@dimen/dimTextSize_14" />
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/quizRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimValue_20"
+                        android:layout_weight="0.5" />
+
+                    <LinearLayout
+                        android:id="@+id/submitLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/dimValue_16"
+                        android:gravity="center|bottom">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorRad"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/submit_text"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="0.8"
+                                android:gravity="left"
+                                android:padding="@dimen/dimValue_10"
+                                android:text="@string/Submit"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/dimTextSize_22" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:background="@color/colorDrakRed"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/submit_Icon"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@color/colorDrakRed"
+                                    android:gravity="center"
+                                    android:text="."
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/dimTextSize_24" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
                 </LinearLayout>
-            </LinearLayout>
-
+            </ScrollView>
         </LinearLayout>
-
-    </LinearLayout>
-</ScrollView>
-</LinearLayout>
-
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

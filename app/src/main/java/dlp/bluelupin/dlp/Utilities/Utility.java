@@ -243,7 +243,17 @@ public class Utility {
         }
         return date;
     }
+    public static Date parseDateFromStringWithLilisec(String strDate) {
+        Date date = null;
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSS Z");
+        try {
+            date = format.parse(strDate);
 
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
     //convert date for gate day month year hours min am/pm
     public static String convertDate(String date) {
         StringBuilder sb = new StringBuilder();

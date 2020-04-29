@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Environment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -129,6 +131,20 @@ public class CertificatesAdapter extends RecyclerView.Adapter<CertificatesAdapte
                 context.startService(intent);
             }
         });
+//        holder.certificateimg.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                AccountData accountDataApToken = dbhelper.getAccountData();
+//                String apiToken = "";
+//                if (accountDataApToken != null) {
+//                    if (accountDataApToken.getApi_token() != null) {
+//                        apiToken=accountDataApToken.getApi_token();//"amFA3kOKt5mXWDWVHs8gU5zk5gWe1KS6dV5yJ4pMloyDmJIRqQjI09ohtB9Z";//accountDataApToken.getApi_token();
+//                    }
+//                }
+//                String imageUrl=Consts.BASE_URL+"certificates/"+mValues.get(position).getCoursename().getId()+"?api_token="+apiToken;
+//                alertForShowImage(mValues.get(position).getSerial_no(),imageUrl);
+//            }
+//        });
 
     }
     private void shareCertificate(String imagePath,String titel){
@@ -164,6 +180,38 @@ public class CertificatesAdapter extends RecyclerView.Adapter<CertificatesAdapte
             imageprogress=view.findViewById(R.id.imageprogress);
         }
 
+    }
+
+    public void alertForShowImage(String titlestr,String imageUrl) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        final AlertDialog alert = builder.create();
+        alert.getWindow().getAttributes().windowAnimations = R.style.alertAnimation;
+        View view = alert.getLayoutInflater().inflate(R.layout.alert_image_layout, null);
+        TextView title = (TextView) view.findViewById(R.id.title);
+        title.setText(titlestr);
+        final ProgressBar imageprogress=view.findViewById(R.id.imageprogress);
+        TextView cancel=view.findViewById(R.id.cancel);
+        ImageView certificateimg=view.findViewById(R.id.certificateimg);
+        Picasso.with(context)
+                .load(imageUrl).placeholder(R.drawable.imageplaceholder)
+                .into(certificateimg, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        imageprogress.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onError() {
+                        imageprogress.setVisibility(View.GONE);
+                    }
+                });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alert.dismiss();
+            }
+        });
+        alert.show();
     }
 }
 

@@ -57,7 +57,7 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
+//        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
         setContentView(R.layout.activity_verification);
         if (Utility.isTablet(this)) {
             this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -394,7 +394,7 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
+//        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
     }
 
 

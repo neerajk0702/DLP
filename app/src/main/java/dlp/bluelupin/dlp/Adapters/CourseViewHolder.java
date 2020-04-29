@@ -16,7 +16,7 @@ import dlp.bluelupin.dlp.R;
 public class CourseViewHolder extends RecyclerView.ViewHolder {
     public TextView courseTitle, courseDescription,startlearningtext;
     public CardView cardView;
-    public ImageView courseImage;
+    public ImageView courseImage,startIcon;
    // public LinearLayout mediaLayout;
 
     ImageView mainImage;
@@ -51,6 +51,7 @@ public class CourseViewHolder extends RecyclerView.ViewHolder {
         userlabel = itemView.findViewById(R.id.userlabel);
         startlearning = itemView.findViewById(R.id.startlearning);
         startlearningtext = itemView.findViewById(R.id.startlearningtext);
+        startIcon=itemView.findViewById(R.id.startIcon);
 
 
     }

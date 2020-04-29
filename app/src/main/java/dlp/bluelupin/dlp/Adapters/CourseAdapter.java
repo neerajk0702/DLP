@@ -91,9 +91,11 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
         if (position % 2 == 0) {
             holder.cardView.setBackgroundResource(R.drawable.ic_orange_bg);
             holder.startlearningtext.setTextColor(Color.parseColor("#FFF5AF19"));
+            holder.startIcon.setBackgroundResource(R.drawable.ic_orange_play_button);
         } else {
             holder.cardView.setBackgroundResource(R.drawable.ic_purple_bg);
             holder.startlearningtext.setTextColor(Color.parseColor("#FFFF00CC"));
+            holder.startIcon.setBackgroundResource(R.drawable.ic_purple_play_button);
         }
         // holder.learnIcon.setTypeface(materialdesignicons_font);
         // holder.learnIcon.setText(Html.fromHtml("&#xf5da;"));
@@ -221,7 +223,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
                 stopAudio();
                 ChaptersFragmentNew fragment = ChaptersFragmentNew.newInstance(data.getId(), type, holder.courseTitle.getText().toString(), holder.courseImage.getTag().toString());
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
+//                transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
                 transaction.replace(R.id.container, fragment)
                         .addToBackStack(null)
                         .commit();
@@ -409,7 +411,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
             FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
             WebFragment fragment = WebFragment.newInstance(data.getUrl(), contentTitle);
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
+//            transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
             transaction.replace(R.id.container, fragment)
                     .addToBackStack(null)
                     .commit();

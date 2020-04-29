@@ -82,7 +82,7 @@ public class AccountSettingsActivity extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
+//        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
         setContentView(R.layout.activity_account_settings);
         if (Utility.isTablet(this)) {
             this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -254,7 +254,7 @@ public class AccountSettingsActivity extends AppCompatActivity implements View.O
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
+//        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
     }
 
     //to hide keyboard from otside touch

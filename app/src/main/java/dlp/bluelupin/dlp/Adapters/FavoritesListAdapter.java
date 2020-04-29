@@ -134,7 +134,7 @@ public class FavoritesListAdapter extends RecyclerView.Adapter<FavoritesViewHold
                     ChaptersFragmentNew fragment = ChaptersFragmentNew.newInstance(data.getId(), type,holder.chapterTitle.getText().toString(),holder.chapterImage.getTag().toString());
 
                     FragmentTransaction transaction = fragmentManager.beginTransaction();
-                    transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
+//                    transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
                     transaction.replace(R.id.container, fragment)
                             //.addToBackStack(null)
                             .commit();
@@ -143,7 +143,7 @@ public class FavoritesListAdapter extends RecyclerView.Adapter<FavoritesViewHold
                     ContentFragment fragment = ContentFragment.newInstance(data.getId(), "");
 
                     FragmentTransaction transaction = fragmentManager.beginTransaction();
-                    transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
+//                    transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
                     transaction.replace(R.id.container, fragment)
                             //.addToBackStack(null)
                             .commit();
@@ -162,7 +162,7 @@ public class FavoritesListAdapter extends RecyclerView.Adapter<FavoritesViewHold
                         FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
                         DownloadingFragment fragment = DownloadingFragment.newInstance(data.getThumbnail_media_id(), media.getUrl());
                         FragmentTransaction transaction = fragmentManager.beginTransaction();
-                        transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
+//                        transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
                         transaction.replace(R.id.container, fragment)
                                 .addToBackStack(null)
                                 .commit();

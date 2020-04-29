@@ -38,10 +38,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimValue_20"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
 
-                    <LinearLayout
+                    <LinearLayout android:id="@+id/markLayout"
                         android:layout_width="@dimen/size_180px"
                         android:orientation="horizontal"
                         android:gravity="center_horizontal"
@@ -64,10 +64,37 @@
 
                         <ImageView
                             android:layout_width="@dimen/dimValue_30"
-                            android:src="@drawable/ic_media_play"
+                            android:src="@drawable/ic__whiteplay_button"
                             android:layout_margin="@dimen/dimValue_5"
                             android:layout_gravity="center"
                             android:layout_height="@dimen/dimValue_30" />
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/statusLayout"
+                        android:layout_width="@dimen/size_180px"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/dimValue_10"
+                        android:background="@drawable/green_bg"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/statustext"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/dimValue_5"
+                            android:maxLines="3"
+                            android:padding="@dimen/dimValue_8"
+                            android:text="@string/Complete"
+                            android:textAlignment="center"
+                            android:textColor="#FFFFFF"
+                            android:textSize="@dimen/dimTextSize_16"
+                            android:textStyle="bold" />
 
 
                     </LinearLayout>

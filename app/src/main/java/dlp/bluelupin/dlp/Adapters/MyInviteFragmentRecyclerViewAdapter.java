@@ -51,11 +51,14 @@ public class MyInviteFragmentRecyclerViewAdapter extends RecyclerView.Adapter<My
             holder.inviteView.setBackground(ContextCompat.getDrawable(context, R.drawable.light_gray_bg));
             holder.invitetext.setText(context.getString(R.string.Invited));//android:background="@drawable/white_bg"
         }
-        Date date=Utility.parseDateFromString(mValues.get(position).getCreated_at());
-        String stringMonth = (String) android.text.format.DateFormat.format("MMM", date); //Jun
-        String day = (String) android.text.format.DateFormat.format("dd", date); //20
-        String year = (String) android.text.format.DateFormat.format("yyyy", date); //2013
-        holder.dateTime.setText(day+" "+stringMonth+" "+year);
+        if(mValues.get(position).getCreated_at()!=null){
+            Date date=Utility.parseDateFromString(mValues.get(position).getCreated_at());
+            String stringMonth = (String) android.text.format.DateFormat.format("MMM", date); //Jun
+            String day = (String) android.text.format.DateFormat.format("dd", date); //20
+            String year = (String) android.text.format.DateFormat.format("yyyy", date); //2013
+            holder.dateTime.setText(day+" "+stringMonth+" "+year);
+        }
+
 
     }
 

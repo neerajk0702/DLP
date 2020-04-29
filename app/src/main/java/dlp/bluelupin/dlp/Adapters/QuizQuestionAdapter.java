@@ -452,7 +452,7 @@ private String correct_answer_description;
     public void navigateToFragment(Fragment fragment) {
         FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
+//        transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
         transaction.replace(R.id.container, fragment)
                 .addToBackStack(null)
                 .commit();

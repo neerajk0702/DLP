@@ -33,7 +33,7 @@ public class DisclaimerActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
+//        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
         setContentView(R.layout.disclaimertaion_activity);
         if (Utility.isTablet(this)) {
             this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -73,7 +73,7 @@ public class DisclaimerActivity extends AppCompatActivity implements View.OnClic
         intent.putExtra("isRead", isRead);
         setResult(RESULT_OK, intent);
         finish();
-        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
+//        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
     }
 
     //to hide keyboard from otside touch

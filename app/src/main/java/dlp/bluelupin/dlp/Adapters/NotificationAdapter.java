@@ -68,7 +68,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationViewHo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showSelectionItemRow(holder, position);
+//                showSelectionItemRow(holder, position);
             }
         });
     }

@@ -77,6 +77,9 @@ public class MainActivity extends AppCompatActivity
     GregorianCalendar calendar;
     private long timeIntervel = 18000000;
     SharedPreferences offlineAccountPref;
+    DrawerLayout drawer;
+    ActionBarDrawerToggle toggle;
+    private boolean mToolBarNavigationListenerIsRegistered = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,8 +112,8 @@ public class MainActivity extends AppCompatActivity
         splashImage = (ImageView) findViewById(R.id.splashImage);
         //splashImage.setVisibility(View.VISIBLE);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+         toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
@@ -317,7 +320,7 @@ public class MainActivity extends AppCompatActivity
             FragmentManager fragmentManager = getSupportFragmentManager();
             CourseFragment fragment = CourseFragment.newInstance("", "");
             fragmentManager.beginTransaction()
-                    .setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right).replace(R.id.container, fragment)
+                    .replace(R.id.container, fragment)
                     //.addToBackStack(null)
                     .commitAllowingStateLoss();
         }
@@ -751,7 +754,61 @@ public class MainActivity extends AppCompatActivity
         super.onDestroy();
         Toast.makeText(MainActivity.this, "Destroy call", Toast.LENGTH_LONG).show();
     }*/
+    /**
+     * To be semantically or contextually correct, maybe change the name
+     * and signature of this function to something like:
+     *
+     * private void showBackButton(boolean show)
+     * Just a suggestion.
+     */
 
+    public void enableViews(boolean enable) {
+
+        // To keep states of ActionBar and ActionBarDrawerToggle synchronized,
+        // when you enable on one, you disable on the other.
+        // And as you may notice, the order for this operation is disable first, then enable - VERY VERY IMPORTANT.
+        if(enable) {
+            //You may not want to open the drawer on swipe from the left in this case
+            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+            // Remove hamburger
+            toggle.setDrawerIndicatorEnabled(false);
+            // Show back button
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            // when DrawerToggle is disabled i.e. setDrawerIndicatorEnabled(false), navigation icon
+            // clicks are disabled i.e. the UP button will not work.
+            // We need to add a listener, as in below, so DrawerToggle will forward
+            // click events to this listener.
+            if(!mToolBarNavigationListenerIsRegistered) {
+                toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) { // Doesn't have to be onBackPressed
+                        onBackPressed();
+                    }
+                });
+
+                mToolBarNavigationListenerIsRegistered = true;
+            }
+
+        } else {
+            //You must regain the power of swipe for the drawer.
+            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+
+            // Remove back button
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            // Show hamburger
+            toggle.setDrawerIndicatorEnabled(true);
+            // Remove the/any drawer toggle listener
+            toggle.setToolbarNavigationClickListener(null);
+            mToolBarNavigationListenerIsRegistered = false;
+        }
+
+        // So, one may think "Hmm why not simplify to:
+        // .....
+        // getSupportActionBar().setDisplayHomeAsUpEnabled(enable);
+        // mDrawer.setDrawerIndicatorEnabled(!enable);
+        // ......
+        // To re-iterate, the order in which you enable and disable views IS important #dontSimplify.
+    }
 }
 
 

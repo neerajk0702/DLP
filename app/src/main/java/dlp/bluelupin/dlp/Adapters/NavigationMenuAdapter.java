@@ -124,7 +124,7 @@ public class NavigationMenuAdapter extends BaseAdapter {
                     Intent intent = new Intent(mContext, NotificationsActivity.class);
                     mContext.startActivity(intent);
                     Activity activity = (Activity) mContext;
-                    activity.overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
+//                    activity.overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
                 } else if (menuList.get(position).toString().equalsIgnoreCase("Favorites")) {
                     FavoritesFragment fragment = FavoritesFragment.newInstance("", "");
                     navigateToFragment(fragment);
@@ -132,7 +132,7 @@ public class NavigationMenuAdapter extends BaseAdapter {
                     Intent intent = new Intent(mContext, LanguageActivity.class);
                     mContext.startActivity(intent);
                     Activity activity = (Activity) mContext;
-                    activity.overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
+//                    activity.overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
                 } else if (menuList.get(position).toString().equalsIgnoreCase("Change Downloads Folder")) {
                     SelectLocationFragment fragment = SelectLocationFragment.newInstance("", "");
                     navigateToFragment(fragment);
@@ -160,12 +160,12 @@ public class NavigationMenuAdapter extends BaseAdapter {
                     Intent intent = new Intent(mContext, ReferFriendActivity.class);
                     mContext.startActivity(intent);
                     Activity activity = (Activity) mContext;
-                    activity.overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
+//                    activity.overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
                 } else if (menuList.get(position).toString().equalsIgnoreCase("Certificates")) {
                     Intent intent = new Intent(mContext, CertificateListActivity.class);
                     mContext.startActivity(intent);
                     Activity activity = (Activity) mContext;
-                    activity.overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
+//                    activity.overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
                 }
                 int pos = (int) v.getTag();
                 if (selectedPosition.contains(pos)) {
@@ -188,7 +188,7 @@ public class NavigationMenuAdapter extends BaseAdapter {
     public void navigateToFragment(Fragment fragment) {
         FragmentManager fragmentManager = ((FragmentActivity) mContext).getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
+//        transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
         transaction.replace(R.id.container, fragment)
                 .addToBackStack(null)
                 .commit();

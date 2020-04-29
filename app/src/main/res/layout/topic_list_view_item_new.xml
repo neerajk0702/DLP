@@ -34,7 +34,7 @@
                     android:layout_width="@dimen/size_120px"
                     android:layout_height="@dimen/size_120px"
                     android:layout_weight="1"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/maincurs" />
             </androidx.cardview.widget.CardView>
 

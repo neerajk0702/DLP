@@ -43,6 +43,7 @@ import dlp.bluelupin.dlp.Services.ServiceCaller;
 import dlp.bluelupin.dlp.Utilities.CustomProgressDialog;
 import dlp.bluelupin.dlp.Utilities.FontManager;
 import dlp.bluelupin.dlp.Utilities.LocationUtility;
+import dlp.bluelupin.dlp.Utilities.SpacesItemDecoration;
 import dlp.bluelupin.dlp.Utilities.Utility;
 import dlp.bluelupin.dlp.shwocaseview.animation.MaterialIntroListener;
 import dlp.bluelupin.dlp.shwocaseview.shape.Focus;
@@ -211,6 +212,8 @@ public class ChaptersFragmentNew extends Fragment implements View.OnClickListene
             chaptersRecyclerView.setLayoutManager(gridLayoutManager);
             chaptersRecyclerView.setHasFixedSize(true);
             chaptersRecyclerView.setNestedScrollingEnabled(false);
+            int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.dimValue_3);
+            chaptersRecyclerView.addItemDecoration(new SpacesItemDecoration(spacingInPixels));
 
             if (type.equalsIgnoreCase("Chapter")) {
                 callcontentstatusService(dataList);
@@ -259,7 +262,7 @@ public class ChaptersFragmentNew extends Fragment implements View.OnClickListene
                 FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
                 ChaptersFragment fragment = ChaptersFragment.newInstance(parentId, type);
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
+//                transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
                 transaction.replace(R.id.container, fragment)
                         .addToBackStack(null)
                         .commit();

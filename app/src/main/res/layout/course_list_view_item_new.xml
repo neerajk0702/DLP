@@ -285,7 +285,7 @@
                 android:text="@string/startlearning"
                 android:textColor="@color/colorBlack" />
 
-            <ImageView
+            <ImageView android:id="@+id/startIcon"
                 android:layout_width="@dimen/dimValue_20"
                 android:layout_height="@dimen/dimValue_20"
                 android:layout_gravity="center"

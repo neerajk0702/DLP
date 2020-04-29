@@ -24,6 +24,7 @@ import dlp.bluelupin.dlp.Adapters.ContentRecycleAdapter;
 import dlp.bluelupin.dlp.Consts;
 import dlp.bluelupin.dlp.Database.DbHelper;
 import dlp.bluelupin.dlp.MainActivity;
+import dlp.bluelupin.dlp.Models.Content_status;
 import dlp.bluelupin.dlp.Models.Data;
 import dlp.bluelupin.dlp.Models.ProfileUpdateServiceRequest;
 import dlp.bluelupin.dlp.Models.StatusUpdateService;
@@ -85,7 +86,8 @@ public class ContentFragment extends Fragment implements MaterialIntroListener {
     private Context context;
     private TextView content_title;
     View view;
-
+    int completion_status=0;
+    LinearLayout statusLayout,markLayout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -123,7 +125,26 @@ public class ContentFragment extends Fragment implements MaterialIntroListener {
             noRecordIcon.setTypeface(materialdesignicons_font);
             noRecordIcon.setText(Html.fromHtml("&#xf187;"));
         } else {
-            callStatusUpdatService(1);//browsed = 1
+            statusLayout=view.findViewById(R.id.statusLayout);
+            markLayout=view.findViewById(R.id.markLayout);
+            Content_status service = db.getcontentStatusEntityById(parentId);//get content status data by parentID
+            if (service!=null) {
+                completion_status=service.getCompletion_status();
+                if(completion_status==0){
+                    markLayout.setVisibility(View.VISIBLE);
+                    callStatusUpdatService(1);//browsed = 1
+                }else if(completion_status==1){
+                    statusLayout.setVisibility(View.GONE);
+                    markLayout.setVisibility(View.VISIBLE);
+                }else if(completion_status==2){
+                    markLayout.setVisibility(View.GONE);
+                    statusLayout.setVisibility(View.VISIBLE);
+                }
+            }else{
+                markLayout.setVisibility(View.VISIBLE);
+                callStatusUpdatService(1);//browsed = 1
+            }
+
             //ContentAdapter contentAdapter = new ContentAdapter(context, dataList);
             ContentRecycleAdapter contentAdapter = new ContentRecycleAdapter(context, dataList);
             contentAdapter.setHasStableIds(true);
@@ -179,6 +200,8 @@ public class ContentFragment extends Fragment implements MaterialIntroListener {
                         }
                         if(status==2) {
                             Toast.makeText(context, getString(R.string.updatestatus), Toast.LENGTH_LONG).show();
+                            statusLayout.setVisibility(View.VISIBLE);
+                            markLayout.setVisibility(View.GONE);
                         }
                         customProgressDialog.dismiss();
                     } else {

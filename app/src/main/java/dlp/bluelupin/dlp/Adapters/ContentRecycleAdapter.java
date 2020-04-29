@@ -234,7 +234,7 @@ public class ContentRecycleAdapter extends RecyclerView.Adapter<ContentViewHolde
             FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
             WebFragment fragment = WebFragment.newInstance(data.getUrl(), contentTitle);
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
+//            transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
             transaction.replace(R.id.container, fragment)
                     .addToBackStack(null)
                     .commit();
@@ -849,7 +849,7 @@ public class ContentRecycleAdapter extends RecyclerView.Adapter<ContentViewHolde
                         FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
                         SimulatorWebFragment fragment = SimulatorWebFragment.newInstance(simulatorData.getLocalPathUrl(), context.getString(R.string.Simulator),media.getDownload_url());
                         FragmentTransaction transaction = fragmentManager.beginTransaction();
-                        transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
+//                        transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
                         transaction.replace(R.id.container, fragment)
                                 .addToBackStack(null)
                                 .commit();

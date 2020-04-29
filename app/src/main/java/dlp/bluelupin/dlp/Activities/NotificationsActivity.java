@@ -50,7 +50,7 @@ public class NotificationsActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
-        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
+//        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
         if (Utility.isTablet(this)) {
             this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         } else {
@@ -91,7 +91,7 @@ public class NotificationsActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
+//        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
     }
 
 

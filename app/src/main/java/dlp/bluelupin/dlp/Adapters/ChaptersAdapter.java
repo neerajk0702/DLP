@@ -27,6 +27,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import dlp.bluelupin.dlp.Activities.AudioActivity;
+import dlp.bluelupin.dlp.Activities.QuizQuestionActivity;
 import dlp.bluelupin.dlp.Activities.VideoPlayerActivity;
 import dlp.bluelupin.dlp.Consts;
 import dlp.bluelupin.dlp.Database.DbHelper;
@@ -285,7 +286,6 @@ public class ChaptersAdapter extends RecyclerView.Adapter<ChaptersViewHolder> {
                                         FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
                                         DownloadingFragment fragment = DownloadingFragment.newInstance(strJsonResourcesToDownloadList, data.getId());
                                         FragmentTransaction transaction = fragmentManager.beginTransaction();
-                                        transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
                                         transaction.replace(R.id.container, fragment)
                                                 .addToBackStack(null)
                                                 .commit();
@@ -345,12 +345,16 @@ public class ChaptersAdapter extends RecyclerView.Adapter<ChaptersViewHolder> {
                         if (contentData.getQuiz_id() != 0) {
                             DbHelper dbhelper = new DbHelper(context);
                             dbhelper.deleteQuizAnswerEntityById(contentData.getQuiz_id(), data.getId());//delete old data
-                            FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
-                            QuizQuestionFragment fragment = QuizQuestionFragment.newInstance(contentData.getQuiz_id(), data.getId());
-                            fragmentManager.beginTransaction().setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right)
-                                    .replace(R.id.container, fragment)
-                                    .addToBackStack(null)
-                                    .commit();
+//                            FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
+//                            QuizQuestionFragment fragment = QuizQuestionFragment.newInstance(contentData.getQuiz_id(), data.getId());
+//                            fragmentManager.beginTransaction().setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right)
+//                                    .replace(R.id.container, fragment)
+//                                    .addToBackStack(null)
+//                                    .commit();
+                            Intent mIntent = new Intent(context, QuizQuestionActivity.class);
+                            mIntent.putExtra("quizId", contentData.getQuiz_id());
+                            mIntent.putExtra("contentId", data.getId());
+                            context.startActivity(mIntent);
                         }
                     }
                 });
@@ -415,7 +419,7 @@ public class ChaptersAdapter extends RecyclerView.Adapter<ChaptersViewHolder> {
                     ChaptersFragmentNew fragment = ChaptersFragmentNew.newInstance(data.getId(), type,holder.chapterTitle.getText().toString(),holder.chapterImage.getTag().toString());
 
                     FragmentTransaction transaction = fragmentManager.beginTransaction();
-                    transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
+//                    transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
                     transaction.replace(R.id.container, fragment)
                             .addToBackStack(null)
                             .commit();
@@ -432,7 +436,7 @@ public class ChaptersAdapter extends RecyclerView.Adapter<ChaptersViewHolder> {
                     ContentFragment fragment = ContentFragment.newInstance(data.getId(), contentTitle);
 
                     FragmentTransaction transaction = fragmentManager.beginTransaction();
-                    transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
+//                    transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
                     transaction.replace(R.id.container, fragment)
                             .addToBackStack(null)
                             .commit();
@@ -458,11 +462,15 @@ public class ChaptersAdapter extends RecyclerView.Adapter<ChaptersViewHolder> {
                 if (data.getQuiz_id() != 0) {
                     dbhelper.deleteQuizAnswerEntityById(data.getQuiz_id(), data.getId());//delete old data
                     FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
-                    QuizQuestionFragment fragment = QuizQuestionFragment.newInstance(data.getQuiz_id(), data.getContent_id());
-                    fragmentManager.beginTransaction().setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right)
-                            .replace(R.id.container, fragment)
-                            .addToBackStack(null)
-                            .commit();
+//                    QuizQuestionFragment fragment = QuizQuestionFragment.newInstance(data.getQuiz_id(), data.getContent_id());
+//                    fragmentManager.beginTransaction().setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right)
+//                            .replace(R.id.container, fragment)
+//                            .addToBackStack(null)
+//                            .commit();
+                    Intent mIntent = new Intent(context, QuizQuestionActivity.class);
+                    mIntent.putExtra("quizId", data.getQuiz_id());
+                    mIntent.putExtra("contentId", data.getContent_id());
+                    context.startActivity(mIntent);
                 }
             }
         });
@@ -665,7 +673,7 @@ public class ChaptersAdapter extends RecyclerView.Adapter<ChaptersViewHolder> {
             FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
             WebFragment fragment = WebFragment.newInstance(data.getUrl(), contentTitle);
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
+//            transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
             transaction.replace(R.id.container, fragment)
                     .addToBackStack(null)
                     .commit();

@@ -68,7 +68,7 @@ public class LanguageActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
+//        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
         setContentView(R.layout.activity_language);
         Consts.playYouTubeFlag = true;//for play online you tube video device back press handel
         if (Utility.isTablet(this)) {
@@ -294,7 +294,7 @@ public class LanguageActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
+//        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
     }
 
 

@@ -243,7 +243,7 @@ public class ContentAdapter extends BaseAdapter {
                             FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
                             WebFragment fragment = WebFragment.newInstance(data.getUrl(), "");
                             FragmentTransaction transaction = fragmentManager.beginTransaction();
-                            transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
+//                            transaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_right);
                             transaction.replace(R.id.container, fragment)
                                     .addToBackStack(null)
                                     .commit();
