@@ -61,6 +61,9 @@
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -83,9 +86,11 @@
                     android:background="@drawable/ic_oval_bg"
                     android:gravity="center"
                     android:orientation="vertical">
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/size_200px" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -208,5 +213,8 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

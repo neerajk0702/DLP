@@ -48,8 +48,8 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:gravity="left|center"
+                    android:layout_marginLeft="@dimen/dimValue_20"
                     android:text="@string/certificates"
-                    android:textAlignment="center"
                     android:textColor="#fff"
                     android:textSize="@dimen/dimTextSize_22" />
             </LinearLayout>

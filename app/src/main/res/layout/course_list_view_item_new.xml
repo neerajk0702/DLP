@@ -268,7 +268,7 @@
 
         <LinearLayout
             android:id="@+id/startlearning"
-            android:layout_width="@dimen/size_140px"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right|center"
             android:layout_marginTop="@dimen/dimValue_10"
@@ -283,6 +283,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dimValue_10"
                 android:text="@string/startlearning"
+                android:maxLines="1"
                 android:textColor="@color/colorBlack" />
 
             <ImageView android:id="@+id/startIcon"

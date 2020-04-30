@@ -62,7 +62,7 @@ public class LanguageActivity extends AppCompatActivity implements View.OnClickL
     private static final String INTRO_CARD1 = "intro_card_1";
     private static final String INTRO_CARD2 = "intro_card_2";
     private static final String INTRO_CARD3 = "intro_card_3";
-
+int selectPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,7 +154,8 @@ public class LanguageActivity extends AppCompatActivity implements View.OnClickL
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                setLanguage(position);
+//                setLanguage(position);
+                selectPosition=position;
             }
 
             @Override
@@ -218,7 +219,7 @@ public class LanguageActivity extends AppCompatActivity implements View.OnClickL
 //                v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.click_animation));//onclick animation
 //                break;
 //        }
-
+        setLanguage(selectPosition);
         checkRegistered();
         DbHelper dbhelper = new DbHelper(LanguageActivity.this);
         AccountData accountData = dbhelper.getAccountData();
