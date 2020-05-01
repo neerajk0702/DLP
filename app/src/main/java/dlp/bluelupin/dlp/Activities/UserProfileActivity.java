@@ -120,7 +120,7 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
             mainemail.setText(accountData.getEmail());
         }
 
-        showIntro(done, INTRO_CARD1, getString(R.string.save), Focus.ALL);
+        showIntro(done, INTRO_CARD1, getString(R.string.save), Focus.NORMAL);
     }
 
     private void setLanguage(int langpos) {

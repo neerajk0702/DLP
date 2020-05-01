@@ -238,6 +238,7 @@ public class AccountSettingsActivity extends AppCompatActivity implements View.O
             startActivity(intent);
 
         }
+        save.setEnabled(true);
     }
 
     private void setLanguage(int langpos) {
@@ -326,6 +327,7 @@ public class AccountSettingsActivity extends AppCompatActivity implements View.O
                 break;
             case R.id.save:
                 if (isValidate()) {
+                    save.setEnabled(false);
                     callCreateAccountService();
                     v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.click_animation));//onclick animation
                 }

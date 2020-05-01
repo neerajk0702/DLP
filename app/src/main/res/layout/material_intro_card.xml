@@ -11,7 +11,7 @@
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@android:color/white">
+        app:cardBackgroundColor="@color/transparent">
 
         <RelativeLayout
             android:id="@+id/layout_info_main"
@@ -26,20 +26,23 @@
                 android:layout_height="20dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="16dp"
+                android:visibility="invisible"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/hihlogo"/>
 
             <TextView
                 android:id="@+id/textview_info"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:textSize="10dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:textAlignment="center"
+                android:textSize="@dimen/dimTextSize_18"
+                android:padding="@dimen/dimValue_5"
+                android:gravity="center"
+                android:textStyle="bold"
                 android:layout_toRightOf="@id/imageview_icon"
-                android:textColor="@android:color/black"/>
+                android:textColor="@color/colorWhite"/>
 
         </RelativeLayout>
 

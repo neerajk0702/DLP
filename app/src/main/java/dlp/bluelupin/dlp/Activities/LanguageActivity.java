@@ -171,7 +171,7 @@ int selectPosition;
             }
 
         }
-        showIntro(doneLayout, INTRO_CARD1, getString(R.string.save), Focus.ALL);
+        showIntro(doneLayout, INTRO_CARD1, getString(R.string.save), Focus.NORMAL);
      //   showIntro(spinner, INTRO_CARD1, "Choose Your Language You Want to view App", FocusGravity.CENTER);
 
     }
@@ -219,6 +219,7 @@ int selectPosition;
 //                v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.click_animation));//onclick animation
 //                break;
 //        }
+        doneLayout.setEnabled(false);
         setLanguage(selectPosition);
         checkRegistered();
         DbHelper dbhelper = new DbHelper(LanguageActivity.this);
@@ -290,6 +291,7 @@ int selectPosition;
         } else {
             Toast.makeText(LanguageActivity.this, getString(R.string.online_msg), Toast.LENGTH_LONG).show();
         }
+        doneLayout.setEnabled(true);
     }
 
     @Override

@@ -53,10 +53,14 @@ import dlp.bluelupin.dlp.Services.ServiceCaller;
 import dlp.bluelupin.dlp.Utilities.CustomProgressDialog;
 import dlp.bluelupin.dlp.Utilities.FontManager;
 import dlp.bluelupin.dlp.Utilities.Utility;
+import dlp.bluelupin.dlp.shwocaseview.animation.MaterialIntroListener;
+import dlp.bluelupin.dlp.shwocaseview.shape.Focus;
+import dlp.bluelupin.dlp.shwocaseview.shape.FocusGravity;
+import dlp.bluelupin.dlp.shwocaseview.view.MaterialIntroView;
 
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, MaterialIntroListener {
 
 
     private static final int PERMISSION_REQUEST_CODE = 1;
@@ -65,9 +69,11 @@ public class MainActivity extends AppCompatActivity
     public FrameLayout downloadContainer;
     private static MainActivity mainActivity;
     private CustomProgressDialog customProgressDialog;
+
     public static MainActivity getInstace() {
         return mainActivity;
     }
+
     private TextView name, email;
     AlertDialog alert;
     public ImageView splashImage;
@@ -80,6 +86,8 @@ public class MainActivity extends AppCompatActivity
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
     private boolean mToolBarNavigationListenerIsRegistered = false;
+    private static final String INTRO_CARD1 = "intro_card_1";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +98,7 @@ public class MainActivity extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         title = (TextView) toolbar.findViewById(R.id.title);
         title.setTypeface(VodafoneExB);
+
         question = (TextView) toolbar.findViewById(R.id.question);
         question_no = (TextView) toolbar.findViewById(R.id.question_no);
         totalQuestion = (TextView) toolbar.findViewById(R.id.totalQuestion);
@@ -112,8 +121,8 @@ public class MainActivity extends AppCompatActivity
         splashImage = (ImageView) findViewById(R.id.splashImage);
         //splashImage.setVisibility(View.VISIBLE);
 
-         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-         toggle = new ActionBarDrawerToggle(
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
@@ -186,6 +195,7 @@ public class MainActivity extends AppCompatActivity
                 callCreateAccountService();
             }
         }
+        showIntro(drawer, INTRO_CARD1, "Show your Menu", Focus.NORMAL);
     }
 
     //alert for progress bar
@@ -266,7 +276,6 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
     //set slider item value
     public void setMenuLayout() {
         Typeface VodafoneRgBd = Typeface.createFromAsset(getAssets(), "fonts/VodafoneRgBd.ttf");
@@ -297,7 +306,7 @@ public class MainActivity extends AppCompatActivity
         menuIconList.add("f219");
         menuIconList.add("f219");
         menuIconList.add("f219");
-       // menuIconList.add("f2fd");
+        // menuIconList.add("f2fd");
 
         List<String> displayNameList = new ArrayList<String>();
         displayNameList.add(getString(R.string.home));
@@ -310,7 +319,7 @@ public class MainActivity extends AppCompatActivity
         displayNameList.add(getString(R.string.Terms_of_use));
         displayNameList.add(getString(R.string.referfriend));
         displayNameList.add(getString(R.string.certificates));
-       // displayNameList.add(getString(R.string.about_us));
+        // displayNameList.add(getString(R.string.about_us));
         NavigationMenuAdapter navigationMenuAdapter = new NavigationMenuAdapter(MainActivity.this, itemList, menuIconList, displayNameList);
         menuList.setAdapter(navigationMenuAdapter);
     }
@@ -668,32 +677,33 @@ public class MainActivity extends AppCompatActivity
         AccountData data = dbhelper.getAccountData();
         AccountServiceRequest accountServiceRequest = new AccountServiceRequest();
         if (data != null) {
-                accountServiceRequest.setName(data.getName());
-                accountServiceRequest.setEmail(data.getEmail());
-                accountServiceRequest.setPhone(data.getPhone());
-                accountServiceRequest.setPreferred_language_id(languageId);
-                if (Utility.isOnline(this)) {
-                    ServiceCaller sc = new ServiceCaller(MainActivity.this);
-                    sc.CreateAccount(accountServiceRequest, new IAsyncWorkCompletedCallback() {
-                        @Override
-                        public void onDone(String workName, boolean isComplete) {
+            accountServiceRequest.setName(data.getName());
+            accountServiceRequest.setEmail(data.getEmail());
+            accountServiceRequest.setPhone(data.getPhone());
+            accountServiceRequest.setPreferred_language_id(languageId);
+            if (Utility.isOnline(this)) {
+                ServiceCaller sc = new ServiceCaller(MainActivity.this);
+                sc.CreateAccount(accountServiceRequest, new IAsyncWorkCompletedCallback() {
+                    @Override
+                    public void onDone(String workName, boolean isComplete) {
 
-                            if (isComplete) {
-                                if (offlineAccountPref != null) {
-                                    SharedPreferences.Editor editor = offlineAccountPref.edit();
-                                    editor.putBoolean("AccountCreate",false);//when data save into server
-                                    editor.commit();
-                                }
-                                if (Consts.IS_DEBUG_LOG) {
-                                    Log.d(Consts.LOG_TAG, " callCreateAccountService in offline mode success result: " + isComplete);
-                                }
-                                // Toast.makeText(MainActivity.this, getString(R.string.otp_sent), Toast.LENGTH_LONG).show();
+                        if (isComplete) {
+                            if (offlineAccountPref != null) {
+                                SharedPreferences.Editor editor = offlineAccountPref.edit();
+                                editor.putBoolean("AccountCreate", false);//when data save into server
+                                editor.commit();
                             }
+                            if (Consts.IS_DEBUG_LOG) {
+                                Log.d(Consts.LOG_TAG, " callCreateAccountService in offline mode success result: " + isComplete);
+                            }
+                            // Toast.makeText(MainActivity.this, getString(R.string.otp_sent), Toast.LENGTH_LONG).show();
                         }
-                    });
-                }
+                    }
+                });
+            }
         }
     }
+
     //call service at every 5 hours of intervel
     private void invokeServiceForBackgroundUpdate() {
 
@@ -754,10 +764,11 @@ public class MainActivity extends AppCompatActivity
         super.onDestroy();
         Toast.makeText(MainActivity.this, "Destroy call", Toast.LENGTH_LONG).show();
     }*/
+
     /**
      * To be semantically or contextually correct, maybe change the name
      * and signature of this function to something like:
-     *
+     * <p>
      * private void showBackButton(boolean show)
      * Just a suggestion.
      */
@@ -767,7 +778,7 @@ public class MainActivity extends AppCompatActivity
         // To keep states of ActionBar and ActionBarDrawerToggle synchronized,
         // when you enable on one, you disable on the other.
         // And as you may notice, the order for this operation is disable first, then enable - VERY VERY IMPORTANT.
-        if(enable) {
+        if (enable) {
             //You may not want to open the drawer on swipe from the left in this case
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
             // Remove hamburger
@@ -778,7 +789,7 @@ public class MainActivity extends AppCompatActivity
             // clicks are disabled i.e. the UP button will not work.
             // We need to add a listener, as in below, so DrawerToggle will forward
             // click events to this listener.
-            if(!mToolBarNavigationListenerIsRegistered) {
+            if (!mToolBarNavigationListenerIsRegistered) {
                 toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) { // Doesn't have to be onBackPressed
@@ -808,6 +819,28 @@ public class MainActivity extends AppCompatActivity
         // mDrawer.setDrawerIndicatorEnabled(!enable);
         // ......
         // To re-iterate, the order in which you enable and disable views IS important #dontSimplify.
+    }
+
+
+    public void showIntro(View view, String id, String text, Focus focusType) {
+        new MaterialIntroView.Builder(MainActivity.this)
+                .enableDotAnimation(true)
+                .setFocusGravity(FocusGravity.CENTER)
+                .setFocusType(focusType)
+                .setDelayMillis(200)
+                .enableFadeAnimation(true)
+                .setListener(this)
+                .performClick(true)
+                .setInfoText(text)
+                .setTarget(view)
+                .setUsageId(id) //THIS SHOULD BE UNIQUE ID
+                .show();
+    }
+
+    @Override
+    public void onUserClicked(String materialIntroViewId) {
+        // if (materialIntroViewId == INTRO_CARD1)
+        //   showIntro(doneLayout, INTRO_CARD2, "Select Done", FocusGravity.CENTER);
     }
 }
 

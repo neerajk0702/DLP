@@ -113,7 +113,7 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
             phoneNo.setText(acData.getPhone());
         }*/
         setFocusChangeInEditText();
-        showIntro(verify, INTRO_CARD1, getString(R.string.Verifyotp), Focus.ALL);
+        showIntro(verify, INTRO_CARD1, getString(R.string.Verifyotp), Focus.NORMAL);
 
     }
 
@@ -196,6 +196,7 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
                 break;
             case R.id.verify:
                 if (isValidate()) {
+                    verify.setEnabled(false);
                     String otp = one_string + two_string + three_string + four_string;// + five_string + six_string;
                     callOTPVerificationService(otp);
                 }
@@ -250,6 +251,7 @@ public class VerificationActivity extends AppCompatActivity implements View.OnCl
         } else {
             Utility.alertForErrorMessage(getString(R.string.online_msg), VerificationActivity.this);
         }
+        verify.setEnabled(true);
     }
 
     //call resend OTP service

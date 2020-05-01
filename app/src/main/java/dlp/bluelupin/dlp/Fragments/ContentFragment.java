@@ -165,7 +165,7 @@ public class ContentFragment extends Fragment implements MaterialIntroListener {
         if (Consts.IS_DEBUG_LOG) {
             Log.d(Consts.LOG_TAG, "Content Fragment: data_item count: " + dataList.size());
         }
-        showIntro(mark_complete, INTRO_CARD1, getString(R.string.save), Focus.ALL);
+        showIntro(mark_complete, INTRO_CARD1, getString(R.string.save), Focus.NORMAL);
     }
     @Override
     public void onResume() {

@@ -15,5 +15,6 @@
     <color name="daidalos_gray">#888</color>
     <color name="light_gray">#DCDCDC</color>
     <color name="light_gray2">#FAF7F7</color>
+    <color name="transparent">#00000000</color>
 
 </resources>

@@ -283,7 +283,7 @@ public class MaterialIntroView extends RelativeLayout {
 
         infoView = layoutInfo.findViewById(R.id.info_layout);
         textViewInfo = (TextView) layoutInfo.findViewById(R.id.textview_info);
-        textViewInfo.setTextColor(colorTextViewInfo);
+       // textViewInfo.setTextColor(colorTextViewInfo);
         imageViewIcon = (ImageView) layoutInfo.findViewById(R.id.imageview_icon);
 
         dotView = LayoutInflater.from(getContext()).inflate(R.layout.dotview, null);
@@ -580,15 +580,15 @@ public class MaterialIntroView extends RelativeLayout {
 
     private void setColorTextViewInfo(int colorTextViewInfo) {
         this.colorTextViewInfo = colorTextViewInfo;
-        textViewInfo.setTextColor(this.colorTextViewInfo);
+       // textViewInfo.setTextColor(this.colorTextViewInfo);
     }
 
     private void setTextViewInfo(CharSequence textViewInfo) {
-        this.textViewInfo.setText(textViewInfo);
+       this.textViewInfo.setText(textViewInfo);
     }
 
     private void setTextViewInfoSize(int textViewInfoSize) {
-        this.textViewInfo.setTextSize(TypedValue.COMPLEX_UNIT_SP, textViewInfoSize);
+        //this.textViewInfo.setTextSize(TypedValue.COMPLEX_UNIT_SP, textViewInfoSize);
     }
 
     private void enableInfoDialog(boolean isInfoEnabled) {

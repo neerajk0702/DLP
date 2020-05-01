@@ -108,7 +108,7 @@ public class NewUserActivity extends AppCompatActivity implements View.OnClickLi
         leftArrow.setText(Html.fromHtml("&#xf04d;"));
         enterName = findViewById(R.id.name);
         enterEmail = findViewById(R.id.email);
-        showIntro(save, INTRO_CARD1, getString(R.string.Verifyotp), Focus.ALL);
+        showIntro(save, INTRO_CARD1, getString(R.string.Verifyotp), Focus.NORMAL);
     }
 
 
@@ -264,6 +264,6 @@ public class NewUserActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onUserClicked(String materialIntroViewId) {
         if (materialIntroViewId == INTRO_CARD1)
-            showIntro(skip, INTRO_CARD2, "Yo can Skip", Focus.ALL);
+            showIntro(skip, INTRO_CARD2, "Yo can Skip", Focus.NORMAL);
     }
 }
