@@ -142,9 +142,9 @@
     <string name="title_activity_audio">AudioActivity</string>
     <string name="Media">ప్లే</string>
 
-          <string name="doyou">మీరు వాస్తవంగా నిష్క్రమించాలనుకుంటున్నారా?</string>
-         <string name="please">దయచేసి ఎంపికను ఎంచుకోండి</string>
-          <string name="ok">అలాగే</string>
+    <string name="doyou">మీరు వాస్తవంగా నిష్క్రమించాలనుకుంటున్నారా?</string>
+    <string name="please">దయచేసి ఎంపికను ఎంచుకోండి</string>
+    <string name="ok">అలాగే</string>
     <string name="Certifictae">ప్రశంస ధృవీకరణ పత్రం</string>
     <string name="InProgress">పురోగతిలో ఉంది</string>
     <string name="Invite">ఆహ్వానించండి</string>
