@@ -2,7 +2,9 @@ package dlp.bluelupin.dlp.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 
@@ -11,6 +13,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.os.Build;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +41,7 @@ import dlp.bluelupin.dlp.Fragments.UserProfileFragment;
 import dlp.bluelupin.dlp.MainActivity;
 import dlp.bluelupin.dlp.R;
 import dlp.bluelupin.dlp.Utilities.FontManager;
+import dlp.bluelupin.dlp.shwocaseview.prefs.PreferencesManager;
 
 /**
  * Created by Neeraj on 9/2/2016.
@@ -49,6 +53,7 @@ public class NavigationMenuAdapter extends BaseAdapter {
     private List<String> iconList = null;
     HashSet<Integer> selectedPosition = new HashSet<>();
     List<String> displayNameList;
+    private PreferencesManager preferencesManager;
 
     public NavigationMenuAdapter(Context context,
                                  List<String> menuList, List<String> iconList, List<String> displayNameList) {
@@ -57,6 +62,7 @@ public class NavigationMenuAdapter extends BaseAdapter {
         this.menuList = menuList;
         this.iconList = iconList;
         this.displayNameList = displayNameList;
+        preferencesManager = new PreferencesManager(context);
     }
 
 
@@ -90,13 +96,12 @@ public class NavigationMenuAdapter extends BaseAdapter {
             holder.menuItemLayout = (LinearLayout) convertView.findViewById(R.id.menuItemLayout);
             Typeface materialdesignicons_font = FontManager.getFontTypefaceMaterialDesignIcons(mContext, "fonts/materialdesignicons-webfont.otf");
             Typeface custom_fontawesome = FontManager.getFontTypeface(mContext, "fonts/fontawesome-webfont.ttf");
-            Typeface VodafoneRgBd =FontManager.getFontTypeface(mContext, "fonts/VodafoneRgBd.ttf");
+            Typeface VodafoneRgBd = FontManager.getFontTypeface(mContext, "fonts/VodafoneRgBd.ttf");
             Typeface VodafoneRg = FontManager.getFontTypeface(mContext, "fonts/VodafoneRg.ttf");
 
 
-
-           // Typeface OdiaFont = Typeface.createFromAsset(mContext.getAssets(), "fonts/ODIA-OT-V2.TTF");
-          //  holder.menuTitel.setTypeface(OdiaFont);
+            // Typeface OdiaFont = Typeface.createFromAsset(mContext.getAssets(), "fonts/ODIA-OT-V2.TTF");
+            //  holder.menuTitel.setTypeface(OdiaFont);
 
 
             holder.menuIcon.setTypeface(materialdesignicons_font);
@@ -144,10 +149,10 @@ public class NavigationMenuAdapter extends BaseAdapter {
 //                    CourseFragment fragment = CourseFragment.newInstance("", "");
 //                    navigateToFragment(fragment);
                 } else if (menuList.get(position).toString().equalsIgnoreCase("Profile")) {
-                   // UserProfileFragment aboutUs = UserProfileFragment.newInstance("", "");
-                  //  navigateToFragment(aboutUs);
+                    // UserProfileFragment aboutUs = UserProfileFragment.newInstance("", "");
+                    //  navigateToFragment(aboutUs);
 
-                    Intent intent=new Intent(mContext, UserProfileActivity.class);
+                    Intent intent = new Intent(mContext, UserProfileActivity.class);
                     mContext.startActivity(intent);
 
                 } else if (menuList.get(position).toString().equalsIgnoreCase("About Us")) {
@@ -159,8 +164,7 @@ public class NavigationMenuAdapter extends BaseAdapter {
                 } else if (menuList.get(position).toString().equalsIgnoreCase("Downloads")) {
                     ShowDownloadedMediaFileFragment downloaded = ShowDownloadedMediaFileFragment.newInstance("");
                     navigateToFragment(downloaded);
-                }
-                else if (menuList.get(position).toString().equalsIgnoreCase("Refer a Friend")) {
+                } else if (menuList.get(position).toString().equalsIgnoreCase("Refer a Friend")) {
                     Intent intent = new Intent(mContext, ReferFriendActivity.class);
                     mContext.startActivity(intent);
                     Activity activity = (Activity) mContext;
@@ -170,6 +174,9 @@ public class NavigationMenuAdapter extends BaseAdapter {
                     mContext.startActivity(intent);
                     Activity activity = (Activity) mContext;
 //                    activity.overridePendingTransition(R.anim.in_from_right, R.anim.out_to_right);
+                } else if (menuList.get(position).toString().equalsIgnoreCase("App Tour")) {
+                    showAppTour();
+
                 }
                 int pos = (int) v.getTag();
                 if (selectedPosition.contains(pos)) {
@@ -203,6 +210,31 @@ public class NavigationMenuAdapter extends BaseAdapter {
         public TextView menuTitel;
         public TextView menuIcon;
         public LinearLayout menuItemLayout;
+    }
+
+
+    private void showAppTour() {
+        android.app.AlertDialog.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new android.app.AlertDialog.Builder(mContext, android.R.style.Theme_Material_Dialog_Alert);
+        } else {
+            builder = new android.app.AlertDialog.Builder(mContext);
+        }
+        builder.setTitle(R.string.appTour)
+                .setMessage(R.string.appTourshow)
+                .setPositiveButton(R.string.yess, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        preferencesManager.resetAll();
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do nothing
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .show();
+
     }
 
 }

@@ -293,6 +293,7 @@ public class MainActivity extends AppCompatActivity
         itemList.add("Terms of use");
         itemList.add("Refer a Friend");
         itemList.add("Certificates");
+        itemList.add("App Tour");
         //itemList.add("About Us");
 
         List<String> menuIconList = new ArrayList<String>();
@@ -306,7 +307,7 @@ public class MainActivity extends AppCompatActivity
         menuIconList.add("f219");
         menuIconList.add("f219");
         menuIconList.add("f219");
-        // menuIconList.add("f2fd");
+        menuIconList.add("f2fd");
 
         List<String> displayNameList = new ArrayList<String>();
         displayNameList.add(getString(R.string.home));
@@ -319,6 +320,7 @@ public class MainActivity extends AppCompatActivity
         displayNameList.add(getString(R.string.Terms_of_use));
         displayNameList.add(getString(R.string.referfriend));
         displayNameList.add(getString(R.string.certificates));
+        displayNameList.add(getString(R.string.appTour));
         // displayNameList.add(getString(R.string.about_us));
         NavigationMenuAdapter navigationMenuAdapter = new NavigationMenuAdapter(MainActivity.this, itemList, menuIconList, displayNameList);
         menuList.setAdapter(navigationMenuAdapter);

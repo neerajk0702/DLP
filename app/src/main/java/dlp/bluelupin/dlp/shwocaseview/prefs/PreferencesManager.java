@@ -7,8 +7,8 @@ import android.content.SharedPreferences;
 public class PreferencesManager {
 
     private static final String PREFERENCES_NAME = "material_intro_preferences";
-
     private SharedPreferences sharedPreferences;
+
 
     public PreferencesManager(Context context) {
         sharedPreferences = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
