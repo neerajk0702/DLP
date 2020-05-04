@@ -460,6 +460,7 @@ public class ChaptersAdapter extends RecyclerView.Adapter<ChaptersViewHolder> {
                 stopAudio();
                 //Data contentData = dbHelper.getContentQuizEntityByContentId(data.getId());
                 if (data.getQuiz_id() != 0) {
+                    holder.quizStartLayout.setEnabled(false);//desable button  after first click
                     dbhelper.deleteQuizAnswerEntityById(data.getQuiz_id(), data.getId());//delete old data
                     FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
 //                    QuizQuestionFragment fragment = QuizQuestionFragment.newInstance(data.getQuiz_id(), data.getContent_id());
@@ -471,6 +472,7 @@ public class ChaptersAdapter extends RecyclerView.Adapter<ChaptersViewHolder> {
                     mIntent.putExtra("quizId", data.getQuiz_id());
                     mIntent.putExtra("contentId", data.getContent_id());
                     context.startActivity(mIntent);
+                    holder.quizStartLayout.setEnabled(true);//desable button  after first click
                 }
             }
         });

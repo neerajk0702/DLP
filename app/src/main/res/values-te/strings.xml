@@ -179,5 +179,5 @@
     <string name="notcomplete">మీరు ఇంకా ఏ కోర్సు పూర్తి చేయలేదు</string>
     <string name="certificatesdownload">మీరు ప్రమాణపత్రాన్ని డౌన్‌లోడ్ చేయకపోతే మీరు దాన్ని భాగస్వామ్యం చేయలేరు.</string>
     <string name="certificatesdownloadsuccessfully">మీ ప్రమాణపత్రం విజయవంతంగా డౌన్‌లోడ్ చేయబడింది.</string>
-
+    <string name="videos">వీడియోలు</string>
 </resources>

@@ -178,4 +178,5 @@
     <string name="notcomplete">നിങ്ങൾ ഇതുവരെ ഒരു കോഴ്‌സും പൂർത്തിയാക്കിയിട്ടില്ല</string>
     <string name="certificatesdownload">സർട്ടിഫിക്കറ്റ് ഡ download ൺലോഡ് ചെയ്തില്ലെങ്കിൽ നിങ്ങൾക്ക് അത് പങ്കിടാൻ കഴിയില്ല.</string>
     <string name="certificatesdownloadsuccessfully">നിങ്ങളുടെ സർട്ടിഫിക്കറ്റ് വിജയകരമായി ഡ ed ൺലോഡ് ചെയ്തു.</string>
+    <string name="videos">വീഡിയോകൾ</string>
 </resources>

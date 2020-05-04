@@ -477,6 +477,61 @@ public class Data {
         this.completion_status = completion_status;
     }
 
+    private int users;
+    private int topics;
+    private int chapters;
+    private int quizzes;
+    private int videos;
+
+    public int getUsers() {
+        return users;
+    }
+
+    public void setUsers(int users) {
+        this.users = users;
+    }
+
+    public int getTopics() {
+        return topics;
+    }
+
+    public void setTopics(int topics) {
+        this.topics = topics;
+    }
+
+    public int getChapters() {
+        return chapters;
+    }
+
+    public void setChapters(int chapters) {
+        this.chapters = chapters;
+    }
+
+    public int getQuizzes() {
+        return quizzes;
+    }
+
+    public void setQuizzes(int quizzes) {
+        this.quizzes = quizzes;
+    }
+
+    public int getVideos() {
+        return videos;
+    }
+
+    public void setVideos(int videos) {
+        this.videos = videos;
+    }
+    private int courseChapterType;
+
+    public int getCourseChapterType() {
+        return courseChapterType;
+    }
+
+    public void setCourseChapterType(int courseChapterType) {
+        this.courseChapterType = courseChapterType;
+    }
+
     @Override
     public String toString() {
         return "ClassPojo [id = " + id + ", updated_at = " + updated_at + ", sequence = " + sequence + ", deleted_at = " + deleted_at + ", media_id = " + media_id + ", created_at = " + created_at + ", thumbnail_media_id = " + thumbnail_media_id + ", lang_resource_description = " + lang_resource_description + ", lang_resource_name = " + lang_resource_name + ", type = " + type + ", url = " + url + ", parent_id = " + parent_id + ", localFilePath = " + localFilePath + ", download_url = " + download_url + ", created_by = " + created_by + ", updated_by = " + updated_by + ", cloud_transferred = " + cloud_transferred + ", send_at = " + send_at + ", message = " + message + ", status = " + status + ", custom_data = " + custom_data + " thumbnail_url =" + thumbnail_url + ", thumbnail_localFilename = " + thumbnail_localFilename + ", localFileName = " + localFileName + ", isDownloaded=" + isDownloaded + " ]";

@@ -155,10 +155,9 @@ public class CourseFragment extends Fragment implements MaterialIntroListener {
     }
     private void showListData() {
         DbHelper db = new DbHelper(context);
-        DashboardData dadata=db.getDashboarddataEntityById(1);//for save course details
         //List<Data> temList = db.getAllMedia();
         List<Data> dataList = db.getDataEntityByParentIdAndType(null, "Course"); // first level is course
-        CourseAdapter courseAdapter = new CourseAdapter(context, dataList,dadata);
+        CourseAdapter courseAdapter = new CourseAdapter(context, dataList);
         recyclerView.setAdapter(courseAdapter);
     }
 
@@ -216,18 +215,20 @@ public class CourseFragment extends Fragment implements MaterialIntroListener {
 
 
     private void showMaterialIntro() {
-        new MaterialIntroView.Builder(getActivity())
-                .enableDotAnimation(true)
-                .setFocusGravity(FocusGravity.CENTER)
-                .setFocusType(Focus.NORMAL)
-                .setDelayMillis(200)
-                .enableFadeAnimation(true)
-                .setListener(this)
-                .performClick(true)
-                .setInfoText(getString(R.string.startlearning))
-                .setTarget(recyclerView.getChildAt(0))
-                .setUsageId(INTRO_CARD) //THIS SHOULD BE UNIQUE ID
-                .show();
+        if (getActivity()!=null) {
+            new MaterialIntroView.Builder(getActivity())
+                    .enableDotAnimation(true)
+                    .setFocusGravity(FocusGravity.CENTER)
+                    .setFocusType(Focus.NORMAL)
+                    .setDelayMillis(200)
+                    .enableFadeAnimation(true)
+                    .setListener(this)
+                    .performClick(true)
+                    .setInfoText(getString(R.string.startlearning))
+                    .setTarget(recyclerView.getChildAt(0))
+                    .setUsageId(INTRO_CARD) //THIS SHOULD BE UNIQUE ID
+                    .show();
+        }
     }
 
     @Override
@@ -241,23 +242,16 @@ public class CourseFragment extends Fragment implements MaterialIntroListener {
     //call dashboarddata service
     private void calldashboarddataService() {
         final CustomProgressDialog customProgressDialog = new CustomProgressDialog(context, R.mipmap.syc);
-
-        int languageId = Utility.getLanguageIdFromSharedPreferences(context);
-
         if (Utility.isOnline(context)) {
             customProgressDialog.show();
             ServiceCaller sc = new ServiceCaller(context);
-            sc.dashboarddata(1,0,new IAsyncWorkCompletedCallback() {
+            sc.dashboarddata(0,new IAsyncWorkCompletedCallback() {
                 @Override
                 public void onDone(String workName, boolean isComplete) {
                     if (isComplete) {
                         showListData();
-                        customProgressDialog.dismiss();
-                    } else {
-                        Utility.alertForErrorMessage(getString(R.string.profile_not_updated), context);
-                        customProgressDialog.dismiss();
                     }
-
+                    customProgressDialog.dismiss();
                 }
             });
         }

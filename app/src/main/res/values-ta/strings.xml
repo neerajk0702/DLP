@@ -145,7 +145,7 @@
     <string name="otp_textnew">உங்கள் மொபைல் எண்ணில் அனுப்பப்பட்ட 4 இலக்க OTP குறியீட்டை உள்ளிடவும்</string>
     <string name="plsrd">மறுப்பு படிக்கவும்</string>
     <string name="referfriend">ஒரு நண்பரைப் பார்க்கவும்</string>
-    <string name="sharejoy">கற்றலின் மகிழ்ச்சியைப் பகிர்ந்து கொள்ளுங்கள். உங்கள் நண்பர்களை அழைக்கவும் Kaṟṟaliṉ makiḻcciyaip pakirntu koḷḷuṅkaḷ. Uṅkaḷ naṇparkaḷai aḻaikkavum</string>
+    <string name="sharejoy">கற்றலின் மகிழ்ச்சியைப் பகிர்ந்து கொள்ளுங்கள். உங்கள் நண்பர்களை அழைக்கவும்</string>
     <string name="signupsingin">உள்நுழைவு / பதிவுபெறுதல்</string>
     <string name="startlearning">கற்கத் தொடங்குங்கள்</string>
     <string name="tendigitno">உங்கள் 10 இலக்க மொபைல் எண்ணை உள்ளிடவும்</string>
@@ -164,4 +164,5 @@
     <string name="notcomplete">நீங்கள் இதுவரை எந்த படிப்பையும் முடிக்கவில்லை</string>
     <string name="certificatesdownload">நீங்கள் சான்றிதழை பதிவிறக்கம் செய்யாவிட்டால் அதைப் பகிர முடியாது.</string>
     <string name="certificatesdownloadsuccessfully">உங்கள் சான்றிதழ் வெற்றிகரமாக பதிவிறக்கம் செய்யப்பட்டது.</string>
+    <string name="videos">வீடியோக்கள்</string>
 </resources>

@@ -58,12 +58,10 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
     private CustomProgressDialog customProgressDialog;
     private String contentTitle;
     private MediaPlayer mediaPlayer;
-    private DashboardData dadata;
 
-    public CourseAdapter(Context context, List<Data> itemList, DashboardData dadata) {
+    public CourseAdapter(Context context, List<Data> itemList) {
         this.itemList = itemList;
         this.context = context;
-        this.dadata = dadata;
         customProgressDialog = new CustomProgressDialog(context, R.mipmap.syc);
     }
 
@@ -100,17 +98,19 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
         // holder.learnIcon.setTypeface(materialdesignicons_font);
         // holder.learnIcon.setText(Html.fromHtml("&#xf5da;"));
         // holder.learnLable.setTypeface(VodafoneExB);
+        final DbHelper dbHelper = new DbHelper(context);
+        final Data data = itemList.get(position);
+
+        DbHelper dbhelper = new DbHelper(context);
+        Data dadata=dbhelper.getDashboarddataEntityById(data.getId());//for save course details
         if (dadata != null) {
             holder.countchapter.setText(dadata.getChapters()+"");
             holder.topicCount.setText(dadata.getTopics()+"");
             holder.quizCount.setText(dadata.getQuizzes()+"");
-            holder.viewCount.setText(dadata.getCourses()+"");
+            holder.viewCount.setText(dadata.getVideos()+"");
             holder.userCount.setText(dadata.getUsers()+"");
         }
 
-
-        final DbHelper dbHelper = new DbHelper(context);
-        final Data data = itemList.get(position);
         if (data.getMedia_id() != 0) {
 
             final Data media = dbHelper.getMediaEntityByIdAndLaunguageId(data.getMedia_id(),

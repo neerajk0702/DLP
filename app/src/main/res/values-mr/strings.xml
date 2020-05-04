@@ -185,5 +185,5 @@
     <string name="notcomplete">आपण अद्याप कोणताही अभ्यासक्रम पूर्ण केलेला नाही</string>
     <string name="certificatesdownload">जोपर्यंत आपण प्रमाणपत्र डाउनलोड करत नाही तोपर्यंत आपण ते सामायिक करू शकत नाही.</string>
     <string name="certificatesdownloadsuccessfully">आपले प्रमाणपत्र यशस्वीरित्या डाउनलोड केले गेले आहे.</string>
-
+    <string name="videos">व्हिडिओ</string>
 </resources>

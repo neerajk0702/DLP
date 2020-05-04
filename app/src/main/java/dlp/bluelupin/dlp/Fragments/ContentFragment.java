@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -86,8 +88,9 @@ public class ContentFragment extends Fragment implements MaterialIntroListener {
     private Context context;
     private TextView content_title;
     View view;
-    int completion_status=0;
-    LinearLayout statusLayout,markLayout;
+    int completion_status = 0;
+    LinearLayout statusLayout, markLayout;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -125,22 +128,22 @@ public class ContentFragment extends Fragment implements MaterialIntroListener {
             noRecordIcon.setTypeface(materialdesignicons_font);
             noRecordIcon.setText(Html.fromHtml("&#xf187;"));
         } else {
-            statusLayout=view.findViewById(R.id.statusLayout);
-            markLayout=view.findViewById(R.id.markLayout);
+            statusLayout = view.findViewById(R.id.statusLayout);
+            markLayout = view.findViewById(R.id.markLayout);
             Content_status service = db.getcontentStatusEntityById(parentId);//get content status data by parentID
-            if (service!=null) {
-                completion_status=service.getCompletion_status();
-                if(completion_status==0){
+            if (service != null) {
+                completion_status = service.getCompletion_status();
+                if (completion_status == 0) {
                     markLayout.setVisibility(View.VISIBLE);
                     callStatusUpdatService(1);//browsed = 1
-                }else if(completion_status==1){
+                } else if (completion_status == 1) {
                     statusLayout.setVisibility(View.GONE);
                     markLayout.setVisibility(View.VISIBLE);
-                }else if(completion_status==2){
+                } else if (completion_status == 2) {
                     markLayout.setVisibility(View.GONE);
                     statusLayout.setVisibility(View.VISIBLE);
                 }
-            }else{
+            } else {
                 markLayout.setVisibility(View.VISIBLE);
                 callStatusUpdatService(1);//browsed = 1
             }
@@ -154,7 +157,7 @@ public class ContentFragment extends Fragment implements MaterialIntroListener {
             recyclerView.setAdapter(contentAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
             //listView.setAdapter(contentAdapter);
-             mark_complete=view.findViewById(R.id.save);
+            mark_complete = view.findViewById(R.id.save);
             mark_complete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -167,6 +170,7 @@ public class ContentFragment extends Fragment implements MaterialIntroListener {
         }
         showIntro(mark_complete, INTRO_CARD1, getString(R.string.save), Focus.NORMAL);
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -198,7 +202,7 @@ public class ContentFragment extends Fragment implements MaterialIntroListener {
                         if (Consts.IS_DEBUG_LOG) {
                             Log.d(Consts.LOG_TAG, " callProfileUpdateService success result: " + isComplete);
                         }
-                        if(status==2) {
+                        if (status == 2) {
                             Toast.makeText(context, getString(R.string.updatestatus), Toast.LENGTH_LONG).show();
                             statusLayout.setVisibility(View.VISIBLE);
                             markLayout.setVisibility(View.GONE);
@@ -217,18 +221,20 @@ public class ContentFragment extends Fragment implements MaterialIntroListener {
     }
 
     public void showIntro(View view, String id, String text, Focus focusType) {
-        new MaterialIntroView.Builder(getActivity())
-                .enableDotAnimation(true)
-                .setFocusGravity(FocusGravity.CENTER)
-                .setFocusType(focusType)
-                .setDelayMillis(200)
-                .enableFadeAnimation(true)
-                .setListener(this)
-                .performClick(true)
-                .setInfoText(text)
-                .setTarget(view)
-                .setUsageId(id) //THIS SHOULD BE UNIQUE ID
-                .show();
+        if (getActivity() != null) {
+            new MaterialIntroView.Builder(getActivity())
+                    .enableDotAnimation(true)
+                    .setFocusGravity(FocusGravity.CENTER)
+                    .setFocusType(focusType)
+                    .setDelayMillis(200)
+                    .enableFadeAnimation(true)
+                    .setListener(this)
+                    .performClick(true)
+                    .setInfoText(text)
+                    .setTarget(view)
+                    .setUsageId(id) //THIS SHOULD BE UNIQUE ID
+                    .show();
+        }
     }
 
     @Override

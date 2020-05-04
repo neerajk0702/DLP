@@ -986,9 +986,9 @@ public class ServiceHelper {
 
                 if (data != null) {
                     Log.d(Consts.LOG_TAG, "callStatusUpdatServices :" + data.toString());
-                    callback.onDone(Consts.Profile_Update, data, null);
+                    callback.onDone(Consts.statusUpdate, data, null);
                 } else {
-                    callback.onDone(Consts.Profile_Update, null, null);
+                    callback.onDone(Consts.statusUpdate, null, null);
                 }
 
             }
@@ -996,7 +996,7 @@ public class ServiceHelper {
             @Override
             public void onFailure(Call<AccountData> call, Throwable t) {
                 Log.d(Consts.LOG_TAG, "Failure in service callStatusUpdatServices" + t.toString());
-                callback.onDone(Consts.Profile_Update, null, t.toString());
+                callback.onDone(Consts.statusUpdate, null, t.toString());
             }
 
         });
@@ -1004,13 +1004,9 @@ public class ServiceHelper {
 
 
     //dashboarddata service
-    public void calldashboarddataService(final int courseChapterType, int parentId, final IServiceSuccessCallback<DashboardData> callback) {
+    public void calldashboarddataService(int parentId, final IServiceSuccessCallback<DashboardData> callback) {
         Call<DashboardData> cd = null;
-        if (courseChapterType == 1) {
-            cd = service.Getdashboarddata(Consts.dashboarddata);
-        } else if (courseChapterType == 2) {
-            cd = service.Getchapterdata(Consts.chapterdata + parentId);
-        }
+        cd = service.Getdashboarddata(Consts.dashboarddata);
         cd.enqueue(new Callback<DashboardData>() {
 
             @Override
@@ -1018,14 +1014,15 @@ public class ServiceHelper {
                 if (response != null) {
                     DbHelper dbhelper = new DbHelper(context);
                     DashboardData dashboardData = response.body();
-                    if (courseChapterType == 1) {//for save course details
-                        dashboardData.setCourseChapterType(1);
-                    } else if (courseChapterType == 2) {//for save chapter details
-                        dashboardData.setCourseChapterType(2);
+                    if (dashboardData != null && dashboardData.getData().size() > 0) {
+                        dbhelper.deleteDashboarddataEntity();//delete old data
+                        for (Data data:dashboardData.getData()) {
+                            dbhelper.insertDashboarddataEntity(data);
+                        }
+                        callback.onDone(Consts.dashboarddata, response.body(), null);
+                    }else{
+                        callback.onDone(Consts.dashboarddata, null, null);
                     }
-                    dbhelper.deleteDashboarddataEntity(courseChapterType);//delete old data
-                    dbhelper.insertDashboarddataEntity(dashboardData);
-                    callback.onDone(Consts.dashboarddata, response.body(), null);
                 }
             }
 
@@ -1035,10 +1032,32 @@ public class ServiceHelper {
                 callback.onDone(Consts.dashboarddata, null, t.toString());
             }
         });
-
-//
     }
 
+    //chapter  service
+    public void callChapterdataService(int parentId, final IServiceSuccessCallback<DashboardData> callback) {
+        Call<DashboardData> cd = null;
+        cd = service.Getchapterdata(Consts.chapterdata + parentId);
+        cd.enqueue(new Callback<DashboardData>() {
+
+            @Override
+            public void onResponse(Call<DashboardData> call, Response<DashboardData> response) {
+                if (response != null) {
+                    DbHelper dbhelper = new DbHelper(context);
+                    DashboardData dashboardData = response.body();
+                    dbhelper.deleteChapterdataEntity();
+                    dbhelper.insertChapterdataEntity(dashboardData);
+                    callback.onDone(Consts.chapterdata, response.body(), null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DashboardData> call, Throwable t) {
+                Log.d(Consts.LOG_TAG, "Failure in service callChapterdataService" + t.toString());
+                callback.onDone(Consts.chapterdata, null, t.toString());
+            }
+        });
+    }
 
     //get contentStatus  service
     public void callContectStatusdataService(final IServiceSuccessCallback<ContentData> callback) {
@@ -1094,9 +1113,9 @@ public class ServiceHelper {
                 AccountServiceRequest data = response.body();
                 if (data != null) {
                     Log.d(Consts.LOG_TAG, "callInviteFriendService :" + data.toString());
-                    if(data.isStatus()){
+                    if (data.isStatus()) {
                         callback.onDone(Consts.inviteFriend, data, null);
-                    }else {
+                    } else {
                         callback.onDone(Consts.inviteFriend, null, null);
                     }
                 } else {
@@ -1120,16 +1139,16 @@ public class ServiceHelper {
         String apiToken = "";
         if (accountDataApToken != null) {
             if (accountDataApToken.getApi_token() != null) {
-                apiToken=accountDataApToken.getApi_token();
+                apiToken = accountDataApToken.getApi_token();
             }
         }
 
-        Call<ContentData> ac = service.inviteFriendList(Consts.inviteFriendList+apiToken);
+        Call<ContentData> ac = service.inviteFriendList(Consts.inviteFriendList + apiToken);
         ac.enqueue(new Callback<ContentData>() {
             @Override
             public void onResponse(Call<ContentData> call, Response<ContentData> response) {
                 ContentData data = response.body();
-                if (data != null && data.getInvitations().size()>0) {
+                if (data != null && data.getInvitations().size() > 0) {
                     Log.d(Consts.LOG_TAG, "callInviteFriendListService :" + data.toString());
                     callback.onDone(Consts.inviteFriendList, data, null);
                 } else {
@@ -1153,15 +1172,15 @@ public class ServiceHelper {
         String apiToken = "";
         if (accountDataApToken != null) {
             if (accountDataApToken.getApi_token() != null) {
-                apiToken=accountDataApToken.getApi_token();//"amFA3kOKt5mXWDWVHs8gU5zk5gWe1KS6dV5yJ4pMloyDmJIRqQjI09ohtB9Z";//accountDataApToken.getApi_token();
+                apiToken = accountDataApToken.getApi_token();//"amFA3kOKt5mXWDWVHs8gU5zk5gWe1KS6dV5yJ4pMloyDmJIRqQjI09ohtB9Z";//accountDataApToken.getApi_token();
             }
         }
-        Call<ContentData> ac = service.certificateList(Consts.certificatesList+apiToken);
+        Call<ContentData> ac = service.certificateList(Consts.certificatesList + apiToken);
         ac.enqueue(new Callback<ContentData>() {
             @Override
             public void onResponse(Call<ContentData> call, Response<ContentData> response) {
                 ContentData data = response.body();
-                if (data != null && data.getCertificates().size()>0) {
+                if (data != null && data.getCertificates().size() > 0) {
                     Log.d(Consts.LOG_TAG, "callCertificatesListService :" + data.toString());
                     callback.onDone(Consts.certificatesList, data, null);
                 } else {

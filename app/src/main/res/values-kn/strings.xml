@@ -163,4 +163,6 @@
     <string name="notcomplete">ನೀವು ಇನ್ನೂ ಯಾವುದೇ ಕೋರ್ಸ್ ಅನ್ನು ಪೂರ್ಣಗೊಳಿಸಿಲ್ಲ</string>
     <string name="certificatesdownload">ನೀವು ಪ್ರಮಾಣಪತ್ರವನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡದಿದ್ದರೆ ನೀವು ಅದನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ಸಾಧ್ಯವಿಲ್ಲ.</string>
     <string name="certificatesdownloadsuccessfully">ನಿಮ್ಮ ಪ್ರಮಾಣಪತ್ರವನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಡೌನ್‌ಲೋಡ್ ಮಾಡಲಾಗಿದೆ.</string>
+
+    <string name="videos">ವೀಡಿಯೊಗಳು</string>
 </resources>

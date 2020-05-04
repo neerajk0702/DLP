@@ -32,7 +32,7 @@ import dlp.bluelupin.dlp.Utilities.Utility;
 public class DbHelper extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
     public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = Consts.dataBaseName;;// Consts.outputDirectoryLocation +  "dlp_db.db"; //Consts.dataBaseName; //
+    public static final String DATABASE_NAME = Consts.dataBaseName;// Consts.outputDirectoryLocation +  "dlp_db.db"; //Consts.dataBaseName; //
 
     public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -62,6 +62,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS SimulatorEntity");
         db.execSQL("DROP TABLE IF EXISTS DashboarddataEntity");
         db.execSQL("DROP TABLE IF EXISTS contentStatusEntity");
+        db.execSQL("DROP TABLE IF EXISTS ChapterdDataEntity");
 
         onCreate(db);
     }
@@ -144,13 +145,17 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_SimulatorDataEntity_TABLE);
 
 
-        String CREATE_Dashboarddata_TABLE = "CREATE TABLE DashboarddataEntity(id INTEGER PRIMARY KEY,courseChapterType INTEGER, courses INTEGER, users INTEGER,  topics INTEGER, chapters INTEGER,quizzes INTEGER)";
-        //id ,courseChapterType, courses , users, topics,chapters,quizzes   DashboarddataEntity
+        String CREATE_Dashboarddata_TABLE = "CREATE TABLE DashboarddataEntity(id INTEGER , users INTEGER, topics INTEGER, chapters INTEGER,quizzes INTEGER, videos INTEGER)";
+        //id , users, topics,chapters,quizzes, videos   DashboarddataEntity
         db.execSQL(CREATE_Dashboarddata_TABLE);
 
         String CREATE_content_status_TABLE = "CREATE TABLE contentStatusEntity(contentid INTEGER, completionstatus INTEGER, updated_at TEXT)";
         //contentid, completionstatus , updated_at,   contentStatusEntity
         db.execSQL(CREATE_content_status_TABLE);
+
+        String CREATE_Chapterdata_TABLE = "CREATE TABLE ChapterdDataEntity(id INTEGER PRIMARY KEY,topics INTEGER, chapters INTEGER,quizzes INTEGER)";
+        // topics,chapters,quizzes   ChapterdDataEntity
+        db.execSQL(CREATE_Chapterdata_TABLE);
     }
 
     private Boolean tableAlreadyExists(SQLiteDatabase db, String tableName) {
@@ -2812,18 +2817,18 @@ public class DbHelper extends SQLiteOpenHelper {
 
     //-----------------Dashboarddata Entity--------------------
     //get all DashboarddataEntity
-    public List<DashboardData> getAllDashboarddataEntity() {
+    public List<Data> getAllDashboarddataEntity() {
         String query = "Select * FROM DashboarddataEntity ";
 
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(query, null);
 
-        List<DashboardData> list = new ArrayList<DashboardData>();
+        List<Data> list = new ArrayList<Data>();
 
         if (cursor.moveToFirst()) {
             while (cursor.isAfterLast() == false) {
-                DashboardData ob = new DashboardData();
+                Data ob = new Data();
                 populateDashboarddataEntity(cursor, ob);
                 list.add(ob);
                 cursor.moveToNext();
@@ -2834,14 +2839,14 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
 
-    public DashboardData getDashboarddataEntityById(int id) {
-        String query = "Select * FROM DashboarddataEntity WHERE courseChapterType = '" + id + "'";
+    public Data getDashboarddataEntityById(int id) {
+        String query = "Select * FROM DashboarddataEntity WHERE id = '" + id + "'";
 
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(query, null);
 
-        DashboardData ob = new DashboardData();
+        Data ob = new Data();
 
         if (cursor.moveToFirst()) {
             cursor.moveToFirst();
@@ -2854,19 +2859,18 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
         return ob;
     }
-    //id ,courseChapterType, courses , users, topics,chapters,quizzes   DashboarddataEntity
-    private void populateDashboarddataEntity(Cursor cursor, DashboardData ob) {
+    //id , users, topics,chapters,quizzes, videos   DashboarddataEntity
+    private void populateDashboarddataEntity(Cursor cursor, Data ob) {
         ob.setId(cursor.getInt(0));
-        ob.setCourseChapterType(cursor.getInt(1));
-        ob.setCourses(cursor.getInt(2));
-        ob.setUsers(cursor.getInt(3));
-        ob.setTopics(cursor.getInt(4));
-        ob.setChapters(cursor.getInt(5));
-        ob.setQuizzes(cursor.getInt(6));
+        ob.setUsers(cursor.getInt(1));
+        ob.setTopics(cursor.getInt(2));
+        ob.setChapters(cursor.getInt(3));
+        ob.setQuizzes(cursor.getInt(4));
+        ob.setVideos(cursor.getInt(5));
     }
 
     //insert DashboarddataEntity
-    public boolean insertDashboarddataEntity(DashboardData ob) {
+    public boolean insertDashboarddataEntity(Data ob) {
 
         ContentValues values = new ContentValues();
         populateDashboarddataEntityValues(values, ob);
@@ -2877,19 +2881,99 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
         return i > 0;
     }
-    private void populateDashboarddataEntityValues(ContentValues values, DashboardData ob) {
-        values.put("courseChapterType", ob.getCourseChapterType());
-        values.put("courses", ob.getCourses());
+    private void populateDashboarddataEntityValues(ContentValues values, Data ob) {
+        values.put("id",ob.getId());
         values.put("users", ob.getUsers());
         values.put("topics", ob.getTopics());
         values.put("chapters", ob.getChapters());
         values.put("quizzes", ob.getQuizzes());
+        values.put("videos",ob.getVideos());
     }
-    public boolean deleteDashboarddataEntity(int id) {
+    public boolean deleteDashboarddataEntity() {
         boolean result = false;
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "courseChapterType = '" + id + "' ";
-        db.delete("DashboarddataEntity", query, null);
+//        String query = "courseChapterType = '" + id + "' ";
+        db.delete("DashboarddataEntity", null, null);
+        db.close();
+        result = true;
+        return result;
+    }
+
+
+    //---------chapter details status-----------
+    //get all getAllChapterdataEntity
+    public List<DashboardData> getAllChapterdataEntity() {
+        String query = "Select * FROM ChapterdDataEntity ";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        List<DashboardData> list = new ArrayList<DashboardData>();
+
+        if (cursor.moveToFirst()) {
+            while (cursor.isAfterLast() == false) {
+                DashboardData ob = new DashboardData();
+                populateChapterddataEntity(cursor, ob);
+                list.add(ob);
+                cursor.moveToNext();
+            }
+        }
+        db.close();
+        return list;
+    }
+
+
+    public DashboardData getChapterdataEntityById() {
+        String query = "Select * FROM ChapterdDataEntity";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        DashboardData ob = new DashboardData();
+
+        if (cursor.moveToFirst()) {
+            cursor.moveToFirst();
+            populateChapterddataEntity(cursor, ob);
+
+            cursor.close();
+        } else {
+            ob = null;
+        }
+        db.close();
+        return ob;
+    }
+    //id ,courseChapterType, courses , users, topics,chapters,quizzes   DashboarddataEntity
+    private void populateChapterddataEntity(Cursor cursor, DashboardData ob) {
+        ob.setId(cursor.getInt(0));
+        ob.setTopics(cursor.getInt(1));
+        ob.setChapters(cursor.getInt(2));
+        ob.setQuizzes(cursor.getInt(3));
+    }
+
+    //insert Chapter
+    public boolean insertChapterdataEntity(DashboardData ob) {
+
+        ContentValues values = new ContentValues();
+        populateChapterdataEntityValues(values, ob);
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        long i = db.insert("ChapterdDataEntity", null, values);
+        db.close();
+        return i > 0;
+    }
+    private void populateChapterdataEntityValues(ContentValues values, DashboardData ob) {
+        values.put("topics", ob.getTopics());
+        values.put("chapters", ob.getChapters());
+        values.put("quizzes", ob.getQuizzes());
+    }
+    public boolean deleteChapterdataEntity() {
+        boolean result = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+//        String query = "courseChapterType = '" + id + "' ";
+        db.delete("ChapterdDataEntity", null, null);
         db.close();
         result = true;
         return result;

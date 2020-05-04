@@ -509,9 +509,9 @@ public class ServiceCaller {
 
 
     //call dashboarddata service
-    public void dashboarddata(int courseChapterType,int parentId,final IAsyncWorkCompletedCallback workCompletedCallback) {
+    public void dashboarddata(int parentId,final IAsyncWorkCompletedCallback workCompletedCallback) {
         final ServiceHelper sh = new ServiceHelper(context);
-        sh.calldashboarddataService(courseChapterType,parentId,new IServiceSuccessCallback<DashboardData>() {
+        sh.calldashboarddataService(parentId,new IServiceSuccessCallback<DashboardData>() {
             @Override
             public void onDone(final String callerUrl, final DashboardData result, String error) {
                 Boolean success = false;
@@ -526,7 +526,24 @@ public class ServiceCaller {
             }
         });
     }
+    //call chapter service
+    public void chapterdata(int parentId,final IAsyncWorkCompletedCallback workCompletedCallback) {
+        final ServiceHelper sh = new ServiceHelper(context);
+        sh.callChapterdataService(parentId,new IServiceSuccessCallback<DashboardData>() {
+            @Override
+            public void onDone(final String callerUrl, final DashboardData result, String error) {
+                Boolean success = false;
+                if (result != null) {
+                    success = true;
+                    workCompletedCallback.onDone("chapterdata", success);
 
+                } else {
+                    success = false;
+                    workCompletedCallback.onDone("chapterdata", success);
+                }
+            }
+        });
+    }
 
     //call content status service
     public void getContentdata(final IAsyncWorkCompletedCallback workCompletedCallback) {

@@ -1,5 +1,7 @@
 package dlp.bluelupin.dlp.Models;
 
+import java.util.List;
+
 public class DashboardData {
     private  int courses;
     private  int users;
@@ -63,6 +65,15 @@ public class DashboardData {
 
     public void setQuizzes(int quizzes) {
         this.quizzes = quizzes;
+    }
+    private List<Data> data;
+
+    public List<Data> getData() {
+        return data;
+    }
+
+    public void setData(List<Data> data) {
+        this.data = data;
     }
 
     @Override

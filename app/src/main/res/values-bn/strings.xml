@@ -178,5 +178,6 @@
     <string name="notcomplete">আপনি এখনও কোনও কোর্স শেষ করেন নি</string>
     <string name="certificatesdownload">আপনি যদি শংসাপত্রটি ডাউনলোড না করেন আপনি তা ভাগ করতে পারবেন না।</string>
     <string name="certificatesdownloadsuccessfully">আপনার শংসাপত্রটি সফলভাবে ডাউনলোড করা হয়েছে।</string>
+    <string name="videos">ভিডিও</string>
 
 </resources>

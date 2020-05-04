@@ -22,6 +22,7 @@ import android.widget.TextView;
 import java.util.HashSet;
 import java.util.List;
 
+import dlp.bluelupin.dlp.Activities.AccountSettingsActivity;
 import dlp.bluelupin.dlp.Activities.CertificateListActivity;
 import dlp.bluelupin.dlp.Activities.LanguageActivity;
 import dlp.bluelupin.dlp.Activities.NotificationsActivity;
@@ -137,8 +138,11 @@ public class NavigationMenuAdapter extends BaseAdapter {
                     SelectLocationFragment fragment = SelectLocationFragment.newInstance("", "");
                     navigateToFragment(fragment);
                 } else if (menuList.get(position).toString().equalsIgnoreCase("Home")) {
-                    CourseFragment fragment = CourseFragment.newInstance("", "");
-                    navigateToFragment(fragment);
+                    Intent intent = new Intent(mContext, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    mContext.startActivity(intent);
+//                    CourseFragment fragment = CourseFragment.newInstance("", "");
+//                    navigateToFragment(fragment);
                 } else if (menuList.get(position).toString().equalsIgnoreCase("Profile")) {
                    // UserProfileFragment aboutUs = UserProfileFragment.newInstance("", "");
                   //  navigateToFragment(aboutUs);

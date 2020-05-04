@@ -159,7 +159,7 @@
     <string name="otp_textnew">कृपया अपने मोबाइल नंबर पर भेजा गया 4 अंकों का ओटीपी कोड दर्ज करें</string>
     <string name="plsrd">कृपया अस्वीकरण पढ़ें</string>
     <string name="referfriend">मित्र को आमंत्रित करें</string>
-    <string name="sharejoy">ભણતરનો આનંદ વહેંચો. તમારા મિત્રોને આમંત્રણ આપો</string>
+    <string name="sharejoy">सीखने की खुशी साझा करें। अपने दोस्तों को आमंत्रित करें</string>
     <string name="signupsingin">प्रवेश या साइन अप</string>
     <string name="startlearning">सीखना शुरू करें</string>
     <string name="tendigitno">कृपया अपना 10 अंकों का मोबाइल नंबर दर्ज करें</string>
@@ -176,4 +176,6 @@
     <string name="notcomplete">आपने अभी तक कोई कोर्स पूरा नहीं किया है</string>
     <string name="certificatesdownload">जब तक आप प्रमाण पत्र डाउनलोड नहीं करते तब तक आप इसे साझा नहीं कर सकते।</string>
     <string name="certificatesdownloadsuccessfully">आपका प्रमाणपत्र सफलतापूर्वक डाउनलोड किया गया है।</string>
+    <string name="videos">वीडियो</string>
+
 </resources>

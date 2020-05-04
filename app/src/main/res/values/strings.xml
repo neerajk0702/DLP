@@ -211,6 +211,7 @@ We may update this Privacy Policy from time to time. We will inform you of any c
     <string name="notcomplete">You have not completed any course yet</string>
     <string name="certificatesdownload">Unless you download the certificate you can not share it.</string>
     <string name="certificatesdownloadsuccessfully">Your certificate has been downloaded successfully.</string>
+    <string name="videos">Videos</string>
 
 
 </resources>

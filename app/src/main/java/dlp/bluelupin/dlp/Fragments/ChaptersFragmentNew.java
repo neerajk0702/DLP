@@ -289,18 +289,20 @@ public class ChaptersFragmentNew extends Fragment implements View.OnClickListene
     }
 
     private void showMaterialIntro() {
-        new MaterialIntroView.Builder(getActivity())
-                .enableDotAnimation(true)
-                .setFocusGravity(FocusGravity.CENTER)
-                .setFocusType(Focus.NORMAL)
-                .setDelayMillis(200)
-                .enableFadeAnimation(true)
-                .setListener(this)
-                .performClick(true)
-                .setInfoText(getString(R.string.startlearning))
-                .setTarget(chaptersRecyclerView.getChildAt(0))
-                .setUsageId(INTRO_CARD) //THIS SHOULD BE UNIQUE ID
-                .show();
+        if (getActivity()!=null) {
+            new MaterialIntroView.Builder(getActivity())
+                    .enableDotAnimation(true)
+                    .setFocusGravity(FocusGravity.CENTER)
+                    .setFocusType(Focus.NORMAL)
+                    .setDelayMillis(200)
+                    .enableFadeAnimation(true)
+                    .setListener(this)
+                    .performClick(true)
+                    .setInfoText(getString(R.string.startlearning))
+                    .setTarget(chaptersRecyclerView.getChildAt(0))
+                    .setUsageId(INTRO_CARD) //THIS SHOULD BE UNIQUE ID
+                    .show();
+        }
     }
 
     @Override
@@ -317,7 +319,7 @@ public class ChaptersFragmentNew extends Fragment implements View.OnClickListene
         if (Utility.isOnline(context)) {
             customProgressDialog.show();
             ServiceCaller sc = new ServiceCaller(context);
-            sc.dashboarddata(2, parentId, new IAsyncWorkCompletedCallback() {
+            sc.chapterdata(parentId, new IAsyncWorkCompletedCallback() {
                 @Override
                 public void onDone(String workName, boolean isComplete) {
                     if (isComplete) {
@@ -333,7 +335,7 @@ public class ChaptersFragmentNew extends Fragment implements View.OnClickListene
 
     private void setchapterDetails() {
         DbHelper db = new DbHelper(context);
-        DashboardData dadata = db.getDashboarddataEntityById(2);//for save chapter details
+        DashboardData dadata = db.getChapterdataEntityById();//for save chapter details
         if (dadata != null) {
             countchapter.setText(dadata.getChapters() + "");
             topicCount.setText(dadata.getTopics() + "");

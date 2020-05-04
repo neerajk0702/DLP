@@ -166,6 +166,7 @@
                         android:layout_marginLeft="@dimen/dimValue_5"
                         android:layout_marginRight="@dimen/dimValue_2"
                         android:layout_marginTop="@dimen/dimValue_110"
+                        android:layout_marginBottom="@dimen/dimValue_8"
                         android:orientation="vertical">
 
 
@@ -193,6 +194,7 @@
                     android:layout_marginRight="@dimen/dimValue_10"
                     android:layout_marginTop="@dimen/dimValue_12"
                     android:layout_marginBottom="@dimen/dimValue_8"
+                    android:visibility="gone"
                     android:orientation="vertical">
 
 
