@@ -180,5 +180,7 @@
     <string name="notcomplete">ଆପଣ ଏପର୍ଯ୍ୟନ୍ତ କ course ଣସି ପାଠ୍ୟକ୍ରମ ସମାପ୍ତ କରିନାହାଁନ୍ତି |</string>
     <string name="certificatesdownload">ଯେପର୍ଯ୍ୟନ୍ତ ଆପଣ ସାର୍ଟିଫିକେଟ୍ ଡାଉନଲୋଡ୍ ନକରନ୍ତି ଆପଣ ଏହାକୁ ଅଂଶୀଦାର କରିପାରିବେ ନାହିଁ |</string>
     <string name="certificatesdownloadsuccessfully">ଆପଣଙ୍କର ସାର୍ଟିଫିକେଟ୍ ସଫଳତାର ସହିତ ଡାଉନଲୋଡ୍ ହୋଇଛି |</string>
-    <string name="videos">ଭିଡିଓଗୁଡିକ</string>
+    <string name="appTour">ଆପ୍ ଟୁର୍ |</string>
+    <string name="appTourshow">ଆପଣ ଟୁର୍ ଦେଖାଇବାକୁ ଚାହୁଁଛନ୍ତି |</string>
+    <string name="yess">ହଁ</string>
 </resources>

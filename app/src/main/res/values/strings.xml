@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">SamVaad</string>
-    <string name="msg_token_fmt">InstanceID Token: %s</string>
+    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -167,7 +167,7 @@
     <string name="updatestatus">Your Topic has been Mark Complete successfully.</string>
     <string name="updatestatusnot">Your Topic has not been Mark Complete!.</string>
 
-    <string name="distring">Disclaimer\n
+    <string name="distring" translatable="false">Disclaimer\n
 IndiaAI (IndiaAI  we  or us) knows that you care how information about you is used and shared. This Privacy Policy explains what information of yours will be collected by IndiaAI when you use www.India-ai.in (the site) and related services (the Service)  how the information will be used, and how you can control the collection, correction and/or deletion of information. We will not use or share your information with anyone except as described in this Privacy Policy.
 Personal data and use
 We take your privacy extremely seriously and use your personal data only for legitimate reasons and in accordance with data protection law, and any other applicable legislation, for purposes such as: providing and improving the Site, allowing you to participate in various projects implemented by us through the Site, responding to queries addressed by you through the Site, research, maintenance of accounts and records and the promotion of services.
@@ -211,7 +211,7 @@ We may update this Privacy Policy from time to time. We will inform you of any c
     <string name="notcomplete">You have not completed any course yet</string>
     <string name="certificatesdownload">Unless you download the certificate you can not share it.</string>
     <string name="certificatesdownloadsuccessfully">Your certificate has been downloaded successfully.</string>
-    <string name="videos">Videos</string>
-
-
+    <string name="appTour">App Tour</string>
+    <string name="appTourshow">You want to Show App Tour</string>
+    <string name="yess">Yes</string>
 </resources>

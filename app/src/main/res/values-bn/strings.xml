@@ -141,9 +141,9 @@
     <string name="Media">খেলা</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_audio">AudioActivity</string>
-          <string name="doyou">আপনি সত্যিই প্রস্থান করতে চান?</string>
-         <string name="please">বিকল্প নির্বাচন করুন</string>
-          <string name="ok">ঠিক আছে</string>
+    <string name="doyou">আপনি সত্যিই প্রস্থান করতে চান?</string>
+    <string name="please">বিকল্প নির্বাচন করুন</string>
+    <string name="ok">ঠিক আছে</string>
     <string name="Certifictae">প্রশংসা শংসাপত্র</string>
     <string name="InProgress">চলমান</string>
     <string name="Invite">আমন্ত্রণ করা</string>
@@ -178,6 +178,8 @@
     <string name="notcomplete">আপনি এখনও কোনও কোর্স শেষ করেন নি</string>
     <string name="certificatesdownload">আপনি যদি শংসাপত্রটি ডাউনলোড না করেন আপনি তা ভাগ করতে পারবেন না।</string>
     <string name="certificatesdownloadsuccessfully">আপনার শংসাপত্রটি সফলভাবে ডাউনলোড করা হয়েছে।</string>
-    <string name="videos">ভিডিও</string>
+    <string name="appTour">অ্যাপ ট্যুর</string>
+    <string name="appTourshow">আপনি অ্যাপ ট্যুর দেখাতে চান</string>
+    <string name="yess">হ্যাঁ</string>
 
 </resources>

@@ -121,7 +121,7 @@
     <string name="OF">ഓഫ്</string>
     <string name="RESTART">റീസ്റ്റാർട്</string>
     <string name="Run_Simulator">താങ്കൾ സ്വയം ശ്രമിക്കുക</string>
-    <string name="Simulator">सस्वयं प्रयास करें</string> 
+    <string name="Simulator">सस्वयं प्रयास करें</string>
     <string name="EXIT">പുറത്തുകടക്കുക</string>
     <string name="Description">വിവരണം</string>
     <string name="This_is_correct">ഇത് ശരിയാണ്</string>
@@ -142,9 +142,9 @@
     <string name="title_activity_audio">AudioActivity</string>
     <string name="Media">കളി</string>
 
-          <string name="doyou">താങ്കൾക്ക് ശരിക്കും പുറത്തേക്ക് കടക്കണമോ?</string>
-         <string name="please">ഒരു ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക</string>
-          <string name="ok">ഓകെ</string>
+    <string name="doyou">താങ്കൾക്ക് ശരിക്കും പുറത്തേക്ക് കടക്കണമോ?</string>
+    <string name="please">ഒരു ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക</string>
+    <string name="ok">ഓകെ</string>
     <string name="Certifictae">"അഭിനന്ദന സർട്ടിഫിക്കറ്റ് "</string>
     <string name="InProgress">പുരോഗതിയിൽ</string>
     <string name="Invite">ക്ഷണിക്കുക</string>
@@ -178,5 +178,7 @@
     <string name="notcomplete">നിങ്ങൾ ഇതുവരെ ഒരു കോഴ്‌സും പൂർത്തിയാക്കിയിട്ടില്ല</string>
     <string name="certificatesdownload">സർട്ടിഫിക്കറ്റ് ഡ download ൺലോഡ് ചെയ്തില്ലെങ്കിൽ നിങ്ങൾക്ക് അത് പങ്കിടാൻ കഴിയില്ല.</string>
     <string name="certificatesdownloadsuccessfully">നിങ്ങളുടെ സർട്ടിഫിക്കറ്റ് വിജയകരമായി ഡ ed ൺലോഡ് ചെയ്തു.</string>
-    <string name="videos">വീഡിയോകൾ</string>
+    <string name="appTour">അപ്ലിക്കേഷൻ ടൂർ</string>
+    <string name="appTourshow">നിങ്ങൾക്ക് ടൂർ കാണിക്കാൻ ആഗ്രഹമുണ്ട്</string>
+    <string name="yess">അതെ</string>
 </resources>
