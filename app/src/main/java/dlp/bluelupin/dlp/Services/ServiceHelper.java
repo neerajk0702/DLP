@@ -1078,7 +1078,7 @@ public class ServiceHelper {
                 if (response != null) {
                     DbHelper dbhelper = new DbHelper(context);
                     ContentData statusData = response.body();
-//                    dbhelper.deleteDashboarddataEntity(courseChapterType);//delete old data
+//                    dbhelper.deletecontentStatusEntity();
                     if (statusData != null && statusData.getContent_status().length >= 0) {
                         for (Content_status contentStatus : statusData.getContent_status()) {
                             dbhelper.upsertcontentStatusEntity(contentStatus);

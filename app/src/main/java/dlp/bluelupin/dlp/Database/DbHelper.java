@@ -3072,7 +3072,14 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
         return i > 0;
     }
-
+    public boolean deletecontentStatusEntity() {
+        boolean result = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("contentStatusEntity", null, null);
+        db.close();
+        result = true;
+        return result;
+    }
 
 
 }

@@ -51,21 +51,9 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_weight="1"
+                        android:layout_marginLeft="@dimen/dimValue_16"
                         android:gravity="left|center"
                         android:text="@string/Profile"
-                        android:textAlignment="center"
-                        android:textColor="#fff"
-                        android:textSize="@dimen/dimTextSize_22" />
-
-                    <TextView
-                        android:id="@+id/done"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginRight="@dimen/dimValue_12"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:text="@string/done"
                         android:textColor="#fff"
                         android:textSize="@dimen/dimTextSize_22" />
                 </LinearLayout>
@@ -122,25 +110,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimValue_20"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:padding="@dimen/dimValue_5">
 
                     <TextView
                         android:id="@+id/nameLable"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.3"
                         android:text="@string/name"
                         android:textColor="#4a4d4e"
                         android:textSize="@dimen/dimTextSize_18" />
 
                     <EditText
                         android:id="@+id/enterName"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.7"
                         android:background="@android:color/transparent"
-                        android:gravity="right"
+                        android:gravity="left"
+                        android:layout_marginTop="@dimen/dimValue_10"
                         android:hint="@string/enter_name"
                         android:singleLine="true"
                         android:textColor="#4a4d4e"
@@ -161,27 +148,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimValue_30"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:padding="@dimen/dimValue_5">
 
                     <TextView
                         android:id="@+id/emailLable"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.3"
                         android:text="@string/email"
                         android:textColor="#4a4d4e"
                         android:textSize="@dimen/dimTextSize_18" />
 
                     <EditText
                         android:id="@+id/email"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimValue_10"
-                        android:layout_weight="0.7"
                         android:paddingRight="@dimen/dimValue_10"
                         android:background="@android:color/transparent"
-                        android:gravity="right"
+                        android:gravity="left"
                         android:singleLine="true"
                         android:hint="@string/enter_email"
                         android:textCursorDrawable="@drawable/edit_cursor"
@@ -201,27 +186,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimValue_30"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:padding="@dimen/dimValue_5">
 
                     <TextView
                         android:id="@+id/phoneLable"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.3"
                         android:text="@string/phone"
                         android:textColor="#4a4d4e"
                         android:textSize="@dimen/dimTextSize_18" />
 
                     <TextView
                         android:id="@+id/phone"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimValue_10"
-                        android:layout_weight="0.7"
                         android:paddingRight="@dimen/dimValue_10"
                         android:background="@android:color/transparent"
-                        android:gravity="right"
+                        android:gravity="left"
                         android:singleLine="true"
                         android:text=""
                         android:textColor="#4a4d4e"
@@ -240,27 +223,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimValue_30"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:padding="@dimen/dimValue_5">
 
                     <TextView
                         android:id="@+id/lanLable"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.4"
                         android:text="@string/app_language"
                         android:textColor="#4a4d4e"
                         android:textSize="@dimen/dimTextSize_18" />
 
                     <TextView
                         android:id="@+id/language"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimValue_10"
-                        android:layout_weight="0.6"
                         android:paddingRight="@dimen/dimValue_10"
                         android:background="@android:color/transparent"
-                        android:gravity="right"
+                        android:gravity="left"
                         android:singleLine="true"
                         android:text=""
                         android:textColor="#4a4d4e"
@@ -305,7 +286,19 @@
                     </LinearLayout>
 
                 </LinearLayout>
-
+                <TextView
+                    android:id="@+id/done"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimValue_10"
+                    android:layout_marginRight="@dimen/dimValue_10"
+                    android:layout_marginTop="@dimen/dimValue_50"
+                    android:background="@drawable/done_corner_round"
+                    android:gravity="center"
+                    android:padding="@dimen/dimValue_13"
+                    android:text="@string/save"
+                    android:textColor="#fff"
+                    android:textSize="@dimen/dimTextSize_20" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>

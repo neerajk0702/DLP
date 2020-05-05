@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Environment;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,6 +95,7 @@ public class CertificatesAdapter extends RecyclerView.Adapter<CertificatesAdapte
         }
                 //base url+course id+api token
         final String imageUrl=Consts.BASE_URL+"certificates/"+mValues.get(position).getCoursename().getId()+"?api_token="+apiToken;
+        Log.d("certificatesURL=  ",imageUrl);
 //        Picasso.with(context).load(imageUrl).placeholder(R.drawable.imageplaceholder).into(holder.certificateimg);
         Picasso.with(context)
                 .load(imageUrl).placeholder(R.drawable.imageplaceholder)

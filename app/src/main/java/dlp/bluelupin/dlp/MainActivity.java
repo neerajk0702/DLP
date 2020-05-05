@@ -155,6 +155,7 @@ public class MainActivity extends AppCompatActivity
                 DbHelper dbhelper = new DbHelper(MainActivity.this);
                 dbhelper.deleteAccountData();
                 dbhelper.deleteFavoriteData();
+                dbhelper.deletecontentStatusEntity();
                 String msg = getString(R.string.logout);
                 Toast.makeText(MainActivity.this, msg, Toast.LENGTH_LONG).show();
                 Intent mainIntent = new Intent(MainActivity.this, LanguageActivity.class);

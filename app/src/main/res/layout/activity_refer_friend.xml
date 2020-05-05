@@ -83,6 +83,7 @@
                 android:layout_margin="@dimen/dimValue_5"
                 android:padding="@dimen/dimValue_5"
                 android:text="@string/sharejoy"
+                android:maxLines="1"
                 android:textColor="#4a4d4e"
                 android:textSize="@dimen/dimTextSize_20"
                 android:textStyle="bold" />

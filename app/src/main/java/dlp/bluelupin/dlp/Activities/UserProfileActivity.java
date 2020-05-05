@@ -90,7 +90,7 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         lanLable = (TextView) this.findViewById(R.id.lanLable);
         save = (TextView) this.findViewById(R.id.save);
         enterName = (EditText) this.findViewById(R.id.enterName);
-        done = toolbar.findViewById(R.id.done);
+        done = findViewById(R.id.done);
         done.setOnClickListener(this);
         done.setTypeface(VodafoneExB);
         title.setTypeface(VodafoneExB);
